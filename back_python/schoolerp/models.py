@@ -13,3 +13,14 @@ class School(EntityBase):
     class Meta:
         verbose_name="学校"
         verbose_name_plural="学校"
+
+class ClassGroup(EntityBase):
+    school=models.ForeignKey(
+        '所属学校',
+        on_delete=models.CASCADE,
+    )
+    def __str__(self):
+        return self.name;
+    class Meta:
+        verbose_name="班级"
+        verbose_name_plural="班级"
