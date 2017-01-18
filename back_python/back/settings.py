@@ -25,7 +25,7 @@ SECRET_KEY = '!*nmutor&f16elc9cb*&8v)e#d9il@u_k$h_u^18#7ozw$uf=z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [127.0.0.1,mily365.com]
+ALLOWED_HOSTS = ['127.0.0.1','mily365.com']
 
 
 # Application definition
