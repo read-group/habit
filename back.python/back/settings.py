@@ -23,7 +23,7 @@ print(BASE_DIR)
 SECRET_KEY = 'j_tmdmt^+(wp^(+$)2wpzdo12=#r77(r3-30@v%z%a(37n7^ut'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhoat','127.0.0.1','mily365.com']
 
