@@ -16,8 +16,9 @@ class School(EntityBase):
 
 class ClassGroup(EntityBase):
     school=models.ForeignKey(
-        '所属学校',
+        'School',
         on_delete=models.CASCADE,
+        verbose_name="所属学校"
     )
     def __str__(self):
         return self.name;
