@@ -1,9 +1,0 @@
-{% extends "admin/base.html" %}
-{% load static %}
-{% block title %}米管{% endblock %}
-{% block extrahead %}<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">{% endblock %}
-{% block branding %}
-<!-- <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1> -->
-<h1 id="site-name"><a href="{% url 'admin:index' %}"><img style="width:30px;height:30px" src="{% static "admin/img/mily.png" %}"/>米管平台</a></h1>
-{% endblock %}
-{% block nav-global %}{% endblock %}
