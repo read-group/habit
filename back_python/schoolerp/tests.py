@@ -13,6 +13,12 @@ class QuestionMethodTests(TestCase):
         """
         query count test
         """
+        print("hello")
+        s=School(code="001",name="jy")
+        s.save()
         for item in School.objects.all():
-            print(item)
+            print(str(item))
+
+
+
         #self.assertIs(School.objects.count()==1, True)
