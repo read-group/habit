@@ -15,36 +15,38 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ClassGroup',
+            name='Activity',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('code', models.CharField(max_length=30, verbose_name='编码')),
                 ('name', models.CharField(max_length=100, verbose_name='名称')),
                 ('createdTime', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
                 ('updatedTime', models.DateTimeField(auto_now=True, verbose_name='更新时间')),
+                ('startTime', models.DateField(verbose_name='开始日期')),
+                ('endTime', models.DateField(verbose_name='结束日期')),
+                ('cat', models.CharField(choices=[('FEE', '收费'), ('FREE', '免费'), ('DONATE', '捐赠')], max_length=20, verbose_name='类别')),
+                ('img', models.ImageField(upload_to='/media')),
+                ('amount', models.IntegerField(default=0, verbose_name='报名费')),
+                ('memo', models.TextField(max_length=500)),
             ],
             options={
-                'verbose_name_plural': '班级',
-                'verbose_name': '班级',
+                'verbose_name_plural': '活动',
+                'verbose_name': '活动',
             },
         ),
         migrations.CreateModel(
-            name='School',
+            name='ActivityItem',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('code', models.CharField(max_length=30, verbose_name='编码')),
                 ('name', models.CharField(max_length=100, verbose_name='名称')),
                 ('createdTime', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
                 ('updatedTime', models.DateTimeField(auto_now=True, verbose_name='更新时间')),
+                ('habitCatalog', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='activity.Activity', verbose_name='习惯类别')),
             ],
             options={
-                'verbose_name_plural': '学校',
-                'verbose_name': '学校',
+                'verbose_name_plural': '活动项目',
+                'verbose_name': '活动项目',
             },
-        ),
-        migrations.AddField(
-            model_name='classgroup',
-            name='school',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.School', verbose_name='所属学校'),
         ),
     ]

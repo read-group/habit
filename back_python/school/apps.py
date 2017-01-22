@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class SchoolerpConfig(AppConfig):
-    name = 'schoolerp'
-    verbose_name = "学校信息"
+class SchoolConfig(AppConfig):
+    name = 'school'
+    verbose_name = "1:学校信息"
     def ready(self):
         pass

@@ -1,1 +1,1 @@
-default_app_config="schoolerp.apps.SchoolerpConfig"
+default_app_config="school.apps.SchoolConfig"

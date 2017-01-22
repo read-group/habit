@@ -15,21 +15,22 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ClassGroup',
+            name='Habit',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('code', models.CharField(max_length=30, verbose_name='编码')),
                 ('name', models.CharField(max_length=100, verbose_name='名称')),
                 ('createdTime', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
                 ('updatedTime', models.DateTimeField(auto_now=True, verbose_name='更新时间')),
+                ('level', models.CharField(choices=[('L', '低'), ('M', '中'), ('H', '高')], max_length=4, verbose_name='难度')),
             ],
             options={
-                'verbose_name_plural': '班级',
-                'verbose_name': '班级',
+                'verbose_name_plural': '习惯',
+                'verbose_name': '习惯',
             },
         ),
         migrations.CreateModel(
-            name='School',
+            name='HabitCatalog',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('code', models.CharField(max_length=30, verbose_name='编码')),
@@ -38,13 +39,13 @@ class Migration(migrations.Migration):
                 ('updatedTime', models.DateTimeField(auto_now=True, verbose_name='更新时间')),
             ],
             options={
-                'verbose_name_plural': '学校',
-                'verbose_name': '学校',
+                'verbose_name_plural': '习惯分类',
+                'verbose_name': '习惯分类',
             },
         ),
         migrations.AddField(
-            model_name='classgroup',
-            name='school',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='school.School', verbose_name='所属学校'),
+            model_name='habit',
+            name='habitCatalog',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='habitinfo.HabitCatalog', verbose_name='所属分类'),
         ),
     ]
