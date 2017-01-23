@@ -12,9 +12,11 @@ class Activity(EntityBase):
     startTime=models.DateField(verbose_name="开始日期")
     endTime=models.DateField(verbose_name="结束日期")
     cat=models.CharField(max_length=20,choices=ACTIVITY_CAT_CHOICES ,verbose_name="类别")
-    img=models.ImageField(upload_to="/media",verbose_name="活动图片")
+    img=models.ImageField(upload_to="media/",verbose_name="活动图片")
     amount=models.IntegerField(default=0,verbose_name="报名费")
-    memo=models.TextField(max_length=500,verbose_name="备注")
+    status=models.BooleanField(default=False,verbose_name="开启状态")
+    memo=models.TextField(max_length=200,verbose_name="备注")
+
     def __str__(self):
         return self.name;
     class Meta:
@@ -22,7 +24,19 @@ class Activity(EntityBase):
         verbose_name_plural="活动"
 
 class ActivityItem(EntityBase):
-    habitCatalog=models.ForeignKey(Activity,verbose_name="习惯类别")
+    #activity=models.ForeignKey(Activity,on_delete=models.CASCADE，verbose_name="活动")
+    #cat=models.ForeignKey(HabitCatalog,on_delete=models.CASCADE，verbose_name="习惯类别")
+    activity=models.ForeignKey(
+        'Activity',
+        on_delete=models.CASCADE,
+        verbose_name="活动"
+    )
+    cat=models.ForeignKey(
+        HabitCatalog,
+        on_delete=models.SET_NULL,
+        verbose_name="习惯类别",
+        null=True,
+    )
     def __str__(self):
         return self.name;
     class Meta:

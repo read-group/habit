@@ -25,3 +25,4 @@ class Habit(EntityBase):
     class Meta:
         verbose_name="B.习惯"
         verbose_name_plural="B.习惯"
+        ordering=('code',)
