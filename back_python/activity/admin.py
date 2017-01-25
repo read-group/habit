@@ -6,6 +6,7 @@ from activity.models import ActivityItem
 class ActivityItemInline(admin.TabularInline):
     model = ActivityItem
     extra = 0
+    fields=('cat',)
 class ActivityAdmin(admin.ModelAdmin):
     fields=('code','name',('startTime','endTime',),('cat',),'img','amount','status','memo')
     list_display=('code','name','startTime','endTime','status')

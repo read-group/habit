@@ -17,8 +17,9 @@ class Honor(EntityBase):
 
 
 class Params(EntityBase):
-    amount_MoneyUnit=models.IntegerField(verbose_name="单位货币赠送米粒数量")
+    amount_moneyUnit=models.IntegerField(verbose_name="单位货币赠送米粒数量")
     amount_feedUnit=models.IntegerField(verbose_name="奖励米粒最小粒度")
+    amount_feeratio=models.IntegerField(verbose_name="费率(千分之几)",default=0)
     def __str__(self):
         return self.name;
     class Meta:
