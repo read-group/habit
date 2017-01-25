@@ -1,7 +1,31 @@
 {% extends "admin/base.html" %}
 {% load static %}
 {% block title %}米管{% endblock %}
+{% block extrastyle %}
+<style>
+/*#header {
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px;
+    background: #417690;
+    line-height: 40px;
+    color: #ffc;
+    overflow: hidden;
+    position: fixed;
+}
+#user-tools {
+    float: right;
+    padding-right:20px;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+}*/
 
+</style>
+{% endblock %}
 {% block branding %}
 <h1 id="site-name"><a href="{% url 'admin:index' %}"><img style="width:30px;height:35px" src="{% static "admin/img/mily.png" %}"/>米管平台</a></h1>
 {% endblock %}

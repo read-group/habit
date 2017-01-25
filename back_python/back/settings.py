@@ -31,7 +31,11 @@ ALLOWED_HOSTS = ['127.0.0.1','mily365.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
+    'feedback',
+    'org',
     'activity',
+    'media',
     'habitinfo',
     'sysinfo',
     'school',
@@ -128,4 +132,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
+MEDIA_ROOT=os.path.join(BASE_DIR,'back/media/')
