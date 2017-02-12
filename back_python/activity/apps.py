@@ -3,6 +3,7 @@ from django.apps import AppConfig
 
 class ActivityConfig(AppConfig):
     name = 'activity'
-    verbose_name = "3:活动信息"
+    verbose_name = "活动信息"
+    od=3
     def ready(self):
         pass
