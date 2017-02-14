@@ -1,0 +1,78 @@
+  <div class="container page" id="grain" ms-controller="grain">　
+      <nav class="navbar navbar-default  navbar-fixed-top">
+        <div  class="col-xs-4 text-left">
+          <div class="navButton topNavButton" ms-click="helpClick()">
+            <span class="glyphicon glyphicon-question-sign"></span>
+          </div>
+        </div>
+        <div class="col-xs-4 text-center">
+            <h4 id="title" class="topNavButton">成长</h4>
+        </div>
+        <div class="col-xs-4 text-right">
+          <div class="navButton topNavButton" data-url="habit/add.html" ms-click="navClick()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </div>
+        </div>
+      </nav>
+      <div class="childContent">
+        <div class="well">
+          <div class="row">
+            <div  class="col-xs-6 text-center">
+              <button class="button button-default button-large">小明</button>
+            </div>
+            <div  class="col-xs-6 text-center">
+              <button class="button button-default  button-large" role="button">小明</button>
+            </div>
+          </div>
+        </div>
+        <div class="well">
+          <div class="row">
+            <div  class="col-xs-6 text-center">
+              <h5>悬赏累积</h5>
+            </div>
+            <div  class="col-xs-6 text-center">
+              <span class="badge">14</span>
+            </div>
+          </div>
+          <div class="row">
+            <div  class="col-xs-6 text-center">
+              <h5>孩子赢取</h5>
+            </div>
+            <div  class="col-xs-6 text-center">
+              <span class="badge">14</span>
+            </div>
+          </div>
+          <div class="row">
+            <div  class="col-xs-6 text-center">
+              <h5>剩余金额</h5>
+            </div>
+            <div  class="col-xs-6 text-center">
+              <span class="badge">14</span>
+            </div>
+          </div>
+
+        </div>
+
+
+
+    </div>
+  </div>
+  <script>
+     function page_init($router,vmRootCallback){
+        console.log($router);
+        console.log("page_init...habit");
+        var vmGrain=avalon.define({
+          $id:"grain",
+          navClick:function(){
+            console.log("...........habit.........");
+            $router.$vm.navClick.call(this);
+          },
+          helpClick:function(){
+            $router.$vm.helpClick();
+          }
+        });
+        //传递本局部页面的根元素的id值，便于主控扫描,挂接新的vm
+        vmRootCallback("grain",vmGrain);
+
+     }
+  </script>

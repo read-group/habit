@@ -1,0 +1,39 @@
+  <div class="container page" id="habit" ms-controller="habit">　
+      <nav class="navbar navbar-default  navbar-fixed-top">
+        <div  class="col-xs-4 text-left">
+          <div class="navButton topNavButton" ms-click="helpClick()">
+            <span class="glyphicon glyphicon-question-sign"></span>
+          </div>
+        </div>
+        <div class="col-xs-4 text-center">
+            <h4 id="title" class="topNavButton">习惯</h4>
+        </div>
+        <div class="col-xs-4 text-right">
+          <div class="navButton topNavButton" data-url="habit/add.html" ms-click="navClick()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </div>
+        </div>
+      </nav>
+      <div class="childContent">
+         好的教育
+       </div>
+  </div>
+  <script>
+     function page_init($router,vmRootCallback){
+        console.log($router);
+        console.log("page_init...habit");
+        var vmHabit=avalon.define({
+          $id:"habit",
+          navClick:function(){
+            console.log("...........habit.........");
+            $router.$vm.navClick.call(this);
+          },
+          helpClick:function(){
+            $router.$vm.helpClick();
+          }
+        });
+        //传递本局部页面的根元素的id值，便于主控扫描,挂接新的vm
+        vmRootCallback("habit",vmHabit);
+
+     }
+  </script>

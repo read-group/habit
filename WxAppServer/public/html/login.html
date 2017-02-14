@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet"
+	href="/javascripts/mobile/jquery.mobile-1.4.5.css" />
+<script src="/javascripts/common/jquery.js"></script>
+<script src="/javascripts/mobile/jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+	<div data-role="page">
+	   <div data-role="header">
+	   <h1>登录</h1>
+	   </div>
+		<div   role=main  class="ui-content">
+			<form action="">
+				<ul data-role="listview">
+					<li><label>账号</label><input type='text'  placeholder="手机号"></input></li>
+					<li><label>密码</label><input type="password"></input></li>
+				</ul>
+			</form>
+		</div>
+		<div data-role="footer"  style="text-align:right">
+		     <a href="#"    data-role="button"  data-rel="back">取消</a>
+		     <a href="#"  id="btnLogin"  data-role="button"  data-rel="back">登录</a>
+	    </div>
+	    <script>
+	      $("#btnLogin").click(function(){
+	    	    alert("xxxx");
+	    	    return false;
+	      });
+	    </script>
+	   </div>
+</body>
+</html>

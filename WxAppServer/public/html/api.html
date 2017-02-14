@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="themes/persist.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet"
+	href="themes/jquery.mobile.structure-1.4.5.min.css" />
+
+<script src="themes/jquery.min.js"></script>
+<script
+	src="themes/jquery.mobile-1.4.5.min.js"></script>
+<style>
+.tp {
+	font-size: 41px
+}
+</style>
+<script>
+//直接应用方法没问题
+$(document).on("pagebeforecreate",function(){
+	   console.log('pagebeforecreate....当页面即将被初始化，但是在增强开始之前触发。');
+	  //   $("#btnJs");
+	//   $("#btnJs").attr("data-wrapper-class","tp");//这个时机可以,增强没开始,对于链接不会进行div增强
+	   //$("#btnJs").button('option','corners',true);报错不能早于初始化之前赋值
+});
+$(document).on("pagecreate",function(){
+	 //$("#btnJs").attr("data-role","button");//在这里应用这个方法将不起作用,因为样式已经解析完毕.
+	// $("#btnJs").attr("data-role","button").button();
+ //   	$("#btnJs").button().button('option','corners',true);
+	   console.log('pagecreate....当页面已创建，但是增强完成之前触发。');
+	  //   $("#btnJs");
+});
+   $(document).on("pageinit",function(){
+	   console.log('pageinit....当页面已经初始化并且完成增强时触发。');;
+	    $("#btn").click(function(){
+	    	  var item=$("<li><a>cccc</a></li>");
+	    	  $("#lv").append(item);
+	    	  $("#lv").listview('refresh');
+	    	  return false;
+	    });
+	    $("#btnGetValue").click(function(){
+	    	  console.log($("#frmTest").serialize());
+	    	  localStorage.setItem("hello","world");
+	    	  alert(localStorage.getItem("hello"));
+	    });
+   });
+   $( document ).on( "click", ".show-page-loading-msg", function() {
+       var $this = $( this ),
+           theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+           msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+           textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+           textonly = !!$this.jqmData( "textonly" );
+           html = $this.jqmData( "html" ) || "";
+       $.mobile.loading( "show", {
+               text: msgText,
+               textVisible: textVisible,
+               theme: theme,
+               textonly: textonly,
+               html: html
+       });
+   })
+   .on( "click", ".hide-page-loading-msg", function() {
+       $.mobile.loading( "hide" );
+   });
+   if(window.localStorage){
+	   alert('This browser supports localStorage');
+	  }else{
+	   alert('This browser does NOT support localStorage');
+	  }
+</script>
+</head>
+<body>
+	<div data-role="page" id="p1">
+		<div data-role="header"></div>
+		<div data-role="content">
+		   	  <a   id="btnHref"  href="#"  data-role="button"   data-corners="false">ok</a>
+			  <a   data-corners="false"  data-role="button"     id="btnJs">xxxxggg</a>
+		      <a    id="btn"   data-role="button">ok</a>
+		      <ul data-role="listview"  id="lv">
+		         <li>xxxxxxx</li>
+		          <li>xxxxxxx</li>
+		          <li><button  id="btnGetValue">getValue</button></li>
+		      </ul>
+		</div>
+		<div data-role="footer">
+		               <form id="frmTest">
+		               <label for="select-choice-8" class="select">Multi-select with optgroups, custom icon and position:</label>
+							<select name="select-choice-8" id="select-choice-8" multiple="multiple" data-native-menu="false" data-icon="grid" data-iconpos="left">
+							    <option>Choose a few options:</option>
+							    <optgroup label="USPS">
+							        <option value="standard" selected="">Standard: 7 day</option>
+							        <option value="rush">Rush: 3 days</option>
+							        <option value="express">Express: next day</option>
+							        <option value="overnight">Overnight</option>
+							    </optgroup>
+							    <optgroup label="FedEx">
+							        <option value="firstOvernight">First Overnight</option>
+							        <option value="expressSaver">Express Saver</option>
+							        <option value="ground">Ground</option>
+							    </optgroup>
+							</select>
+			              <label for="c1">体育</label><input type="checkbox" id="c1"  name="c1[]" value="1"  checked/>
+			             <label for="c2">美术</label> <input type="checkbox"   id="c2"  name="c1[]" value="0"/>
+			         </form>
+		</div>
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="themes/persist.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+	<div data-role="page"		style="background-image: url('p2.png'); background-size: 100% 100%;"		id='p2'>
+		<div data-role="footer"  style="text-align:right;padding-right:2px;background-color:rgba(255,255,255,0);border:none">
+		      <a  id="btnLogin"  href="register.html" data-role="button" 	data-transition="flip"  style="color:yellow;background-color:rgba(255,255,255,0);" >注册</a>
+              <a  id="btnLogin"  href="login.html" data-role="button"        data-transition="flip"  style="color:yellow;background-color:rgba(255,255,255,0);" >登录</a>
+		</div>
+		<script type="text/javascript">
+	   $("#p2").on("swiperight",function(){
+	      	  $.mobile.changePage('f1.html',{transition: "flip",reverse:true});
+	      	  
+    	  });   
+	</script>
+	
+	</div>
+	
+</body>
+</html>
