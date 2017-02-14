@@ -1,0 +1,59 @@
+.ms-controller,.ms-important,[ms-controller],[ms-important]{
+     visibility: hidden;
+ }
+
+body,.btn,.nav,h4{
+  color:#999,
+}
+/*设置子页面内容空白区，为了防止导航栏遮挡主内容区*/
+.container.page{
+  margin:0px 0px;
+  padding: 0px;
+}
+//主页面
+.container.mainPage{
+  margin:0px 0px;
+  padding: 0px 0px;
+}
+
+.navButton{
+　　padding: 0px;
+   color:#999;
+   margin-top: 7px;
+   font-size: 12px;
+}
+.navButton span{
+   font-size: 18px;
+}
+
+.topNavButton{
+  margin-top: 16px;
+  //color: white
+}
+.active{
+  color:#03BC00;
+}
+/*
+设置动态加载区的margin是为了防止导航栏遮挡内容
+*/
+.content{
+  margin:10px auto;
+  padding: 0px;
+  color: #999;
+}
+.childContent{
+  margin:-20px -15px;
+  padding: 0px;
+}
+.flash{
+  color:#03BC00
+}
+.well{
+  background-color:white;
+  border-top: none;
+  border-radius:0px;
+  margin: 0px;
+}
+a:hover{
+  #17B81F
+}

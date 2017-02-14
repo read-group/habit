@@ -1,0 +1,13 @@
+{
+  "name": "WxAppServer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "leaderApp.js"
+  },
+  "dependencies": {
+    "ejs": "*",
+    "express": "3.2.6",
+    "socket.io": "^1.3.6"
+  }
+}

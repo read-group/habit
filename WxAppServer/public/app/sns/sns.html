@@ -1,0 +1,38 @@
+  <div class="container page" id="sns" ms-controller="sns">　
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div  class="col-xs-4 text-left">
+          <div class="navButton topNavButton">
+            <span class="glyphicon glyphicon-question-sign" ms-click="helpClick()"></span>
+          </div>
+        </div>
+        <div class="col-xs-4 text-center">
+            <h4 id="title" class="topNavButton">助学</h4>
+        </div>
+        <div class="col-xs-4 text-right">
+          <div class="navButton topNavButton">
+            <span class="glyphicon glyphicon-plus"></span>
+          </div>
+        </div>
+      </nav>
+      <div class="childContent">让坚持不再难，让坚持不再孤独</div>
+  </div>
+
+  <script>
+     function page_init($router,vmRootCallback){
+        console.log($router);
+        console.log("page_init...habit");
+        var vmSns=avalon.define({
+          $id:"sns",
+          navClick:function(){
+            console.log("...........habit.........");
+            $router.$vm.navClick.call(this);
+          },
+          helpClick:function(){
+            $router.$vm.helpClick();
+          }
+        });
+        //传递本局部页面的根元素的id值，便于主控扫描,挂接新的vm
+        vmRootCallback("sns",vmSns);
+
+     }
+  </script>

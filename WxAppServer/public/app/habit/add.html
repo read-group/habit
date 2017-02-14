@@ -1,0 +1,30 @@
+  <div class="container page" id="habitAdd" ms-controller="habitAdd">　
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div  class="col-xs-4 text-left">
+          <div class="navButton topNavButton"　ms-click="backClick">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+          </div>
+        </div>
+        <div class="col-xs-4 text-center">
+            <h4 id="title" class="topNavButton">选择习惯</h4>
+        </div>
+        <div class="col-xs-4 text-right">
+
+        </div>
+      </nav>
+      <div class="childContent">
+         请选择习惯
+      </div>
+  </div>
+  <script>
+     function page_init($router,vmRootCallback){
+        console.log($router);
+        var vmhabitAdd=avalon.define({
+          $id:"habitAdd",
+          backClick:function(){
+            $router.pop();
+          }
+        });
+        vmRootCallback("habitAdd",vmhabitAdd);
+     }
+  </script>

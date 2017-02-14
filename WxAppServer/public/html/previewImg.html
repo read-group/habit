@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="themes/persist.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+$(function(){
+	var fileSelect = document.getElementById("fileSelect");
+	var fileElem = document.getElementById("fileElem");
+//	var fileList = document.getElementById("fileList");
+   var fileList = document.getElementById("preview");
+	fileSelect.addEventListener("click", function(e) {
+		if (fileElem) {
+			fileElem.click();
+		}
+		e.preventDefault(); // prevent navigation to "#"
+	}, false);
+	var self=this;
+	$("#fileElem").change(function(){
+		  handleFiles(fileElem.files);
+	});
+	function handleFiles(files) {
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /^image\//;
+           console.log(file.type);
+			if (!imageType.test(file.type)) {
+				continue;
+			}
+			var img = document.createElement("img");
+			img.classList.add("obj");
+			img.file = file;
+			// Assuming that "preview" is the div output where the content will be displayed
+			fileList.appendChild(img);
+
+			var reader = new FileReader();
+			reader.onload = (function(aImg) {
+				return function(e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(file);
+		}
+	}
+	
+});
+
+</script>
+</head>
+<body>
+	<div data-role="page"		id="p1">
+		<div data-role="content">
+		
+			<input type="file" id="fileElem" multiple accept="image/*" style="display:none"	 "/>
+			<a href="#"	 data-role="button"  id="fileSelect" >Select some files</a>
+			<div id="preview"></div>
+		</div>
+	</div>
+</body>
+</html>

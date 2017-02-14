@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小小领袖</title>
+    <!-- Bootstrap -->
+    <link href="../vendor/bs/css/bootstrap.min.css" rel="stylesheet">
+　　　<link href="../vendor/btns/css/buttons.css" rel="stylesheet">
+  　
+    <link href="./css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/.respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../vendor/bs/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+　　　<!--<link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+    <script src="../vendor/bs/js/bootstrap.min.js"></script>
+    <script src="../vendor/av/avalon.mobile.js"></script>
+    <script>
+      $.router=function(vm){
+         this.$vm=vm;
+         this.$vm.$router=this;
+         this.cache={};
+         this.init();
+      };
+      $.router.prototype={
+        init:function(){//初始化应用的第一个导航根
+          this.push(this.$vm.navUrl);
+        },
+        //获取当前根
+        getCurrentRoot:function(){
+          return this.$vm.$root;
+        },
+        //获取当前根的栈顶元素
+        getCurrentNavUrl:function(){
+          var root=this.getCurrentRoot();
+          if(this.cache[root]){
+            var len=this.cache[root].length;
+            return this.cache[root][len-1];
+          }else{
+            return null;
+          }
+        },
+        push:function(path){
+          var root=this.getCurrentRoot();
+          if(!this.cache[root]){
+            this.cache[root]=[];
+            this.cache[root].push(path);
+          }else {
+            this.cache[root].push(path);
+          }
+          console.log(this);
+        },
+        pop:function(){
+          var root=this.getCurrentRoot();
+          this.cache[root].pop();
+          var prevUrl= this.cache[root].pop();
+          //如果当前根没有URL了，需要再把最后一个添加上
+          if(this.cache[root].length==0){
+            this.push(prevUrl);
+          }
+          console.log(prevUrl);
+          if(this.cache[root].length>=0 && prevUrl){
+            this.$vm.navUrl=prevUrl;
+
+            return true;
+          }else{
+            return false;
+          }
+        },
+        clear:function(){
+          for(var k in this.cache){
+            delete this.cache[k];
+          }
+        }
+      };
+
+      avalon.ready(function(){
+        //拦截所有的链接，继续冒泡处理
+        $("a").click(function(e){
+          e.preventDefault();
+          return true;
+        });
+        var vm=avalon.define({
+          $id:"main",
+          greet:"hello avalon",
+          $root:"habit",
+          $router:null,
+          navUrl:"/app/habit/habit.html",
+          navClick:function(){
+            console.log("..........lllll");
+            var $navBtn=$(".navButton");
+
+            var $this=$(this);
+            console.log(this);
+            if($this.hasClass("navButton")){
+              var url=$this.data("url");
+              var root=$this.data("root");
+              //设置当前根,设置当前
+
+　　　　　　　　vm.navUrl="/app/"+url;
+
+              //当点击根节点时,需要清空路由
+              if(root){
+                vm.$root=root;
+                $navBtn.removeClass("active");
+                $this.addClass("active");
+                vm.$router.clear();
+                vm.$router.push(vm.navUrl);
+              }else{
+                vm.navUrl="/app/"+url;
+                vm.$router.push(vm.navUrl);
+                console.log(vm.$router);
+              }
+            }
+          },
+          helpClick:function(){
+             $("#helpModel").modal('toggle');
+          },
+          onloaded:function(text,$vm){
+          //  var $textDom= $(text);
+            //$(".childContent",$textDom).text("dddjjjjjjj");
+            console.log(text);
+            return text;
+          },
+          onrendered:function(){
+            console.log("rendered");
+            console.log(arguments);
+            page_init(router,function(ele,$vm){
+              var ele=document.getElementById("#"+ele);
+              avalon.scan(ele,[$vm]);
+            });
+
+          }
+        });
+        avalon.scan();
+        //实例化一个路由器
+        var router=new $.router(vm);
+
+        $("#helpModel").modal('toggle');
+
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container mainPage"   ms-controller="main">　
+      <div class="content" ms-include-src="navUrl" data-include-rendered="onrendered" data-include-loaded="onloaded">
+      </div>
+      <div class="modal fade" id="helpModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="exampleModalLabel">
+                <span class="glyphicon glyphicon-star-empty" style="color:gold;font-size:25px"></span>
+                <span style="color:#999">小小领袖</span><br/><small style="margin-left:15px;color:#999">帮助家长培养孩子习惯养成</small>
+              </h4>
+            </div>
+            <div class="modal-body">
+              <div class="well text-left flash">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="glyphicon glyphicon-scissors"></span>
+                    <span>参考.选择</span>
+                    <h5 class="text-center"><span class="glyphicon glyphicon-tint"></span>让坚持不再乱</h5>
+              </div>
+              <div class="well text-left flash">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                    <span class="glyphicon glyphicon-yen"></span>
+                    <span>赞扬.悬赏</span>
+                    <h5 class="text-center"><span class="glyphicon glyphicon-yen"></span>让坚持不再难</h5>
+              </div>
+              <div class="well text-left flash">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                    <span>关注.陪伴</span>
+                    <h5 class="text-center"><span class="glyphicon glyphicon-grain"></span>让坚持不再孤独</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-default  navbar-fixed-bottom">
+          <div class="row">
+              <div  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
+                <div class="navButton active" data-url="habit/habit.html" data-root="habit" ms-click="navClick()">
+                  <span class="glyphicon glyphicon-tint"></span>
+                  <div>习惯</div>
+                </div>
+              </div>
+              <div class="col-xs-3 col-md-3 text-center"　style="padding:0px">
+                <div class="navButton" data-url="sns/sns.html" data-root="sns" 　 ms-click="navClick()">
+                  <span class="glyphicon glyphicon-yen"></span>
+                  <div>助学</div>
+                </div>
+              </div>
+              <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
+                <div class="navButton" data-url="grain/grain.html" data-root="grain" ms-click="navClick()">
+                  <span class="glyphicon glyphicon-tree-deciduous"></span>
+                  <div>成长</div>
+                </div>
+              </div>
+              <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
+                <div class="navButton" ms-click="navClick()">
+                  <span class="glyphicon glyphicon-asterisk"></span>
+                  <div>我</div>
+                </div>
+              </div>
+          </div>
+       </nav>
+    </div>
+</body>
+</html>
+</html>

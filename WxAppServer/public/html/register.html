@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet"
+	href="/javascripts/mobile/jquery.mobile-1.4.5.css" />
+<script src="/javascripts/common/jquery.js"></script>
+<script src="/javascripts/mobile/jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+	<div data-role="page">
+	   <div data-role="header">
+	   <h1>注册</h1>
+	   </div>
+		<div   role=main  class="ui-content">
+			<form action="">
+				<ul data-role="listview">
+					<li><label>账号</label><input  id="accountNo"   type='text'  placeholder="输入手机号" ></input></li>
+					<li><label>密码</label><input  id="pwd"  type="password"></input></li>
+					<li><span class="ui-btn"  id="fetchVc">获取确认码</span><input id="vc"  type="text"   placeholder="输入手机确认码"></input></li>
+					<li>
+						 <fieldset data-role="controlgroup" data-type="horizontal">
+								  <legend>选择您的角色:</legend>
+								    <input type="radio"   id="parents" name="parents"    value="p"/><label for="parents">家长</label>
+					                <input type="radio"  id="friends"  name="parents"       value="f"/><label   for="friends">亲戚朋友</label>			 
+						</fieldset>
+					</li>
+				</ul>
+			</form>
+		</div>
+		<div data-role="footer"  style="text-align:right">
+		     <a href="#"    data-role="button"  data-rel="back">取消</a>
+		     <a href="#"  id="btnOk"  data-role="button" >确定</a>
+	    </div>
+	    <script>
+	          $("#accountNo").val("13381139519");
+	          $("#pwd").val("13381139519");
+	          $("#fetchVc").click(function(){
+	        	  $("#vc").val("39519");
+	          });
+	    </script>
+</body>
+</html>

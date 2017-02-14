@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="themes/persist.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+     $(document).on('pageinit','#p1',function(){
+    	  $(document).on("swipeleft","#p1",function(){
+    		  $.mobile.changePage('f2.html',{transition:'flip'});
+    	  });   
+    	  $(document).on("tap","#p1",function(){
+    		  $.mobile.changePage('f2.html',{transition:'flip'});
+    	  });   
+    	  function launchIntoFullscreen(element) {
+    		  if(element.requestFullscreen) {
+    		    element.requestFullscreen();
+    		  } else if(element.mozRequestFullScreen) {
+    		    element.mozRequestFullScreen();
+    		  } else if(element.webkitRequestFullscreen) {
+    		    element.webkitRequestFullscreen();
+    		  } else if(element.msRequestFullscreen) {
+    		    element.msRequestFullscreen();
+    		  }
+    		}
+
+    		// Launch fullscreen for browsers that support it!
+    		launchIntoFullscreen(document.documentElement); // the whole page
+    		//launchIntoFullscreen(document.getElementById("videoElement")); // any individual element
+    });
+</script>
+</head>
+<body>
+	<div data-role="page"  style="background-image: url('p1.png');background-size:100% 100%;"  id="p1">		
+	  <div data-role="content">
+	  </div>	
+	</div>
+</body>
+</html>
