@@ -2,7 +2,7 @@ var path       = require('path');
 var settings = {
   basepath       : path.normalize(path.join(__dirname, '../..')),
   user_center_url:"http://localhost:3004/api/user/",
-  port       : process.env.NODE_PORT || 3000,
+  port       : process.env.NODE_PORT || 9406,
   database   : {
     protocol : "mysql", // or "mysql"
     query    : { pool: true },
