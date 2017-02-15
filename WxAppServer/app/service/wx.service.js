@@ -106,6 +106,7 @@ function getUserInfo(openid,cbk){
 }
 // 监听事件消息
 weixin.eventMsg(function(msg) {
+  console.log("xxxxxxxxxxxx=event............")
   if(msg.event=="subscribe" || msg.eventKey=="hostLogin"){
     var articles = [];
     articles[0] = {
@@ -123,16 +124,7 @@ weixin.eventMsg(function(msg) {
         funcFlag : 0
     };
     weixin.sendMsg(resMsg);
-    //获取用户的具体信息，并保存到
-    getUserInfo(msg.fromUserName,function(err,rs) {
-      //注册微信信息到用户中心
-      rs["appId"]=settings.appId;
-      restClient.setRestUrl(settings.user_center_url+"reg");
-      restClient.callPost({wxInfo:rs},function(err,out){
-         console.log(out);
 
-      });
-    });
   }else{
     //发送空串回微信服务器
     weixin.res.send("");
