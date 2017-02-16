@@ -8,7 +8,7 @@ from media.models import MediaResource
 #庭习惯历史
 #需要计算出某个活动某个家庭需要打卡的次数，按照押金计算每次打卡可以解绑的现金金额，
 #平分懒人的奖金
-class OrgHabitHistory(models.Model):
+class OrgActivityHistory(models.Model):
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
 
@@ -22,16 +22,12 @@ class OrgHabitHistory(models.Model):
             on_delete=models.CASCADE,
             verbose_name="活动"
     )
-    Habit=models.ForeignKey(
-            Habit,
-            on_delete=models.CASCADE,
-            verbose_name="习惯"
-    )
+    habits=models.CharField(max_length=150,null=True,blank=True,verbose_name="习惯")
     def __str__(self):
         return self.activity.name;
     class Meta:
-        verbose_name="C.家庭习惯历史"
-        verbose_name_plural="C.家庭习惯历史"
+        verbose_name="C.家庭活动历史"
+        verbose_name_plural="C.家庭活动历史"
 #打卡历史
 class FeedBack(models.Model):
     feedDate=models.DateField(auto_now_add=True,verbose_name="打卡日期")
@@ -40,11 +36,35 @@ class FeedBack(models.Model):
         on_delete=models.CASCADE,
         verbose_name="打卡者"
     )
-    orgHabitHistory=models.ForeignKey(
-            OrgHabitHistory,
+    orgActivityHistory=models.ForeignKey(
+            OrgActivityHistory,
             on_delete=models.CASCADE,
-            verbose_name="家庭个人历史习惯"
+            verbose_name="家庭个人历史习惯",
+            null=True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
     )
+
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
