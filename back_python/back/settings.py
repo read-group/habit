@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1','mily365.com','www.mily365.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'cms',
     'front',
     'account',
     'feedback',
