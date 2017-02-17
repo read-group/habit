@@ -7,7 +7,6 @@ var childproc = require('child_process');
  */
 yml.restClient = system.object.Abstract({
 	ctor : function(initParams) {
-
 		this.cmdGetPattern = "curl {-G} -k  -d '{data}' {url}";
 		this.cmdPostPattern="curl  -k -H 'Content-type: application/json'  -d '{data}' {url}";
 		this.cmdDownLoadFilePattern="curl -G -o {fileName} {url}";
