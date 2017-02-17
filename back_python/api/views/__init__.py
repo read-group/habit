@@ -1,1 +1,1 @@
-from .wx_welcome import *
+from .wxwelcome import WxWelcome

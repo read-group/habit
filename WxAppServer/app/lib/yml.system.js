@@ -8,7 +8,7 @@ var ykx = {};
 ykx.utils = {
 	/**
 	 * 建立命名空间的方法
-	 * 
+	 *
 	 * @param namespace
 	 */
 	declare : function(namespace) {
@@ -49,7 +49,7 @@ ykx.utils = {
 		}
 	},
 	/**
-	 * 
+	 *
 	 * @param parent
 	 *            继承的父类对象
 	 * @param override
@@ -75,14 +75,14 @@ ykx.utils = {
 		};
 		F.prototype = parent || Object.prototype;
 		var child = new F();
-		
-		
+
+
 		//在子类调用父类对象的ctor,所以子类对象必须定义
 		//ctor，避免子类不定义而再次调用父类原型对象的ctor,而导致重复调用父类ctor
 		if(parent && parent.ctor){
 			parent.ctor.call(child,initParams);
 		}
-				
+
 		// 重写,这里解决当前对象没有定义
 		var override = override || {ctor:function(){}};
 		if(override && !override.ctor){
@@ -90,14 +90,14 @@ ykx.utils = {
 		}
 		//this.deepCopy(child, override);
 		that.shadowCopy(child,override);
-		
-		
-		
+
+
+
 		// 创建对象后初始化,只有指定执行才执行，
 		if(!notExecCtor)
 		  child.ctor(initParams);
-		
-			
+
+
 		// child.ctor.apply()
 		// 指向父类
 		child.ubber = parent;
@@ -134,15 +134,14 @@ ykx.utils = {
 };
 /**
  * 定义应用基类
- * 
+ *
  */
-
 ykx.object = ykx.utils.extend(null,null, {
 	/**
 	 * 这个方法需要被重写
 	 */
 	ctor : function() {
-		//this.name="jy";		
+		//this.name="jy";
 	},
 	/**
 	 * 所有子类对象必须定义ctor函数
@@ -163,9 +162,9 @@ ykx.object = ykx.utils.extend(null,null, {
 		if(arguments.length==2){
 			child=ykx.utils.extend(arguments[0],this, arguments[1]);
 		}
-		
-		
-		//console.log(arguments.callee.caller.toString())				
+
+
+		//console.log(arguments.callee.caller.toString())
 		return child
 	},
 	Abstract:function(){
@@ -184,9 +183,9 @@ ykx.object = ykx.utils.extend(null,null, {
 		if(arguments.length==2){
 			child=ykx.utils.extend(arguments[0],this, arguments[1],true);
 		}
-		
-		
-		//console.log(arguments.callee.caller.toString())				
+
+
+		//console.log(arguments.callee.caller.toString())
 		return child
 	}
 });

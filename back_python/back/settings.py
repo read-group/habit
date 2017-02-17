@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1','mily365.com','www.mily365.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'api',
     'cms',
     'front',
     'account',
@@ -110,9 +111,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'schoolerp',
         'USER':'root',
-        'PASSWORD':'root',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'PASSWORD':'viathink@520612',
+        'HOST':'mily365.com',
+        'PORT':'8306'
     }
 }
 

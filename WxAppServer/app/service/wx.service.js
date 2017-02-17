@@ -91,40 +91,52 @@ weixin.urlMsg(function(msg) {
 });
 var restClient=rest.restClient.New();
 //设置获取
-function getUserInfo(openid,cbk){
+// function getUserInfo(openid,cbk){
+//   restClient=rest.restClient.New();
+//   restClient.setRestUrl("https://api.weixin.qq.com/cgi-bin/user/info");
+//   ak.accessKey.getAccessKey(function(err,key){
+//     if(err){
+//       return cbk(err);
+//     }else {
+//       var data="access_token={ACCESS_TOKEN}&openid={OPENID}&lang=zh_CN"
+//       .replace(/\{ACCESS_TOKEN\}/g, key).replace(/\{OPENID\}/g,openid);
+//        return restClient.callGet(data,cbk);
+//     }
+//   });
+// }
+function getWelcomeInfo(cbk){
   restClient=rest.restClient.New();
-  restClient.setRestUrl("https://api.weixin.qq.com/cgi-bin/user/info");
-  ak.accessKey.getAccessKey(function(err,key){
-    if(err){
-      return cbk(err);
-    }else {
-      var data="access_token={ACCESS_TOKEN}&openid={OPENID}&lang=zh_CN"
-      .replace(/\{ACCESS_TOKEN\}/g, key).replace(/\{OPENID\}/g,openid);
-       return restClient.callGet(data,cbk);
-    }
-  });
+  restClient.setRestUrl("http://mily365.com/api/wxwelcome/");
+  restClient.callGet(null,cbk);
 }
+
 // 监听事件消息
 weixin.eventMsg(function(msg) {
-  console.log("xxxxxxxxxxxx=event............")
   if(msg.event=="subscribe" || msg.eventKey=="hostLogin"){
     var articles = [];
-    articles[0] = {
-        title : "帮助家长陪伴孩子习惯养成",
-        description : "六步玩转小小领袖,详见<使用指南>。很多时候，孩子缺的是陪伴和关注，小小领袖让更多的家长朋友来关注孩子,陪伴孩子一起坚持...",
-        picUrl : "http://wx.yimilan.com/images/ok.jpg",
-        url : "http://mily365.com/?noticeKey="+msg.fromUserName,
-        //url : "http://ll.yimilan.com/help/sixstep.html"
-    };
-    var resMsg = {
-        fromUserName : msg.toUserName,
-        toUserName : msg.fromUserName,
-        msgType : "news",
-        articles : articles,
-        funcFlag : 0
-    };
-    weixin.sendMsg(resMsg);
+    //获取欢迎信息
+    getWelcomeInfo(function(err,d){
+      if(!err){
+        articles[0] = {
+            title : d.title,
+            description :d.desc ,
+            picUrl : d.img,
+            url : "http://mily365.com/",
+        };
+        var resMsg = {
+            fromUserName : msg.toUserName,
+            toUserName : msg.fromUserName,
+            msgType : "news",
+            articles : articles,
+            funcFlag : 0
+        };
+        weixin.sendMsg(resMsg);
+      }else{
+        //发送空串回微信服务器
+        weixin.res.send("");
+      }
 
+    });
   }else{
     //发送空串回微信服务器
     weixin.res.send("");
