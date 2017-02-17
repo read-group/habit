@@ -118,9 +118,9 @@ weixin.eventMsg(function(msg) {
     getWelcomeInfo(function(err,d){
       if(!err){
         articles[0] = {
-            title : d.title,
-            description :d.desc ,
-            picUrl : d.img,
+            title : d.content.title,
+            description :d.content.desc ,
+            picUrl : d.content.img,
             url : "http://mily365.com/",
         };
         var resMsg = {
