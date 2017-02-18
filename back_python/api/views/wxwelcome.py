@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from cms.models import WxWelcome
+from django.conf import settings
 from back.models import JsonResultView
 import sys
 import json
@@ -13,10 +14,11 @@ class WxWelcomeView(JsonResultView):
             # data["desc"]=welcome.desc
             # data["img"]=welcome.img.img.name
             data=self.toJSON(welcome,["name","desc"])
-            data["img"]=welcome.img.img.name
+            data["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+welcome.img.img.name
+            print(data["img"])
         except:
-            # info=sys.exc_info()
-            # print(info)
+            info=sys.exc_info()
+            print(info)
             self.jsonResult.rtnDic["status"]=-1
         else:
             self.jsonResult.rtnDic["content"]=data
