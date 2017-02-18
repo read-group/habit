@@ -1,33 +1,24 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from django.views.generic.base import View
+from back.models import JsonResultView
 from cms.models import WxWelcome
-import json
-class JsonResult(object):
-    def __init__(self,status=0,content=None,rawErr=None,errMsg=None,
-    help="status-0 indicate sucess,or 1 indicate fail"):
-        self.rtnDic={}
-        rtnDic.status=0
-        rtnDic.content=content
-        rtnDic.rawErr=rawErr
-        rtnDic.errMsg=errMsg
-        rtnDic.help="status-0 indicate sucess,or 1 indicate fail"
-        super(JsonResult,self).__init__(self.rtnDic)
-    def renderToJsonResponse(self):
-        return JsonResponse(self.rtnDic)
 
+import sys
+import json
 # Create your views here.
-class WxWelcome(View):
-    def get(req,*arg,**kwargs):
-        jsonResult=JsonResult()
+class WxWelcomeView(JsonResultView):
+    def get(self,req,*arg,**kwargs):
         try:
-            welcome=WxWelcome.objects.latest('createdTime')
+            d=self.getJsonedDataSet()
         except:
-            jsonResult.rtnDic.status=-1
+            info=sys.exc_info()
+            print(info)
+            self.jsonResult.rtnDic["status"]=-1
         else:
-            jsonResult.rtnDic.content=welcome.toJSON()
+            self.jsonResult.rtnDic["content"]=d
         finally:
-            return jsonResult.renderToJsonResponse()
-    def post(req,*arg,**kwargs):
+            return self.jsonResult.renderToJsonResponse()
+    def post(self,req,*arg,**kwargs):
         data=json.loads(request.raw_post_data)
-        print(type(data))
+
+    def getQuerySet(self):
+        return WxWelcome.objects.latest("createdTime")

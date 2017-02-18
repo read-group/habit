@@ -1,1 +1,1 @@
-from .wxwelcome import WxWelcome
+from .wxwelcome import WxWelcomeView

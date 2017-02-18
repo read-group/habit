@@ -69,7 +69,7 @@ CACHES = {
 }
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
+    #'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
@@ -111,9 +111,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'schoolerp',
         'USER':'root',
-        'PASSWORD':'viathink@520612',
-        'HOST':'mily365.com',
-        'PORT':'8306'
+        'PASSWORD':'root',
+        'HOST':'127.0.0.1',
+        'PORT':'3306'
     }
 }
 
