@@ -1,24 +1,28 @@
 from django.shortcuts import render
-from back.models import JsonResultView
 from cms.models import WxWelcome
-
+from back.models import JsonResultView
 import sys
 import json
 # Create your views here.
 class WxWelcomeView(JsonResultView):
     def get(self,req,*arg,**kwargs):
+        data=None
         try:
-            d=self.getJsonedDataSet()
+            welcome= WxWelcome.objects.latest("createdTime")
+            # data["name"]=welcome.name
+            # data["desc"]=welcome.desc
+            # data["img"]=welcome.img.img.name
+            data=self.toJSON(welcome,["name","desc"])
+            data["img"]=welcome.img.img.name
         except:
-            info=sys.exc_info()
-            print(info)
+            # info=sys.exc_info()
+            # print(info)
             self.jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=d
+            self.jsonResult.rtnDic["content"]=data
         finally:
             return self.jsonResult.renderToJsonResponse()
     def post(self,req,*arg,**kwargs):
         data=json.loads(request.raw_post_data)
-
     def getQuerySet(self):
-        return WxWelcome.objects.latest("createdTime")
+        return
