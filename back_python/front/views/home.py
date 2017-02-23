@@ -18,7 +18,7 @@ class HomeView(TemplateView):
     template_name="front/index.html"
     def get(self,*args,**kwargs):
         from django.http import FileResponse
-        response = FileResponse(open(settings.STATIC_ROOT+'MP_verify_HAONGKquSEXIsxKN.txt', 'rb'))
+        response = FileResponse(open(settings.STATIC_ROOT+'front/MP_verify_HAONGKquSEXIsxKN.txt', 'rb'))
         return response
 
 class HomeMobileView(TemplateView):
