@@ -18,7 +18,7 @@ from django.contrib import admin
 from .views import HomeView,HomeMobileView,MainView
 urlpatterns = [
     url(r'^$', HomeView.as_view(),),
-    url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeView.as_view(),),
+    url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
     url(r'^mobile/$', HomeMobileView.as_view(),),
     url(r'^mobile/main$', MainView.as_view(),name="main"),
 ]
