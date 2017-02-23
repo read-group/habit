@@ -8,6 +8,10 @@ def index(request):
 
 class HomeView(TemplateView):
     template_name="front/index.html"
+    def get(self,*args,**kwargs):
+        from django.http import FileResponse
+        response = FileResponse(open('myfile.png', 'rb'))
+        return response
 
 class HomeMobileView(TemplateView):
     template_name="front/mobile.html"
@@ -17,7 +21,7 @@ class HomeMobileView(TemplateView):
         teacherRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","teacher")
         childRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","child")
 
-        
+
         ctx["host"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.request.quote(hostRedirect))
         ctx["teacher"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.request.quote(teacherRedirect))
         ctx["child"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.request.quote(childRedirect))
