@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from .views import index
+from .views import HomeView,HomeMobileView,MainView
 urlpatterns = [
-    url(r'^$', index,),
+    url(r'^$', HomeView.as_view(),),
+    url(r'^mobile/$', HomeMobileView.as_view(),),
+    url(r'^mobile/main$', MainView.as_view(),name="main"),
 ]

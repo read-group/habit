@@ -59,31 +59,22 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-    <div class="container marketing">
-
+    <div id="market" class="container marketing" ms-controller="market">
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4" ms-for="el in @activitys">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>21天习惯养成包</h2>
-          <p>行为养成习惯</p>
-          <p><a class="btn btn-default" href="#" role="button">查看详细 &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>36天习惯养成包</h2>
-          <p>习惯形成性格</p>
-          <p><a class="btn btn-default" href="#" role="button">查看详细 &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>90天习惯养成包</h2>
-          <p>性格决定命运</p>
+          <h2>{? @el.name ?}</h2>
+          <p>{? @el.memo ?}</p>
           <p><a class="btn btn-default" href="#" role="button">查看详细 &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
-
-
+      <div class="note">
+                <h4>选择角色</h4>
+                <p><a href="{{ host }}" class="button button-glow button-border button-rounded button-caution button-tiny">家长</a></p>
+                <p><a href="{{ teacher }}" class="button button-glow button-border button-rounded button-caution button-tiny">老师</a></p>
+                <p><a href="{{ child }}" class="button button-glow button-border button-rounded button-caution button-tiny">孩子</a></p>
+      </div>
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
@@ -122,16 +113,20 @@
         </div>
       </div>
     </div><!-- /.container -->
-
   {% endblock %}
+  {% block extrajs %}
+  <script>
+    　　 $(function(){
+            avalon.define({
+              $id:"market",
+              activitys:[
+              {name:"21天习惯养成包",memo:"行为养成习惯"},
+              {name:"36天习惯养成包",memo:"习惯形成性格"},
+              {name:"90天习惯养成包",memo:"性格决定命运"}]
+            });
+         })
+
+  </script>
+  {% endblock%}
   {% block navbar-footer %}
-  <div class="container">
-       <hr class="featurette-divider">
-       <!-- /END THE FEATURETTES -->
-       <!-- FOOTER -->
-       <footer>
-         <p class="pull-right"><a href="#">回到页首</a></p>
-         <p>&copy; 2017 大圣悦读 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-       </footer>
-     </div>
   {% endblock %}

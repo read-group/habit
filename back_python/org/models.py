@@ -33,7 +33,8 @@ class Profile(models.Model):
     user=models.OneToOneField(
             User,
             on_delete=models.CASCADE,
-            verbose_name="所属用户"
+            verbose_name="所属用户",
+            null=True
     )
     org=models.ForeignKey(
             Org,
@@ -53,12 +54,12 @@ class Profile(models.Model):
         verbose_name="A.个人补充信息"
         verbose_name_plural="A.个人补充信息"
 
-def create_user_profile(sender,instance,created,**kwargs):
-    if(created):
-        profile=Profile()
-        profile.user=instance
-        profile.save()
-post_save.connect(create_user_profile,sender=User)
+# def create_user(sender,instance,created,**kwargs):
+#     if(created):
+#         user=User()
+#         user.profile=instance
+#         profile.save()
+# pre_save.connect(create_user,sender=Profile)
 
 class Friend(models.Model):
     from_profile=models.ForeignKey(

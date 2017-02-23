@@ -8,10 +8,11 @@ ACTIVITY_CAT_CHOICES = (
     ('FEE', '收费'),
     ('FREE', '免费'),#押金赠米，完成了返还押金或者只计算体力值
     ('DONATE', '捐赠'),#押金赠米，完成了返还押金或者只计算体力值
+    ('Market', '市场'),#重点表扬
 )
 class Activity(EntityBase):
-    startTime=models.DateField(verbose_name="开始日期")
-    endTime=models.DateField(verbose_name="结束日期")
+    startTime=models.DateTimeField(verbose_name="开始日期")
+    endTime=models.DateTimeField(verbose_name="结束日期")
     cat=models.CharField(max_length=20,choices=ACTIVITY_CAT_CHOICES ,verbose_name="类别")
     #img=models.ImageField(upload_to="upload/",verbose_name="活动图片")
     img=models.ForeignKey(
@@ -47,7 +48,7 @@ class ActivityItem(models.Model):
     )
     exceptionCount=models.IntegerField(default=0,verbose_name="允许请假天数")
     def __str__(self):
-        return self.cat.name;
+        return self.cat.name if self.cat is not None else "";
     class Meta:
         verbose_name="活动项目"
         verbose_name_plural="活动项目"

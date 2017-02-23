@@ -10,11 +10,14 @@
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>Mily米粒习惯.一份坚持一份责任</title>
+    <title>米粒.一份陪伴.一份坚持.一份爱心</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "front/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "front/css/mily.css" %}" rel="stylesheet">
 
+    <link href="{% static "front/css/buttons/buttons.min.css" %}" rel="stylesheet">
+    <link href="{% static "front/css/fontaws/css/font-awesome.min.css" %}" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="{% static "front/css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
 
@@ -32,11 +35,10 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
-    {% block navbar %}
+    {% block navbar-header %}<!--顶部导航区-->
     <div class="navbar-wrapper">
-      <div class="container-fluid">
         <nav class="navbar navbar-default navbar-static-top">
-          <div class="container">
+          <div class="container-fluid" style="padding-left:1px;padding:right:1px">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -67,33 +69,43 @@
             </div>
           </div>
         </nav>
-      </div>
     </div>
     {% endblock %}
-    {% block adv %}广告{% endblock %}
-    {% block content %}内容{% endblock %}
-
-    <div class="container">
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">回到页首</a></p>
-        <p>&copy; 2017 大圣悦读 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-    </div>
-
+    {% block adv %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block navbar-footer %}{% endblock %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static "front/js/jquery.min.js" %}"></script>
+    <script src="{% static "front/js/jquery.pin.js" %}"></script>
     <script src="{% static "front/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "front/js/avalon/avalon.modern.js" %}"></script>
+    <script src="{% static "front/js/fetch/fetch.js" %}"></script>
+    <script src="{% static "front/css/buttons/buttons.js" %}"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="{% static "front/js/holder.min.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "front/js/ie10-viewport-bug-workaround.js" %}"></script>
+    <script>
+    avalon.config({
+          interpolate: ['{?','?}']
+    })
+    </script>
     {% block extrajs %}
-
-    {% endblock %}
+    <script>
+            avalon.define({
+              $id:"test",
+              v:"test"
+            });
+            fetch('/api/wxwelcome')
+              .then(function(response) {
+                //console.log(response);
+                return response.text()
+              }).then(function(body) {
+                console.log(body);
+            })
+    </script>
+    {% endblock%}
   </body>
 </html>
