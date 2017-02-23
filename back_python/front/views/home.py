@@ -6,11 +6,19 @@ import urllib.request
 def index(request):
     return render(request,"front/index.html");
 
+# 返回信任域名的文件,返回文件
+class HomeWxAuthView(TemplateView):
+    template_name="front/index.html"
+    def get(self,*args,**kwargs):
+        from django.http import FileResponse
+        response = FileResponse(open(settings+'MP_verify_HAONGKquSEXIsxKN.txt', 'rb'))
+        return response
+
 class HomeView(TemplateView):
     template_name="front/index.html"
     def get(self,*args,**kwargs):
         from django.http import FileResponse
-        response = FileResponse(open('myfile.png', 'rb'))
+        response = FileResponse(open(settings+'MP_verify_HAONGKquSEXIsxKN.txt', 'rb'))
         return response
 
 class HomeMobileView(TemplateView):
