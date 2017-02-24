@@ -27,7 +27,7 @@ class MainView(TemplateView):
             r1 = response.read()
             logger.debug("data1================")
             logger.debug(r1)
-            decodeJson=json.loads(data1)
+            decodeJson=json.loads(r1)
             conn.close()
             pass
         # 去微信认证
