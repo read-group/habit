@@ -18,8 +18,8 @@ class MainView(TemplateView):
         logger.debug(request.user.is_authenticated)
         if(not request.user.is_authenticated):
             logger.debug("begin fetch token....")
-            role=request.Get["role"];
-            code=request.Get["code"];
+            role=request.GET["role"];
+            code=request.GET["code"];
             wxinfoUrl=settings.WX["WX_AUTH_URL_CODE"].replace("{code}",code);
             logger.debug(wxinfoUrl)
             import httplib
