@@ -20,12 +20,11 @@ class MainView(TemplateView):
             logger.debug("begin fetch token....")
             role=request.GET["role"];
             code=request.GET["code"];
-            wxinfoUrl=settings.WX["WX_AUTH_URL_CODE"].replace("{code}",code);
+            wxinfoUrl=settings.WX["WX_AUTH_URL_INFO"].replace("{code}",code);
             logger.debug(wxinfoUrl)
-            import httplib
-            conn = httplib.HTTPConnection(wxinfoUrl)
-            conn.request("GET", wxinfoUrl)
-            r1 = conn.getresponse()
+            import urllib.request
+            response = urllib.request.urlopen('http://python.org/')
+            r1 = response.read()
             logger.debug(r1.reason)
             data1 = r1.read()
             logger.debug("data1================")
