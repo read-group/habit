@@ -28,6 +28,12 @@ class MainView(TemplateView):
             logger.debug("data1================")
             logger.debug(r1)
             decodeJson=json.loads(r1)
+            # 按照访问token再去获取用户信息
+            userInfoUrl=settings.WX["WX_AUTH_URL_INFO"] % (decodeJson["access_token"],decodeJson["decodeJson["access_token"]"])
+            urllib.request.urlopen(userInfoUrl)
+            r2 = response.read()
+            logger.debug(r2)
+            decodeUserInfoJson=json.loads(r2)
             pass
         # 去微信认证
         # 认证通过后，需要创建用户，并login
