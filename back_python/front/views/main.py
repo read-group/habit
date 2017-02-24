@@ -37,6 +37,7 @@ class MainView(TemplateView):
             r2 = response.read()
             logger.debug(r2)
             decodeUserInfoJson=json.loads(r2)
+            logger.debug(decodeUserInfoJson["nickname"])
             pass
         # 去微信认证
         # 认证通过后，需要创建用户，并login
