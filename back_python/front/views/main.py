@@ -25,10 +25,8 @@ class MainView(TemplateView):
             import urllib.request
             response = urllib.request.urlopen('http://python.org/')
             r1 = response.read()
-            logger.debug(r1.reason)
-            data1 = r1.read()
             logger.debug("data1================")
-            logger.debug(data1)
+            logger.debug(r1)
             decodeJson=json.loads(data1)
             conn.close()
             pass
