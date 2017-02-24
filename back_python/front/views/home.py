@@ -22,10 +22,9 @@ class HomeMobileView(TemplateView):
     template_name="front/mobile.html"
     def get_context_data(self, **kwargs):
         ctx=super(HomeMobileView,self).get_context_data(**kwargs)
-        hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")
-        teacherRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","teacher")
-        childRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","child")
-
+        hostRedirect=settings.WX['WX_APP_REDIRECT']
+        teacherRedirect=settings.WX['WX_APP_REDIRECT']
+        childRedirect=settings.WX['WX_APP_REDIRECT']
 
         ctx["host"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect}))
         ctx["teacher"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':teacherRedirect}))
