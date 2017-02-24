@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['127.0.0.1','mily365.com','www.mily365.com','192.168.2.107','19
 WX={
   'WX_APP_ID':'wx8f428820d2150a9e',
   'WX_APP_SECURITY':'751afbe414efaee853a8638ceeb1dc44',
-  'WX_APP_REDIRECT':'http://mily365.com/main.html',
+  'WX_APP_REDIRECT':'http://mily365.com/main.html?role={role}',
   'WX_AUTH_URL_CODE':"https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&{redirect_uri}&response_type=code&scope=snsapi_userinfo&#wechat_redirect" % ('wx8f428820d2150a9e'),
   'WX_AUTH_URL_INFO':"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code" % ('wx8f428820d2150a9e','751afbe414efaee853a8638ceeb1dc44',"{code}")
 }
