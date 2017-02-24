@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 import json
+from django.core.cache import cache
 # Create your views here.
 # def index(request):
 #     return render(request,"front/index.html");
-
 class MainView(TemplateView):
     template_name="front/main.html"
     def get(self,request,*args,**kwargs):
@@ -22,6 +22,7 @@ class MainView(TemplateView):
             r1 = conn.getresponse()
             print(r1.status, r1.reason)
             data1 = r1.read()
+            cache.set("ak",data1)
             decodeJson=json.loads(data1)
             print(decodeJson)
             conn.close()
