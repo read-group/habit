@@ -16,7 +16,7 @@ class MainView(TemplateView):
         # 然后去模拟登录login
         logger.debug("begin main")
         logger.debug(request.user.is_authenticated)
-        if(request.user.is_authenticated is False):
+        if(not request.user.is_authenticated):
             logger.debug("begin fetch token....")
             role=request.Get["role"];
             code=request.Get["code"];
