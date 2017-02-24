@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from django.conf import settings
 import json
 from django.core.cache import cache
+import logging
+logger = logging.getLogger("django")
 # Create your views here.
 # def index(request):
 #     return render(request,"front/index.html");
@@ -12,19 +14,22 @@ class MainView(TemplateView):
         # 获取openid，昵称，头像url,性别等信息
         # 按照openid,去查询profile,如果没有存在，就创建一个user,同时创建一个profile
         # 然后去模拟登录login
+        logger.debug("begin main")
         if(request.user.is_authenticated is False):
+            logger.debug("begin fetch token....")
             role=request.Get["role"];
             code=request.Get["code"];
             wxinfoUrl=settings.WX["WX_AUTH_URL_CODE"].replace("{code}",code);
+            logger.debug(wxinfoUrl)
             import httplib
             conn = httplib.HTTPConnection(wxinfoUrl)
-            conn.request("GET", "/index.html")
+            conn.request("GET", wxinfoUrl)
             r1 = conn.getresponse()
-            print(r1.status, r1.reason)
+            logger.debug(r1.reason)
             data1 = r1.read()
-            cache.set("ak",data1)
+            logger.debug("data1================")
+            logger.debug(data1)
             decodeJson=json.loads(data1)
-            print(decodeJson)
             conn.close()
             pass
         # 去微信认证
