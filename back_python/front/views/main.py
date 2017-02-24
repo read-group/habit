@@ -23,7 +23,7 @@ class MainView(TemplateView):
             wxinfoUrl=settings.WX["WX_AUTH_URL_INFO"].replace("{code}",code);
             logger.debug(wxinfoUrl)
             import urllib.request
-            response = urllib.request.urlopen('http://python.org/')
+            response = urllib.request.urlopen(wxinfoUrl)
             r1 = response.read()
             logger.debug("data1================")
             logger.debug(r1)
