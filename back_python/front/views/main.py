@@ -28,6 +28,8 @@ class MainView(TemplateView):
             logger.debug("data1================")
             logger.debug(r1)
             decodeJson=json.loads(r1)
+            logger.debug(decodeJson["access_token"])
+            logger.debug(decodeJson["openid"])
             # 按照访问token再去获取用户信息
             userInfoUrl=settings.WX["WX_AUTH_USER_INFO"] % (decodeJson["access_token"],decodeJson["openid"])
             urllib.request.urlopen(userInfoUrl)
