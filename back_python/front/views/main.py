@@ -15,6 +15,7 @@ class MainView(TemplateView):
         # 按照openid,去查询profile,如果没有存在，就创建一个user,同时创建一个profile
         # 然后去模拟登录login
         logger.debug("begin main")
+        logger.debug(request.user.is_authenticated)
         if(request.user.is_authenticated is False):
             logger.debug("begin fetch token....")
             role=request.Get["role"];
