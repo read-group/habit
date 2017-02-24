@@ -27,7 +27,7 @@ class HomeMobileView(TemplateView):
         childRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","child")
 
 
-        ctx["host"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.quote({'redirect_uri':hostRedirect}))
-        ctx["teacher"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.quote({'redirect_uri':teacherRedirect}))
-        ctx["child"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.quote({'redirect_uri':childRedirect}))
+        ctx["host"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect}))
+        ctx["teacher"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':teacherRedirect}))
+        ctx["child"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':childRedirect}))
         return ctx
