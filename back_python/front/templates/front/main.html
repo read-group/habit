@@ -15,8 +15,8 @@
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
       <div class="row" style="padding-bottom:0px">
-          <div ms-for="i,el in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
-            <a  class="forNav navButton active sound" href="{{ el.url }}"   ms-click="focus">
+          <div ms-for="(i,el) in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
+            <a  class="forNav navButton active sound" href="#!{{ el.url }}"   ms-click="focus">
               <span class="glyphicon glyphicon-tint"></span>
               <div>{{ el.title }}</div>
             </a>
