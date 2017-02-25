@@ -100,7 +100,7 @@
               $av.history.start({
                   root: "/root"
               })
-              #当前页面初次加载时
+              //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
               $av.router.navigate(hash || '/main/habit', 2)//默认打开
               $("span","#mainNavHabit").addClass("active")
