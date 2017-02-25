@@ -57,7 +57,7 @@ class MainView(TemplateView):
                     if role=="host":
                         orgC=Org.objects.create(code=ecodeUserInfoJson["openid"],name=decodeUserInfoJson["nickname"])
                     profile=Profile(nickname=decodeUserInfoJson["nickname"],
-                    openid=decodeUserInfoJson["openid"],role=MapEngToRole[role]
+                    openid=decodeUserInfoJson["openid"],role=MapEngToRole[role],
                     imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
                     profile.save()
                 finally:
