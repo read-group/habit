@@ -17,7 +17,7 @@
         <div class="row" style="padding-bottom:0px">
             <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
               <a  class="forNav navButton active sound" href="#!{? item.url ?}"   ms-click="focus">
-                <span class="glyphicon {? item.icon ?}"></span>
+                <span ms-class="['glyphicon',item.icon]"></span>
                 <div>{? item.title ?}</div>
               </a>
             </div>
