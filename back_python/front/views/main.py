@@ -76,3 +76,4 @@ class MainView(TemplateView):
         # 认证通过后，需要创建用户，并login
         # 重新跳转到本页面
         return super(MainView,self).get(request,*args,**kwargs)
+    

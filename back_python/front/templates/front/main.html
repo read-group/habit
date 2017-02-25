@@ -16,25 +16,25 @@
       <div class="container">
       <div class="row" style="padding-bottom:0px">
           <div  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
-            <a id="mainNavHabit" class="forNav navButton active sound" href="#!/habit"   data-root="habit" ms-click="focus">
+            <a id="mainNavHabit" class="forNav navButton active sound" href="#!/main/activity"   data-root="habit" ms-click="focus">
               <span class="glyphicon glyphicon-tint"></span>
               <div>活动</div>
             </a>
           </div>
           <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
-            <a class="forNav navButton sound" href="#!/grain" data-root="grain" ms-click="focus">
+            <a class="forNav navButton sound" href="#!/main/grain" data-root="grain" ms-click="focus">
               <span class="glyphicon glyphicon-tree-deciduous"></span>
               <div>成长</div>
             </a>
           </div>
           <div class="col-xs-3 col-md-3 text-center"　style="padding:0px">
-            <a class="forNav navButton sound" href="#!/sns" data-root="sns" ms-click="focus">
+            <a class="forNav navButton sound" href="#!/main/sns" data-root="sns" ms-click="focus">
               <span class="glyphicon glyphicon-eye-open"></span>
               <div>舞台</div>
             </a>
           </div>
           <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
-            <a class="forNav navButton sound" data-root="my" href="#!/my" ms-click="focus">
+            <a class="forNav navButton sound" data-root="my" href="#!/main/my" ms-click="focus">
               <span class="glyphicon glyphicon-asterisk"></span>
               <div>我</div>
             </a>
@@ -86,17 +86,23 @@
               function callback(p){
                 vm.currPath = this.path;
                 console.log(vm.currPath);
+                fetch(vm.currPath)
+                  .then(function(response) {
+                    return response.text()
+                  }).then(function(body) {
+                    vm.htmlcontent = body
+                  })
               }
-              $av.router.add("/habit", callback);
-              $av.router.add("/grain", callback);
-              $av.router.add("/sns", callback);
-              $av.router.add("/my", callback);
+              $av.router.add("/main/activity", callback);
+              $av.router.add("/main/grain", callback);
+              $av.router.add("/main/sns", callback);
+              $av.router.add("/main/my", callback);
               $av.history.start({
                   root: "/root"
               })
               #当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
-              $av.router.navigate(hash || '/habit', 2)//默认打开
+              $av.router.navigate(hash || '/main/habit', 2)//默认打开
               $("span","#mainNavHabit").addClass("active")
               $("div","#mainNavHabit").addClass("active")
 　

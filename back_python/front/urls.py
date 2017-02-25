@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
     url(r'^main.html$', MainView.as_view(),name="main"),
+    url(r'^main/activity$', MainView.as_view(),name="main.activity"),
 ]
