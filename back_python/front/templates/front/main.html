@@ -16,9 +16,9 @@
       <div class="container">
         <div class="row" style="padding-bottom:0px">
             <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
-              <a  class="forNav navButton active sound" href="#!"   ms-click="focus">
-                <span></span>
-                <div>{? item ?}</div>
+              <a  class="forNav navButton active sound" href="#!{? item.url ?}"   ms-click="focus">
+                <span class="glyphicon {? item.icon ?}"></span>
+                <div>{? item.title ?}</div>
               </a>
             </div>
         </div>
@@ -55,13 +55,12 @@
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
-                // mainMenu:[
-                // {"title":"活动","url":"/main/activity","icon":"glyphicon-tint"},
-                // {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous"},
-                // {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open"},
-                // {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk"}
-                // ],
-                mainMenu:[1,2,3,4],
+                mainMenu:[
+                {"title":"活动","url":"/main/activity","icon":"glyphicon-tint"},
+                {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous"},
+                {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open"},
+                {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk"}
+                ],
                 focus:function(el){
                   $(".active").removeClass("active")
                   $("span",el.currentTarget).addClass("active")
