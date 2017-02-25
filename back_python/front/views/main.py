@@ -32,12 +32,16 @@ class MainView(TemplateView):
             logger.debug(decodeJson["openid"])
             # 按照访问token再去获取用户信息
             userInfoUrl=settings.WX["WX_AUTH_USER_INFO"] % (decodeJson["access_token"],decodeJson["openid"])
-
+            response.close()
             response=urllib.request.urlopen(userInfoUrl)
             r2 = response.read()
             logger.debug(r2)
             decodeUserInfoJson=json.loads(r2)
             logger.debug(decodeUserInfoJson["nickname"])
+            # 按照openid查找用户，如果不存在就创建，存在就绕过
+            response.close()
+
+        else:
             pass
         # 去微信认证
         # 认证通过后，需要创建用户，并login
