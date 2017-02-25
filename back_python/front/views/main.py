@@ -51,12 +51,12 @@ class MainView(TemplateView):
                         profileTmp.save()
                 except User.DoesNotExist:
                     # 创建新的用户信息
-                    userTry=User.objects.create(username=decodeJson["openid"])
+                    userTry=User.objects.create(username=decodeUserInfoJson["openid"])
                     #创建另一个Profile
                     # 如果role=家长，就创建一个家庭
                     orgC=None
                     if role=="host":
-                        orgC=Org.objects.create(code=ecodeUserInfoJson["openid"],name=decodeUserInfoJson["nickname"])
+                        orgC=Org.objects.create(code=decodeUserInfoJson["openid"],name=decodeUserInfoJson["nickname"])
                     profile=Profile(nickname=decodeUserInfoJson["nickname"],
                     openid=decodeUserInfoJson["openid"],role=MapEngToRole[role],
                     imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
