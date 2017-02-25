@@ -1,6 +1,5 @@
 .navbar-header{
   margin-top:-1px;
-
 }
 .note{
   position: fixed;
@@ -30,6 +29,27 @@
 .forNav a{
   margin-top:8px
 }
+
+.navButton{
+　　padding: 0px;
+   color:#999;
+   font-size: 14px;
+   text-decoration: none;
+}
+.topNavButton{
+  margin-top: 16px;
+  //color: white
+}
+.active{
+  color:#00BB00;
+}
+
+.content{
+  margin:50px auto;
+  padding: 0px;
+  color: #999;
+}
+
 a:link {
 color:none;
 text-decoration:none;
@@ -45,21 +65,4 @@ text-decoration:#999;
 a:focus {
 color:#00BB00;
 text-decoration:none;
-}
-
-.navButton{
-　　padding: 0px;
-   color:#999;
-   font-size: 14px;
-   text-decoration: none;
-}
-
-.active{
-  color:#00BB00;
-}
-
-.content{
-  margin:50px auto;
-  padding: 0px;
-  color: #999;
 }
