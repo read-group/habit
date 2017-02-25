@@ -93,19 +93,6 @@
     })
     </script>
     {% block extrajs %}
-    <script>
-            avalon.define({
-              $id:"test",
-              v:"test"
-            });
-            fetch('/api/wxwelcome')
-              .then(function(response) {
-                //console.log(response);
-                return response.text()
-              }).then(function(body) {
-                console.log(body);
-            })
-    </script>
     {% endblock%}
   </body>
 </html>
