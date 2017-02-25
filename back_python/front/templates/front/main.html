@@ -91,6 +91,8 @@
                     return response.text()
                   }).then(function(body) {
                     vm.htmlcontent = body
+                    vm.isLoading=false;
+                    //调用页面的初始化方法
                   })
               }
               $av.router.add("/main/activity", callback);
