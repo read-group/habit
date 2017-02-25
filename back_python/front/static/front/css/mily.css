@@ -44,7 +44,7 @@
   color:#00BB00;
 }
 .content{
-  padding-top: 50px;
+  padding-top: 55px;
   color: #999;
 }
 a:link {
@@ -52,7 +52,7 @@ color:grey;
 text-decoration:none;
 }
 a:visited {
-color:#999;
+color:grey;
 text-decoration:none;
 }
 a:hover {
