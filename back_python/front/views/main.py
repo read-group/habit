@@ -64,7 +64,7 @@ class MainView(TemplateView):
                     #登录
                     login(request,userTry)
 
-            except Exception,e:
+            except (Exception,) as e:
                 logger.error(e)
             finally:
                 fp1.close()
