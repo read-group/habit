@@ -15,28 +15,10 @@
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
       <div class="row" style="padding-bottom:0px">
-          <div  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
-            <a id="mainNavHabit" class="forNav navButton active sound" href="#!/main/activity"   data-root="habit" ms-click="focus">
+          <div ms-for="el in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
+            <a  class="forNav navButton active sound" href="#!{{el.url}}"   ms-click="focus">
               <span class="glyphicon glyphicon-tint"></span>
-              <div>活动</div>
-            </a>
-          </div>
-          <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
-            <a class="forNav navButton sound" href="#!/main/grain" data-root="grain" ms-click="focus">
-              <span class="glyphicon glyphicon-tree-deciduous"></span>
-              <div>成长</div>
-            </a>
-          </div>
-          <div class="col-xs-3 col-md-3 text-center"　style="padding:0px">
-            <a class="forNav navButton sound" href="#!/main/sns" data-root="sns" ms-click="focus">
-              <span class="glyphicon glyphicon-eye-open"></span>
-              <div>舞台</div>
-            </a>
-          </div>
-          <div class="col-xs-3 col-md-3 text-center" style="padding:0px">
-            <a class="forNav navButton sound" data-root="my" href="#!/main/my" ms-click="focus">
-              <span class="glyphicon glyphicon-asterisk"></span>
-              <div>我</div>
+              <div>{{el.title}}</div>
             </a>
           </div>
       </div>
@@ -73,10 +55,12 @@
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
-                activitys:[
-                {name:"21天习惯养成包",memo:"行为养成习惯"},
-                {name:"36天习惯养成包",memo:"习惯形成性格"},
-                {name:"90天习惯养成包",memo:"性格决定命运"}],
+                mainMenu:[
+                {title:"活动",url:"/main/activity"},
+                {title:"成长",memo:"/main/grain"},
+                {title:"舞台",memo:"/main/sns"}
+                {title:"我的",memo:"/main/my"}
+                ],
                 focus:function(el){
                   $(".active").removeClass("active")
                   $("span",el.currentTarget).addClass("active")
@@ -104,12 +88,11 @@
               })
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
-              $av.router.navigate(hash || '/main/habit', 2)//默认打开
+              $av.router.navigate(hash || '/main/activity', 2)//默认打开
               $("span","#mainNavHabit").addClass("active")
               $("div","#mainNavHabit").addClass("active")
 　
               avalon.scan(document.body)
-
             })
          })(jQuery,avalon)
   </script>
