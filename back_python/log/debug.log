@@ -65,3 +65,2113 @@ ALTER TABLE `org_profile` DROP COLUMN `disabled` CASCADE; (params [])
 (0.026) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE (`django_content_type`.`model` = 'session' AND `django_content_type`.`app_label` = 'sessions'); args=('session', 'sessions')
 (0.027) SELECT `auth_permission`.`content_type_id`, `auth_permission`.`codename` FROM `auth_permission` INNER JOIN `django_content_type` ON (`auth_permission`.`content_type_id` = `django_content_type`.`id`) WHERE `auth_permission`.`content_type_id` IN (23) ORDER BY `django_content_type`.`app_label` ASC, `django_content_type`.`model` ASC, `auth_permission`.`codename` ASC; args=(23,)
 (0.026) SELECT `django_content_type`.`id`, `django_content_type`.`app_label`, `django_content_type`.`model` FROM `django_content_type` WHERE `django_content_type`.`app_label` = 'sessions'; args=('sessions',)
+(0.027) SELECT @@SQL_AUTO_IS_NULL; args=None
+(0.027) SELECT VERSION(); args=None
+(0.028) SHOW FULL TABLES; args=None
+(0.027) SELECT `django_migrations`.`app`, `django_migrations`.`name` FROM `django_migrations`; args=()
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1512
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /main/activity HTTP/1.1" 200 1512
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3248
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1512
+"GET /main/activity HTTP/1.1" 200 1512
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /static/front/css/bootstrap.min.css.map HTTP/1.1" 200 542194
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1512
+"GET /main/activity HTTP/1.1" 200 1512
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1602
+"GET /main/activity HTTP/1.1" 200 1602
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1625
+"GET /main/activity HTTP/1.1" 200 1625
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1612
+"GET /main/activity HTTP/1.1" 200 1612
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6173
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6188
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6156
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 944
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+Exception while resolving variable 'item' in template 'front/main_grain.html'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [item] in "[{'False': False, 'True': True, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'DEBUG': 10, 'ERROR': 40, 'WARNING': 30, 'SUCCESS': 25}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fe26df539d8>>, 'request': <WSGIRequest: GET '/main/grain'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fe26df68550>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fe26df53950>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fe27086ed30>}, {}, {'view': <front.views.main_grain.GrainView object at 0x7fe27086ebe0>}]"
+"GET /main/grain HTTP/1.1" 200 1589
+"GET /main/activity HTTP/1.1" 200 1559
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+Exception while resolving variable 'item' in template 'front/main_grain.html'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [item] in "[{'False': False, 'True': True, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'DEBUG': 10, 'ERROR': 40, 'WARNING': 30, 'SUCCESS': 25}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fe26df539d8>>, 'request': <WSGIRequest: GET '/main/grain'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fe26df6e5c0>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fe26df53c80>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fe26df6ea20>}, {}, {'view': <front.views.main_grain.GrainView object at 0x7fe26df6e320>}]"
+"GET /main/grain HTTP/1.1" 200 1589
+Exception while resolving variable 'item' in template 'front/main_sns.html'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [item] in "[{'False': False, 'True': True, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'DEBUG': 10, 'ERROR': 40, 'WARNING': 30, 'SUCCESS': 25}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fe26df53bf8>>, 'request': <WSGIRequest: GET '/main/sns'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fe26df77898>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fe26df53950>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fe26df770b8>}, {}, {'view': <front.views.main_sns.SnsView object at 0x7fe26df77588>}]"
+"GET /main/sns HTTP/1.1" 200 1589
+Exception while resolving variable 'item' in template 'front/main_my.html'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [item] in "[{'False': False, 'True': True, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'DEBUG': 10, 'ERROR': 40, 'WARNING': 30, 'SUCCESS': 25}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fe270819e18>>, 'request': <WSGIRequest: GET '/main/my'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fe26e798438>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fe26df53f28>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fe26df77860>}, {}, {'view': <front.views.main_my.MyView object at 0x7fe26df77518>}]"
+"GET /main/my HTTP/1.1" 200 1589
+"GET /main/activity HTTP/1.1" 200 1559
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+Exception while resolving variable 'item' in template 'front/main_grain.html'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [item] in "[{'False': False, 'True': True, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'DEBUG': 10, 'ERROR': 40, 'WARNING': 30, 'SUCCESS': 25}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fe270819e18>>, 'request': <WSGIRequest: GET '/main/grain'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fe26df68eb8>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fe270884b70>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fe270835ba8>}, {}, {'view': <front.views.main_grain.GrainView object at 0x7fe2708359e8>}]"
+"GET /main/grain HTTP/1.1" 200 1589
+"GET /main/activity HTTP/1.1" 200 1559
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6156
+"GET /static/front/css/mily.css HTTP/1.1" 200 940
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6156
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 952
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6156
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 952
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6156
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 966
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/mily.css HTTP/1.1" 200 966
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 989
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /main/activity HTTP/1.1" 200 1559
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 989
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1589
+"GET /main/activity HTTP/1.1" 200 1589
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/mily.css HTTP/1.1" 200 989
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1596
+"GET /main/activity HTTP/1.1" 200 1596
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in "<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>"
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern None ^MP_verify_HAONGKquSEXIsxKN.txt$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main ^main$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.activity ^main/activity$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.grain ^main/grain$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.sns ^main/sns$>], [<RegexURLResolver <module 'front.urls' from '/home/jy/pv1/rice/habit/back_python/front/urls.py'> (None:None) ^>, <RegexURLPattern main.my ^main/my$>], [<RegexURLResolver <module 'api.urls' from '/home/jy/pv1/rice/habit/back_python/api/urls.py'> (None:None) ^api/>], [<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': '...'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jy/pv1/lib/python3.4/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+Not Found: /...
+"GET /... HTTP/1.1" 404 3224
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 989
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1633
+"GET /main/activity HTTP/1.1" 200 1633
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+"GET /main HTTP/1.1" 200 6133
+"GET /static/front/css/ie10-viewport-bug-workaround.css HTTP/1.1" 200 433
+"GET /static/front/css/mily.css HTTP/1.1" 200 989
+"GET /static/front/css/buttons/buttons.min.css HTTP/1.1" 200 65319
+"GET /static/front/css/bootstrap.min.css HTTP/1.1" 200 121200
+"GET /static/front/js/jquery.pin.js HTTP/1.1" 200 4152
+"GET /static/front/css/fontaws/css/font-awesome.min.css HTTP/1.1" 200 27466
+"GET /static/front/js/jquery.min.js HTTP/1.1" 200 97163
+"GET /static/front/js/bootstrap.min.js HTTP/1.1" 200 37045
+"GET /static/front/css/buttons/buttons.js HTTP/1.1" 200 3405
+"GET /static/front/js/fetch/fetch.js HTTP/1.1" 200 21761
+"GET /static/front/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 641
+"GET /static/front/js/holder.min.js HTTP/1.1" 200 21934
+"GET /static/front/js/avalon/mmRouter.js HTTP/1.1" 200 23200
+"GET /static/front/js/avalon/avalon.modern.js HTTP/1.1" 200 239407
+"GET /static/front/css/fontaws/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 66624
+"GET /main/activity HTTP/1.1" 200 1633
+"GET /main/activity HTTP/1.1" 200 1633
+"GET /static/front/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
