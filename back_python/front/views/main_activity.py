@@ -9,4 +9,4 @@ import json
 class ActivityView(TemplateView):
     template_name="front/activity.html"
     def get(self,request,*args,**kwargs):
-        return super(MainView,self).get(request,*args,**kwargs)
+        return super(ActivityView,self).get(request,*args,**kwargs)
