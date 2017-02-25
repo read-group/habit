@@ -44,9 +44,8 @@
   padding: 0px;
   color: #999;
 }
-
 a:link {
-color:none;
+color:grey;
 text-decoration:none;
 }
 a:visited {
