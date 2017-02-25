@@ -9,4 +9,4 @@ import json
 class SnsView(TemplateView):
     template_name="front/main_sns.html"
     def get(self,request,*args,**kwargs):
-        return super(ActivityView,self).get(request,*args,**kwargs)
+        return super(SnsView,self).get(request,*args,**kwargs)

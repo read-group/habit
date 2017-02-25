@@ -9,4 +9,4 @@ import json
 class GrainView(TemplateView):
     template_name="front/main_grain.html"
     def get(self,request,*args,**kwargs):
-        return super(ActivityView,self).get(request,*args,**kwargs)
+        return super(GrainView,self).get(request,*args,**kwargs)
