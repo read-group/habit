@@ -67,30 +67,30 @@
                   $("div",el.currentTarget).addClass("active")
                 }
               });
-              // function callback(p){
-              //   vm.currPath = this.path;
-              //   console.log(vm.currPath);
-              //   fetch(vm.currPath)
-              //     .then(function(response) {
-              //       return response.text()
-              //     }).then(function(body) {
-              //       vm.htmlcontent = body
-              //       vm.isLoading=false;
-              //       //调用页面的初始化方法
-              //     })
-              // }
-              // $av.router.add("/main/activity", callback);
-              // $av.router.add("/main/grain", callback);
-              // $av.router.add("/main/sns", callback);
-              // $av.router.add("/main/my", callback);
-              // $av.history.start({
-              //     root: "/root"
-              // })
-              // //当前页面初次加载时
-              // var hash = location.hash.replace(/#!?/, '')
-              // $av.router.navigate(hash || '/main/activity', 2)//默认打开
-              // $("span","#mainNavHabit").addClass("active")
-              // $("div","#mainNavHabit").addClass("active")
+              function callback(p){
+                vm.currPath = this.path;
+                console.log(vm.currPath);
+                fetch(vm.currPath)
+                  .then(function(response) {
+                    return response.text()
+                  }).then(function(body) {
+                    vm.htmlcontent = body
+                    vm.isLoading=false;
+                    //调用页面的初始化方法
+                  })
+              }
+              $av.router.add("/main/activity", callback);
+              $av.router.add("/main/grain", callback);
+              $av.router.add("/main/sns", callback);
+              $av.router.add("/main/my", callback);
+              $av.history.start({
+                  root: "/root"
+              })
+              //当前页面初次加载时
+              var hash = location.hash.replace(/#!?/, '')
+              $av.router.navigate(hash || '/main/activity', 2)//默认打开
+              $("span","#mainNavHabit").addClass("active")
+              $("div","#mainNavHabit").addClass("active")
 　
               $av.scan(document.body)
             })
