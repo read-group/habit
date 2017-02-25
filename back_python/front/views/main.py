@@ -45,7 +45,7 @@ class MainView(TemplateView):
                 try:
                     userTry= User.objects.get(username__exact=decodeJson["openid"])
                     profileTmp=userTry.profile
-                    if role=="teacher" && profileTmp.role=="1":
+                    if role=="teacher" & profileTmp.role=="1":
                         profileTmp.role="3"
                         profileTmp.save()
                 except User.DoesNotExist:
