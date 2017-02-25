@@ -15,10 +15,10 @@
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
         <div class="row" style="padding-bottom:0px">
-            <div ms-for="(i,el) in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
-              <a  class="forNav navButton active sound" href="#!{{ el.url }}"   ms-click="focus">
-                <span class="glyphicon glyphicon-tint"></span>
-                <div>{{ i }}</div>
+            <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center" style="padding:0px;">
+              <a  class="forNav navButton active sound" href="#!"   ms-click="focus">
+                <span></span>
+                <div>{? item ?}</div>
               </a>
             </div>
         </div>
@@ -49,18 +49,19 @@
   <script>
     　　 (function($,$av){
             $(function(){
-              console.log(typeof(avalon))
+              //console.log(typeof(avalon))
               var vm=$av.define({
                 $id:"main",
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
-                mainMenu:[
-                {"title":"活动","url":"/main/activity"},
-                {"title":"成长","url":"/main/grain"},
-                {"title":"舞台","url":"/main/sns"},
-                {"title":"我的","url":"/main/my"}
-                ],
+                // mainMenu:[
+                // {"title":"活动","url":"/main/activity","icon":"glyphicon-tint"},
+                // {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous"},
+                // {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open"},
+                // {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk"}
+                // ],
+                mainMenu:[1,2,3,4],
                 focus:function(el){
                   $(".active").removeClass("active")
                   $("span",el.currentTarget).addClass("active")
@@ -92,7 +93,7 @@
               // $("span","#mainNavHabit").addClass("active")
               // $("div","#mainNavHabit").addClass("active")
 　
-              avalon.scan(document.body)
+              $av.scan(document.body)
             })
          })(jQuery,avalon)
   </script>

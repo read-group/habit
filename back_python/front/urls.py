@@ -19,7 +19,7 @@ from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,GrainView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
-    url(r'^main.html$', MainView.as_view(),name="main"),
+    url(r'^main$', MainView.as_view(),name="main"),
     url(r'^main/activity$', ActivityView.as_view(),name="main.activity"),
     url(r'^main/grain$', GrainView.as_view(),name="main.grain"),
     url(r'^main/sns$', SnsView.as_view(),name="main.sns"),
