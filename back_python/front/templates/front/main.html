@@ -70,6 +70,7 @@
               function callback(p){
                 vm.currPath = this.path;
                 console.log(vm.currPath);
+                vm.isLoading=true;
                 fetch(vm.currPath)
                   .then(function(response) {
                     return response.text()
