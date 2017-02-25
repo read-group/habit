@@ -70,6 +70,8 @@ class MainView(TemplateView):
             finally:
                 fp1.close()
                 fp2.close()
+        else:
+            logger.debug(request.user.username)
         # 去微信认证
         # 认证通过后，需要创建用户，并login
         # 重新跳转到本页面
