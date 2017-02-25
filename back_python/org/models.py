@@ -22,6 +22,11 @@ PROFILE_ROLE=(
   ("3","家长/老师"),
   ("4","孩子")
 )
+MapEngToRole={
+"host":"1",
+"teacher":"2",
+"child":"4"
+}
 class Profile(models.Model):
     nickname=models.CharField(max_length=20,null=True,blank=True)
     openid=models.CharField(max_length=128,null=True,blank=True)
@@ -29,7 +34,7 @@ class Profile(models.Model):
     imgUrl=models.CharField(max_length=128,null=True,blank=True)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
-    disabled=models.BooleanField(default=False,verbose_name="是否禁用")
+    # disabled=models.BooleanField(default=False,verbose_name="是否禁用")
     user=models.OneToOneField(
             User,
             on_delete=models.CASCADE,

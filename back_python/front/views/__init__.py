@@ -1,2 +1,2 @@
-from .home import  HomeView,HomeMobileView,HomeWxAuthView
+from .home import  HomeMobileView,HomeWxAuthView
 from .main import  MainView

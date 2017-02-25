@@ -15,9 +15,6 @@ class HomeWxAuthView(TemplateView):
         response = FileResponse(open(settings.STATIC_ROOT+'front/MP_verify_HAONGKquSEXIsxKN.txt', 'rb'))
         return response
 
-class HomeView(TemplateView):
-    template_name="front/index.html"
-
 
 class HomeMobileView(TemplateView):
     template_name="front/mobile.html"

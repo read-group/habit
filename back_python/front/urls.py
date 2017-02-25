@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from .views import HomeView,HomeMobileView,MainView,HomeWxAuthView
+from .views import HomeMobileView,MainView,HomeWxAuthView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
