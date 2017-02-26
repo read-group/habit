@@ -10,6 +10,7 @@
 				console.log("warnging...."+"请先确认正确的定义了页面vm的dom元素，page-root数据属性的定义,应用出现的第一个警告,可以忽略");
 			}else{
 				this.vmEleName=elName;
+				console.log("page base called.....")
 			};
 			this.$vmPage=null;
 			//

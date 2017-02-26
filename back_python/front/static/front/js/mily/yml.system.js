@@ -90,10 +90,6 @@
 				parent.ctor.call(child,initParams);
 			}
 
-
-
-
-
 			// 创建对象后初始化,只有指定执行才执行，
 			if(!notExecCtor)
 			  child.ctor(initParams);
