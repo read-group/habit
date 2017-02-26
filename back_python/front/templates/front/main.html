@@ -75,6 +75,7 @@
                   .then(function(response) {
                     return response.text()
                   }).then(function(body) {
+                    console.log(body)
                     vm.htmlcontent = body
                     vm.isLoading=false;
                     //调用页面的初始化方法
