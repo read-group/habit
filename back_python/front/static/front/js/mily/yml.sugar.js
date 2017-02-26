@@ -28,7 +28,7 @@
 				 });
 			});
 			this.soundsArray=[];
-			this.sound=new buzz.sound("/vendor/buzz/sounds/btnClick.mp3");
+			this.sound=new buzz.sound("/static/front/buzz/sounds/btnClick.mp3");
 			this.isPlay=false;
 		},
 		openSound:function(){
