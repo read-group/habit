@@ -10,7 +10,7 @@
         <i style="color:#03BC00;margin-top:10px"  class="fa fa-spinner fa-pulse fa-2x"></i>
     </div>
   </nav>
-  <div class="content" ms-html="@htmlcontent">
+  <div class="content" id="content" ms-html="@htmlcontent">
   </div>
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
@@ -76,7 +76,8 @@
                     return response.text()
                   }).then(function(body) {
                     console.log(body)
-                    vm.htmlcontent = body
+                    $("#content").html(body)
+                    //vm.htmlcontent = body
                     vm.isLoading=false;
                     //调用页面的初始化方法
                    var pageVmEleName= $yml.page.getVmEleName();
