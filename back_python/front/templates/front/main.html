@@ -78,6 +78,18 @@
                     vm.htmlcontent = body
                     vm.isLoading=false;
                     //调用页面的初始化方法
+                   var pageVmEleName= $yml.page.getVmEleName();
+                   var  $pageVm=null;
+                   if(!$av.vmodels[pageVmEleName]){
+                     $pageVm= $yml.page.vmInit(null);
+                     var vmArray=[vm];
+                     var ele=document.getElementById("#"+pageVmEleName);
+                     $yml.page.vmInitAfter($pageVm,null);
+                     avalon.scan(ele,vmArray.concat([$pageVm]));
+                   }else{
+                     $pageVm=$av.vmodels[pageVmEleName];
+                     $yml.page.vmInitAfter($pageVm,null);
+                   }
                   })
               }
               $av.router.add("/main/activity", callback);
