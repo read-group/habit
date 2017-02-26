@@ -2,7 +2,7 @@
  * 工具对象，单例
  */
 (function(window,$){
-	$yml.pageBase=$yml.object.New({
+	$yml.pageBase=$yml.object.Abstract({
 		ctor:function(){
       //设置当前页面的vmDom元素的名字
       var elName=$("[data-page-root]").data("pageRoot");
