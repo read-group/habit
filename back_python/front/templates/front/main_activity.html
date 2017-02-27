@@ -2,17 +2,17 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left">
-            <a href="#" ms-click="helpClick()">
+            <!-- <div  ms-click="helpClick" class="active">
               <span class="fa fa-cog"></span>
-            </a>
+            </div> -->
           </div>
           <div class="col-xs-4 text-center">
               <h4 id="title" class="topNavButton">活动</h4>
           </div>
           <div class="col-xs-4 text-right">
-            <a>
+            <!-- <div class="active">
               <i class="fa fa-cart-plus fa-2x"></i>
-            </a>
+            </div> -->
           </div>
       </div>
     </nav>
@@ -22,9 +22,9 @@
             <div class="thumbnail">
               <img src="http://mily365.com/media/upload/mily.png"  alt="...">
               <div class="caption">
-                <h3>Thumbnail label</h3>
+                <h3>{? hello ?}</h3>
                 <p>...</p>
-                <p class="text-right"><a href="#" class="btn button-highlight" role="button">详情</a></p>
+                <p class="text-right"><a href="#!/main/activity/detail" class="btn button-highlight" role="button">详情</a></p>
               </div>
             </div>
           </div>
@@ -40,31 +40,36 @@
           </div>
        </div>
     </div>
-    <script>
-    $yml.page=$yml.pageBase.New(null,{
-      ctor:function(){
-        console.log("addChild loaded..."+this.getVmEleName());
-        //基类里在pageReady方法里和可以访问成员$vmPage和$router
-        //this.$vmPage
-        //this.$router
-      },
-      vmDef:function(){
-        return {
-          $id:"activity",
-          backClick:function(){
-            //$yml.page.$router.pop();
-          },
-        };
-      },
-      pageReady:function(){
-        var self=this;
-        console.log("pageReady");
-        // $yml.ajax('/api/habit/cats',null,
-        // 　  function(res){
-        //       $yml.page.$vmPage.cats=res.content;
-        //     }
-        // );
-      }
-    });
-    </script>
   </div>
+  <script>
+  $yml.page=$yml.pageBase.New(null,{
+    ctor:function(){
+      console.log("addChild loaded..."+this.getVmEleName());
+      //基类里在pageReady方法里和可以访问成员$vmPage和$router
+      //this.$vmPage
+      //this.$router
+    },
+    vmDef:function(){
+      return {
+        $id:"activity",
+        hello:'20天习惯养成',
+        helpClick:function(){
+          //$yml.page.$router.pop();
+          console.log("helpClick")
+        },
+        cleanUp:function(){
+          console.log("clean up...")
+        }
+      };
+    },
+    pageReady:function(){
+      var self=this;
+      console.log("pageReady");
+      // $yml.ajax('/api/habit/cats',null,
+      // 　  function(res){
+      //       $yml.page.$vmPage.cats=res.content;
+      //     }
+      // );
+    }
+  });
+  </script>

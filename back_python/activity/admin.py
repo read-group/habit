@@ -8,6 +8,7 @@ class ActivityItemInline(admin.TabularInline):
     extra = 0
     fields=('cat',)
 class ActivityAdmin(admin.ModelAdmin):
+    change_form_template = 'activity/change_form.html'
     fields=('code','name',('startTime','endTime',),('cat',),'img','amount','status','memo')
     list_display=('code','name','startTime','endTime','status')
     inlines = [ActivityItemInline]

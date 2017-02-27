@@ -657,6 +657,7 @@
 	}
 	var ret = {}
 	if (supportLocalStorage()) {
+		  ret.localStorage=localStorage;
 	    ret.getLastPath = function () {
 	        return localStorage.getItem('msLastPath')
 	    }
@@ -679,6 +680,7 @@
 	    ret.setLastPath = function (path) {
 	        setCookie('msLastPath', path)
 	    }
+
 	    function setCookie(key, value) {
 	        var date = new Date()//将date设置为1天以后的时间
 	        date.setTime(date.getTime() + 1000 * 60 * 60 * 24)
@@ -688,6 +690,8 @@
 	        var m = String(document.cookie).match(new RegExp('(?:^| )' + name + '(?:(?:=([^;]*))|;|$)')) || ["", ""]
 	        return decodeURIComponent(m[1])
 	    }
+			ret.setCookie = setCookie;
+			ret.getCookie = getCookie;
 	}
 
 	module.exports = ret

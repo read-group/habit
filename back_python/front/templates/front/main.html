@@ -4,19 +4,20 @@
 {% endblock %}
 <!-- 内容区 -->
 {% block content %}
-<div class="container mainPage"    ms-controller="main">
+<div class="container mainPage"  id="main"  ms-controller="main">
   <nav class="navbar navbar-default  navbar-fixed-top" style="z-index:10000" ms-if="isLoading">
     <div  class="col-xs-12 text-center">
         <i style="color:#03BC00;margin-top:10px"  class="fa fa-spinner fa-pulse fa-2x"></i>
     </div>
   </nav>
-  <div class="content" id="content" ms-html="@htmlcontent">
+  <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
+  <div class="content" id="content">
   </div>
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
         <div class="row navButton">
             <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center sound" style="padding:0px;">
-              <a  class="forNav" ms-attr="{'href':'#!'+ item.url}"   ms-click="focus">
+              <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                 <span ms-class="['glyphicon',item.icon]"></span>
                 <div>{? item.title ?}</div>
               </a>
@@ -56,12 +57,25 @@
                 isRoot:true,
                 htmlcontent:"hello",
                 mainMenu:[
-                {"title":"活动","url":"/main/activity","icon":"glyphicon-tint"},
-                {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous"},
-                {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open"},
-                {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk"}
+                {"title":"活动","url":"/main/activity","icon":"glyphicon-tint","isDefault":true},
+                {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous","isDefault":false},
+                {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open","isDefault":false},
+                {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk","isDefault":false}
                 ],
+                backClick:function(){
+                  //$yml.page.$router.pop();
+                  console.log("back ......")
+                  var pathArray= $av.router.getLastPath().split("/");
+                  console.log(pathArray);
+                  var pathArray= $av.router.getLastPath().split("/");
+                  pathArray.pop();
+                  var backPath= pathArray.join("/")
+                  if(backPath!="/main")
+                     console.log(backPath);
+                  $av.router.navigate(backPath,2);
+                },
                 focus:function(el){
+                  console.log("focus......")
                   $(".active").removeClass("active")
                   $("span",el.currentTarget).addClass("active")
                   $("div",el.currentTarget).addClass("active")
@@ -75,38 +89,47 @@
                   .then(function(response) {
                     return response.text()
                   }).then(function(body) {
-                    //console.log(body)
-                    //$("#content").html(body)
-                    vm.htmlcontent = body
+                    $("#content").html(body)
+                    //vm.htmlcontent = body
                     vm.isLoading=false;
                     //调用页面的初始化方法
                    var pageVmEleName= $yml.page.getVmEleName();
+                   var ele=document.getElementById(pageVmEleName);
                    var  $pageVm=null;
                    if(!$av.vmodels[pageVmEleName]){
-                     $pageVm= $yml.page.vmInit(null);
-                     var vmArray=[vm];
-                     var ele=document.getElementById("#"+pageVmEleName);
-                     $yml.page.vmInitAfter($pageVm,null);
-                     avalon.scan(ele,vmArray.concat([$pageVm]));
+                     $pageVm= $yml.page.vmInit();
+                     $yml.page.vmInitAfter(vm);
+                     $av.scan(ele,[vm,$pageVm]);
                    }else{
+                     console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
+                     $av.scan(ele,[vm,$pageVm]);
                      $yml.page.vmInitAfter($pageVm,null);
                    }
+                   //子页面离开时，调用清理方法
+                   if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
+                     vm.$currentPageVm.cleanUp()
+                   }
+                   //保存当前的pageVm
+                   vm.$currentPageVm=$pageVm;
                   })
               }
               $av.router.add("/main/activity", callback);
+              $av.router.add("/main/activity/detail", callback);
               $av.router.add("/main/grain", callback);
               $av.router.add("/main/sns", callback);
               $av.router.add("/main/my", callback);
               $av.history.start({
-                  root: "/root"
+                  root: "/main"
               })
               //当前页面初次加载时
-              // var hash = location.hash.replace(/#!?/, '')
-              // $av.router.navigate(hash || '/main/activity', 2)//默认打开
-              $("span","#mainNavHabit").addClass("active")
-              $("div","#mainNavHabit").addClass("active")
-              $av.scan(document.body)
+              var hash = location.hash.replace(/#!?/, '')
+              $av.router.navigate(hash || '/main/activity', 0)//默认打开
+
+              $av.scan(document.getElementById("main"),[vm])
+              //设置初始激活
+              $("span","#mainDefault").addClass("active")
+              $("div","#mainDefault").addClass("active")
             })
          })(jQuery,avalon)
   </script>

@@ -10,3 +10,8 @@ class ActivityView(TemplateView):
     template_name="front/main_activity.html"
     def get(self,request,*args,**kwargs):
         return super(ActivityView,self).get(request,*args,**kwargs)
+
+class ActivityDetailView(TemplateView):
+    template_name="front/main_activity_detail.html"
+    def get(self,request,*args,**kwargs):
+        return super(ActivityDetailView,self).get(request,*args,**kwargs)
