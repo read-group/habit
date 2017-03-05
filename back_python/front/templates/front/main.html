@@ -57,14 +57,16 @@
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
+                $refererUrl:null,
                 mainMenu:[
                 {"title":"活动","url":"/main/activity","icon":"glyphicon-tint","isDefault":true},
                 {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous","isDefault":false},
                 {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk","isDefault":false}
                 ],
-                backClick:function(){
+                backClick:function(refererUrl){
                   //$yml.page.$router.pop();
+                  this.$refererUrl=refererUrl;
                   console.log("back ......")
                   // var pathArray= $av.router.getLastPath().split("/");
                   // console.log(pathArray);
@@ -92,7 +94,7 @@
                   }).then(function(body) {
                     $("#content").html(body)
                     //vm.htmlcontent = body
-                    vm.isLoading=false;
+                   vm.isLoading=false;
                     //调用页面的初始化方法
                    var pageVmEleName= $yml.page.getVmEleName();
                    var ele=document.getElementById(pageVmEleName);
@@ -110,6 +112,12 @@
                    //子页面离开时，调用清理方法
                    if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
                      vm.$currentPageVm.cleanUp()
+                     if(vm.$refererUrl){//说明是子页面返回操作
+                       //设置当前data-url属性等于子页面url的元素，处于激活状态
+                       console.log(vm.$refererUrl)
+                       $("li[data-url="+vm.$refererUrl+"]").addClass("active")
+                       vm.$refererUrl=null;
+                     }
                    }
                    //保存当前的pageVm
                    vm.$currentPageVm=$pageVm;
