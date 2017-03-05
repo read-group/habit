@@ -58,7 +58,8 @@
           console.log("helpClick")
         },
         cleanUp:function(){
-          console.log("clean up...")
+          this.activitys.length=0;
+          this.activitys=[]
         },
         activeSet:function(e){
           $(".list-group-item.active").removeClass("active")

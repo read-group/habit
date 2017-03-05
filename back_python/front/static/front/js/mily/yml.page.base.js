@@ -28,11 +28,12 @@
 			var vmPage=avalon.define(childVmDefine);
 			//解决子类闭包封装了返回时的子类对象，包括当时的状态，当时还不存在$vmPage；
 			//childVmDefine.$vmPage=vmPage;
-			this.$vmPage=vmPage;
+			//this.$vmPage=vmPage;
 			return vmPage;
 		},
-		vmInitAfter:function(vmMain){
+		vmInitAfter:function(vmMain,vmPage){
 			this.$vmMain=vmMain;
+			this.$vmPage=vmPage;
 			if(!this.pageReady){
 				console.log("warnging..."+"请重写pageReady方法，需要在这个方法里写页面的业务逻辑")
 			}else{

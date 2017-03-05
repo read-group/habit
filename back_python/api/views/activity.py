@@ -12,7 +12,9 @@ class ActivityView(JsonResultView):
         try:
             print(req.body)
             reqData=json.loads(str(req.body,'utf-8'))
-            acts= Activity.objects.order_by("-createdTime")
+            skip=reqData["pageParam"]["skip"]
+            limit=skip+reqData["pageParam"]["limit"]
+            acts= Activity.objects.order_by("-createdTime")[skip:limit]
             for act in acts:
                 dataTmp=self.toJSON(act,["name","code","startTime","endTime","desc"])
                 dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name

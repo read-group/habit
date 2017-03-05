@@ -46,7 +46,7 @@
 {% endblock %}
 <!-- 主要应用代码区 -->
 {% block extrajs %}
-<script src="{% static "front/js/iscroll/iscroll.js" %}"></script>
+<!-- <script src="{% static "front/js/iscroll/iscroll.js" %}"></script> -->
 <script src="{% static "front/js/avalon/mmRouter.js" %}"></script>
   <script>
     　　 (function($,$av){
@@ -73,9 +73,10 @@
                   var pathArray= $av.router.getLastPath().split("/");
                   pathArray.pop();
                   var backPath= pathArray.join("/")
+                  console.log("backPath......................."+backPath)
                   if(backPath!="/main")
                      console.log(backPath);
-                  $av.router.navigate(backPath,2);
+                  $av.router.navigate(backPath,1);
                 },
                 focus:function(el){
                   console.log("focus......")
@@ -86,7 +87,7 @@
               });
               function callback(p){
                 vm.currPath = this.path;
-                console.log(vm.currPath);
+                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
                 vm.isLoading=true;
                 fetch(vm.currPath)
                   .then(function(response) {
@@ -101,13 +102,13 @@
                    var  $pageVm=null;
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
-                     $yml.page.vmInitAfter(vm);
+                     $yml.page.vmInitAfter(vm,$pageVm);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
                      $av.scan(ele,[vm,$pageVm]);
-                     $yml.page.vmInitAfter($pageVm,null);
+                     $yml.page.vmInitAfter(vm,$pageVm);
                    }
                    //子页面离开时，调用清理方法
                    if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
@@ -129,7 +130,10 @@
               $av.router.add("/main/sns", callback);
               $av.router.add("/main/my", callback);
               $av.history.start({
-                  root: "/main"
+                  root: "/main",
+                  html5:false,
+                  hashPrefix:"!",
+                  autoScroll:true //滚动
               })
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
@@ -139,8 +143,6 @@
               //设置初始激活
               $("span","#mainDefault").addClass("active")
               $("div","#mainDefault").addClass("active")
-
-
             })
          })(jQuery,avalon)
   </script>
