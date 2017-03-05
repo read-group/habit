@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import WxWelcomeView
+from api.views import WxWelcomeView,ActivityView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
+     url(r'^activity/$',ActivityView.as_view()),
 ]

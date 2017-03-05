@@ -22,6 +22,7 @@ class OrgActivityHistory(models.Model):
             on_delete=models.CASCADE,
             verbose_name="活动"
     )
+    # 逗号分割，每个习惯id１:允许请假天数，d２:允许请假天数
     habits=models.CharField(max_length=150,null=True,blank=True,verbose_name="习惯")
     def __str__(self):
         return self.activity.name;
@@ -62,7 +63,7 @@ class FeedBack(models.Model):
 
 
 
-            
+
     )
 
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")

@@ -20,6 +20,8 @@ class Activity(EntityBase):
             on_delete=models.CASCADE,
             verbose_name="图片"
     )
+    applyNumber=models.IntegerField(default=0,verbose_name="已报名人数",editable=False)
+    uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
     status=models.BooleanField(default=False,verbose_name="开启状态")
     memo=models.TextField(max_length=200,verbose_name="注意事项")

@@ -291,25 +291,40 @@
 		var paramObj=null;
 		var paramJson=pager.query;
 		if(paramJson){
-					paramJson["ak"]=$.localStorage.get("accessKey");
+					// paramJson["ak"]=$.localStorage.get("accessKey");
 					paramObj=paramJson;
 					paramObj.pageParam=pager.getPageParam();
 		}
 		else {
 			paramObj={};
-			paramObj["ak"]=$.localStorage.get("accessKey");
+			// paramObj["ak"]=$.localStorage.get("accessKey");
 			paramObj.pageParam=pager.getPageParam();
 		}
 		console.log(paramObj);
-		avalon.ajax({
-			url: url,
-			type: 'post',
-			data: paramObj,
-			dataType:'json'
-		}).done(function(res){
-			//var obj=JSON.parse(res);
-				cbk(res);
-		});
+		// avalon.ajax({
+		// 	url: url,
+		// 	type: 'post',
+		// 	data: paramObj,
+		// 	dataType:'json'
+		// }).done(function(res){
+		// 	//var obj=JSON.parse(res);
+		// 		cbk(res);
+		// });
+		fetch(url, {
+				  method: 'POST',
+				  headers: {
+				    'Accept': 'application/json',
+				    'Content-Type': 'application/json'
+				  },
+				  body: JSON.stringify(paramObj)
+         }).then(function(response) {
+				    return response.json()
+				  }).then(function(json) {
+						cbk(json);
+				    console.log('parsed json', json)
+				  }).catch(function(ex) {
+				    console.log('parsing failed', ex)
+				  })
 	};
 	$yml.icons={
 		"life":"fa fa-sun-o sun",

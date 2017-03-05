@@ -46,6 +46,7 @@
 {% endblock %}
 <!-- 主要应用代码区 -->
 {% block extrajs %}
+<script src="{% static "front/js/iscroll/iscroll.js" %}"></script>
 <script src="{% static "front/js/avalon/mmRouter.js" %}"></script>
   <script>
     　　 (function($,$av){
@@ -130,6 +131,8 @@
               //设置初始激活
               $("span","#mainDefault").addClass("active")
               $("div","#mainDefault").addClass("active")
+
+          
             })
          })(jQuery,avalon)
   </script>
