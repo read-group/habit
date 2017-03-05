@@ -14,6 +14,7 @@ class Activity(EntityBase):
     startTime=models.DateTimeField(verbose_name="开始日期")
     endTime=models.DateTimeField(verbose_name="结束日期")
     cat=models.CharField(max_length=20,choices=ACTIVITY_CAT_CHOICES ,verbose_name="类别")
+    desc=models.CharField(max_length=20,verbose_name="关键词",null=True)
     #img=models.ImageField(upload_to="upload/",verbose_name="活动图片")
     img=models.ForeignKey(
             MediaResource,

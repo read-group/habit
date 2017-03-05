@@ -16,6 +16,7 @@ class ActivityView(JsonResultView):
             for act in acts:
                 dataTmp=self.toJSON(act,["name","code","startTime","endTime"])
                 dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
+                dataTmp["cat"]=act.get_cat_display()
                 data.append(dataTmp)
 
             # data["name"]=welcome.name
