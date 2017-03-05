@@ -66,8 +66,8 @@
                 backClick:function(){
                   //$yml.page.$router.pop();
                   console.log("back ......")
-                  var pathArray= $av.router.getLastPath().split("/");
-                  console.log(pathArray);
+                  // var pathArray= $av.router.getLastPath().split("/");
+                  // console.log(pathArray);
                   var pathArray= $av.router.getLastPath().split("/");
                   pathArray.pop();
                   var backPath= pathArray.join("/")
@@ -132,7 +132,7 @@
               $("span","#mainDefault").addClass("active")
               $("div","#mainDefault").addClass("active")
 
-          
+
             })
          })(jQuery,avalon)
   </script>

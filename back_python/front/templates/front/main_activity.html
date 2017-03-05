@@ -18,7 +18,7 @@
     </nav>
     <div id="activityListDiv"  class="container childContent">
         <ul class="list-group">
-          <li  ms-for="(i,item) in @activitys"  class="list-group-item" ms-click="@activeSet">
+          <li  ms-for="(i,item) in @activitys" ms-attr="{data-url:'/main/activity/detail'}"  class="list-group-item" ms-click="@activeSet">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
                   <h4 class="media-heading">{? item.name ?}</h4>
@@ -30,7 +30,7 @@
                   <p>还剩：３个名额</p>
 
                 </div>
-                <a  href="#!main/activity/detail" class="media-right">
+                <a  href="#!/main/activity/detail" class="media-right">
                     <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
                     <div><i class="fa fa-hand-o-up fa-lg active" aria-hidden="true"></i></div>
                 </a>
