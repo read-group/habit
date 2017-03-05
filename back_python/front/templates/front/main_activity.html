@@ -60,7 +60,9 @@
         cleanUp:function(){
           console.log("clean up...")
         },
-        activeSet:function(){
+        activeSet:function(e){
+          $(e.target).addClass("active")
+          console.log(e.target)
           console.log("activeSet")
         }
       };
