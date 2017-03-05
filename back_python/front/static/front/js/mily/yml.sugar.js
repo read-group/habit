@@ -301,15 +301,6 @@
 			paramObj.pageParam=pager.getPageParam();
 		}
 		console.log(paramObj);
-		// avalon.ajax({
-		// 	url: url,
-		// 	type: 'post',
-		// 	data: paramObj,
-		// 	dataType:'json'
-		// }).done(function(res){
-		// 	//var obj=JSON.parse(res);
-		// 		cbk(res);
-		// });
 		fetch(url, {
 				  method: 'POST',
 				  headers: {
@@ -320,8 +311,7 @@
          }).then(function(response) {
 				    return response.json()
 				  }).then(function(json) {
-						cbk(json);
-				    console.log('parsed json', json)
+					  return	cbk(json);
 				  }).catch(function(ex) {
 				    console.log('parsing failed', ex)
 				  })
