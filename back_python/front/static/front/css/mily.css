@@ -32,8 +32,8 @@ padding: 0px;
   margin: 0px;
   padding: 0px;
 }
-.list-group-item{
-  border-bottom: none;
+.list-group{
+  /*border-bottom: none;*/
   border-top-left-radius:none;
   border-top-right-radius: none;
 }
