@@ -16,9 +16,9 @@
           </div>
       </div>
     </nav>
-    <div id="activityListDiv"  class="container childContent">
+    <div id="activityListDiv"  class="container-fluid childContent">
         <ul class="list-group">
-          <li  ms-for="(i,item) in @activitys" data-url='/main/activity/detail' class="list-group-item" ms-click="@activeSet">
+          <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item" ms-click="@activeSet">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
                   <h4 class="media-heading">{? item.name ?}</h4>

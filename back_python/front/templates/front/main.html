@@ -86,8 +86,12 @@
                 }
               });
               function callback(p){
+                var refererUrl=null;
+                if(vm.currPath)
+                  refererUrl=vm.currPath;
                 vm.currPath = this.path;
-                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                console.log(this.params)
+                var params=this.params;
                 vm.isLoading=true;
                 fetch(vm.currPath)
                   .then(function(response) {
@@ -102,22 +106,28 @@
                    var  $pageVm=null;
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
-                     $yml.page.vmInitAfter(vm,$pageVm);
+                     $yml.page.vmInitAfter(vm,$pageVm,params);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
                      $av.scan(ele,[vm,$pageVm]);
-                     $yml.page.vmInitAfter(vm,$pageVm);
+                     $yml.page.vmInitAfter(vm,$pageVm,params);
                    }
                    //子页面离开时，调用清理方法
                    if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
                      vm.$currentPageVm.cleanUp()
-                     if(vm.$refererUrl){//说明是子页面返回操作
+                     if(refererUrl){//说明是子页面返回操作
                        //设置当前data-url属性等于子页面url的元素，处于激活状态
-                       console.log(vm.$refererUrl)
-                       $("li[data-url="+vm.$refererUrl+"]").addClass("active")
-                       vm.$refererUrl=null;
+                       console.log(refererUrl)
+                       var m=function(x){
+                         return function(){
+                           $("li[data-url='"+x+"']").addClass("active")
+                         };
+                       }
+                       setTimeout(m(refererUrl),100);
+                      //  console.log($li)
+                       refererUrl=null;
                      }
                    }
                    //保存当前的pageVm

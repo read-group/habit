@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
     url(r'^main$', MainView.as_view(),name="main"),
     url(r'^main/activity$', ActivityView.as_view(),name="main.activity"),
-    url(r'^main/activity/detail$', ActivityDetailView.as_view(),name="main.activity.detail"),
+    url(r'^main/activity/detail/.*$', ActivityDetailView.as_view(),name="main.activity.detail"),
     url(r'^main/grain$', GrainView.as_view(),name="main.grain"),
     url(r'^main/sns$', SnsView.as_view(),name="main.sns"),
     url(r'^main/my$', MyView.as_view(),name="main.my"),

@@ -63,9 +63,10 @@
         }
       };
     },
-    pageReady:function(){
+    pageReady:function(paramObj){
       var self=this;
       console.log("pageReady");
+      console.log(paramObj);
       // $yml.ajax('/api/habit/cats',null,
       // 　  function(res){
       //       $yml.page.$vmPage.cats=res.content;

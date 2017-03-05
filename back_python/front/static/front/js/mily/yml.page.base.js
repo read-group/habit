@@ -31,7 +31,7 @@
 			//this.$vmPage=vmPage;
 			return vmPage;
 		},
-		vmInitAfter:function(vmMain,vmPage){
+		vmInitAfter:function(vmMain,vmPage,paramObj){
 			this.$vmMain=vmMain;
 			this.$vmPage=vmPage;
 			if(!this.pageReady){
@@ -39,7 +39,6 @@
 			}else{
 				//获取查询参数
 				// var params=this.$router.$vm.navUrl.split("?");
-	      var paramObj=null;
 	      // if(params.length>0){
 	      //    paramObj=avalon.unparam(params[1]);
 	      // }
