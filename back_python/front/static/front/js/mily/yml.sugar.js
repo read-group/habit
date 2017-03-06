@@ -84,7 +84,7 @@
 			this.url=initParams.url;
 			this.initTop=0;
 			this.query=initParams.query;
-			this.tmpDataRef=[];
+			this.tmpDataRefId=-1;
 			this.isQuerying=false;
 		},
 		initData:function(callback){
@@ -119,34 +119,26 @@
 							 self.totalCount=resData.content.total;
 							 console.log(resData.content);
 							 console.log("from query total"+self.totalCount);
-							 if(self.tmpDataRef.length>0){
-								 alert(JSON.stringify(self.tmpDataRef))
-								 var len=self.tmpDataRef.length;
-								 var lastDataRow=self.tmpDataRef[len-1];
+							 if(self.tmpDataRefId!=-1){
+								//  var len=self.tmpDataRef.length;
+								//  var lastDataRow=self.tmpDataRef[len-1];
 								 if(resData.content.data && resData.content.data.length>0){
 									 var len2=resData.content.data.length;
 									 var rtnLastData=resData.content.data[len2-1];
-									 alert(rtnLastData.id);
-									 alert(lastDataRow.id);
-									 if(lastDataRow.id==rtnLastData.id){
+									 if(self.tmpDataRefId==rtnLastData.id){
 										 return cbk(null);
 									 }else{
-										 self.tmpDataRef.length=0;
-										 resData.content.data.forEach(function(r){
-											 self.tmpDataRef.push(r);
-										 })
-										 //self.tmpDataRef=resData.content.data;
+										 var len=resData.content.data.length;
+										 self.tmpDataRefId=resData.content.data[len-1].id;
 										 return cbk(resData.content.data);
 									 }
 								 }else{
 										return cbk(null);
 								 }
 							 }else{
-								 self.tmpDataRef.length=0;
-								 resData.content.data.forEach(function(r){
-									 self.tmpDataRef.push(r);
-								 })
-								 //self.tmpDataRef=resData.content.data;
+								 var len=resData.content.data.length;
+								 if(len>0)
+								    self.tmpDataRefId=resData.content.data[len-1].id;
 								 return cbk(resData.content.data);
 							 }
 						}else{
