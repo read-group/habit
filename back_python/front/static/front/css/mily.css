@@ -37,9 +37,9 @@ padding: 0px 0px;
   border-top-left-radius:none;
   border-top-right-radius: none;
 }
-/*.list-group-item.active{
+.list-group-item.active{
   background-color: silver
-}*/
+}
 .note{
   position: fixed;
   right:5px;

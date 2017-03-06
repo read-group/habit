@@ -18,23 +18,21 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png"  alt="...">
+              <img class="media-object" ms-attr="{src:@item.img}" alt="...">
               <div class="caption">
                 <h3>{? hello ?}</h3>
-                <p>...</p>
-                <p class="text-right"><a href="#" class="btn button-highlight" role="button">详情</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png" alt="...">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p>活动类别：{? @item.cat ?}</p>
+                <p>关键词:{? @item.desc ?}</p>
+                <p>起止日期：{? @item.startTime ?}——{? @item.endTime ?}</p>
+                <p>
+                  <div ms-html="@item.memo">
+                  </div>
+                </p>
+                <p class="text-right">
+                  <a href="#" class="btn button-highlight" role="button">报名，参与诊断</a>
+                </p>
               </div>
             </div>
           </div>
@@ -54,6 +52,7 @@
       return {
         $id:"activity_detail",
         hello:'201天习惯养成',
+        item:null,
         cleanUp:function(){
           console.log("clean up...")
         },
@@ -67,11 +66,12 @@
       var self=this;
       console.log("pageReady");
       console.log(paramObj);
-      // $yml.ajax('/api/habit/cats',null,
-      // 　  function(res){
-      //       $yml.page.$vmPage.cats=res.content;
-      //     }
-      // );
+      $yml.ajax('/api/activity/detail',paramObj,
+      　  function(res){
+            $yml.page.$vmPage.item=res.content.data;
+            //console.log(res)
+          }
+      );
     }
   });
   </script>

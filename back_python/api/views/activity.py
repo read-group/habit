@@ -37,3 +37,23 @@ class ActivityView(JsonResultView):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult.renderToJsonResponse()
+
+class ActivityDetailView(JsonResultView):
+    def post(self,req,*arg,**kwargs):
+        content={}
+        try:
+            print(req.body)
+            reqData=json.loads(str(req.body,'utf-8'))
+            act= Activity.objects.get(pk=reqData["id"])
+            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo'])
+            dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
+            dataTmp["cat"]=act.get_cat_display()
+            content["data"]=dataTmp
+        except:
+            info=sys.exc_info()
+            print(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult.renderToJsonResponse()

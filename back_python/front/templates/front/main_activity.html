@@ -16,15 +16,15 @@
           </div>
       </div>
     </nav>
-    <div id="activityListDiv"  class="container-fluid childContent">
+    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
         <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item" ms-click="@activeSet">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
-                  <h4 class="media-heading">{? item.name ?}</h4>
+                  <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
                   <br/>
                   <p>活动类别：{? @item.cat ?}</p>
-                  <p>关键词:{? @item.desc ?}</p>
+                  <p>关键词:{? @item.desc ?}</p>id
                   <p>开始日期：{? @item.startTime ?}</p>
                   <p>截止日期：{? @item.endTime ?}</p>
                   <p>还剩：３个名额</p>
@@ -93,7 +93,7 @@
           }
         }
       );
-      pager.onScroll("activityListDiv",function(res){
+      pager.onScroll("childContent",function(res){
            console.log("scroll....")
            initUi(res);
       });

@@ -226,24 +226,23 @@
 	$yml.ajax=function(url,paramJson,cbk){
 		var paramObj=null;
 		if(paramJson){
-				  paramJson["ak"]=$.localStorage.get("accessKey");
+				  // paramJson["ak"]=$.localStorage.get("accessKey");
 					paramObj=paramJson;
 		}
-		else {
-			paramObj={};
-			paramObj["ak"]=$.localStorage.get("accessKey");
-		}
-
-			avalon.ajax({
-				url: url,
-				type: 'post',
-				data: paramObj,
-				dataType:'json'
-			}).done(function(res){
-				//var obj=JSON.parse(res);
-					cbk(res);
-			});
-
+		fetch(url, {
+					method: 'POST',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(paramObj)
+				 }).then(function(response) {
+						return response.json()
+					}).then(function(json) {
+						return	cbk(json);
+					}).catch(function(ex) {
+						console.log('parsing failed', ex)
+					})
 	};
 	// $yml.ajax=function(url,paramJson,cbk){
 	// 	var paramObj=null;
