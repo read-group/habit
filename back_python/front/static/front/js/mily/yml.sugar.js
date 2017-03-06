@@ -125,6 +125,8 @@
 								 if(resData.content.data && resData.content.data.length>0){
 									 var len2=resData.content.data.length;
 									 var rtnLastData=resData.content.data[len2-1];
+									 alert(rtnLastData.id);
+									 alert(lastDataRow.id);
 									 if(lastDataRow.id==rtnLastData.id){
 										 return cbk(null);
 									 }else{
