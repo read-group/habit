@@ -120,6 +120,7 @@
 							 console.log(resData.content);
 							 console.log("from query total"+self.totalCount);
 							 if(self.tmpDataRef){
+								 alert(JSON.stringify(self.tmpDataRef))
 								 var len=self.tmpDataRef.length;
 								 var lastDataRow=self.tmpDataRef[len-1];
 								 if(resData.content.data && resData.content.data.length>0){
