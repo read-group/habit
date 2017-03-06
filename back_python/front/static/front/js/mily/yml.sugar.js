@@ -111,43 +111,46 @@
 						this.currentPage++;
 				console.log(this.currentPage);
 				var self=this;
-				$yml.ajaxPageQuery(this.url,this,function(resData){
-					//只要是返回了
-					self.isQuerying=false;
-					if(resData.status==0){
-						if(resData.content){
-							 self.totalCount=resData.content.total;
-							 console.log(resData.content);
-							 console.log("from query total"+self.totalCount);
-							 if(self.tmpDataRef){
-								 alert(JSON.stringify(self.tmpDataRef))
-								 var len=self.tmpDataRef.length;
-								 var lastDataRow=self.tmpDataRef[len-1];
-								 if(resData.content.data && resData.content.data.length>0){
-									 var len2=resData.content.data.length;
-									 var rtnLastData=resData.content.data[len2-1];
-									 alert(rtnLastData.id);
-									 alert(lastDataRow.id);
-									 if(lastDataRow.id==rtnLastData.id){
-										 return cbk(null);
+				var tf=function(tmpObj){
+					return function(resData){
+						//只要是返回了
+						self.isQuerying=false;
+						if(resData.status==0){
+							if(resData.content){
+								 self.totalCount=resData.content.total;
+								 console.log(resData.content);
+								 console.log("from query total"+self.totalCount);
+								 if(tmpObj){
+									 alert(JSON.stringify(tmpObj))
+									 var len=tmpObj.length;
+									 var lastDataRow=tmpObj[len-1];
+									 if(resData.content.data && resData.content.data.length>0){
+										 var len2=resData.content.data.length;
+										 var rtnLastData=resData.content.data[len2-1];
+										 alert(rtnLastData.id);
+										 alert(lastDataRow.id);
+										 if(lastDataRow.id==rtnLastData.id){
+											 return cbk(null);
+										 }else{
+											 tmpObj=resData.content.data;
+											 return cbk(resData.content.data);
+										 }
 									 }else{
-										 self.tmpDataRef=resData.content.data;
-										 return cbk(resData.content.data);
+											return cbk(null);
 									 }
 								 }else{
-										return cbk(null);
+									 tmpObj=resData.content.data;
+									 return cbk(resData.content.data);
 								 }
-							 }else{
-								 self.tmpDataRef=resData.content.data;
-								 return cbk(resData.content.data);
-							 }
+							}else{
+								 return cbk(null);
+							}
 						}else{
-							 return cbk(null);
+							return cbk(null);
 						}
-					}else{
-						return cbk(null);
 					}
-				});
+				}
+				$yml.ajaxPageQuery(this.url,this,tf(self.tmpDataRef));
 			}
 
 		},
