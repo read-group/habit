@@ -16,8 +16,8 @@
           </div>
       </div>
     </nav>
-    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <ul class="list-group">
+    <div   class="container-fluid childContent" >
+        <ul id="childContent" class="list-group" style="height:600px;overflow-y:scroll">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item" ms-click="@activeSet">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
