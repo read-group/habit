@@ -135,7 +135,10 @@
 											 break;
 										 }
 									 }
-									 return cbk(appendData);
+									 var rtnDataCallback=appendData.reverse();
+									 var lentmp=appendData.length;
+									 self.tmpDataRefId=rtnDataCallback[lentmp-1].id;
+									 return cbk(rtnDataCallback);
 									//  if(self.tmpDataRefId==rtnLastData.id){
 									// 	 return cbk(null);
 									//  }else{
