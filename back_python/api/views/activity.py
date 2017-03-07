@@ -14,7 +14,9 @@ class ActivityView(JsonResultView):
             reqData=json.loads(str(req.body,'utf-8'))
             skip=reqData["pageParam"]["skip"]
             limit=skip+reqData["pageParam"]["limit"]
-            acts= Activity.objects.order_by("createdTime")[skip:limit]
+            queryCache=Activity.objects.order_by("createdTime");
+            count=queryCache.count();
+            acts= queryCache[skip:limit]
             for act in acts:
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc"])
                 dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
@@ -27,7 +29,7 @@ class ActivityView(JsonResultView):
             # data=self.toJSON(act,["name","code"])
             # data["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+welcome.img.img.name
             # print(data["img"])
-            content["total"]=acts.count()
+            content["total"]=count
             content["data"]=data
         except:
             info=sys.exc_info()
