@@ -137,7 +137,7 @@
 									 }
 									 var rtnDataCallback=appendData.reverse();
 									 var lentmp=appendData.length;
-									 if(lentmp>)0
+									 if(lentmp>0)
 									   self.tmpDataRefId=rtnDataCallback[lentmp-1].id;
 									 return cbk(rtnDataCallback);
 									//  if(self.tmpDataRefId==rtnLastData.id){
