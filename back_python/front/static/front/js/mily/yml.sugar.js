@@ -125,13 +125,24 @@
 								 if(resData.content.data && resData.content.data.length>0){
 									 var len2=resData.content.data.length;
 									 var rtnLastData=resData.content.data[len2-1];
-									 if(self.tmpDataRefId==rtnLastData.id){
-										 return cbk(null);
-									 }else{
-										 var len=resData.content.data.length;
-										 self.tmpDataRefId=resData.content.data[len-1].id;
-										 return cbk(resData.content.data);
+									 var revArray=resData.content.data.reverse()
+									 var appendData=[]
+									 for(var i=0;i<len2;i++){
+										 var tmpRow=revArray[i];
+										 if(tmpRow.id!=self.tmpDataRefId){
+											 appendData.push(tmpRow)
+										 }else{
+											 break;
+										 }
 									 }
+									 return cbk(appendData);
+									//  if(self.tmpDataRefId==rtnLastData.id){
+									// 	 return cbk(null);
+									//  }else{
+									// 	 var len=resData.content.data.length;
+									// 	 self.tmpDataRefId=resData.content.data[len-1].id;
+									// 	 return cbk(resData.content.data);
+									//  }
 								 }else{
 										return cbk(null);
 								 }
