@@ -120,9 +120,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'schoolerp',
         'USER':'root',
-        'PASSWORD':'root',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'PASSWORD':'viathink@520612',
+        'HOST':'mily365.com',
+        'PORT':'8306'
     }
 }
 

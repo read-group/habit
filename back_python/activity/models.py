@@ -25,6 +25,7 @@ class Activity(EntityBase):
     uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
     status=models.BooleanField(default=False,verbose_name="开启状态")
+    isTop=models.BooleanField(default=False,verbose_name="是否置顶")
     memo=models.TextField(max_length=2048,verbose_name="注意事项")
 
     def __str__(self):
