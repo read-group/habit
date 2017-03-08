@@ -176,10 +176,15 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR,'log/debug.log'),
         },
+        'fileError': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'log/error.log'),
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file','fileError'],
             'level': 'DEBUG',
             'propagate': True,
         },

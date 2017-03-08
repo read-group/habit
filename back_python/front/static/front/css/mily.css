@@ -22,11 +22,13 @@ padding: 0px 0px;
   color: #999;
   overflow:hidden;
   /*background: black;*/
+  max-width: 100%
 }
 /*替换页面*/
 .page{
   margin: 0px;
   padding: 0px;
+  width: 100%
 }
 .childContent{
   margin: 0px;

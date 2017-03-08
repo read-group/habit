@@ -4,14 +4,14 @@
 {% endblock %}
 <!-- 内容区 -->
 {% block content %}
-<div class="container mainPage"  id="main"  ms-controller="main">
+<div class="container mainPage" style="width:100%"  id="main"  ms-controller="main">
   <nav class="navbar navbar-default  navbar-fixed-top" style="z-index:10000" ms-if="isLoading">
     <div  class="col-xs-12 text-center">
         <i style="color:#03BC00;margin-top:10px"  class="fa fa-spinner fa-pulse fa-2x"></i>
     </div>
   </nav>
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
-  <div class="content" id="content">
+  <div class="container-fluid content" id="content">
   </div>
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">

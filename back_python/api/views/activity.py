@@ -4,6 +4,8 @@ from django.conf import settings
 from back.models import JsonResultView
 import sys
 import json
+import logging
+logger = logging.getLogger("django")
 # Create your views here.
 class ActivityView(JsonResultView):
     def post(self,req,*arg,**kwargs):
@@ -33,7 +35,7 @@ class ActivityView(JsonResultView):
             content["data"]=data
         except:
             info=sys.exc_info()
-            print(info)
+            logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
         else:
             self.jsonResult.rtnDic["content"]=content
@@ -49,11 +51,8 @@ class ActivityDetailView(JsonResultView):
             dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo'])
             dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
-
             cats=[]
-            print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
-            for item in act.activeItem_set.all():
-                print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+            for item in act.activityitem_set.all():
                 print(item.cat.name)
                 habitCat=self.toJSON(item.cat,["id","name"])
                 cats.append(habitCat)
