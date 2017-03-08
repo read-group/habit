@@ -21,7 +21,7 @@
           <li  ms-for="(i,top) in @tops" ms-attr="{'data-url':'/main/activity/detail/'+@top.id}"  class="list-group-item" style="position:fixed;top:50px;z-index:100">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
-                  <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
+                  <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-fire  active" aria-hidden="true"></i></span>{? top.name ?}</h4>
                   <br/>
                   <p>活动类别：{? @top.cat ?}</p>
                   <p>关键词:{? @top.desc ?}</p>
@@ -124,7 +124,6 @@
              self.$vmPage.activitys.push(d);
              if(d.isTop)
                self.$vmPage.tops.push(d);
-
            });
 
          }
