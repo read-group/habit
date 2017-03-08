@@ -51,6 +51,7 @@ class ActivityDetailView(JsonResultView):
             dataTmp["cat"]=act.get_cat_display()
 
             cats=[]
+            print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
             for item in act.activeItem_set.all():
                 print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
                 print(item.cat.name)
