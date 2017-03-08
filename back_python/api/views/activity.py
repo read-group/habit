@@ -51,7 +51,7 @@ class ActivityDetailView(JsonResultView):
             dataTmp["cat"]=act.get_cat_display()
 
             cats=[]
-            for item in act.activeItem_set:
+            for item in act.activeItem_set.all():
                 habitCat=self.toJSON(item.cat,["id","name"])
                 cats.append(habitCat)
             dataTmp["habitCat"]=cats
