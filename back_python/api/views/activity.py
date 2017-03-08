@@ -52,6 +52,7 @@ class ActivityDetailView(JsonResultView):
 
             cats=[]
             for item in act.activeItem_set.all():
+                print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
                 print(item.cat.name)
                 habitCat=self.toJSON(item.cat,["id","name"])
                 cats.append(habitCat)
