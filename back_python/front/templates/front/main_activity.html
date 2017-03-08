@@ -18,7 +18,7 @@
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
         <ul class="list-group">
-          <li  ms-for="(i,top) in @tops" ms-attr="{'data-url':'/main/activity/detail/'+@top.id}"  class="list-group-item" ms-click="@activeSet">
+          <li  ms-for="(i,top) in @tops" ms-attr="{'data-url':'/main/activity/detail/'+@top.id}"  class="list-group-item" style="position:fixed;top:50px;z-index:100">
             <div class="media" style="margin-top:5px">
                 <div class="media-body">
                   <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
@@ -78,6 +78,8 @@
         cleanUp:function(){
           this.activitys.length=0;
           this.activitys=[]
+          this.tops.length=0;
+          this.tops=[];
         },
         activeSet:function(e){
           $(".list-group-item.active").removeClass("active")
@@ -120,6 +122,9 @@
          if(data){
            data.forEach(function(d){
              self.$vmPage.activitys.push(d);
+             if(d.isTop)
+               self.$vmPage.tops.push(d);
+
            });
 
          }
