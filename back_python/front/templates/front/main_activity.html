@@ -126,12 +126,13 @@
              if(d.isTop){
                var tmpRow=d.cat;
                //复制一个新对象
-                setTimeout((function(row){
-                  return function(){
-                    if(row && row.cat)
-                      self.$vmPage.tops.push(row)
-                  }
-                })(tmpRow),100)
+                // setTimeout((function(row){
+                //   return function(){
+                //     if(row && row.cat)
+                //
+                //   }
+                // })(tmpRow),100)
+                self.$vmPage.tops.push(tmpRow)
              }
              self.$vmPage.activitys.push(d)
 
