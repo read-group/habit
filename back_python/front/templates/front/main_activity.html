@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h4 class="text-center" style="margin-right:-10px;margin-bottom:-5px">活动</h4>
+          <h4  style="margin-right:-10px;margin-bottom:-5px">活动</h4>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -121,16 +121,16 @@
       function initUi(data){
         console.log("init data")
          if(data){
+           var c=null;
            data.forEach(function(d){
              if(d.isTop){
                //复制一个新对象
-                var c=$yml.utils.deepCopy(d)
-                self.$vmPage.tops.push(c);
+                c=$yml.utils.deepCopy(d)
              }
              self.$vmPage.activitys.push(d);
-
            });
-
+           if(c)
+             self.$vmPage.tops.push(c)
          }
       }
     }
