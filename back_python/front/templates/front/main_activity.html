@@ -122,12 +122,13 @@
         console.log("init data")
          if(data){
            data.forEach(function(d){
-             self.$vmPage.activitys.push(d);
              if(d.isTop){
                //复制一个新对象
                 var c=$yml.utils.deepCopy(d)
                 self.$vmPage.tops.push(c);
              }
+             self.$vmPage.activitys.push(d);
+
            });
 
          }
