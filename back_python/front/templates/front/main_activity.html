@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h4  style="margin-right:-10px;margin-bottom:-5px">活动</h4>
+          <div class="text-center">活动</div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -126,11 +126,16 @@
              if(d.isTop){
                //复制一个新对象
                 c=$yml.utils.deepCopy(d)
+                setTimeout((function(row){
+                  return function(){
+                    if(row)
+                      self.$vmPage.tops.push(row)
+                  }
+                })(c),100)
              }
-             self.$vmPage.activitys.push(d);
+
            });
-           if(c)
-             self.$vmPage.tops.push(c)
+
          }
       }
     }
