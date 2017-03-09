@@ -19,7 +19,7 @@
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
         <ul class="list-group">
-          <li  ms-for="(i,top) in @tops" ms-attr="{'data-url':'/main/activity/detail/'+@top.id}"  class="list-group-item" style="position:fixed;margin-top:50px;z-index:800">
+          <li  ms-for="(i,top) in @tops" ms-attr="{'data-url':'/main/activity/detail/'+@top.id}"  class="list-group-item" style="position:fixed;top:50px;z-index:800">
               <div class="media" style="margin-top:5px">
                   <div class="media-body">
                     <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-fire  active" aria-hidden="true"></i></span>{? top.name ?}</h4>
@@ -122,12 +122,12 @@
         console.log("init data")
          if(data){
            data.forEach(function(d){
+             self.$vmPage.activitys.push(d);
              if(d.isTop){
                //复制一个新对象
                 var c=$yml.utils.deepCopy(d)
                 self.$vmPage.tops.push(c);
-             }         
-             self.$vmPage.activitys.push(d);
+             }
            });
 
          }
