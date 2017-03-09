@@ -124,13 +124,14 @@
            var c=null;
            data.forEach(function(d){
              if(d.isTop){
+               var tmpRow=d.cat;
                //复制一个新对象
                 setTimeout((function(row){
                   return function(){
                     if(row && row.cat)
                       self.$vmPage.tops.push(row)
                   }
-                })(d),100)
+                })(tmpRow),100)
              }
              self.$vmPage.activitys.push(d)
 
