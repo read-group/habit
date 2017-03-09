@@ -125,13 +125,12 @@
            data.forEach(function(d){
              if(d.isTop){
                //复制一个新对象
-                c=$yml.utils.deepCopy(d)
                 setTimeout((function(row){
                   return function(){
                     if(row && row.cat)
                       self.$vmPage.tops.push(row)
                   }
-                })(c),100)
+                })(d),100)
              }
              self.$vmPage.activitys.push(d)
 
