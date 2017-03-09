@@ -9,7 +9,6 @@
             <span class="icon-bar"></span>
           </button>
           <h4 class="text-center">活动</h4>
-          <!-- <a class="navbar-brand" href="#"><img style="width:30px;height:30px" src="{% static "admin/img/mily.png"%}"/></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -131,9 +130,9 @@
         console.log("init data")
          if(data){
            data.forEach(function(d){
-             self.$vmPage.activitys.push(d);
              if(d.isTop)
                self.$vmPage.tops.push(d);
+             self.$vmPage.activitys.push(d);
            });
 
          }
