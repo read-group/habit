@@ -17,7 +17,7 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <div class="row" ms-if="@!isDiagnose">
+      <div class="row" ms-if="!@isDiagnose">
           <div class="col-sm-12">
             <div class="thumbnail" ms-if="@item">
               <img class="media-object" ms-attr="{src:@item.img}" alt="...">
