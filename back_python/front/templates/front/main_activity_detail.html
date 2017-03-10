@@ -91,10 +91,10 @@
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             $yml.page.$vmPage.item=res.content.data;
-            $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
-            var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
-            $yml.page.$vmPage.curQuestion=initFirstQuestion;
-            $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
+            // $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
+            // var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+            // $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            // $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
           }
       );
     }
