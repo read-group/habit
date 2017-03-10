@@ -40,20 +40,20 @@
             <div class="thumbnail">
               <div class="caption">
                 <h4>正在了解您的孩子，请回答问题</h4>
-                <h3>讲卫生</h3>
+                <h3>讲卫生{? @curQuestion.name ?}</h3>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-default">
-                      <input type="radio" name="options" id="option1" autocomplete="off" checked> 较差
+                      <input type="radio" name="options" id="option1" autocomplete="off"> 较差
                     </label>
                     <label class="btn btn-default active">
-                      <input type="radio" name="options" id="option2" autocomplete="off"> 一般
+                      <input type="radio" name="options" id="option2" autocomplete="off" checked> 一般
                     </label>
                     <label class="btn btn-default">
                       <input type="radio" name="options" id="option3" autocomplete="off"> 良好
                     </label>
                 </div>
                 <p class="text-right">
-                  <button  class="btn button-highlight" role="button">下一个</button>
+                  <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
                 </p>
               </div>
             </div>
@@ -85,9 +85,10 @@
           console.log("clean up...")
           this.isDiagnose=false;
         },
-        backClick:function(){
-          self.$vmMain.backClick();
-          //console.log("....上一步")
+        nextClick:function(){
+          var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+          $yml.page.$vmPage.curQuestion=initFirstQuestion;
+          $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
         }
       };
     },
@@ -98,10 +99,10 @@
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             $yml.page.$vmPage.item=res.content.data;
-            // $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
-            // var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
-            // $yml.page.$vmPage.curQuestion=initFirstQuestion;
-            // $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
+            $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
+            var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+            $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
           }
       );
     }
