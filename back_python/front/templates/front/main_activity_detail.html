@@ -52,7 +52,7 @@
                       <input type="radio" name="options" id="option3" autocomplete="off"> 良好
                     </label>
                 </div>
-                <p class="text-right">
+                <p class="text-right" ms-if="@item['habitCat'].length">
                   <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
                 </p>
               </div>
