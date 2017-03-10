@@ -22,7 +22,7 @@
             <div class="thumbnail" ms-if="@item">
               <img class="media-object" ms-attr="{src:@item.img}" alt="...">
               <div class="caption">
-                <h3>{? hello ?}</h3>
+                <h3>{? @item.name ?}</h3>
                 <p>活动类别：{? @item.cat ?}</p>
                 <p>关键词:{? @item.desc ?}</p>
                 <p>起止日期：{? @item.startTime ?}——{? @item.endTime ?}</p>
@@ -39,21 +39,21 @@
           <div class="col-sm-12" ms-if="@isDiagnose">
             <div class="thumbnail">
               <div class="caption">
-                <h4>回答问题,选择合适的习惯</h4>
+                <h4>正在了解您的孩子，请回答问题</h4>
                 <h3>讲卫生</h3>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary active">
+                    <label class="btn btn-default active">
                       <input type="radio" name="options" id="option1" autocomplete="off" checked> 较差
                     </label>
-                    <label class="btn btn-primary">
+                    <label class="btn btn-default">
                       <input type="radio" name="options" id="option2" autocomplete="off"> 一般
                     </label>
-                    <label class="btn btn-primary">
+                    <label class="btn btn-default">
                       <input type="radio" name="options" id="option3" autocomplete="off"> 良好
                     </label>
                 </div>
                 <p class="text-right">
-                  <button href="#" class="btn button-highlight" role="button">下一个</button>
+                  <button  class="btn button-highlight" role="button">下一个</button>
                 </p>
               </div>
             </div>
@@ -73,7 +73,6 @@
       var self=this;
       return {
         $id:"activity_detail",
-        hello:'201天习惯养成',
         item:false,
         $habitCats:false,
         curQuestion:false,
