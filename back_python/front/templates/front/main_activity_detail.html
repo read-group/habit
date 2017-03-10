@@ -31,7 +31,22 @@
                   </div>
                 </p>
                 <p class="text-right">
-                  <a href="#" class="btn button-highlight" role="button">报名，参与诊断</a>
+                  <button  class="btn button-highlight" role="button" ms-click="@digClick">孩子适合选择什么习惯呢？</button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12" ms-if="@isDiagnose">
+            <div class="thumbnail">
+              <img class="media-object" ms-attr="{src:@item.img}" alt="...">
+              <div class="caption">
+                <h3>回答问题,推荐习惯</h3>
+                <h3>讲卫生</h3>
+                <p>差</p>
+                <p>一般</p>
+                <p>较好</p>
+                <p class="text-right">
+                  <button href="#" class="btn button-highlight" role="button">下一个</button>
                 </p>
               </div>
             </div>
@@ -53,6 +68,13 @@
         $id:"activity_detail",
         hello:'201天习惯养成',
         item:null,
+        $habitCats:null,
+        curQuestion:null,
+        toSubmit:[],
+        isDiagnose:false,
+        digClick:function(){
+          this.isDiagnose=true;
+        },
         cleanUp:function(){
           console.log("clean up...")
         },
@@ -69,7 +91,10 @@
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             $yml.page.$vmPage.item=res.content.data;
-            console.log(res)
+            $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
+            var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+            $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
           }
       );
     }
