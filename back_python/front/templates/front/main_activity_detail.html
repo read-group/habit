@@ -23,6 +23,9 @@
               <img class="media-object" ms-attr="{src:@item.img}" alt="...">
               <div class="caption">
                 <h3>{? @item.name ?}</h3>
+                <p class="text-right">
+                  <button  class="btn button-highlight" role="button" ms-click="@digClick">孩子适合选择什么习惯呢？</button>
+                </p>
                 <p>活动类别：{? @item.cat ?}</p>
                 <p>关键词:{? @item.desc ?}</p>
                 <p>起止日期：{? @item.startTime ?}——{? @item.endTime ?}</p>
@@ -30,9 +33,7 @@
                   <div ms-html="@item.memo">
                   </div>
                 </p>
-                <p class="text-right">
-                  <button  class="btn button-highlight" role="button" ms-click="@digClick">孩子适合选择什么习惯呢？</button>
-                </p>
+
               </div>
             </div>
           </div>
@@ -74,7 +75,6 @@
       return {
         $id:"activity_detail",
         item:false,
-        $habitCats:false,
         curQuestion:false,
         toSubmit:[],
         isDiagnose:false,
@@ -86,7 +86,7 @@
           this.isDiagnose=false;
         },
         nextClick:function(){
-          var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+          var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
         }
@@ -99,8 +99,7 @@
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             $yml.page.$vmPage.item=res.content.data;
-            $yml.page.$vmPage.$habitCats=res.content.data["habitCat"]
-            var initFirstQuestion=$yml.page.$vmPage.$habitCats.pop();
+            var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
             $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
           }
