@@ -45,6 +45,10 @@ padding: 0px 0px;
 .thumbnail.noborder{
   border: none
 }
+.thumbnail.noborder{
+  border: none;
+  border-bottom: 1px solid #ddd
+}
 .note{
   position: fixed;
   right:5px;
@@ -81,7 +85,10 @@ padding: 0px 0px;
 .active{
   color:#00BB00;
 }
-
+.warncolor{
+  color: orange;
+  padding:3px
+}
 /*.thumbnail{
   width:100%
 }*/

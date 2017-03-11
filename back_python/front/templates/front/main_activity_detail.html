@@ -40,7 +40,7 @@
           <div class="col-sm-12" ms-if="@isDiagnose">
             <div class="thumbnail noborder">
               <div class="caption">
-                <h4><i class="fa fa-question fa-lg　active"></i>正在了解您的孩子，请回答问题</h4>
+                <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i><span>正在了解您的孩子，请回答问题</h4>
                 <h3>{? @curQuestion.name ?}</h3><br/>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-default">
@@ -53,10 +53,11 @@
                       <input type="radio" name="options" id="option3" autocomplete="off"> 良好
                     </label>
                 </div>
-                <p class="text-right" ms-if="@item['habitCat'].length">
-                  <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
-                </p>
+
               </div>
+              <p class="text-right" ms-if="@item['habitCat'].length">
+                <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
+              </p>
             </div>
           </div>
        </div>
