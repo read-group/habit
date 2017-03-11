@@ -7,7 +7,7 @@
             </a>
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" class="topNavButton">报名</h4>
+              <h4 id="title" class="topNavButton">{? @title ?}</h4>
           </div>
           <div class="col-xs-4 text-right">
             <!-- <a>
@@ -66,7 +66,7 @@
             <div class="thumbnail noborder">
               <div class="caption">
                 <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i><span>报名成功</h4>
-                <h4>按照您的答题，为您的孩子匹配了如下习惯</h4>
+                <h5>按照您的答题，为您的孩子匹配了如下习惯</h5>
                 <p>
                     <span>习惯１</span>
                     <span>习惯２</span>
@@ -102,9 +102,11 @@
         isDiagnose:false,
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
+        title:"报名",
         digClick:function(){
           this.isDiagnose=true;
           this.isDetail=false;
+          this.title="答题";
           //this.rptOk=false;
         },
         cleanUp:function(){
@@ -112,6 +114,7 @@
           this.isDiagnose=false;
           this.rptOk=false;
           this.isDetail=true;
+          this.title="报名";
         },
         nextClick:function(){
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
@@ -122,6 +125,7 @@
           this.isDiagnose=false;
           this.isDetail=false;
           this.rptOk=true;
+          this.title="报名";
         }
       };
     },
