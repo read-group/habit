@@ -11,7 +11,7 @@ var settings = {
     user     : "root",
     password : "yMl@123qwe"
   },
-  appId:"4b625050-02d6-11e6-9e5a-314eb527a41b"
+  appId:"wx8f428820d2150a9e"
 
 };
 

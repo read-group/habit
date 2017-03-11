@@ -7,8 +7,8 @@ var NodeCache = require("node-cache");
 var sha1 = require('sha1');
 
 yml.wxconfig = {
-	AppID : "wx8041b1a0fca56fba",
-	Secret : "774b973ca5cfafb61d402d03442cd23f",
+	AppID : "wx8f428820d2150a9e",
+	Secret : "751afbe404efaee85ba8638ceeb1dc44",
 	AccessTokenUrl : "https://api.weixin.qq.com/cgi-bin/token",
 	noncestr:'Wm3WZYTPz0wzccnW',
 	ticketUrl:'https://api.weixin.qq.com/cgi-bin/ticket/getticket',
@@ -64,6 +64,7 @@ yml.accessKey = system.object.New({
 					 var sign1=sha1('jsapi_ticket=' + jsapi_ticket + '&noncestr=' + noncestr + '&timestamp=' + timestamp + '&url=' + url);
 					 console.log("cache------------------------"+sign1);
 					 return cbk(null,{
+						 　 appid:yml.wxconfig.AppID,
 							 nonceStr:noncestr,
 							 timestamp:timestamp,
 							 url:url,
@@ -85,6 +86,7 @@ yml.accessKey = system.object.New({
 							console.log("new------------------------"+str);
 							console.log("new------------------------"+sign2);
 							return  cbk(null,{
+							            	appid:yml.wxconfig.AppID,
                             nonceStr:noncestr,
                             timestamp:timestamp,
                             url:url,
