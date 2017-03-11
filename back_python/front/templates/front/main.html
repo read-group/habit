@@ -151,7 +151,7 @@
               $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
             　  function(res){
                   var config={};
-                  alert(JSON.stringify(res));
+                  //alert(JSON.stringify(res));
                   config.debug=false;
                   config.appId=res.content.appid;
                   config.timestamp=res.content.timestamp;
