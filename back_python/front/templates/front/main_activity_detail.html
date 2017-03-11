@@ -126,10 +126,10 @@
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
         },
-        selectRadio:function(ele){
-          //var level=$(ele.currentTarget).data("level");
-          console.log(ele)
-          //$yml.page.$vmPage.curQuestion.level=level;
+        selectRadio:function(e){
+          var level=$(e.currentTarget).data("level");
+          console.log(level)
+          $yml.page.$vmPage.curQuestion.level=level;
         },
         digOk:function(){
           this.isDiagnose=false;
