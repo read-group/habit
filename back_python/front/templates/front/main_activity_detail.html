@@ -143,6 +143,7 @@
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            console.log($yml.page.$vmPage.curQuestion)
             $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
           }
       );
