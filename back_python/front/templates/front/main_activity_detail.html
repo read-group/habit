@@ -122,6 +122,7 @@
         },
         nextClick:function(){
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
+          console.log($yml.page.$vmPage.curQuestion.level)
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
         },
