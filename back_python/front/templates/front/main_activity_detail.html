@@ -102,7 +102,7 @@
         $id:"activity_detail",
         item:false,
         curQuestion:false,
-        toSubmit:[],
+        $toSubmit:[],
         isDiagnose:false,
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
@@ -123,7 +123,7 @@
         nextClick:function(){
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
-          $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
+          $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
         },
         digOk:function(){
           this.isDiagnose=false;
@@ -144,7 +144,7 @@
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
-            $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
+            $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
           }
       );
     }
