@@ -3,10 +3,9 @@ body{
 margin: 0px 0px;
 padding: 0px 0px;
 }
-
 [ms-controller],[ms-important]{
      visibility: hidden;
- }
+}
 /*主应用页面容器*/
 .container.mainPage{
   margin:0px 0px;
