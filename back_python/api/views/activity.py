@@ -55,6 +55,8 @@ class ActivityDetailView(JsonResultView):
             for item in act.activityitem_set.all():
                 print(item.cat.name)
                 habitCat=self.toJSON(item.cat,["id","name"])
+                #设置习惯类别的级别初值
+                habitCat["level"]="M"
                 cats.append(habitCat)
             dataTmp["habitCat"]=cats
             content["data"]=dataTmp
