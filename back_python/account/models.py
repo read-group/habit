@@ -17,8 +17,20 @@ TRADE_TYPE=(
     ("feedBackReturnDeposit","打卡返还押金"),
     ("aveDeposit","平均分配懒人押金"),
 )
-#交易账户历史
+#账户类型
+ACCOUNT_TYPE=(
+  ("cash","现金"),
+  ("rice","米粒"),
+)
+#账户余额
+#用户微信认证通过，自动创建两个账户
 class Account(models.Model):
+    accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
+    balance=models.DecimalField(verbose_name="余额", max_digits=5, decimal_places=2)
+    createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
+    updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+#交易账户历史
+class AccountHistory(models.Model):
     tradeDate=models.DateField(auto_now=True,verbose_name="时间")
     tradeType=models.CharField(max_length=50,choices=TRADE_TYPE,verbose_name="类型")
     activity=models.ForeignKey(

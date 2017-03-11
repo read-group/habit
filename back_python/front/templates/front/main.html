@@ -154,6 +154,69 @@
               $("span","#mainDefault").addClass("active")
               $("div","#mainDefault").addClass("active")
             })
+            var urlstr=document.location.href;
+            $yml.ajax('http://mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
+          　  function(res){
+                var config={};
+                console.log(res);
+                config.debug=false;
+                config.appId=res.content.appid;
+                config.timestamp=res.content.timestamp;
+                config.nonceStr=res.content.nonceStr;
+                config.signature=res.content.signature;
+               //  config.jsApiList=['uploadImage','chooseImage','checkJsApi','onMenuShareAppMessage','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice'
+               //                   ,'stopVoice'
+               //                   ,'onVoicePlayEnd'
+               //                   ,'uploadVoice'
+               //                   ,'downloadVoice','chooseWXPay','hideMenuItems','getNetworkType'];
+               config.jsApiList=['checkJsApi','uploadImage','chooseImage','onMenuShareAppMessage','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice'
+                                  ,'stopVoice'
+                                  ,'onVoicePlayEnd'
+                                  ,'uploadVoice'
+                                  ,'downloadVoice','chooseWXPay','hideMenuItems'];
+               wx.ready(function(){
+                                   // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
+                        //             var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
+                        //             var encodeurl=encodeURIComponent(redirect_uri);
+                        //             var scope="snsapi_userinfo";
+                        //             var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
+                        //  　　　　　　　　　　　　　//var url="http://www.163.com";
+                        //             wx.onMenuShareAppMessage({
+                        //                  title: '大家赞美才能让孩子们也学会赞美', // 分享标题
+                        //                //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
+                        //                  desc: '孩子们需要大家的赞美....', // 分享描述
+                        //                  link: url, // 分享链接
+                        //                  imgUrl: 'http://ll.yimilan.com/app/res/images/ll2.png', // 分享图标
+                        //                  type: '', // 分享类型,music、video或link，不填默认为link
+                        //                  dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        //                  success: function (r) {
+                        //                      // 用户确认分享后执行的回调函数
+                        //                      alert("分享成功.");
+                        //                  },
+                        //                  cancel: function () {
+                        //                      // 用户取消分享后执行的回调函数
+                        //                      alert("取消分享.");
+                        //                  }
+                        //              });
+                                      wx.hideMenuItems({
+                                            menuList:["menuItem:share:timeline",'menuItem:share:qq',
+                                            "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
+                                            "menuItem:originPage","menuItem:readMode",
+                                            "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                                      });
+
+
+                                   });
+
+                wx.config(config);
+              }
+           );
+
+            wx.error(function(e){
+              //当有错误发生的时候，需要重新去配置wx
+              alert("zhifu.....");
+              alert(JSON.stringify(e));
+            });
          })(jQuery,avalon)
   </script>
 {% endblock%}

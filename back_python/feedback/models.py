@@ -11,7 +11,6 @@ from media.models import MediaResource
 class OrgActivityHistory(models.Model):
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
-
     org=models.ForeignKey(
             Org,
             on_delete=models.CASCADE,
@@ -24,6 +23,8 @@ class OrgActivityHistory(models.Model):
     )
     # 逗号分割，每个习惯id１:允许请假天数，d２:允许请假天数
     habits=models.CharField(max_length=150,null=True,blank=True,verbose_name="习惯")
+    lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
+    enableLazyFund=models.BooleanField(default=False,verbose_name="是否参与懒人基金")
     def __str__(self):
         return self.activity.name;
     class Meta:
