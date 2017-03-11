@@ -47,6 +47,7 @@ padding: 0px 0px;
 }
 .thumbnail.noborder{
   border: none;
+  border-radius: none;
   border-bottom: 1px solid #ddd
 }
 .note{
