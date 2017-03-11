@@ -115,6 +115,9 @@
         },
         cleanUp:function(){
           console.log("clean up...")
+          this.item=false;
+          this.$toSubmit=false;
+          this.curQuestion=false;
           this.isDiagnose=false;
           this.rptOk=false;
           this.isDetail=true;
