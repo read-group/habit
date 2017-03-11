@@ -14,7 +14,7 @@ module.exports = function (app) {
 	  app.use(express.bodyParser());
 	  app.use(express.methodOverride());
     app.all('*',function (req, res, next) {
-        res.header('Access-Control-Allow-Origin', 'http://mily365.com,http://www.mily365.com');
+        res.header('Access-Control-Allow-Origin', 'http://mily365.com');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
         res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
         res.header('Access-Control-Allow-Credentials', 'true');
