@@ -43,14 +43,14 @@
                 <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i><span>正在了解您的孩子，请回答问题</h4>
                 <h3>{? @curQuestion.name ?}</h3><br/>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-default" data-level="L" ms-click="@selectRadio(ele)">
+                    <label class="btn btn-default" data-level="L" ms-click="@selectRadio">
                       <input type="radio" name="options" value="L"  id="option1" autocomplete="off" /> 较差
                     </label>
-                    <label class="btn btn-default active" data-level="M" ms-click="@selectRadio(ele)">
+                    <label class="btn btn-default active" data-level="M" ms-click="@selectRadio">
                       <input type="radio" name="options" value="M"  id="option2"  autocomplete="off" checked/> 一般
                     </label>
-                    <label class="btn btn-default" data-level="H" ms-click="@selectRadio(ele)">
-                      <input type="radio" name="options" value="H" ms-click="@selectRadio(ele)"  id="option3" autocomplete="off"/> 良好
+                    <label class="btn btn-default" data-level="H" ms-click="@selectRadio">
+                      <input type="radio" name="options" value="H"   id="option3" autocomplete="off"/> 良好
                     </label>
                 </div>
               </div>
