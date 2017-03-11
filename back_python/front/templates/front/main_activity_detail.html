@@ -127,7 +127,7 @@
           $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
         },
         selectRadio:function(ele){
-          var level=$(ele).data("level");
+          var level=$(ele.currentTarget).data("level");
           console.log(level)
           $yml.page.$vmPage.curQuestion.level=level;
         },
