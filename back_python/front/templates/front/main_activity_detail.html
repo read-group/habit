@@ -18,7 +18,7 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
-          <div class="col-sm-12" ms-if="!@isDiagnose">
+          <div class="col-sm-12" ms-if="@isDetail">
             <div class="thumbnail noborder" ms-if="@item">
               <img class="media-object" ms-attr="{src:@item.img}" alt="...">
               <div class="caption">
@@ -53,14 +53,32 @@
                       <input type="radio" name="options" id="option3" autocomplete="off"> 良好
                     </label>
                 </div>
-
               </div>
             </div>
             <p class="text-right" ms-if="@item['habitCat'].length">
               <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
             </p>
             <p class="text-right" ms-if="@item['habitCat'].length==0">
-              <button  class="btn button-highlight" role="button" ms-click="@digOk">确认提交</button>
+              <button  class="btn button-highlight" role="button" ms-click="@digOk">确认报名</button>
+            </p>
+          </div>
+          <div class="col-sm-12" ms-if="@rptOk">
+            <div class="thumbnail noborder">
+              <div class="caption">
+                <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i><span>报名成功</h4>
+                <h4>按照您的答题，为您的孩子匹配了如下习惯</h4>
+                <p>
+                    <span>习惯１</span>
+                    <span>习惯２</span>
+                </p>
+              </div>
+            </div>
+            <div class="well">
+               <h5>懒人基金分享</h5>
+               <p>目前已经有几人参与，有10000元红包等着你去分享</p>
+            </div>
+            <p class="text-right">
+              <button  class="btn button-highlight" role="button" ms-click="@nextClick">点击参与</button>
             </p>
           </div>
        </div>
@@ -82,17 +100,28 @@
         curQuestion:false,
         toSubmit:[],
         isDiagnose:false,
+        isDetail:true,
+        rptOk:false,//已经成功报名，考虑在后台利用缓存
         digClick:function(){
           this.isDiagnose=true;
+          this.isDetail=false;
+          //this.rptOk=false;
         },
         cleanUp:function(){
           console.log("clean up...")
           this.isDiagnose=false;
+          this.rptOk=false;
+          this.isDetail=true;
         },
         nextClick:function(){
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.toSubmit.push(initFirstQuestion)
+        }，
+        digOk:function(){
+          this.isDiagnose=false;
+          this.isDetail=false;
+          this.rptOk=true;
         }
       };
     },
