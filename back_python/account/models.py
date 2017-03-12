@@ -29,7 +29,7 @@ ACCOUNT_TYPE=(
 class SysAccount(models.Model):
     name=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户名称")
     accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
-    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,editable=false)
+    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
@@ -42,6 +42,11 @@ class SysAccountHistory(models.Model):
     tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+    sysAccount=models.ForeignKey(
+        SysAccount,
+        on_delete=models.CASCADE,
+        verbose_name="用户"
+    )
     class Meta:
         verbose_name="系统账务"
         verbose_name_plural="系统账务"
@@ -55,7 +60,8 @@ class Account(models.Model):
     profile=models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
-        verbose_name="用户"
+        verbose_name="用户",
+        null=True
     )
     class Meta:
         verbose_name="个人钱包"
@@ -99,8 +105,8 @@ class AccountHistory(models.Model):
             on_delete=models.CASCADE,
             verbose_name="打卡信息"
     )
-    fee=models.DecimalField(verbose_name="套餐服务费",max_digits=10, decimal_places=2)
-    tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2)
+    fee=models.DecimalField(verbose_name="套餐服务费",max_digits=10, decimal_places=2,default=0)
+    tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
