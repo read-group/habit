@@ -51,13 +51,28 @@ class SysAccountHistory(models.Model):
         on_delete=models.CASCADE,
         verbose_name="系统账户"
     )
+    @classmethod
+    def from_db(cls, db, field_names, values):
+        # Default implementation of from_db() (subject to change and could
+        # be replaced with super()).
+        if len(values) != len(cls._meta.concrete_fields):
+            values = list(values)
+            values.reverse()
+            values = [
+                values.pop() if f.attname in field_names else DEFERRED
+                for f in cls._meta.concrete_fields
+            ]
+        new = cls(*values)
+        instance._state.adding = False
+        instance._state.db = db
+        # customization to store the original field values on the instance
+        instance._loaded_values = dict(zip(field_names, values))
+        return instance
     def save(self, *args, **kwargs):
-        logger.error("save SysAccountHistory");
-        logger.error(self.tradeAmount);
         if self._state.adding:
            self.sysAccount.balance+=self.tradeAmount
         else:
-            self.sysAccount.balance-=SysAccountHistory.from_db().tradeAmount;
+            self.sysAccount.balance-=self._loaded_values['tradeAmount'];
             self.sysAccount.balance+=self.tradeAmount
         self.sysAccount.save()
         super(SysAccountHistory,self).save(*args, **kwargs)
