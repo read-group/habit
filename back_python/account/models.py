@@ -4,6 +4,8 @@ from habitinfo.models import Habit
 from org.models import Profile
 from org.models import Org
 from feedback.models import FeedBack
+import logging
+logger = logging.getLogger("django")
 # Create your models here.
 #交易类型
 TRADE_TYPE=(
