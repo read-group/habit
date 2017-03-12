@@ -38,7 +38,7 @@ class SysAccount(models.Model):
         verbose_name_plural="系统账户"
 #系统账户历史,后台直接操作影响系统账户
 class SysAccountHistory(models.Model):
-    tradeDate=models.DateField(auto_now=True,verbose_name="时间")
+    tradeDate=models.DateField(verbose_name="时间")
     tradeType=models.CharField(max_length=50,choices=TRADE_TYPE,verbose_name="类型")
     tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
