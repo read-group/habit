@@ -50,6 +50,7 @@ class SysAccountHistory(models.Model):
         verbose_name="系统账户"
     )
     def save(self, *args, **kwargs):
+        logger.error("save SysAccountHistory");
         self.sysAccount.balance+=self.tradeAmount
         super(SysAccountHistory,self).save(*args, **kwargs)
     class Meta:
