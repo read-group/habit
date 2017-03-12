@@ -5,11 +5,14 @@ class AccountAdmin(admin.ModelAdmin):
     pass
 class SysAccountHistoryInline(admin.TabularInline):
     model = SysAccountHistory
-    extra = 3
+    extra = 1
 class SysAccountAdmin(admin.ModelAdmin):
     fields = ('accountType', 'name','balance')
     readonly_fields=('balance',)
     list_display=('accountType','name','balance')
-    inlines = [SysAccountHistoryInline]
+class SysAccountHistoryAdmin(admin.ModelAdmin):
+    fields = ('tradeDate', 'tradeType','tradeAmount')
+    list_display=('tradeDate','tradeType','tradeAmount')
+    # inlines = [SysAccountHistoryInline]
 admin.site.register(SysAccount,SysAccountAdmin)
 admin.site.register(Account,AccountAdmin)

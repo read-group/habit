@@ -29,9 +29,10 @@ ACCOUNT_TYPE=(
 class SysAccount(models.Model):
     name=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户名称")
     accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
-    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2)
+    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+
     class Meta:
         verbose_name="系统账户"
         verbose_name_plural="系统账户"
@@ -39,14 +40,17 @@ class SysAccount(models.Model):
 class SysAccountHistory(models.Model):
     tradeDate=models.DateField(auto_now=True,verbose_name="时间")
     tradeType=models.CharField(max_length=50,choices=TRADE_TYPE,verbose_name="类型")
-    tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2)
+    tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     sysAccount=models.ForeignKey(
         SysAccount,
         on_delete=models.CASCADE,
-        verbose_name="用户"
+        verbose_name="系统账户"
     )
+    def save(self, *args, **kwargs):
+        self.sysAccount.balance+=self.tradeAmount
+        super(SysAccountHistory,self).save(*args, **kwargs)
     class Meta:
         verbose_name="系统账务"
         verbose_name_plural="系统账务"
