@@ -19,14 +19,18 @@ TRADE_TYPE=(
     ("feedBackReturnDeposit","打卡返还押金"),
     ("aveDeposit","平均分配懒人押金"),
     ("takeCash","用户提现"),
-    ("sysFillMily","系统生产米粒"),
-    ("sysTakeCash","系统提现"),
+)
+SYS_TRADE_TYPE=(
+  ("sysFillMily","平台生产米粒"),
+  ("sysTakeCash","平台提现"),
+  ("sysInitCash","平台预存"),
 )
 #账户类型
 ACCOUNT_TYPE=(
   ("cash","现金"),
   ("rice","米粒"),
 )
+#
 #系统账户
 class SysAccount(models.Model):
     name=models.CharField(max_length=50,verbose_name="账户名称")
@@ -42,7 +46,7 @@ class SysAccount(models.Model):
 #系统账户历史,后台直接操作影响系统账户
 class SysAccountHistory(models.Model):
     tradeDate=models.DateField(verbose_name="时间")
-    tradeType=models.CharField(max_length=50,choices=TRADE_TYPE,verbose_name="类型")
+    tradeType=models.CharField(max_length=50,choices=SYS_TRADE_TYPE,verbose_name="类型")
     tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
