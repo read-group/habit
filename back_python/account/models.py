@@ -89,7 +89,7 @@ class SysAccountHistory(models.Model):
 #用户微信认证通过，自动创建两个账户
 class Account(models.Model):
     accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
-    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2)
+    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     profile=models.ForeignKey(

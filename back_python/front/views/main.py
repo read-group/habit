@@ -68,7 +68,7 @@ class MainView(TemplateView):
                     accountMily.accountType="rice"
                     accountMily.profile=profile
                     accountMily.save()
-                    accountMily=Account()
+                    accountCash=Account()
                     accountCash.accountType="cash"
                     accountCash.profile=profile
                     accountCash.save()
@@ -83,6 +83,8 @@ class MainView(TemplateView):
 
             except (Exception,) as e:
                 logger.error(e)
+                info=sys.exc_info()
+                logging.error(info)
             finally:
                 fp1.close()
                 fp2.close()
