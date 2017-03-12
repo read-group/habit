@@ -8,7 +8,7 @@ class SysAccountHistoryInline(admin.TabularInline):
     extra = 3
 class SysAccountAdmin(admin.ModelAdmin):
     fields = ('accountType', 'name',)
-    readonly_fields=(balance,)
+    readonly_fields=('balance',)
     list_display=('accountType','name','balance')
     inlines = [SysAccountHistoryInline]
 admin.site.register(SysAccount,SysAccountAdmin)
