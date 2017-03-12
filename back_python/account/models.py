@@ -32,6 +32,8 @@ class SysAccount(models.Model):
     balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+    def __str__(self):
+        return self.name;
     class Meta:
         verbose_name="系统账户"
         verbose_name_plural="系统账户"
