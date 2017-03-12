@@ -29,6 +29,7 @@ SYS_TRADE_TYPE=(
 ACCOUNT_TYPE=(
   ("cash","现金"),
   ("rice","米粒"),
+  ("rice","押金"),
 )
 #
 #系统账户
@@ -120,6 +121,18 @@ class AccountHistory(models.Model):
         Profile,
         on_delete=models.CASCADE,
         verbose_name="责任人"
+    )
+    account=models.ForeignKey(
+        Account,
+        on_delete=models.CASCADE,
+        verbose_name="个人钱包",
+        null=True
+    )
+    sysAccountHistory=models.ForeignKey(
+        SysAccountHistory,
+        on_delete=models.CASCADE,
+        verbose_name="平台账务",
+        null=True
     )
     # purchaser=models.ForeignKey(
     #     Porfile,
