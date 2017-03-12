@@ -70,7 +70,7 @@ class ActivityDetailView(JsonResultView):
             content["data"]=dataTmp
         except:
             info=sys.exc_info()
-            print(info)
+            logger.error(info)
             self.jsonResult.rtnDic["status"]=-1
         else:
             self.jsonResult.rtnDic["content"]=content
