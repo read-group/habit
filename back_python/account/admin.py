@@ -14,5 +14,6 @@ class SysAccountHistoryAdmin(admin.ModelAdmin):
     fields = ('tradeDate', 'tradeType','tradeAmount')
     list_display=('tradeDate','tradeType','tradeAmount')
     # inlines = [SysAccountHistoryInline]
+admin.site.register(SysAccountHistory,SysAccountHistoryAdmin)
 admin.site.register(SysAccount,SysAccountAdmin)
 admin.site.register(Account,AccountAdmin)
