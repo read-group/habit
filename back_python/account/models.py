@@ -27,7 +27,7 @@ ACCOUNT_TYPE=(
 )
 #系统账户
 class SysAccount(models.Model):
-    name=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户名称")
+    name=models.CharField(max_length=50,verbose_name="账户名称")
     accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
     balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
