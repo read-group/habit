@@ -29,7 +29,7 @@ ACCOUNT_TYPE=(
 class SysAccount(models.Model):
     name=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户名称")
     accountType=models.CharField(max_length=50,choices=ACCOUNT_TYPE,verbose_name="账户类型")
-    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2,editable=False)
+    balance=models.DecimalField(verbose_name="余额", max_digits=20, decimal_places=2)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
