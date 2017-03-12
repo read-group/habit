@@ -8,6 +8,7 @@ from org.models import Profile,MapEngToRole,Org
 from django.core.cache import cache
 import logging
 from django.db import transaction
+from account.models import Account
 logger = logging.getLogger("django")
 # Create your views here.
 # def index(request):
@@ -63,6 +64,18 @@ class MainView(TemplateView):
                     imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
                     profile.save()
                     #创建三个个人账户（米仓、现金、押金）
+                    accountMily=Account()
+                    accountMily.accountType="rice"
+                    accountMily.profile=profile
+                    accountMily.save()
+                    accountMily=Account()
+                    accountCash.accountType="cash"
+                    accountCash.profile=profile
+                    accountCash.save()
+                    accountDeposit=Account()
+                    accountDeposit.accountType="deposit"
+                    accountDeposit.profile=profile
+                    accountDeposit.save()
 
                 finally:
                     #登录

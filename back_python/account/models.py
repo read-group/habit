@@ -29,7 +29,7 @@ SYS_TRADE_TYPE=(
 ACCOUNT_TYPE=(
   ("cash","现金"),
   ("rice","米粒"),
-  ("rice","押金"),
+  ("deposit","押金"),
 )
 #
 #系统账户
