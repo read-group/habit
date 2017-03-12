@@ -58,7 +58,7 @@ class ActivityDetailView(JsonResultView):
                 #设置习惯类别的级别初值
                 habitCat["level"]="M"
                 #在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
-                for habit in item.habit_set:
+                for habit in item.cat.habit_set:
                     habitLevelKey=settings.CACHE_FORMAT_STR['cat_habit_level'] % (item.id, habit.level)
                     habitLevelCache=cache.get(habitLevelKey)
                     logger.debug(cache.get(habitLevelKey))
