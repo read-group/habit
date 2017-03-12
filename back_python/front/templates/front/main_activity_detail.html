@@ -139,6 +139,10 @@
           this.title="报名完成";
           console.log(this.$toSubmit[0].level)
           console.log(this.$toSubmit[1].level)
+          //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
+          //在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
+          //清空用户表，在创建用户时(用户、家庭)要同时初始化账户表
+          //要启动事务
         }
       };
     },

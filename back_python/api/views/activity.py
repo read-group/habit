@@ -4,6 +4,7 @@ from django.conf import settings
 from back.models import JsonResultView
 import sys
 import json
+from django.core.cache import cache
 import logging
 logger = logging.getLogger("django")
 # Create your views here.
@@ -53,11 +54,16 @@ class ActivityDetailView(JsonResultView):
             dataTmp["cat"]=act.get_cat_display()
             cats=[]
             for item in act.activityitem_set.all():
-                print(item.cat.name)
                 habitCat=self.toJSON(item.cat,["id","name"])
                 #设置习惯类别的级别初值
                 habitCat["level"]="M"
-                cats.append(habitCat)
+                #在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
+                for habit in item.habit_set:
+                    habitLevelKey=settings.CACHE_FORMAT_STR['cat_habit_level'] % (item.id, habit.level)
+                    habitLevelCache=cache.get(habitLevelKey)
+                    if not habitLevelCache:
+                        cache.set(habitLevelKey,habit,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
+            cats.append(habitCat)
             dataTmp["habitCat"]=cats
             content["data"]=dataTmp
         except:

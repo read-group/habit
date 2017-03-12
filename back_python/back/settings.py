@@ -76,7 +76,11 @@ CACHES = {
         },
     },
 }
-
+CACHE_FORMAT_STR={
+    # 缓存习惯类别和习惯难度对应的习惯
+   'cat_habit_level':'cat:%d:habit:%s',
+   'cat_habit_level_timeout':7,
+}
 MIDDLEWARE = [
     #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
