@@ -66,6 +66,8 @@ class Account(models.Model):
         verbose_name="用户",
         null=True
     )
+    def __str__(self):
+        return self.name;
     class Meta:
         verbose_name="个人钱包"
         verbose_name_plural="个人钱包"
