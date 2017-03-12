@@ -4,8 +4,6 @@ from django.contrib import admin
 from .models import School
 from .models import ClassGroup
 
-
-
 class ClassInline(admin.TabularInline):
     model = ClassGroup
     extra = 3
