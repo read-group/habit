@@ -61,10 +61,10 @@ class ActivityDetailView(JsonResultView):
                 for habit in item.cat.habit_set.all():
                     habitLevelKey=settings.CACHE_FORMAT_STR['cat_habit_level'] % (item.id, habit.level)
                     habitLevelCache=cache.get(habitLevelKey)
-                    logger.debug(cache.get(habitLevelKey))
+                    logger.error(cache.get(habitLevelKey))
                     if not habitLevelCache:
                         cache.set(habitLevelKey,habit,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
-                        logger.debug(cache.get(habitLevelKey))
+                        logger.error(cache.get(habitLevelKey))
             cats.append(habitCat)
             dataTmp["habitCat"]=cats
             content["data"]=dataTmp
