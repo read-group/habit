@@ -34,6 +34,10 @@ class ActivityView(JsonResultView):
             # print(data["img"])
             content["total"]=count
             content["data"]=data
+            logger.error("....................start")
+            logger.error(cache.get("cat:2:habit:L"))
+            logger.error("....................end")
+
         except:
             info=sys.exc_info()
             logging.error(info)
