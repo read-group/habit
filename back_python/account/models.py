@@ -99,7 +99,7 @@ class Account(models.Model):
         null=True
     )
     def __str__(self):
-        return self.name;
+        return self.profile.nickname;
     class Meta:
         verbose_name="个人钱包"
         verbose_name_plural="个人钱包"
