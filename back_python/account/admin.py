@@ -10,9 +10,9 @@ class SysAccountAdmin(admin.ModelAdmin):
     fields = ('accountType', 'name','balance')
     readonly_fields=('balance',)
     list_display=('accountType','name','balance')
-    inlines = [SysAccountHistoryInline]
+    # inlines = [SysAccountHistoryInline]
 class SysAccountHistoryAdmin(admin.ModelAdmin):
-    fields = ('tradeDate', 'tradeType','tradeAmount')
+    fields = ('tradeDate', 'sysAccount','tradeType','tradeAmount')
     list_display=('tradeDate','tradeType','tradeAmount')
 
 admin.site.register(SysAccountHistory,SysAccountHistoryAdmin)
