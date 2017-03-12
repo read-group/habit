@@ -62,7 +62,7 @@ class SysAccountHistory(models.Model):
                 values.pop() if f.attname in field_names else DEFERRED
                 for f in cls._meta.concrete_fields
             ]
-        new = cls(*values)
+        instance = cls(*values)
         instance._state.adding = False
         instance._state.db = db
         # customization to store the original field values on the instance
