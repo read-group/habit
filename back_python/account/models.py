@@ -74,6 +74,7 @@ class SysAccountHistory(models.Model):
         else:
             self.sysAccount.balance-=self._loaded_values['tradeAmount'];
             self.sysAccount.balance+=self.tradeAmount
+        logger.error(self.sysAccount.balance);
         self.sysAccount.save()
         super(SysAccountHistory,self).save(*args, **kwargs)
     class Meta:
