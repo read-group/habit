@@ -15,7 +15,7 @@ class ActivityView(View):
         reqData=json.loads(str(req.body,'utf-8'))
         skip=reqData["pageParam"]["skip"]
         limit=skip+reqData["pageParam"]["limit"]
-        jsResult=null
+        jsResult=None
         try:
             jsResult= activityService.activitys(skip,limit)
 
