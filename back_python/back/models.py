@@ -53,6 +53,10 @@ class JsonResultMixin(object):
 
         # import json
         # return json.dumps(d)
+class JsonResultService(object,JsonResultMixin):
+    def __init__(self,*arg,**kwargs):
+        self.initJsonResult()
+        super(JsonResultService,self).__init__(*arg,**kwargs)
 
 class JsonResultView(View,JsonResultMixin):
     def __init__(self,*arg,**kwargs):

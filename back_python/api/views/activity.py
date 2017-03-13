@@ -7,41 +7,47 @@ import json
 from django.core.cache import cache
 import logging
 logger = logging.getLogger("django")
+from django.views.generic.base import View
+from api.service import activityService
 # Create your views here.
-class ActivityView(JsonResultView):
+class ActivityView(View):
     def post(self,req,*arg,**kwargs):
-        content={}
-        data=[]
-        try:
-            print(req.body)
-            reqData=json.loads(str(req.body,'utf-8'))
-            skip=reqData["pageParam"]["skip"]
-            limit=skip+reqData["pageParam"]["limit"]
-            queryCache=Activity.objects.order_by("createdTime");
-            count=queryCache.count();
-            acts= queryCache[skip:limit]
-            for act in acts:
-                dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","zeroableMily","desc","isTop"])
-                dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
-                dataTmp["cat"]=act.get_cat_display()
-                data.append(dataTmp)
-
-            # data["name"]=welcome.name
-            # data["desc"]=welcome.desc
-            # data["img"]=welcome.img.img.name
-            # data=self.toJSON(act,["name","code"])
-            # data["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+welcome.img.img.name
-            # print(data["img"])
-            content["total"]=count
-            content["data"]=data
-        except:
-            info=sys.exc_info()
-            logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
-        else:
-            self.jsonResult.rtnDic["content"]=content
-        finally:
-            return self.jsonResult.renderToJsonResponse()
+        reqData=json.loads(str(req.body,'utf-8'))
+        skip=reqData["pageParam"]["skip"]
+        limit=skip+reqData["pageParam"]["limit"]
+        return activityService.activitys(skip,limit).renderToJsonResponse()
+        # content={}
+        # data=[]
+        # try:
+        #     print(req.body)
+        #     reqData=json.loads(str(req.body,'utf-8'))
+        #     skip=reqData["pageParam"]["skip"]
+        #     limit=skip+reqData["pageParam"]["limit"]
+        #     queryCache=Activity.objects.order_by("createdTime");
+        #     count=queryCache.count();
+        #     acts= queryCache[skip:limit]
+        #     for act in acts:
+        #         dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","zeroableMily","desc","isTop"])
+        #         dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
+        #         dataTmp["cat"]=act.get_cat_display()
+        #         data.append(dataTmp)
+        #
+        #     # data["name"]=welcome.name
+        #     # data["desc"]=welcome.desc
+        #     # data["img"]=welcome.img.img.name
+        #     # data=self.toJSON(act,["name","code"])
+        #     # data["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+welcome.img.img.name
+        #     # print(data["img"])
+        #     content["total"]=count
+        #     content["data"]=data
+        # except:
+        #     info=sys.exc_info()
+        #     logging.error(info)
+        #     self.jsonResult.rtnDic["status"]=-1
+        # else:
+        #     self.jsonResult.rtnDic["content"]=content
+        # finally:
+        #     return self.jsonResult.renderToJsonResponse()
 
 class ActivityDetailView(JsonResultView):
     def post(self,req,*arg,**kwargs):
