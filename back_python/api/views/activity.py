@@ -15,7 +15,14 @@ class ActivityView(View):
         reqData=json.loads(str(req.body,'utf-8'))
         skip=reqData["pageParam"]["skip"]
         limit=skip+reqData["pageParam"]["limit"]
-        return activityService.activitys(skip,limit).renderToJsonResponse()
+        jsResult=null
+        try:
+            jsResult= activityService.activitys(skip,limit)
+
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
         # content={}
         # data=[]
         # try:
