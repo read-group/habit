@@ -9,7 +9,7 @@ class ActivityItemInline(admin.TabularInline):
     fields=('cat',)
 class ActivityAdmin(admin.ModelAdmin):
     change_form_template = 'activity/change_form.html'
-    fields=('code','name',('startTime','endTime',),('cat','desc'),'img','amount',('status','isTop',),'memo')
+    fields=('code','name',('startTime','endTime',),('cat','desc'),'img','amount','zeroableMily',('status','isTop',),'memo')
     list_display=('code','name','startTime','endTime','status')
     inlines = [ActivityItemInline]
     list_filter=('cat','status')
