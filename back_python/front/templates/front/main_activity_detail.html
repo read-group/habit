@@ -149,9 +149,9 @@
     pageReady:function(paramObj){
       var self=this;
       console.log("pageReady");
-      console.log(paramObj);
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
+            console.log(res)
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
