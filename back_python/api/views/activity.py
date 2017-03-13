@@ -49,7 +49,7 @@ class ActivityDetailView(JsonResultView):
         try:
             reqData=json.loads(str(req.body,'utf-8'))
             act= Activity.objects.get(pk=reqData["id"])
-            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo'])
+            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','zeroableMily'])
             dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
             cats=[]
