@@ -10,13 +10,13 @@ logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
     def activitys(self,skip,limit):
-
         content={}
         data=[]
         try:
             queryCache=Activity.objects.order_by("createdTime");
             count=queryCache.count();
             acts= queryCache[skip:limit]
+            logger.error(acts)
             for act in acts:
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","zeroableMily","desc","isTop"])
                 dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
@@ -32,7 +32,7 @@ class ActivityService(JsonResultService):
             content["total"]=count
             content["data"]=data
         except (Exception ,e):
-            logger.error(e)
+
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
