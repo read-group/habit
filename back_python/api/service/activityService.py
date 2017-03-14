@@ -10,7 +10,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
     def activitys(self,skip,limit):
-        logger.error("service......")
+
         content={}
         data=[]
         try:
@@ -31,7 +31,8 @@ class ActivityService(JsonResultService):
             # print(data["img"])
             content["total"]=count
             content["data"]=data
-        except:
+        except Exception,e:
+            logger.error(e)
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
