@@ -31,7 +31,7 @@ class ActivityService(JsonResultService):
             # print(data["img"])
             content["total"]=count
             content["data"]=data
-        except Exception  e:
+        except (Exception ,e):
             logger.error(e)
             info=sys.exc_info()
             logging.error(info)
