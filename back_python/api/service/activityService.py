@@ -81,7 +81,7 @@ class ActivityService(JsonResultService):
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
                     # 去库里查询
-                    habitTmp＝Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
+                    habitTmp=Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
                 dataTmp=self.toJSON(habitTmp,["id","name"])
                 rtnArray.append(dataTmp)
                 habitArray.append(habitTmp.id+"|"+habitTmp.name)
