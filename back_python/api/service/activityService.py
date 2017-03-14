@@ -16,9 +16,11 @@ class ActivityService(JsonResultService):
             queryCache=Activity.objects.order_by("createdTime");
             count=queryCache.count();
             acts= queryCache[skip:limit]
-            logger.error(acts)
+
             for act in acts:
+                logger.error("in...")
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","zeroableMily","desc","isTop"])
+                logger.error("aff...")
                 dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
                 data.append(dataTmp)
