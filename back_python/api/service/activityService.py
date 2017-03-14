@@ -10,7 +10,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
     def activitys(self,skip,limit):
-	    logger.error("service......");
+        logger.error("service......")
         content={}
         data=[]
         try:
