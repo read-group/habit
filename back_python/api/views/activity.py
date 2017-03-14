@@ -18,7 +18,6 @@ class ActivityView(View):
         jsResult=None
         try:
             jsResult= activityService.activitys(skip,limit)
-
         except:
             info=sys.exc_info()
             logging.error(info)
