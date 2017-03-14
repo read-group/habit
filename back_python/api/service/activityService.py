@@ -38,6 +38,7 @@ class ActivityService(JsonResultService):
         else:
             self.jsonResult.rtnDic["content"]=content
         finally:
+            logger.error(self.jsonResult.rtnDic["status"])
             return self.jsonResult
 
 activityService=ActivityService()
