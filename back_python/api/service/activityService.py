@@ -9,19 +9,16 @@ import logging
 logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
-    def activitys(self,skip,limit):
+    def activitys(self,skip,limit,schema):
         content={}
         data=[]
         try:
             queryCache=Activity.objects.order_by("createdTime");
             count=queryCache.count();
             acts= queryCache[skip:limit]
-
             for act in acts:
-                logger.error("in...")
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","zeroableMily","desc","isTop"])
-                logger.error(dataTmp)
-                dataTmp["img"]=req.scheme+"://"+req.META["HTTP_HOST"]+settings.MEDIA_URL+act.img.img.name
+                dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
                 data.append(dataTmp)
 
@@ -34,14 +31,12 @@ class ActivityService(JsonResultService):
             content["total"]=count
             content["data"]=data
         except (Exception ,e):
-
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
         else:
             self.jsonResult.rtnDic["content"]=content
         finally:
-            logger.error(self.jsonResult.rtnDic["status"])
             return self.jsonResult
 
 activityService=ActivityService()

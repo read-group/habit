@@ -17,7 +17,7 @@ class ActivityView(View):
         limit=skip+reqData["pageParam"]["limit"]
         jsResult=None
         try:
-            jsResult= activityService.activitys(skip,limit)
+            jsResult= activityService.activitys(skip,limit,req.scheme+"://"+req.META["HTTP_HOST"])
         except:
             info=sys.exc_info()
             logging.error(info)
