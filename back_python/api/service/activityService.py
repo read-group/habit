@@ -1,5 +1,7 @@
 from activity.models import Activity
 from django.conf import settings
+from feedback.models import OrgActivityHistory
+from habitinfo.models import Habit
 from back.models import JsonResultService
 import sys
 import json
@@ -60,6 +62,52 @@ class ActivityService(JsonResultService):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult
+
+    def activityJoin(self,user,actid,cats):
+        content={}
+        try:
+            # 获取家庭对象
+            org=user.profile.org
+            # 获取活动对象
+            act= Activity.objects.get(pk=actid)
+
+            #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
+            habitArray=[]
+            rtnArray=[]
+            for cat in cats:
+                catid=cat.id
+                level2=cat.level
+                habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
+                habitTmp=cache.get(habitLevelKeyRun)
+                if not habitTmp:
+                    # 去库里查询
+                    habitTmp＝Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
+                dataTmp=self.toJSON(habitTmp,["id","name"])
+                rtnArray.append(dataTmp)
+                habitArray.append(habitTmp.id+"|"+habitTmp.name)
+            habitStr=",".join(habitArray)
+            # 构建参加活动历史.
+            orgActivityHistory=OrgActivityHistory()
+            orgActivityHistory.org=org
+            orgActivityHistory.activity=act
+            orgActivityHistory.habits=habitStr
+            orgActivityHistory.save()
+            # 构建家庭习惯缓存org:id:habit:id=habit
+            orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
+            #计算缓存天数
+            cacheDays=(act.endTime-act.startTime).days+1
+            cache.set(orgActivityKey,orgActivityHistory,cacheDays)
+            content["data"]=rtnArray
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
+
 
 
 activityService=ActivityService()

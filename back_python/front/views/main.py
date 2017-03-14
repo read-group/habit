@@ -76,13 +76,12 @@ class MainView(TemplateView):
                     accountDeposit.accountType="deposit"
                     accountDeposit.profile=profile
                     accountDeposit.save()
-
                 finally:
                     #登录
                     login(request,userTry)
-
             except (Exception,) as e:
                 logger.error(e)
+                import sys
                 info=sys.exc_info()
                 logging.error(info)
             finally:

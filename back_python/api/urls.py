@@ -20,4 +20,5 @@ urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
      url(r'^activity/detail$',ActivityDetailView.as_view()),
+     url(r'^activity/join$',ActivityDetailView.as_view()),
 ]

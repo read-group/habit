@@ -30,3 +30,15 @@ class ActivityDetailView(View):
             info=sys.exc_info()
             logger.error(info)
         return jsResult.renderToJsonResponse()
+class ActivityJoinlView(View):
+    def post(self,req,*arg,**kwargs):
+        jsResult=None
+        try:
+            reqData=json.loads(str(req.body,'utf-8'))
+            actId=reqData["actId"]
+            cats=reqData["cats"]
+            jsResult=activityService.activityJoin(req.user,actId,cats)
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+        return jsResult.renderToJsonResponse()

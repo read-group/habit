@@ -66,7 +66,7 @@
           <div class="col-sm-12" ms-if="@rptOk">
             <div class="thumbnail noborder">
               <div class="caption">
-                <h4>按照您的答题，为您的孩子匹配了如下习惯</h4>
+                <h4>为您的孩子匹配了如下习惯</h4>
                 <p>
                     <span>习惯１</span>
                     <span>习惯２</span>
@@ -143,6 +143,19 @@
           //在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
           //清空用户表，在创建用户时(用户、家庭)要同时初始化账户表
           //要启动事务
+          var postParam={
+            actId:this.Item.id,
+            cats:this.$toSubmit
+          }
+          $yml.ajax('/api/activity/join',postParam,
+          　  function(res){
+                console.log(res)
+                $yml.page.$vmPage.item=res.content.data;
+                var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
+                $yml.page.$vmPage.curQuestion=initFirstQuestion;
+                $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
+              }
+          );
         }
       };
     },
