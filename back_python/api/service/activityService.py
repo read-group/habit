@@ -70,7 +70,7 @@ class ActivityService(JsonResultService):
             org=user.profile.org
             # 获取活动对象
             act= Activity.objects.get(pk=actid)
-
+            logger.error(act.name)
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
             habitArray=[]
             rtnArray=[]
