@@ -41,6 +41,9 @@ padding: 0px 0px;
 .list-group-item.active{
   background-color: silver
 }
+.list-group-item.focus{
+  background-color: silver
+}
 .thumbnail.noborder{
   border: none
 }
