@@ -35,6 +35,7 @@ class ActivityJoinlView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
         try:
+            logger.error("in join....")
             reqData=json.loads(str(req.body,'utf-8'))
             actId=reqData["actId"]
             cats=reqData["cats"]

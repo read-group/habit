@@ -147,7 +147,7 @@
             actId:this.Item.id,
             cats:this.$toSubmit
           }
-          
+          alert(JSON.stringify(postParam))
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 console.log(res)
