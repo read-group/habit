@@ -79,6 +79,7 @@ class ActivityService(JsonResultService):
                 catid=cat.id
                 level2=cat.level
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
+                logger.error(habitLevelKeyRun)
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
                     # 去库里查询
