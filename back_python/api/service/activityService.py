@@ -83,7 +83,9 @@ class ActivityService(JsonResultService):
                 if not habitTmp:
                     # 去库里查询
                     habitTmp=Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
+
                 dataTmp=self.toJSON(habitTmp,["id","name"])
+                logger.error(dataTmp)
                 rtnArray.append(dataTmp)
                 habitArray.append(habitTmp.id+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
