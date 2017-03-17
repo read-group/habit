@@ -135,8 +135,7 @@
         digOk:function(){
           this.isDiagnose=false;
           this.isDetail=false;
-          this.rptOk=true;
-          this.title="报名完成";
+
           console.log(this.$toSubmit[0].level)
           console.log(this.$toSubmit[1].level)
           //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
@@ -156,6 +155,9 @@
                 var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
                 $yml.page.$vmPage.curQuestion=initFirstQuestion;
                 $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
+
+                this.rptOk=true;
+                this.title="报名完成";
               }
           );
         }
