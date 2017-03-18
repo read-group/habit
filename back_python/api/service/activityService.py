@@ -89,7 +89,7 @@ class ActivityService(JsonResultService):
                 dataTmp=self.toJSON(habitTmp,["id","name"])
                 logger.error(dataTmp)
                 rtnArray.append(dataTmp)
-                habitArray.append(habitTmp.id+"|"+habitTmp.name)
+                habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
             # 构建参加活动历史.
             orgActivityHistory=OrgActivityHistory()
