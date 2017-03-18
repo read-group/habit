@@ -146,7 +146,6 @@
             actId:this.item.id,
             cats:this.$toSubmit
           }
-          alert(JSON.stringify(postParam))
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 console.log(res)
@@ -154,7 +153,6 @@
                 var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
                 $yml.page.$vmPage.curQuestion=initFirstQuestion;
                 $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
-
                 this.rptOk=true;
                 this.title="报名完成";
               }
