@@ -75,6 +75,7 @@ class ActivityService(JsonResultService):
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
             habitArray=[]
             rtnArray=[]
+            logger.error(type(cats))
             for cat in cats:
                 logger.error("cat.....")
                 logger.error(cat)
