@@ -76,9 +76,12 @@ class ActivityService(JsonResultService):
             habitArray=[]
             rtnArray=[]
             for cat in cats:
+                logger.error("cat.....")
+                logger.error(cat)
                 catid=cat.id
-                level2=cat.level
                 logger.error(catid)
+                level2=cat.level
+
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
                 logger.error(habitLevelKeyRun)
                 habitTmp=cache.get(habitLevelKeyRun)
