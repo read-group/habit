@@ -78,6 +78,7 @@ class ActivityService(JsonResultService):
             for cat in cats:
                 catid=cat.id
                 level2=cat.level
+                logger.error(catid)
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
                 logger.error(habitLevelKeyRun)
                 habitTmp=cache.get(habitLevelKeyRun)
