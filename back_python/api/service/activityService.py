@@ -67,6 +67,8 @@ class ActivityService(JsonResultService):
         content={}
         try:
             # 获取家庭对象
+            logger.error(user.profile)
+            logger.error("org................")
             org=user.profile.org
             logger.error("org................")
             logger.error(org)
