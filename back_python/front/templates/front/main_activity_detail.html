@@ -146,8 +146,8 @@
             'cats':this.$toSubmit
           }
 
-           alert(this.item.id)
-           alert(this.$toSubmit[0].level)
+           alert(postParam.actId)
+           //alert(this.$toSubmit)
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
