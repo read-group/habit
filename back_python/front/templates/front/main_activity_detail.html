@@ -145,11 +145,9 @@
             'actId':this.item.id,
             'cats':this.$toSubmit
           }
-          var m={
-            "a":"dd",
-            "b":[{"dd":"dfd"},{"cc":"vv"}]
-          }
-           alert(JSON.stringify(m))
+
+           alert(this.item.id)
+           alert(JSON.stringify(this.$toSubmit))
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
