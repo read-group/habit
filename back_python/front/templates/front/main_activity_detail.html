@@ -67,9 +67,8 @@
             <div class="thumbnail noborder">
               <div class="caption">
                 <h4>为您的孩子匹配了如下习惯</h4>
-                <p>
-                    <span>习惯１</span>
-                    <span>习惯２</span>
+                <p ms-for="(i,h) in @selectedHabits">
+                    <span>{? h.name ?}</span>
                 </p>
               </div>
             </div>
@@ -103,6 +102,7 @@
         item:false,
         curQuestion:false,
         $toSubmit:[],
+        selectedHabits:[],
         isDiagnose:false,
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
@@ -135,8 +135,6 @@
         digOk:function(){
           this.isDiagnose=false;
           this.isDetail=false;
-          console.log(this.$toSubmit[0].level)
-          console.log(this.$toSubmit[1].level)
           //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
           //在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
           //清空用户表，在创建用户时(用户、家庭)要同时初始化账户表
@@ -153,16 +151,14 @@
             'actId':this.item.id,
             'cats':catsArray
           }
+          var self=this;
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
-                // alert("res")
-                console.log(res)
-                // $yml.page.$vmPage.item=res.content.data;
-                // var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
-                // $yml.page.$vmPage.curQuestion=initFirstQuestion;
-                // $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
-                this.rptOk=true;
-                this.title="报名完成";
+                res.content.data.forEach(function(r){
+                  $yml.page.$vmPage.selectedHabits.push(r)
+                })
+                self.rptOk=true;
+                self.title="报名完成";
               }
           );
         }
