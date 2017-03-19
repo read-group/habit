@@ -81,7 +81,7 @@ CACHE_FORMAT_STR={
    'cat_habit_level':'cat:%d:habit:%s',
    'cat_habit_level_timeout':3600*24*7,
    # 家庭活动历史
-   'org_activity':'org:%d:activity:%d',
+   'org_activity':'org:%d',
    'org_activity_timeout':3600*24*7,
 }
 MIDDLEWARE = [
