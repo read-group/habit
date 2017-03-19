@@ -26,7 +26,7 @@ class ActivityDetailView(View):
         try:
             reqData=json.loads(str(req.body,'utf-8'))
             idParam=reqData["id"]
-            jsResult=activityService.activityDetail(idParam,req.scheme+"://"+req.META["HTTP_HOST"])
+            jsResult=activityService.activityDetail(req.user,idParam,req.scheme+"://"+req.META["HTTP_HOST"])
         except:
             info=sys.exc_info()
             logger.error(info)

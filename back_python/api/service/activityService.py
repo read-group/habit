@@ -33,7 +33,7 @@ class ActivityService(JsonResultService):
         finally:
             return self.jsonResult
 
-    def activityDetail(self,id,schema):
+    def activityDetail(self,user,id,schema):
         content={}
         try:
             act= Activity.objects.get(pk=id)
@@ -53,6 +53,17 @@ class ActivityService(JsonResultService):
                         cache.set(habitLevelKey,habit,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
                 cats.append(habitCat)
             dataTmp["habitCat"]=cats
+            //检查是否已经报名
+            org=user.profile.org
+            orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
+            orgActivityHistorys=cache.get(orgActivityKey)
+            if　not orgActivityHistorys:
+                pass
+            else:
+                for oac in orgActivityHistorys:
+                    if oac.activity.id==dataTmp.id:
+                        dataTmp.applied=True
+
             content["data"]=dataTmp
         except:
             info=sys.exc_info()
@@ -67,12 +78,8 @@ class ActivityService(JsonResultService):
         content={}
         try:
             # 获取家庭对象
-            logger.error("org................")
             logger.error(user.profile)
-            logger.error("org................")
             org=user.profile.org
-            logger.error("org................")
-            logger.error(org)
             # 获取活动对象
             act= Activity.objects.get(pk=actid)
             logger.error(act.name)
@@ -85,14 +92,14 @@ class ActivityService(JsonResultService):
                 catid=cat["id"]
                 level2=cat["level"]
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
-                logger.error(habitLevelKeyRun)
+
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
                     # 去库里查询
                     habitTmp=Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
+                    cache.set(habitLevelKeyRun,habitTmp,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
 
                 dataTmp=self.toJSON(habitTmp,["id","name"])
-                logger.error(dataTmp)
                 rtnArray.append(dataTmp)
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
@@ -106,7 +113,16 @@ class ActivityService(JsonResultService):
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             #计算缓存天数
             cacheDays=(act.endTime-act.startTime).days+1
-            cache.set(orgActivityKey,orgActivityHistory,cacheDays)
+
+            org_activitys=cache.get(orgActivityKey)
+            if not org_activitys:
+                # 先去库里获取
+                org_activitys=list(OrgActivityHistory.objects.filter(org__id=org.id))
+                if not org_activitys:
+                    org_activitys=[orgActivityHistory]
+            else:
+                org_activitys.push(orgActivityHistory)
+            cache.set(orgActivityKey,org_activitys,cacheDays)
             content["data"]=rtnArray
         except:
             info=sys.exc_info()

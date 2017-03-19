@@ -23,8 +23,11 @@
               <img class="media-object" ms-attr="{src:@item.img}" alt="...">
               <div class="caption">
                 <h3>{? @item.name ?}</h3>
-                <p class="text-right">
+                <p class="text-left" ms-if="@!item.applied">
                   <button  class="btn button-highlight" role="button" ms-click="@digClick">您的孩子适合选择什么习惯呢？</button>
+                </p>
+                <p class="text-left" ms-if="@item.applied">
+                  <button  class="btn button-success" role="button">已报名</button>
                 </p>
                 <p>活动类别：{? @item.cat ?}</p>
                 <p>赠送米粒：{? @item.zeroableMily ?}粒</p>
