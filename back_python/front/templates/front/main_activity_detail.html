@@ -145,9 +145,10 @@
             actId:this.item.id,
             cats:this.$toSubmit
           }
-          alert("xxxxxxxx")
+
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
+                alert("res")
                 console.log(res)
                 // $yml.page.$vmPage.item=res.content.data;
                 // var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
