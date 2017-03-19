@@ -147,7 +147,7 @@
           }
 
            alert(this.item.id)
-           alert(JSON.stringify(this.$toSubmit))
+           alert(this.$toSubmit[0].level)
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
