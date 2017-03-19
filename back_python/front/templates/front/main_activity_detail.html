@@ -174,7 +174,7 @@
       　  function(res){
             console.log(res)
             $yml.page.$vmPage.item=res.content.data;
-            alert(JSON.stringify(res.content.data))
+            alert($yml.page.$vmPage.item.applied)
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
             $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
