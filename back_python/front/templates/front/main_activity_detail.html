@@ -146,10 +146,10 @@
             'cats':this.$toSubmit
           }
 
-           alert(postParam.actId)
-           this.$toSubmit.forEach(function(r){
-             alert(r.name)
-           })
+          alert(postParam.actId)
+          this.$toSubmit.forEach(function(r){
+             alert(JSON.stringify(r))
+          })
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
