@@ -65,7 +65,7 @@ class ActivityService(JsonResultService):
                 orgActivityHistorys=list(OrgActivityHistory.objects.filter(org__id=org.id))
 
             for oac in orgActivityHistorys:
-                if oac.activity.id==dataTmp.id:
+                if oac.activity.id==dataTmp["id"]:
                     dataTmp["applied"]="1"
                     break;
 
