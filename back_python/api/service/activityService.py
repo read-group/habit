@@ -55,7 +55,9 @@ class ActivityService(JsonResultService):
             dataTmp["habitCat"]=cats
             # 检查是否已经报名
             org=user.profile.org
+            logger.error(org.id)
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
+            logger.error(orgActivityKey)
             orgActivityHistorys=cache.get(orgActivityKey)
             dataTmp["applied"]=False
             # if not orgActivityHistorys:
