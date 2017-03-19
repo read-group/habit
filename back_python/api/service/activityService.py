@@ -59,13 +59,13 @@ class ActivityService(JsonResultService):
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             logger.error(orgActivityKey)
             orgActivityHistorys=cache.get(orgActivityKey)
-            dataTmp["applied"]=False
+            dataTmp["applied"]="0"
             if not orgActivityHistorys:
                 pass
             else:
                 for oac in orgActivityHistorys:
                     if oac.activity.id==dataTmp.id:
-                        dataTmp["applied"]=True
+                        dataTmp["applied"]="1"
             content["data"]=dataTmp
         except:
             info=sys.exc_info()
