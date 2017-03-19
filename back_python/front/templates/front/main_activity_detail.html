@@ -172,12 +172,12 @@
       console.log("pageReady");
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
-            alert(JSON.stringify(res))
-            $yml.page.$vmPage.item=res.content.data;
-
-            var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
-            $yml.page.$vmPage.curQuestion=initFirstQuestion;
-            $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
+             alert(JSON.stringify(res))
+            // $yml.page.$vmPage.item=res.content.data;
+            //
+            // var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
+            // $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            // $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
           }
       );
     }
