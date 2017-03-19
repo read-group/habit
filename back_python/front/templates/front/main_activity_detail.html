@@ -147,7 +147,9 @@
           }
 
            alert(postParam.actId)
-           //alert(this.$toSubmit)
+           this.$toSubmit.forEach(function(r){
+             alert(r.name)
+           })
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
