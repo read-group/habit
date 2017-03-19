@@ -153,8 +153,6 @@
             'actId':this.item.id,
             'cats':catsArray
           }
-          alert(JSON.stringify(postParam))
-          return
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
                 // alert("res")
