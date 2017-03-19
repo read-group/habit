@@ -61,11 +61,14 @@ class ActivityService(JsonResultService):
             orgActivityHistorys=cache.get(orgActivityKey)
             dataTmp["applied"]="0"
             if not orgActivityHistorys:
-                pass
-            else:
-                for oac in orgActivityHistorys:
-                    if oac.activity.id==dataTmp.id:
-                        dataTmp["applied"]="1"
+                # 先去库里获取
+                orgActivityHistorys=list(OrgActivityHistory.objects.filter(org__id=org.id))
+
+            for oac in orgActivityHistorys:
+                if oac.activity.id==dataTmp.id:
+                    dataTmp["applied"]="1"
+                    break;
+
             content["data"]=dataTmp
         except:
             info=sys.exc_info()
