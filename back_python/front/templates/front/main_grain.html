@@ -1,44 +1,38 @@
 <div class="container page" id="grain" data-page-root="grain"  ms-controller="grain">　
-    <nav class="navbar navbar-default  navbar-fixed-top">
-      <div  class="row navButton">
-          <div  class="col-xs-4 text-left">
-            <a href="#" ms-click="helpClick()">
-              <span class="fa fa-cog"></span>
-            </a>
-          </div>
-          <div class="col-xs-4 text-center">
-              <h4 id="title" class="topNavButton">成长</h4>
-          </div>
-          <div class="col-xs-4 text-right">
-            <a>
-              <i class="fa fa-cart-plus fa-2x"></i>
-            </a>
-          </div>
-      </div>
-    </nav>
-    <div class="container-fluid">
-      <div class="row">
-          <div class="col-sm-6">
-            <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png"  alt="...">
-              <div class="caption">
-                <h3>{? hello ?}</h3>
-                <p>...</p>
-                <p class="text-right"><a href="#" class="btn button-highlight" role="button">详情</a></p>
+  <nav class="navbar navbar-default  navbar-fixed-top">
+    <div  class="row navButton">
+        <div  class="col-xs-4 text-left icon">
+          <!-- <a  href="#!/main/activity">
+            <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+          </a> -->
+        </div>
+        <div class="col-xs-4 text-center">
+            <h4 id="title" class="topNavButton">成长</h4>
+        </div>
+        <div class="col-xs-4 text-right">
+          <a href="#!/main/grain/addchild">
+            <i class="fa fa-plus fa-2x"></i>
+          </a>
+        </div>
+    </div>
+  </nav>
+  <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
+      <!-- <ul class="list-group">
+        <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item" ms-click="@activeSet">
+          <div class="media" style="margin-top:5px">
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>
+                  xxxx</h4>
+                <br/>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png" alt="...">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div>
-       </div>
+              <a  ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
+                  <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
+                  <div><i class="fa fa-hand-o-up fa-lg active" aria-hidden="true"></i></div>
+              </a>
+           </div>
+        </li>
+      </ul> -->
     </div>
   </div>
   <script>

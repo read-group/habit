@@ -1,0 +1,122 @@
+<div class="container page" id="addChild" data-page-root="addChild" ms-controller="addChild">　
+    <nav class="navbar navbar-default  navbar-fixed-top">
+      <div  class="col-xs-4 text-left">
+        <a  href="#!/main/grain">
+          <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+        </a>
+      </div>
+      <div class="col-xs-4 text-center">
+          <h4 id="title" class="topNavButton">添加成员</h4>
+      </div>
+      <div class="col-xs-4 text-right">
+           <button style="margin-top:12px" ms-click="@saveClick" class="btn btn-success btn-sm">保存</button>
+      </div>
+    </nav>
+    <div class="childContent">
+      <div class="well">
+        <form>
+           <div class="form-group">
+             <img ms-attr-src="headUrl" class="img-circle" style="width:40px;height:40px"/>
+             <span  id="takePhoto"　 ms-click="btnPhoto"   class="active"><i class="fa fa-camera-retro fa-2x"></i><i class="fa fa-plus"></i></span>
+           </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">昵称</label>
+              <input type="text" ms-duplex="nickName" class="form-control" id="exampleInputEmail1" placeholder="请输入成员昵称">
+            </div>
+            <!-- <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div> -->
+
+        </form>
+      </div>
+   </div>
+</div>
+</div>
+<script>
+$yml.page=$yml.pageBase.New(null,{
+  ctor:function(){
+    console.log("addChild loaded..."+this.getVmEleName());
+    //基类里在pageReady方法里和可以访问成员$vmPage和$router
+    //this.$vmPage
+    //this.$router
+  },
+  vmDef:function(){
+    return {
+      $id:"addChild",
+      headUrl:"",
+      nickName:"",
+      isRequired:"true",
+      saveClick:function(){
+         var params={};
+         params.headingImgUrl=$yml.page.$vmPage.headUrl;
+         params.nickName=$yml.page.$vmPage.nickName;
+         if($.trim(params.nickName)==""){
+           alert("昵称不能为空。");
+           return false;
+         }
+         if($.trim(params.headingImgUrl)==""){
+           alert("请给孩子选择一张照片。");
+           return false;
+         }
+         $yml.ajax('http://ux.yimilan.com/api/user/createChild',{"childinfo":params},
+         　  function(res){
+               console.log(res);
+               if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
+                 $yml.page.$router.pop();
+               }else{
+                 alert("保存出错");
+               }
+            }
+         );
+          //$yml.page.$router.pop();
+      },
+      btnPhoto:function(){
+        wx.chooseImage({
+          count: 1, // 默认9
+          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+          success: function (res) {
+              var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+              $yml.page.$vmPage.headUrl=localIds[0];
+              //上传图片
+              wx.uploadImage({
+                  localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+                  isShowProgressTips: 1, // 默认为1，显示进度提示
+                  success: function (res) {
+                      var serverId = res.serverId; // 返回图片的服务器端ID
+                      //给公司微信服务器发送下载文件的指令
+                      $yml.ajax('http://wx.yimilan.com/wx/api/download',{mediaId:serverId,type:"img"},
+                      　  function(res){
+                            if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
+                              console.log("upload ok......");
+                              console.log(res.resUrl);
+                              $yml.page.$vmPage.headUrl=res.resUrl;
+                            }
+
+
+                          }
+                      );
+                  }
+              });
+
+          },
+          fail:function(err){
+            alert(JSON.stringify(err));
+          }
+　　　　　　　　});
+      }
+    };
+  },
+  pageReady:function(){
+    var self=this;
+    // $yml.ajax('/api/habit/cats',null,
+    // 　  function(res){
+    //       $yml.page.$vmPage.cats=res.content;
+    //     }
+    // );
+  }
+});
+
+</script>

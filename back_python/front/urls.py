@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,ActivityDetailView,GrainView,SnsView,MyView
+from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,ActivityDetailView,GrainView,GrainAddChildView,SnsView,MyView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^main/activity$', ActivityView.as_view(),name="main.activity"),
     url(r'^main/activity/detail/.*$', ActivityDetailView.as_view(),name="main.activity.detail"),
     url(r'^main/grain$', GrainView.as_view(),name="main.grain"),
+    url(r'^main/grain/addchild$', GrainAddChildView.as_view(),name="main.grain.addchild"),
     url(r'^main/sns$', SnsView.as_view(),name="main.sns"),
     url(r'^main/my$', MyView.as_view(),name="main.my"),
 ]
