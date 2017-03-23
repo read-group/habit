@@ -127,10 +127,10 @@ class ActivityService(JsonResultService):
 
                 # 平台米仓修改
                 sysAccountHistory=SysAccountHistory()
-                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE.sysFreeOutMily
+                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMily"]
                 sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
                 # 查询米仓类型的系统账户
-                sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE.rice)
+                sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE["rice"])
                 sysAccountHistory.sysAccount=sysAccount
                 sysAccountHistory.save()
 
