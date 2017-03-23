@@ -114,6 +114,12 @@ class ActivityService(JsonResultService):
             orgActivityHistory.activity=act
             orgActivityHistory.habits=habitStr
             orgActivityHistory.save()
+
+            # 免费参加的活动类型,需要增加系统账户的账务记录，减少系统米粒账户
+            # 需要增肌个人米粒账户的账务记录，增加家长账户的米粒余额，免费活动结束，剩余的活动米粒将被清空
+            # 增加活动结束的检查服务，在这个服务内会统一计算某个活动每个参与者剩余多少赠送米粒，然后去清零增加平台账户记录以及余额
+
+
             # 构建家庭习惯缓存org:id:habit:id=habit
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             #计算缓存天数

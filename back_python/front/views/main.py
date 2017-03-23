@@ -52,33 +52,45 @@ class MainView(TemplateView):
                         profileTmp.role="3"
                         profileTmp.save()
                 except User.DoesNotExist:
-                    # 创建新的用户信息
-                    userTry=User.objects.create(username=decodeUserInfoJson["openid"])
-                    #创建另一个Profile
-                    # 如果role=家长，就创建一个家庭
-                    orgC=None
-                    if role=="host":
-                        orgC=Org.objects.create(code=decodeUserInfoJson["openid"],name=decodeUserInfoJson["nickname"])
-                    profile=Profile(nickname=decodeUserInfoJson["nickname"],
-                    openid=decodeUserInfoJson["openid"],role=MapEngToRole[role],
-                    imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
-                    profile.save()
-                    #创建三个个人账户（米仓、现金、押金）
-                    accountMily=Account()
-                    accountMily.accountType="rice"
-                    accountMily.profile=profile
-                    accountMily.save()
-                    accountCash=Account()
-                    accountCash.accountType="cash"
-                    accountCash.profile=profile
-                    accountCash.save()
-                    accountDeposit=Account()
-                    accountDeposit.accountType="deposit"
-                    accountDeposit.profile=profile
-                    accountDeposit.save()
+                    if role!="child":
+                        
+                        # 创建新的用户信息
+                        userTry=User.objects.create(username=decodeUserInfoJson["openid"])
+                        #创建另一个Profile
+                        # 如果role=家长，就创建一个家庭
+                        orgC=None
+                        if role=="host":
+                            orgC=Org.objects.create(code=decodeUserInfoJson["openid"],name=decodeUserInfoJson["nickname"])
+                        profile=Profile(nickname=decodeUserInfoJson["nickname"],
+                        openid=decodeUserInfoJson["openid"],role=MapEngToRole[role],
+                        imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
+                        profile.save()
+                        #创建三个个人账户（米仓、现金、押金）
+                        accountMily=Account()
+                        accountMily.accountType="rice"
+                        accountMily.profile=profile
+                        accountMily.save()
+                        accountCash=Account()
+                        accountCash.accountType="cash"
+                        accountCash.profile=profile
+                        accountCash.save()
+                        accountDeposit=Account()
+                        accountDeposit.accountType="deposit"
+                        accountDeposit.profile=profile
+                        accountDeposit.save()
                 finally:
                     #登录
-                    login(request,userTry)
+                    # 只要不是学生，就登录
+                    if role=="teacher":
+                        #重定向到一个老师的main页面
+                        login(request,userTry)
+                        return
+                    if role=="child" & userTry is None:
+                        #重定向到孩子登录的页面，用户名和密码，提交后验证通过需要修改
+                        return
+                    else:
+                        login(request,userTry)
+
             except (Exception,) as e:
                 logger.error(e)
                 import sys

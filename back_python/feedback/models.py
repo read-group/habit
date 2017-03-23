@@ -23,6 +23,11 @@ class OrgActivityHistory(models.Model):
     )
     # 逗号分割，每个习惯id１:允许请假天数，d２:允许请假天数
     habits=models.CharField(max_length=150,null=True,blank=True,verbose_name="习惯")
+    # 活动检查服务，会遍历每个活动历史记录，如果到达结束时间就要设置活动为结束状态
+    # 就要检查这个活动的类型，是否是免费，如果是免费，需要
+    getMily=models.IntegerField(default=0,verbose_name="活动赠米")
+    isFree=models.BooleanField(default=True,verbose_name="是否免费")
+
     lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
     enableLazyFund=models.BooleanField(default=False,verbose_name="是否参与懒人基金")
     def __str__(self):

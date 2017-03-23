@@ -10,6 +10,12 @@ ACTIVITY_CAT_CHOICES = (
     ('DONATE', '捐赠'),#押金赠米，完成了返还押金或者只计算体力值
     ('Market', '市场'),#重点表扬
 )
+# Create your models here.
+ACTIVITY_STATUS = (
+    (0, '未开始'),
+    (1, '进行中'),
+    (-1, '已结束'),
+)
 class Activity(EntityBase):
     startTime=models.DateTimeField(verbose_name="开始日期")
     endTime=models.DateTimeField(verbose_name="结束日期")
@@ -25,7 +31,7 @@ class Activity(EntityBase):
     uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
     zeroableMily=models.IntegerField(default=0,verbose_name="活动赠米")
-    status=models.BooleanField(default=False,verbose_name="开启状态")
+    status=models.IntegerField(default=0,choices=ACTIVITY_STATUS,verbose_name="活动状态")
     isTop=models.BooleanField(default=False,verbose_name="是否置顶")
     memo=models.TextField(max_length=2048,verbose_name="注意事项")
 
