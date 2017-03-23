@@ -88,7 +88,7 @@ class ActivityService(JsonResultService):
     def activityLoopCheck(self):
         content={}
         try:
-            dnow=datetime.datetime.now
+            dnow=datetime.datetime.now()
             # 查询出未开始和进行中的活动
             activitysRunning=Activity.objects.filter(Q(startTime__lt=dnow) & Q(endTime__gt=dnow))
             activitysRunning.update(status=1)
