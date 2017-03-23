@@ -21,7 +21,7 @@ class ActivityService(JsonResultService):
             logger.error(tag)
             topQuery=(tag=='t')
             logger.error(topQuery)
-            queryCache=Activity.objects.filter(isTop.__exact=topQuery).order_by("createdTime");
+            queryCache=Activity.objects.filter(isTop__exact=topQuery).order_by("createdTime");
             count=queryCache.count();
             acts= queryCache[skip:limit]
             for act in acts:
