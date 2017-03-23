@@ -91,11 +91,10 @@
                 if(vm.currPath)
                   refererUrl=vm.currPath;
                 vm.currPath = this.path;
-                alert(this.path)
-                console.log(this.params)
                 var params=this.params;
                 vm.isLoading=true;
-                fetch(vm.currPath)
+                var fetchUrl=this.path.substring(0,this.path.lastIndexOf("/"))
+                fetch(fetchUrl)
                   .then(function(response) {
                     return response.text()
                   }).then(function(body) {
