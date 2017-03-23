@@ -100,7 +100,6 @@ class ActivityService(JsonResultService):
                 catid=cat["id"]
                 level2=cat["level"]
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
-
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
                     # 去库里查询
@@ -108,6 +107,7 @@ class ActivityService(JsonResultService):
                     cache.set(habitLevelKeyRun,habitTmp,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
 
                 dataTmp=self.toJSON(habitTmp,["id","name"])
+                logger.error("dataTmp...........")
                 rtnArray.append(dataTmp)
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
