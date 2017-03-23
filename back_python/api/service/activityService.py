@@ -87,8 +87,8 @@ class ActivityService(JsonResultService):
             logger.error(user.profile)
             org=user.profile.org
             # 获取活动对象
-            act= Activity.objects.get(pk=actid)
-            logger.error(act.name)
+            activity= Activity.objects.get(pk=actid)
+            logger.error(activity.name)
             logger.error(cats)
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
             habitArray=[]
@@ -112,14 +112,14 @@ class ActivityService(JsonResultService):
             # 构建参加活动历史.
             orgActivityHistory=OrgActivityHistory()
             orgActivityHistory.org=org
-            orgActivityHistory.activity=act
-            if　act.cat=="FREE":
+            orgActivityHistory.activity=activity
+            if　activity.cat=="FREE":
                 orgActivityHistory.isFree=True
 
             else:
                 orgActivityHistory.isFree=False
             # 活动赠米
-            orgActivityHistory.getMily=act.zeroableMily
+            orgActivityHistory.getMily=activity.zeroableMily
             orgActivityHistory.habits=habitStr
             orgActivityHistory.save()
 
