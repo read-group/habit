@@ -14,11 +14,12 @@ import logging
 logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
-    def activitys(self,skip,limit,schema):
+    def activitys(self,skip,limit,schema,tag):
         content={}
         data=[]
         try:
-            queryCache=Activity.objects.order_by("createdTime");
+            topQuery=(tag=='t')
+            queryCache=Activity.objects.filter(isTop.__exact=topQuery).order_by("createdTime");
             count=queryCache.count();
             acts= queryCache[skip:limit]
             for act in acts:

@@ -12,9 +12,10 @@ class ActivityView(View):
         reqData=json.loads(str(req.body,'utf-8'))
         skip=reqData["pageParam"]["skip"]
         limit=skip+reqData["pageParam"]["limit"]
+        tag=reqData["tag"]
         jsResult=None
         try:
-            jsResult= activityService.activitys(skip,limit,req.scheme+"://"+req.META["HTTP_HOST"])
+            jsResult= activityService.activitys(skip,limit,req.scheme+"://"+req.META["HTTP_HOST"],tag)
         except:
             info=sys.exc_info()
             logging.error(info)
