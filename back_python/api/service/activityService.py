@@ -85,7 +85,7 @@ class ActivityService(JsonResultService):
             return self.jsonResult
 
 
-    def activityLoopCheck(self,user):
+    def activityLoopCheck(self):
         content={}
         try:
             dnow=datetime.datetime.now

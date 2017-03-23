@@ -56,7 +56,7 @@ class ActivityLoopCheckView(View):
             # actId=reqData["actId"]
             # cats=reqData["cats"]
             logger.error("check service....")
-            jsResult=activityService.activityLoopCheck(req.user)
+            jsResult=activityService.activityLoopCheck()
         except:
             info=sys.exc_info()
             logger.error(info)
