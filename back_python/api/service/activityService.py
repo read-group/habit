@@ -88,6 +88,7 @@ class ActivityService(JsonResultService):
             org=user.profile.org
             # 获取活动对象
             activity= Activity.objects.get(pk=actid)
+            logger.error(activity.cat)
             logger.error(activity.name)
             logger.error(cats)
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
@@ -113,10 +114,10 @@ class ActivityService(JsonResultService):
             orgActivityHistory=OrgActivityHistory()
             orgActivityHistory.org=org
             orgActivityHistory.activity=activity
-            if　activity.cat=="FREE":
-                orgActivityHistory.isFree=True
-            else:
-                orgActivityHistory.isFree=False
+            # if　activity.cat=="FREE":
+            #     orgActivityHistory.isFree=True
+            # else:
+            #     orgActivityHistory.isFree=False
             # 活动赠米
             orgActivityHistory.getMily=activity.zeroableMily
             orgActivityHistory.habits=habitStr
