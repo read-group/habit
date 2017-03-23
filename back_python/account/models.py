@@ -12,6 +12,7 @@ TRADE_TYPE=(
     ("fee","套餐服务费"),
     ("deposit","押金"),#计入当前参与活动，如果全部打卡，那么全部退还。如果当前无参与活动，那么就不能支付押金。支付押金时，自动按照支付日期以前的打卡次数，返还押金
     ("milyInput","套餐囤米"),
+    ("freeMilyInput","免费的套餐"),
     ("milyInputByDeposit","押金囤米"),
     ("milyOutput","米粒打赏"),
     ("milyOutputByDonate","米粒捐赠"),
@@ -20,17 +21,28 @@ TRADE_TYPE=(
     ("aveDeposit","平均分配懒人押金"),
     ("takeCash","用户提现"),
 )
+MAP_TRADE_TYPE={
+   "freeMilyInput":"freeMilyInput"
+}
 SYS_TRADE_TYPE=(
   ("sysFillMily","平台生产米粒"),
+  ("sysFreeOutMily","平台免费赠送米粒"),
+  ("sysFreeInputMily","平台免费赠送退回米粒"),
   ("sysTakeCash","平台提现"),
   ("sysInitCash","平台预存"),
 )
+MAP_SYS_TRADE_TYPE={
+ "sysFreeOutMily":"sysFreeOutMily"
+}
 #账户类型
 ACCOUNT_TYPE=(
   ("cash","现金"),
   ("rice","米粒"),
   ("deposit","押金"),
 )
+MAP_ACCOUNT_TYPE={
+   "rice":"rice"
+}
 #
 #系统账户
 class SysAccount(models.Model):
@@ -158,6 +170,34 @@ class AccountHistory(models.Model):
     tradeAmount=models.DecimalField(verbose_name="交易额",max_digits=20, decimal_places=2,default=0)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+
+    @classmethod
+    def from_db(cls, db, field_names, values):
+        # Default implementation of from_db() (subject to change and could
+        # be replaced with super()).
+        if len(values) != len(cls._meta.concrete_fields):
+            values = list(values)
+            values.reverse()
+            values = [
+                values.pop() if f.attname in field_names else DEFERRED
+                for f in cls._meta.concrete_fields
+            ]
+        instance = cls(*values)
+        instance._state.adding = False
+        instance._state.db = db
+        # customization to store the original field values on the instance
+        instance._loaded_values = dict(zip(field_names, values))
+        return instance
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            self.account.balance+=self.tradeAmount
+        else:
+            self.account.balance-=self._loaded_values['tradeAmount'];
+            self.account.balance+=self.tradeAmount
+        logger.error(self.account.balance);
+        self.account.save()
+        super(AccountHistory,self).save(*args, **kwargs)
+
     class Meta:
         verbose_name="个人账务"
         verbose_name_plural="个人账务"

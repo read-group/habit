@@ -1,6 +1,7 @@
 from activity.models import Activity
 from django.conf import settings
 from feedback.models import OrgActivityHistory
+from account.models import Account,AccountHistory,SysAccountHistory,SysAccount,MAP_TRADE_TYPE,MAP_ACCOUNT_TYPE,MAP_SYS_TRADE_TYPE
 from habitinfo.models import Habit
 from back.models import JsonResultService
 import sys
@@ -112,8 +113,39 @@ class ActivityService(JsonResultService):
             orgActivityHistory=OrgActivityHistory()
             orgActivityHistory.org=org
             orgActivityHistory.activity=act
+            if　act.cat=="FREE":
+                orgActivityHistory.isFree=True
+
+            else:
+                orgActivityHistory.isFree=False
+            # 活动赠米
+            orgActivityHistory.getMily=act.zeroableMily
             orgActivityHistory.habits=habitStr
             orgActivityHistory.save()
+
+            # 平台米仓修改
+            sysAccountHistory=SysAccountHistory()
+            sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE.sysFreeOutMily
+            sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
+            # 查询米仓类型的系统账户
+            sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE.rice)
+            sysAccountHistory.sysAccount=sysAccount
+            sysAccountHistory.save()
+
+            # #　平台米仓记账
+            # if　orgActivityHistory.getMily>0:
+            #     accountHistory=AccountHistory()
+            #     # 交易类型,免费米粒捐赠
+            #     accountHistory.tradeType=MAP_TRADE_TYPE.freeMilyInput
+            #     accountHistory.activity=act
+            #     accountHistory.org=org
+            #     accountHistory.operator=user.profile
+            #     # 查询出当前
+
+
+
+
+            # 个人账户米仓记账
 
             # 免费参加的活动类型,需要增加系统账户的账务记录，减少系统米粒账户
             # 需要增肌个人米粒账户的账务记录，增加家长账户的米粒余额，免费活动结束，剩余的活动米粒将被清空
