@@ -111,6 +111,7 @@ class ActivityService(JsonResultService):
                 rtnArray.append(dataTmp)
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
+            logger.error("before transaction...........")
             with transaction.atomic():
                 # 构建参加活动历史.
                 orgActivityHistory=OrgActivityHistory()
