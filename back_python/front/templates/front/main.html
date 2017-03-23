@@ -60,7 +60,7 @@
                 htmlcontent:"hello",
                 $refererUrl:null,
                 mainMenu:[
-                {"title":"活动","url":"/main/activity","icon":"glyphicon-tint","isDefault":true},
+                {"title":"活动","url":"/main/activity/t","icon":"glyphicon-tint","isDefault":true},
                 {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous","isDefault":false},
                 {"title":"舞台","url":"/main/sns","icon":"glyphicon-eye-open","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk","isDefault":false}
@@ -140,7 +140,7 @@
                    vm.$currentPageVm=$pageVm;
                   })
               }
-              $av.router.add("/main/activity", callback);
+              $av.router.add("/main/activity/:tag", callback);
               $av.router.add("/main/activity/detail/:id", callback);
               $av.router.add("/main/grain", callback);
               $av.router.add("/main/grain/addchild", callback);
@@ -219,7 +219,7 @@
 
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
-              $av.router.navigate(hash || '/main/activity', 0)//默认打开
+              $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
 
               $av.scan(document.getElementById("main"),[vm])
               //设置初始激活
