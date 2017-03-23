@@ -114,10 +114,10 @@ class ActivityService(JsonResultService):
             orgActivityHistory=OrgActivityHistory()
             orgActivityHistory.org=org
             orgActivityHistory.activity=activity
-            # if　activity.cat=="FREE":
-            #     orgActivityHistory.isFree=True
-            # else:
-            #     orgActivityHistory.isFree=False
+            if activity.cat=="FREE":
+                orgActivityHistory.isFree=True
+            else:
+                orgActivityHistory.isFree=False
             # 活动赠米
             orgActivityHistory.getMily=activity.zeroableMily
             orgActivityHistory.habits=habitStr
