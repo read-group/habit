@@ -42,7 +42,8 @@ class ActivityService(JsonResultService):
         try:
             act= Activity.objects.get(pk=id)
             # 检查活动状态，如果当前查看的时间大于活动开始时间而小于活动结束时间
-            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','zeroableMily'])
+
+            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','zeroableMily','status'])
             dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
             cats=[]
