@@ -157,7 +157,7 @@ class ActivityService(JsonResultService):
             # 构建家庭习惯缓存org:id:habit:id=habit
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             #计算缓存天数
-            cacheDays=(act.endTime-act.startTime).days+1
+            cacheDays=(activity.endTime-activity.startTime).days+1
 
             org_activitys=cache.get(orgActivityKey)
             if not org_activitys:
