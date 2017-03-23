@@ -56,7 +56,6 @@
         $id:"activity",
         hello:'20天习惯养成',
         activitys:[],
-        tops:[],
         helpClick:function(){
           //$yml.page.$router.pop();
           console.log("helpClick")
@@ -64,8 +63,6 @@
         cleanUp:function(){
           this.activitys.length=0;
           this.activitys=[]
-          this.tops.length=0;
-          this.tops=[];
         },
         activeSet:function(e){
           $(".list-group-item.active").removeClass("active")
@@ -83,7 +80,7 @@
       //       $yml.page.$vmPage.cats=res.content;
       //     }
       // );
-      alert(JSON.stringify(params))
+
       //初始化分页器
       var pager= $yml.pagination.New({
           currentPage:1,
@@ -94,6 +91,8 @@
         },{
           ctor:function(){
             this.initData(function(res){
+               //如果
+               self.$vmPage.cleanUp()
                initUi(res);
                //console.log(res)
             });
