@@ -115,7 +115,6 @@ class ActivityService(JsonResultService):
             orgActivityHistory.activity=activity
             if　activity.cat=="FREE":
                 orgActivityHistory.isFree=True
-
             else:
                 orgActivityHistory.isFree=False
             # 活动赠米
