@@ -1,4 +1,6 @@
 from django.db import transaction
+from django.db.models import Q
+import datetime
 from activity.models import Activity
 from django.conf import settings
 from feedback.models import OrgActivityHistory
@@ -39,6 +41,7 @@ class ActivityService(JsonResultService):
         content={}
         try:
             act= Activity.objects.get(pk=id)
+            # 检查活动状态，如果当前查看的时间大于活动开始时间而小于活动结束时间
             dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','zeroableMily'])
             dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
@@ -81,6 +84,26 @@ class ActivityService(JsonResultService):
         finally:
             return self.jsonResult
 
+
+    def activityLoopCheck(self,user):
+        content={}
+        try:
+            dnow=datetime.datetime.now
+            # 查询出未开始和进行中的活动
+            activitysRunning=Activity.objects.filter(Q(startTime__lt=dnow) & Q(endTime__gt=dnow))
+            activitysRunning.update(status=1)
+            activitysEnding=Activity.objects.filter(Q(endTime__lte=dnow))
+            activitysEnding.update(status=-1)
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
+
     def activityJoin(self,user,actid,cats):
         content={}
         try:
@@ -89,6 +112,8 @@ class ActivityService(JsonResultService):
             org=user.profile.org
             # 获取活动对象
             activity= Activity.objects.get(pk=actid)
+            #检查活动状态，如果当前时间大于开始时间
+
             logger.error(activity.cat)
             logger.error(activity.name)
             logger.error(cats)
@@ -178,7 +203,6 @@ class ActivityService(JsonResultService):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult
-
 
 
 

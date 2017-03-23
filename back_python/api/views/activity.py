@@ -46,3 +46,18 @@ class ActivityJoinlView(View):
             info=sys.exc_info()
             logger.error(info)
         return jsResult.renderToJsonResponse()
+
+class ActivityLoopCheckView(View):
+    def get(self,req,*arg,**kwargs):
+        jsResult=None
+        try:
+            # logger.error("in join....")
+            # reqData=json.loads(str(req.body,'utf-8'))
+            # actId=reqData["actId"]
+            # cats=reqData["cats"]
+            logger.error("check service....")
+            jsResult=activityService.activityLoopCheck(req.user)
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+        return jsResult.renderToJsonResponse()

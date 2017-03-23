@@ -1,2 +1,2 @@
 from .wxwelcome import WxWelcomeView
-from .activity import ActivityView,ActivityDetailView,ActivityJoinlView
+from .activity import ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView

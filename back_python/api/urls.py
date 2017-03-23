@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoinlView
+from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
      url(r'^activity/detail$',ActivityDetailView.as_view()),
      url(r'^activity/join$',ActivityJoinlView.as_view()),
+     url(r'^activity/check$',ActivityLoopCheckView.as_view()),
 ]
