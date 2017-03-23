@@ -1,3 +1,4 @@
+from django.db import transaction
 from activity.models import Activity
 from django.conf import settings
 from feedback.models import OrgActivityHistory
@@ -110,27 +111,28 @@ class ActivityService(JsonResultService):
                 rtnArray.append(dataTmp)
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
-            # 构建参加活动历史.
-            orgActivityHistory=OrgActivityHistory()
-            orgActivityHistory.org=org
-            orgActivityHistory.activity=activity
-            if activity.cat=="FREE":
-                orgActivityHistory.isFree=True
-            else:
-                orgActivityHistory.isFree=False
-            # 活动赠米
-            orgActivityHistory.getMily=activity.zeroableMily
-            orgActivityHistory.habits=habitStr
-            orgActivityHistory.save()
+            with transaction.atomic():
+                # 构建参加活动历史.
+                orgActivityHistory=OrgActivityHistory()
+                orgActivityHistory.org=org
+                orgActivityHistory.activity=activity
+                if activity.cat=="FREE":
+                    orgActivityHistory.isFree=True
+                else:
+                    orgActivityHistory.isFree=False
+                # 活动赠米
+                orgActivityHistory.getMily=activity.zeroableMily
+                orgActivityHistory.habits=habitStr
+                orgActivityHistory.save()
 
-            # 平台米仓修改
-            sysAccountHistory=SysAccountHistory()
-            sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE.sysFreeOutMily
-            sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
-            # 查询米仓类型的系统账户
-            sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE.rice)
-            sysAccountHistory.sysAccount=sysAccount
-            sysAccountHistory.save()
+                # 平台米仓修改
+                sysAccountHistory=SysAccountHistory()
+                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE.sysFreeOutMily
+                sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
+                # 查询米仓类型的系统账户
+                sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE.rice)
+                sysAccountHistory.sysAccount=sysAccount
+                sysAccountHistory.save()
 
             # #　平台米仓记账
             # if　orgActivityHistory.getMily>0:

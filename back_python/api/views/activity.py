@@ -4,7 +4,7 @@ import json
 import logging
 logger = logging.getLogger("django")
 from django.views.generic.base import View
-from django.db import transaction
+
 from api.service import activityService
 # Create your views here.
 class ActivityView(View):
@@ -33,7 +33,6 @@ class ActivityDetailView(View):
         return jsResult.renderToJsonResponse()
 
 class ActivityJoinlView(View):
-    @transaction.atomic
     def post(self,req,*arg,**kwargs):
         jsResult=None
         try:
