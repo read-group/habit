@@ -23,6 +23,7 @@ class MainView(TemplateView):
         # logger.debug("begin main")
         # # logger.debug(request.user.is_authenticated)
         if(not request.user.is_authenticated):
+            logger.error("not logined=================================")
             fp1=None
             fp2=None
             try:
