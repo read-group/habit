@@ -17,6 +17,8 @@ class GrainService(JsonResultService):
     def family(self,familyOrg):
         content={}
         data=[]
+        logger.error("GrainService")
+        logger.error(familyOrg.id)
         try:
             profiles=Profile.objects.filter(org__id__exact=familyOrg.id).order_by("createdTime");
             for profile in profiles:
