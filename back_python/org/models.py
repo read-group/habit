@@ -31,7 +31,7 @@ class Profile(models.Model):
     nickname=models.CharField(max_length=20,null=True,blank=True)
     openid=models.CharField(max_length=128,null=True,blank=True)
     role=models.CharField(max_length=2,choices=PROFILE_ROLE,verbose_name="身份")
-    imgUrl=models.CharField(max_length=128,null=True,blank=True)
+    imgUrl=models.CharField(max_length=256,null=True,blank=True)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     # disabled=models.BooleanField(default=False,verbose_name="是否禁用")
