@@ -12,6 +12,7 @@ import json
 from django.core.cache import cache
 import logging
 logger = logging.getLogger("django")
+from org.models import Profile
 # Create your views here.
 class GrainService(JsonResultService):
     def family(self,familyOrg):
