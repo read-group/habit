@@ -53,7 +53,6 @@ class MainView(TemplateView):
                         profileTmp.save()
                 except User.DoesNotExist:
                     if role!="child":
-                        
                         # 创建新的用户信息
                         userTry=User.objects.create(username=decodeUserInfoJson["openid"])
                         #创建另一个Profile
@@ -65,6 +64,7 @@ class MainView(TemplateView):
                         openid=decodeUserInfoJson["openid"],role=MapEngToRole[role],
                         imgUrl=decodeUserInfoJson["headimgurl"],user=userTry,org=orgC)
                         profile.save()
+                        logger.error(imgUrl)
                         #创建三个个人账户（米仓、现金、押金）
                         accountMily=Account()
                         accountMily.accountType="rice"
