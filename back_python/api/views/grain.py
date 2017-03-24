@@ -4,7 +4,6 @@ import json
 import logging
 logger = logging.getLogger("django")
 from django.views.generic.base import View
-
 from api.service import grainService
 # Create your views here.
 class GrainFamilyView(View):
