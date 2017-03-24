@@ -46,23 +46,26 @@
     vmDef:function(){
       return {
         $id:"grain",
-        hello:'30天习惯养成',
+        familys:[],
         backClick:function(){
           //$yml.page.$router.pop();
         },
         cleanUp:function(){
-          console.log("clean up...")
+          this.familys.length=0;
+          this.familys=[]
         }
       };
     },
     pageReady:function(){
       var self=this;
       console.log(" grain pageReady");
-      // $yml.ajax('/api/habit/cats',null,
-      // 　  function(res){
-      //       $yml.page.$vmPage.cats=res.content;
-      //     }
-      // );
+      $yml.ajax('/api/grain/family',null,
+      　  function(res){
+            res.content.data.forEach(function(r){
+              $yml.page.$vmPage.familys.push(r)
+            });
+          }
+      );
     }
   });
   </script>
