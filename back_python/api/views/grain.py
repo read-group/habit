@@ -9,6 +9,7 @@ from api.service import grainService
 # Create your views here.
 class GrainFamilyView(View):
     def post(self,req,*arg,**kwargs):
+        logger.error("GrainFamilyView")
         jsResult=None
         try:
             jsResult= grainService.family(req.user.profile.org)
