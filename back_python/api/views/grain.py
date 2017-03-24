@@ -11,6 +11,7 @@ class GrainFamilyView(View):
         logger.error("GrainFamilyView")
         jsResult=None
         try:
+            logger.error(req.user.profile.org.id)
             jsResult= grainService.family(req.user.profile.org)
         except:
             info=sys.exc_info()
