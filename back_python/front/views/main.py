@@ -99,6 +99,7 @@ class MainView(TemplateView):
                 fp1.close()
                 fp2.close()
         else:
+            logger.error("logined=================================")
             logger.debug(request.user.username)
         # 去微信认证
         # 认证通过后，需要创建用户，并login
