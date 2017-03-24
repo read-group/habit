@@ -21,12 +21,13 @@ class GrainService(JsonResultService):
         logger.error(familyOrg.id)
         try:
             profiles=Profile.objects.filter(org__id__exact=familyOrg.id).order_by("createdTime");
+            logger.error(profiles)
             for profile in profiles:
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
                 data.append(dataTmp)
             content["data"]=data
             logger.error(data)
-        except (Exception ,e):
+        except:
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
