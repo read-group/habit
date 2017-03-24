@@ -49,7 +49,7 @@ class MainView(TemplateView):
                 try:
                     userTry= User.objects.get(username__exact=decodeJson["openid"])
                     profileTmp=userTry.profile
-                    if role=="teacher" & profileTmp.role=="1":
+                    if role=="teacher" and profileTmp.role=="1":
                         profileTmp.role="3"
                         profileTmp.save()
                 except User.DoesNotExist:
@@ -85,7 +85,7 @@ class MainView(TemplateView):
                         #重定向到一个老师的main页面
                         login(request,userTry)
                         return
-                    if role=="child" & userTry is None:
+                    if role=="child" and userTry is None:
                         #重定向到孩子登录的页面，用户名和密码，提交后验证通过需要修改
                         return
                     else:
