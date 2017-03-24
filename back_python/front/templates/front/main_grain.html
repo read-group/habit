@@ -20,18 +20,17 @@
       <ul class="list-group">
         <li  ms-for="(i,item) in @familys"   class="list-group-item">
           <div class="media" style="margin-top:5px">
-              <div class="media-body">
+            <a  ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-left">
+                <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
+            </a>
+            <div class="media-body">
                 <h4 class="media-heading">
-                    <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
+
                 </h4>
                 <br/>
-              </div>
-              <a  ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
-                  <div>
-                     {? @item.imgUrl ?}
-                  </div>
-              </a>
-           </div>
+            </div>
+
+          </div>
         </li>
       </ul>
     </div>
