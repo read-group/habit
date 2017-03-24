@@ -25,6 +25,7 @@ class GrainService(JsonResultService):
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
                 data.append(dataTmp)
             content["data"]=data
+            logger.error(data)
         except (Exception ,e):
             info=sys.exc_info()
             logging.error(info)
