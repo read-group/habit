@@ -151,7 +151,7 @@ class ActivityService(JsonResultService):
                 else:
                     orgActivityHistory.isFree=False
                 # 活动赠米
-                orgActivityHistory.getMily=activity.zeroableMily
+                # orgActivityHistory.getMily=activity.zeroableMily
                 orgActivityHistory.habits=habitStr
                 orgActivityHistory.save()
 
@@ -164,24 +164,8 @@ class ActivityService(JsonResultService):
                 sysAccountHistory.sysAccount=sysAccount
                 sysAccountHistory.save()
 
-            # #　平台米仓记账
-            # if　orgActivityHistory.getMily>0:
-            #     accountHistory=AccountHistory()
-            #     # 交易类型,免费米粒捐赠
-            #     accountHistory.tradeType=MAP_TRADE_TYPE.freeMilyInput
-            #     accountHistory.activity=act
-            #     accountHistory.org=org
-            #     accountHistory.operator=user.profile
-            #     # 查询出当前
 
 
-
-
-            # 个人账户米仓记账
-
-            # 免费参加的活动类型,需要增加系统账户的账务记录，减少系统米粒账户
-            # 需要增肌个人米粒账户的账务记录，增加家长账户的米粒余额，免费活动结束，剩余的活动米粒将被清空
-            # 增加活动结束的检查服务，在这个服务内会统一计算某个活动每个参与者剩余多少赠送米粒，然后去清零增加平台账户记录以及余额
 
 
             # 构建家庭习惯缓存org:id:habit:id=habit
