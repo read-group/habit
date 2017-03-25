@@ -21,7 +21,7 @@ class GrainFamilyAddMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyAddMemberView")
         reqData=json.loads(str(req.body,'utf-8'))
-        childinfo=reqData["pageParam"]["childinfo"]
+        childinfo=reqData["childinfo"]
         jsResult=None
         try:
             logger.error(req.user.profile.org.id)
