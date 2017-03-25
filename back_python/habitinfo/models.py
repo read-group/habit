@@ -6,6 +6,14 @@ HABIT_LEVEL_CHOICES = (
     ('M', '中'),
     ('H', '高'),
 )
+HABIT_LEVEL_PRAISE = (
+    (100, '100'),
+    (200, '200'),
+    (300, '300'),
+    (400, '400'),
+    (500, '500'),
+    (600, '600'),
+)
 class HabitCatalog(EntityBase):
     def __str__(self):
         return self.name;
@@ -15,7 +23,7 @@ class HabitCatalog(EntityBase):
 
 class Habit(EntityBase):
     level=models.CharField(max_length=4,choices=HABIT_LEVEL_CHOICES,verbose_name="难度")
-    freePraiseMilyUnit=models.IntegerField(default=0,verbose_name="打卡奖励基数")
+    freePraiseMilyUnit=models.IntegerField(default=0,choices=HABIT_LEVEL_PRAISE,verbose_name="打卡奖励基数")
     freePraiseMilyStep=models.IntegerField(default=0,verbose_name="打卡奖励步进数")
     habitCatalog=models.ForeignKey(
         'HabitCatalog',
