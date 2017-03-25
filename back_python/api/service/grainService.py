@@ -36,6 +36,7 @@ class GrainService(JsonResultService):
         finally:
             return self.jsonResult
     def addmember(self,familyOrg,childinfo):
+        logger.error("addmember ")
         content={}
         try:
             with transaction.atomic():
