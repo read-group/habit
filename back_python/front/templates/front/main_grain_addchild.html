@@ -63,10 +63,10 @@ $yml.page=$yml.pageBase.New(null,{
       saveClick:function(){
          var params={};
          params.headingImgUrl=$yml.page.$vmPage.headUrl;
-         params.nickName=$yml.page.$vmPage.nickname;
+         params.nickname=$yml.page.$vmPage.nickname;
          params.password=$yml.page.$vmPage.password;
          params.classid=$yml.page.$vmPage.classid;
-         if($.trim(params.nickName)==""){
+         if($.trim(params.nickname)==""){
            alert("昵称不能为空。");
            return false;
          }
