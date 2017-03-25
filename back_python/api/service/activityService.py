@@ -156,19 +156,14 @@ class ActivityService(JsonResultService):
                 orgActivityHistory.habits=habitStr
                 orgActivityHistory.save()
 
-                # 平台米仓修改
-                sysAccountHistory=SysAccountHistory()
-                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMily"]
-                sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
-                # 查询米仓类型的系统账户
-                sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE["rice"])
-                sysAccountHistory.sysAccount=sysAccount
-                sysAccountHistory.save()
-
-
-
-
-
+                # # 平台米仓修改
+                # sysAccountHistory=SysAccountHistory()
+                # sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMily"]
+                # sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
+                # # 查询米仓类型的系统账户
+                # sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE["rice"])
+                # sysAccountHistory.sysAccount=sysAccount
+                # sysAccountHistory.save()
             # 构建家庭习惯缓存org:id:habit:id=habit
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             #计算缓存天数
