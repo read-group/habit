@@ -1,5 +1,6 @@
 from django.db import transaction
 from django.db.models import Q
+from django.contrib.auth.models import User
 from org.models import Profile,MapEngToRole,Org
 from school.models import ClassGroup
 import datetime
