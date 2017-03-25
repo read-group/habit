@@ -1,6 +1,7 @@
 from django.db import transaction
 from django.db.models import Q
-from org.models import Profile
+from org.models import Profile,MapEngToRole,Org
+from school.models import ClassGroup
 import datetime
 from activity.models import Activity
 from django.conf import settings
@@ -34,5 +35,30 @@ class GrainService(JsonResultService):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult
+    def addmember(self,familyOrg,childinfo):
+        content={}
+        try:
+            with transaction.atomic():
+                # 创建新的用户信息
+                userC=User.objects.create(username=childinfo["nickname"])
+                # 查询班级
+                classGroupF=None
+                try:
+                    classGroupF=ClassGroup.objects.get(pk=int(childinfo["classid"]))
+                except ClassGroup.DoesNotExist:
+                    self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
+                #创建另一个Profile
+                profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
+                imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,classGroup=classGroupF)
+                profile.save()
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
 
 grainService=GrainService()
