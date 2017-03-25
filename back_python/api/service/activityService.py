@@ -23,6 +23,8 @@ class ActivityService(JsonResultService):
             logger.error(topQuery)
             queryCache=Activity.objects.filter(isTop__exact=topQuery).filter(status__exact=1).order_by("createdTime");
             count=queryCache.count();
+            logger.error("query count....................")
+            logger.error(count)
             acts= queryCache[skip:limit]
             for act in acts:
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop"])
