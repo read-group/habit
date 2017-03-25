@@ -8,7 +8,7 @@ class ClassInline(admin.TabularInline):
     model = ClassGroup
     extra = 3
 class SchoolAdmin(admin.ModelAdmin):
-    list_display=('code','name')
+    list_display=('id','code','name')
     inlines = [ClassInline]
 
 
