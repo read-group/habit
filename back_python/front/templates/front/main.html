@@ -59,6 +59,7 @@
                 isRoot:true,
                 htmlcontent:"hello",
                 $refererUrl:null,
+                $history:["/main/activity/t"]
                 mainMenu:[
                 {"title":"活动","url":"/main/activity/t","icon":"glyphicon-tint","isDefault":true},
                 {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous","isDefault":false},
@@ -110,6 +111,8 @@
                   vm.$refererUrl=vm.currPath;//缓存上次路径
                 //记录当前路径
                 vm.currPath = this.path;
+                //压入访问路径到栈
+                vm.$history.push(vm.currPath);
                 var params=this.params;
                 vm.isLoading=true;
                 var fetchUrl=vm.currPath;
