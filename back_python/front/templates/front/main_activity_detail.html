@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
-            <a ms-attr="{href:'#!'+@fromUrl}">
+            <a ms-attr="{href:'#!/main/activity/t'}">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
             </a>
           </div>
@@ -108,7 +108,6 @@
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
         title:"报名",
-        fromUrl:"",
         digClick:function(){
           this.isDiagnose=true;
           this.isDetail=false;
@@ -166,11 +165,9 @@
         }
       };
     },
-    pageReady:function(paramObj,fromUrl){
+    pageReady:function(paramObj){
       var self=this;
       console.log("pageReady");
-      $yml.page.$vmPage.fromUrl=fromUrl
-      alert(fromUrl);
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             // alert(JSON.stringify(res))

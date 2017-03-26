@@ -128,7 +128,6 @@
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
                      cleanUp(refererUrl,$pageVm)
-                     alert(refererUrl)
                      $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
@@ -136,7 +135,6 @@
                      $pageVm=$av.vmodels[pageVmEleName];
                      cleanUp(refererUrl,$pageVm)
                      $av.scan(ele,[vm,$pageVm]);
-                     alert(refererUrl)
                      $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                    }
                   })
