@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
-import json
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from org.models import Profile,MapEngToRole,Org
@@ -23,10 +22,16 @@ class MainView(TemplateView):
         # logger.debug("begin main")
         # # logger.debug(request.user.is_authenticated)
         if(not request.user.is_authenticated):
+            userTmp= User.objects.get(pk=11)
+            login(request,userTmp)
+        return super(MainView,self).get(request,*args,**kwargs)
+
+        if(not request.user.is_authenticated):
             logger.error("not logined=================================")
             fp1=None
             fp2=None
             try:
+
                 role=request.GET["role"];
                 code=request.GET["code"];
                 wxinfoUrl=settings.WX["WX_AUTH_URL_INFO"].replace("{code}",code);
