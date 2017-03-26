@@ -15,7 +15,7 @@ class ActivityView(TemplateView):
 class ActivityDetailView(TemplateView):
     template_name="front/main_activity_detail.html"
     def get_context_data(self, **kwargs):
-        ctx=super(HomeMobileView,self).get_context_data(**kwargs)
+        ctx=super(ActivityDetailView,self).get_context_data(**kwargs)
         ctx["req"]=self.request
         return ctx
     def get(self,request,*args,**kwargs):
