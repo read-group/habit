@@ -92,7 +92,6 @@
                   vm.$currentPageVm.cleanUp()
                   if(refererUrl){//说明是子页面返回操作
                     //设置当前data-url属性等于子页面url的元素，处于激活状态
-                    console.log(refererUrl)
                     var m=function(x){
                       return function(){
                         $("li[data-url='"+x+"']").addClass("active")
@@ -100,7 +99,7 @@
                     }
                     setTimeout(m(refererUrl),100);
                    //  console.log($li)
-                    refererUrl=null;
+                    //refererUrl=null;
                   }
                 }
                 //保存当前的pageVm
