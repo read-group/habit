@@ -108,10 +108,8 @@
               }
               function callback(p){
                 var refererUrl=null;
-                var fromUrl="/main/activity/t";//初始
                 if(vm.currPath)
                   refererUrl=vm.currPath;//缓存上次路径
-                  fromUrl=refererUrl;
                 //记录当前路径
                 vm.currPath = this.path;
                 var params=this.params;
@@ -128,23 +126,18 @@
                    var pageVmEleName= $yml.page.getVmEleName();
                    var ele=document.getElementById(pageVmEleName);
                    var  $pageVm=null;
-
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
-                     alert(refererUrl)
                      cleanUp(refererUrl,$pageVm)
-                     $yml.page.vmInitAfter(vm,$pageVm,params,fromUrl);
+                     $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
-                      alert(refererUrl)
                      cleanUp(refererUrl,$pageVm)
-
                      $av.scan(ele,[vm,$pageVm]);
-                     $yml.page.vmInitAfter(vm,$pageVm,params,fromUrl);
+                     $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                    }
-
                   })
               }
               $av.router.add("/main/activity/:tag", callback);
