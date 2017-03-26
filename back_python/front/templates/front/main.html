@@ -127,14 +127,14 @@
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
                      cleanUp($pageVm)
-                     $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
+                     $yml.page.vmInitAfter(vm,$pageVm,params);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
                      cleanUp($pageVm)
                      $av.scan(ele,[vm,$pageVm]);
-                     $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
+                     $yml.page.vmInitAfter(vm,$pageVm,params);
                    }
                   })
               }
