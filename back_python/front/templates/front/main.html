@@ -131,7 +131,7 @@
                      $pageVm= $yml.page.vmInit();
 
                      cleanUp(refererUrl,$pageVm)
-                     $yml.page.vmInitAfter(vm,$pageVm,params);
+                     $yml.page.vmInitAfter(vm,$pageVm,params,fromUrl);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
@@ -140,7 +140,7 @@
                      cleanUp(refererUrl,$pageVm)
 
                      $av.scan(ele,[vm,$pageVm]);
-                     $yml.page.vmInitAfter(vm,$pageVm,params);
+                     $yml.page.vmInitAfter(vm,$pageVm,params,fromUrl);
                    }
 
                   })

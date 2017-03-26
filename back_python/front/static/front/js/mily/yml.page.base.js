@@ -31,7 +31,7 @@
 			//this.$vmPage=vmPage;
 			return vmPage;
 		},
-		vmInitAfter:function(vmMain,vmPage,paramObj){
+		vmInitAfter:function(vmMain,vmPage,paramObj,fromUrl){
 			this.$vmMain=vmMain;
 			this.$vmPage=vmPage;
 			if(!this.pageReady){
@@ -43,7 +43,7 @@
 	      //    paramObj=avalon.unparam(params[1]);
 	      // }
 				//注入传入的参数
-				this.pageReady(paramObj);
+				this.pageReady(paramObj,fromUrl);
 			}
 		}
 	});

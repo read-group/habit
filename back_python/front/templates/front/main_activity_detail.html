@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
-            <a  href="#!{{refererUrl}}">
+            <a ms-attr="{href:'#!'+@fromUrl}">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
             </a>
           </div>
@@ -13,7 +13,6 @@
             <!-- <a>
               <i class="fa fa-cart-plus fa-2x"></i>
             </a> -->
-            {{refererUrl}}
           </div>
       </div>
     </nav>
@@ -109,6 +108,7 @@
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
         title:"报名",
+        fromUrl:""
         digClick:function(){
           this.isDiagnose=true;
           this.isDetail=false;
@@ -166,9 +166,10 @@
         }
       };
     },
-    pageReady:function(paramObj){
+    pageReady:function(paramObj,fromUrl){
       var self=this;
       console.log("pageReady");
+      $yml.page.$vmPage.fromUrl=fromUrl
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
             // alert(JSON.stringify(res))

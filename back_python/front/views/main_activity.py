@@ -16,7 +16,7 @@ class ActivityDetailView(TemplateView):
     template_name="front/main_activity_detail.html"
     def get_context_data(self, **kwargs):
         ctx=super(ActivityDetailView,self).get_context_data(**kwargs)
-        ctx["refererUrl"]=self.request.META['HTTP_REFERER']
+        # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
         return ctx
     def get(self,request,*args,**kwargs):
         return super(ActivityDetailView,self).get(request,*args,**kwargs)
