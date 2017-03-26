@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
-            <a ms-attr="{href:'#!/main/activity/t'}">
+            <a ms-attr="{href:'#!'+@refererUrl}">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
             </a>
           </div>
@@ -108,6 +108,7 @@
         isDetail:true,
         rptOk:false,//已经成功报名，考虑在后台利用缓存
         title:"报名",
+        refererUrl:"",
         digClick:function(){
           this.isDiagnose=true;
           this.isDetail=false;
@@ -170,7 +171,7 @@
       console.log("pageReady");
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
-            alert(self.$vmMain.$refererUrl)
+            $yml.page.$vmPage.refererUrl=self.$vmMain.$refererUrl
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
