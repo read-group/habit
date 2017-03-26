@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
-            <a  href="#!/main/activity/t">
+            <a  href="#!{{req.path}}">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
             </a>
           </div>
@@ -13,6 +13,7 @@
             <!-- <a>
               <i class="fa fa-cart-plus fa-2x"></i>
             </a> -->
+            {{req.path}}
           </div>
       </div>
     </nav>
