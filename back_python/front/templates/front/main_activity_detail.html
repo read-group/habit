@@ -171,7 +171,8 @@
       console.log("pageReady");
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
-            $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop().pop()
+      　　　 self.$vmMain.$history.pop();
+            $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
