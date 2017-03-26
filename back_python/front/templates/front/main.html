@@ -86,29 +86,28 @@
                   $("div",el.currentTarget).addClass("active")
                 }
               });
-              function cleanUp(refererUrl,$pageVm) {
+              function cleanUp($pageVm) {
                 //子页面离开时，调用清理方法
                 if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
                   vm.$currentPageVm.cleanUp()
-                  if(refererUrl){//说明是子页面返回操作
-                    //设置当前data-url属性等于子页面url的元素，处于激活状态
-                    var m=function(x){
-                      return function(){
-                        $("li[data-url='"+x+"']").addClass("active")
-                      };
-                    }
-                    setTimeout(m(refererUrl),100);
-                   //  console.log($li)
-                    //refererUrl=null;
-                  }
+                  // if(refererUrl){//说明是子页面返回操作
+                  //   //设置当前data-url属性等于子页面url的元素，处于激活状态
+                  //   var m=function(x){
+                  //     return function(){
+                  //       $("li[data-url='"+x+"']").addClass("active")
+                  //     };
+                  //   }
+                  //   setTimeout(m(refererUrl),100);
+                  //  //  console.log($li)
+                  //   //refererUrl=null;
+                  // }
                 }
                 //保存当前的pageVm
                 vm.$currentPageVm=$pageVm;
               }
               function callback(p){
-                var refererUrl=null;
                 if(vm.currPath)
-                  refererUrl=vm.currPath;//缓存上次路径
+                  vm.$refererUrl=vm.currPath;//缓存上次路径
                 //记录当前路径
                 vm.currPath = this.path;
                 var params=this.params;
@@ -127,13 +126,13 @@
                    var  $pageVm=null;
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
-                     cleanUp(refererUrl,$pageVm)
+                     cleanUp($pageVm)
                      $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
-                     cleanUp(refererUrl,$pageVm)
+                     cleanUp($pageVm)
                      $av.scan(ele,[vm,$pageVm]);
                      $yml.page.vmInitAfter(vm,$pageVm,params,refererUrl);
                    }
