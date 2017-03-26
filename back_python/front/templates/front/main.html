@@ -112,7 +112,6 @@
                 if(vm.currPath)
                   refererUrl=vm.currPath;//缓存上次路径
                   fromUrl=refererUrl;
-
                 //记录当前路径
                 vm.currPath = this.path;
                 var params=this.params;
@@ -132,14 +131,14 @@
 
                    if(!$av.vmodels[pageVmEleName]){
                      $pageVm= $yml.page.vmInit();
-
+                     alert(refererUrl)
                      cleanUp(refererUrl,$pageVm)
                      $yml.page.vmInitAfter(vm,$pageVm,params,fromUrl);
                      $av.scan(ele,[vm,$pageVm]);
                    }else{
                      console.log("pageVmEleName "+pageVmEleName+" already exist...")
                      $pageVm=$av.vmodels[pageVmEleName];
-
+                      alert(refererUrl)
                      cleanUp(refererUrl,$pageVm)
 
                      $av.scan(ele,[vm,$pageVm]);
