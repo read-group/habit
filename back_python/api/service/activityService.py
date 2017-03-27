@@ -66,11 +66,12 @@ class ActivityService(JsonResultService):
                     habitLevelCache=cache.get(habitLevelKey)
                     if not habitLevelCache:
                         cache.set(habitLevelKey,habit,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
-                logger.error("habitLevelCache")
+
                 cats.append(habitCat)
             dataTmp["habitCat"]=cats
             # 检查是否已经报名
             org=user.profile.org
+            logger.error("habitLevelCache")
             logger.error(org.id)
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             logger.error(orgActivityKey)
