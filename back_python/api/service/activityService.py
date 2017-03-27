@@ -44,6 +44,7 @@ class ActivityService(JsonResultService):
 
     def activityDetail(self,user,id,schema):
         content={}
+        logger.error("activityDetail")
         try:
             act= Activity.objects.get(pk=id)
             # 检查活动状态，如果当前查看的时间大于活动开始时间而小于活动结束时间
