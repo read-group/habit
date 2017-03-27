@@ -44,7 +44,7 @@ class ActivityService(JsonResultService):
 
     def activityDetail(self,user,id,schema):
         content={}
-        logger.error("activityDetail")
+        logger.error(user.id)
         try:
             act= Activity.objects.get(pk=id)
 
