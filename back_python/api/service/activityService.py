@@ -47,12 +47,14 @@ class ActivityService(JsonResultService):
         logger.error("activityDetail")
         try:
             act= Activity.objects.get(pk=id)
-            logger.error("act")
+
             # 检查活动状态，如果当前查看的时间大于活动开始时间而小于活动结束时间
             dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','status'])
+
             dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
             cats=[]
+            logger.error("cats")
             for item in act.activityitem_set.all():
                 habitCat=self.toJSON(item.cat,["id","name","forParent"])
                 #设置习惯类别的级别初值
