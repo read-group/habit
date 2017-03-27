@@ -15,6 +15,7 @@ HABIT_LEVEL_PRAISE = (
     (600, '600'),
 )
 class HabitCatalog(EntityBase):
+    forParent=models.BooleanField(default=False,verbose_name="是否父母专用")
     def __str__(self):
         return self.name;
     class Meta:

@@ -129,6 +129,9 @@ class ActivityService(JsonResultService):
             for cat in cats:
                 catid=cat["id"]
                 level2=cat["level"]
+                # 判断习惯类别是否需要诊断，是否是父母习惯，如果是不需要诊断,level默认是M,
+                # 如果是不需要诊断,level2＝‘M/L’
+
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
@@ -139,6 +142,7 @@ class ActivityService(JsonResultService):
                 dataTmp=self.toJSON(habitTmp,["id","name"])
                 logger.error("dataTmp...........")
                 rtnArray.append(dataTmp)
+                # 如果是父母习惯，加一个字段区分,0专用，-1非专用
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
             habitStr=",".join(habitArray)
             logger.error("before transaction...........")
