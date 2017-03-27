@@ -57,7 +57,7 @@ class ActivityService(JsonResultService):
 
             for item in act.activityitem_set.all():
                 habitCat=self.toJSON(item.cat,["id","name","forParent"])
-                logger.error("habitCat")
+
                 #设置习惯类别的级别初值
                 habitCat["level"]="M"
                 #在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
@@ -66,6 +66,7 @@ class ActivityService(JsonResultService):
                     habitLevelCache=cache.get(habitLevelKey)
                     if not habitLevelCache:
                         cache.set(habitLevelKey,habit,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
+                logger.error("habitLevelCache")
                 cats.append(habitCat)
             dataTmp["habitCat"]=cats
             # 检查是否已经报名
