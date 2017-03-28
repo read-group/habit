@@ -15,7 +15,7 @@ yml.service={};
 yml.service.wxapi=services.service.base.New({
 	ctor:function(){
 		 this.restClient=rest.restClient.New();
-		 this.host="http://wx.yimilan.com/";
+		 this.host="http://wx.mily365.com/";
 		 this.folder="wxdownload/";
 		 this.audioFolder="audio/";
 		 this.imgFolder="img/";

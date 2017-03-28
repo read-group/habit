@@ -17,8 +17,6 @@ module.exports = function (app) {
 	app.post('/wx/api/download',function(req,res){
 		 var mediaid=req.body.mediaId;
 		 var type=req.body.type;
-		 console.log("media id........................");
-		 console.log(mediaid);
      weixinKey.service.wxapi.downloadFile(mediaid,type,function(rtnData){
 			 res.json(rtnData);
 		 });
