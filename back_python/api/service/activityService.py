@@ -132,10 +132,15 @@ class ActivityService(JsonResultService):
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
             habitArray=[]
             rtnArray=[]
-            logger.error(type(cats))
             for cat in cats:
                 catid=cat["id"]
                 level2=cat["level"]
+                isForParent='p0'
+                logger.error(cat["forParent"])
+                if cat["forParent"]:
+                    isForParent='p1'
+                else:
+                    isForParent='p0'
                 # 判断习惯类别是否需要诊断，是否是父母习惯，如果是不需要诊断,level默认是M,
                 # 如果是不需要诊断,level2＝‘M/L’
 
@@ -150,7 +155,7 @@ class ActivityService(JsonResultService):
                 logger.error("dataTmp...........")
                 rtnArray.append(dataTmp)
                 # 如果是父母习惯，加一个字段区分,0专用，-1非专用
-                habitArray.append(str(habitTmp.id)+"|"+habitTmp.name)
+                habitArray.append(str(habitTmp.id)+"|"+habitTmp.name+"|"+isForParent)
             habitStr=",".join(habitArray)
             logger.error("before transaction...........")
             with transaction.atomic():
