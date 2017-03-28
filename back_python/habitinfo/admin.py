@@ -4,7 +4,7 @@ from .models import Habit
 # Register your models here.
 class HabitInline(admin.TabularInline):
     model = Habit
-    extra = 3
+    extra = 0
 class HabitCatalogAdmin(admin.ModelAdmin):
     list_display=('code','name','forParent')
     inlines = [HabitInline]
