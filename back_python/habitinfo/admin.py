@@ -10,7 +10,7 @@ class HabitCatalogAdmin(admin.ModelAdmin):
     inlines = [HabitInline]
 
 class HabitAdmin(admin.ModelAdmin):
-    list_display=('code','name','level','freePraiseMilyUnit','freePraiseMilyStep')
+    list_display=('code','name','level','freePraiseMilyUnit','freePraiseMilyStep','icon')
     list_filter=('level',)
     search_fields=['name']
 

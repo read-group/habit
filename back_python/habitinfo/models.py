@@ -14,6 +14,37 @@ HABIT_LEVEL_PRAISE = (
     (500, '500'),
     (600, '600'),
 )
+HABIT_ICON_CHOICES=(
+    ("fa fa-sun-o sun", '生活'),
+    ("fa fa-diamond diamond", '诚实'),
+    ("fa fa-share-alt", '分享'),
+    ("fa fa-birthday-cake thank", '感恩'),
+    ("fa fa-book read", '阅读'),
+    ("fa fa-bicycle", '运动'),
+)
+# 	"life":"fa fa-sun-o sun",
+#     "honest":"fa fa-diamond diamond",
+#     "share":"fa fa-share-alt",
+#     "thank":"fa fa-birthday-cake thank",
+#     "read":"fa fa-book read",
+# "readCOneHour":"fa fa-book read",
+#     "readChengyu":"fa fa-book read",
+#     "readEOneHour":"fa fa-book read",
+#     "readWord":"fa fa-book read",
+#     "pardon":"fa fa-child pardon",
+#     "resp":"fa fa-chain",
+#     "homework":"fa fa-clock-o",
+#     "promise":"fa fa-lock",
+#     "dabian":"fa fa-smile-o",
+#     "drink":"fa fa-coffee",
+#     "fruit":"fa fa-apple",
+#     "oldLook":"fa fa-wheelchair",
+#     "giftFriend":"fa fa-modx",
+#     "sport":"fa fa-bicycle",
+#     "word":"fa fa-paint-brush",
+#     "cubes":"fa fa-cubes","music":"fa fa-music","picture":"fa fa-picture-o",
+#     "fat":"fa fa-flash","daynote":"fa fa-edit",
+#     "plantKnow":"fa fa-tree","starKnow":"fa fa-cogs","childDance":"fa fa-child"
 class HabitCatalog(EntityBase):
     forParent=models.BooleanField(default=False,verbose_name="是否父母专用")
     def __str__(self):
@@ -26,6 +57,7 @@ class Habit(EntityBase):
     level=models.CharField(max_length=4,choices=HABIT_LEVEL_CHOICES,verbose_name="难度")
     freePraiseMilyUnit=models.IntegerField(default=0,choices=HABIT_LEVEL_PRAISE,verbose_name="打卡奖励基数")
     freePraiseMilyStep=models.IntegerField(default=0,verbose_name="打卡奖励步进数")
+    icon=models.CharField(max_length=4,choices=HABIT_ICON_CHOICES,verbose_name="图标")
     habitCatalog=models.ForeignKey(
         'HabitCatalog',
         on_delete=models.CASCADE,
