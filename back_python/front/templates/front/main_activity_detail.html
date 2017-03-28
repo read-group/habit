@@ -176,7 +176,7 @@
             console.log(res.content.data)
             $yml.page.$vmPage.item=res.content.data;
             var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
-
+            console.log(initFirstQuestion["forParent"])
             $yml.page.$vmPage.curQuestion=initFirstQuestion;
             $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
           }
