@@ -29,7 +29,7 @@
                   <p>关键词:{? @item.desc ?}</p>
                   <p>开始日期：{? @item.startTime ?}</p>
                   <p>截止日期：{? @item.endTime ?}</p>
-                  <p>还剩：{? @item.uplimit ?}名额</p>
+                  <p>还剩：{? @item.uplimit - @item.applyNumber?}名额</p>
                 </div>
                 <a  ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
                     <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
