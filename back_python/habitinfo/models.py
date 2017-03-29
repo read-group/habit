@@ -57,7 +57,7 @@ class Habit(EntityBase):
     level=models.CharField(max_length=4,choices=HABIT_LEVEL_CHOICES,verbose_name="难度")
     freePraiseMilyUnit=models.IntegerField(default=0,choices=HABIT_LEVEL_PRAISE,verbose_name="打卡奖励基数")
     freePraiseMilyStep=models.IntegerField(default=0,verbose_name="打卡奖励步进数")
-    level=models.CharField(default="fa fa-sun-o sun",max_length=64,choices=HABIT_ICON_CHOICES,verbose_name="难度")
+    level=models.CharField(default="fa fa-sun-o sun",max_length=64,choices=HABIT_ICON_CHOICES,verbose_name="图标")
     habitCatalog=models.ForeignKey(
         'HabitCatalog',
         on_delete=models.CASCADE,
