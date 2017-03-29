@@ -77,6 +77,7 @@ class ActivityService(JsonResultService):
             logger.error(orgActivityKey)
             orgActivityHistorys=cache.get(orgActivityKey)
             dataTmp["applied"]="0"
+
             if not orgActivityHistorys:
                 # 先去库里获取
                 orgActivityHistorys=list(OrgActivityHistory.objects.filter(org__id=org.id))

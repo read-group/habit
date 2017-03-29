@@ -23,8 +23,11 @@
               <img class="media-object" ms-attr="{src:@item.img}" style="width:400px;height:300px" alt="...">
               <div class="caption">
                 <h3>{? @item.name ?}</h3>
-                <p class="text-left" ms-if="@item.applied=='0'">
+                <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit>@item.applyNumber">
                   <button  class="btn button-highlight" role="button" ms-click="@digClick">我要报名</button>
+                </p>
+                <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit<=@item.applyNumber">
+                  <button  class="btn button-highlight" role="button" ms-click="@digClick">名额已满</button>
                 </p>
                 <p class="text-left" ms-if="@item.applied=='1'">
                   <button  class="btn btn-success" role="button">已报名</button>
