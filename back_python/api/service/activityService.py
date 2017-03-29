@@ -49,7 +49,7 @@ class ActivityService(JsonResultService):
             act= Activity.objects.get(pk=id)
 
             # 检查活动状态，如果当前查看的时间大于活动开始时间而小于活动结束时间
-            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','status'])
+            dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','status','applyNumber','uplimit'])
 
             dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
             dataTmp["cat"]=act.get_cat_display()
@@ -125,10 +125,6 @@ class ActivityService(JsonResultService):
             # 获取活动对象
             activity= Activity.objects.get(pk=actid)
             #检查活动状态，如果当前时间大于开始时间
-
-            logger.error(activity.cat)
-            logger.error(activity.name)
-            logger.error(cats)
             #获取匹配的习惯，从缓存中取，如果缓存不存在，就从数据库里去找
             habitArray=[]
             rtnArray=[]
@@ -169,7 +165,20 @@ class ActivityService(JsonResultService):
                 # 活动赠米
                 # orgActivityHistory.getMily=activity.zeroableMily
                 orgActivityHistory.habits=habitStr
+                # 活动持续天数
+                orgActivityHistory.activityDays=(activity.endTime-activity.startTime).days+1
+                # 懒人基金金额
+                orgActivityHistory.lazyFund=orgActivityHistory.activityDays * activity.rtnLazyUnit
                 orgActivityHistory.save()
+
+                # 更新活动报名人数
+                activity.applyNumber=activity.applyNumber+１
+                if activity.applyNumber>activity.uplimit:
+                    self.jsonResult.rtnDic['errMsg']="名额已满，请下期再报！"
+                    raise Exception("名额已满，请下期再报！")
+                else:
+                    activity.save()
+
 
                 # # 平台米仓修改
                 # sysAccountHistory=SysAccountHistory()
