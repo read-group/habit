@@ -152,7 +152,6 @@ class ActivityService(JsonResultService):
                     cache.set(habitLevelKeyRun,habitTmp,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
 
                 dataTmp=self.toJSON(habitTmp,["id","name"])
-                logger.error("dataTmp...........")
                 rtnArray.append(dataTmp)
                 # 如果是父母习惯，加一个字段区分,0专用，-1非专用
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name+"|"+isForParent+"|"+habitTmp.icon)
