@@ -172,7 +172,7 @@ class ActivityService(JsonResultService):
                 orgActivityHistory.save()
 
                 # 更新活动报名人数
-                activity.applyNumber=activity.applyNumber+１
+                activity.applyNumber=activity.applyNumber+1
                 if activity.applyNumber>activity.uplimit:
                     self.jsonResult.rtnDic['errMsg']="名额已满，请下期再报！"
                     raise Exception("名额已满，请下期再报！")
