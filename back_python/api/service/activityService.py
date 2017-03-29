@@ -155,7 +155,7 @@ class ActivityService(JsonResultService):
                 logger.error("dataTmp...........")
                 rtnArray.append(dataTmp)
                 # 如果是父母习惯，加一个字段区分,0专用，-1非专用
-                habitArray.append(str(habitTmp.id)+"|"+habitTmp.name+"|"+isForParent)
+                habitArray.append(str(habitTmp.id)+"|"+habitTmp.name+"|"+isForParent+"|"+habitTmp.icon)
             habitStr=",".join(habitArray)
             logger.error("before transaction...........")
             with transaction.atomic():
