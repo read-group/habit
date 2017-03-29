@@ -30,6 +30,7 @@ class Activity(EntityBase):
     applyNumber=models.IntegerField(default=0,verbose_name="已报名人数",editable=False)
     uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
+    rtnLazyUnit=models.IntegerField(default=1,verbose_name="每日打卡返回押金")
     status=models.IntegerField(default=0,choices=ACTIVITY_STATUS,verbose_name="活动状态")
     isTop=models.BooleanField(default=False,verbose_name="是否置顶")
     memo=models.TextField(max_length=2048,verbose_name="注意事项")

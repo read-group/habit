@@ -28,6 +28,7 @@ class OrgActivityHistory(models.Model):
     isFree=models.BooleanField(default=True,verbose_name="是否免费")
     lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
     enableLazyFund=models.BooleanField(default=False,verbose_name="是否参与懒人基金")
+    activityDays=models.IntegerField(default=0,verbose_name="持续天数")
     def __str__(self):
         return self.activity.name;
     class Meta:
