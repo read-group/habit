@@ -27,7 +27,7 @@
                   <button  class="btn button-highlight" role="button" ms-click="@digClick">我要报名</button>
                 </p>
                 <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit<=@item.applyNumber">
-                  <button  class="btn button-highlight" role="button" ms-click="@digClick">名额已满</button>
+                  <button  class="btn button-default" role="button">名额已满</button>
                 </p>
                 <p class="text-left" ms-if="@item.applied=='1'">
                   <button  class="btn btn-success" role="button">已报名</button>
