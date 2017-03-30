@@ -70,7 +70,7 @@ class ActivityService(JsonResultService):
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             orgActivityHistorys=cache.get(orgActivityKey)
             dataTmp["applied"]="0"
-
+            dataTmp["lazyIn"]=act.lazyJoinNumber
             if not orgActivityHistorys:
                 # 先去库里获取
                 orgActivityHistorys=list(OrgActivityHistory.objects.filter(org__id=org.id))
