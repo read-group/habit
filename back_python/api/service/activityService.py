@@ -21,8 +21,7 @@ class ActivityService(JsonResultService):
             topQuery=(tag=='t')
             queryCache=Activity.objects.filter(isTop__exact=topQuery).filter(status__exact=1).order_by("createdTime");
             count=queryCache.count();
-            logger.error("query count....................")
-            logger.error(count)
+
             acts= queryCache[skip:limit]
             for act in acts:
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit'])
@@ -42,7 +41,6 @@ class ActivityService(JsonResultService):
 
     def activityDetail(self,user,id,schema):
         content={}
-        logger.error(user.id)
         try:
             act= Activity.objects.get(pk=id)
 
@@ -69,10 +67,7 @@ class ActivityService(JsonResultService):
             dataTmp["habitCat"]=cats
             # 检查是否已经报名
             org=user.profile.org
-            logger.error("habitLevelCache")
-            logger.error(org.id)
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
-            logger.error(orgActivityKey)
             orgActivityHistorys=cache.get(orgActivityKey)
             dataTmp["applied"]="0"
 
@@ -130,7 +125,6 @@ class ActivityService(JsonResultService):
                 catid=cat["id"]
                 level2=cat["level"]
                 isForParent='p0'
-                logger.error(cat["forParent"])
                 if cat["forParent"]:
                     isForParent='p1'
                 else:
@@ -150,7 +144,6 @@ class ActivityService(JsonResultService):
                 # 如果是父母习惯，加一个字段区分,0专用，-1非专用
                 habitArray.append(str(habitTmp.id)+"|"+habitTmp.name+"|"+isForParent+"|"+habitTmp.icon)
             habitStr=",".join(habitArray)
-            logger.error("before transaction...........")
             with transaction.atomic():
                 # 构建参加活动历史.
                 orgActivityHistory=OrgActivityHistory()
