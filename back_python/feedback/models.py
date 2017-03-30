@@ -26,6 +26,7 @@ class OrgActivityHistory(models.Model):
     # 活动检查服务，会遍历每个活动历史记录，如果到达结束时间就要设置活动为结束状态
     # 就要检查这个活动的类型，是否是免费，如果是免费，需要
     isFree=models.BooleanField(default=True,verbose_name="是否免费")
+    fee=models.IntegerField(default=0,verbose_name="收费金额")
     lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
     enableLazyFund=models.BooleanField(default=False,verbose_name="是否参与懒人基金")
     activityDays=models.IntegerField(default=0,verbose_name="持续天数")
@@ -47,28 +48,6 @@ class FeedBack(models.Model):
             on_delete=models.CASCADE,
             verbose_name="家庭个人历史习惯",
             null=True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     )
 
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")

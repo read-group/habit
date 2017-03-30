@@ -14,6 +14,25 @@ import logging
 logger = logging.getLogger("django")
 # Create your views here.
 class ActivityService(JsonResultService):
+    # 参与懒人基金分享
+    def lazyFundShareIn(self,user,actId):
+        content={}
+        data={}
+        try:
+            # 需要建立事务
+            # 按照活动id,按照用户id,去查询活动历史，修改启用懒人基金标志，活动历史id作为业务单据id
+
+            # 调用微信服务，生成一个虚拟订单,把活动历史id传进去，返回支付参数给客户端,返回历史订单id,如果失败，设置活动历史参与状态为０
+            content["data"]=data
+        except (Exception ,e):
+            info=sys.exc_info()
+            logging.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
     def activitys(self,skip,limit,schema,tag):
         content={}
         data=[]
@@ -24,7 +43,7 @@ class ActivityService(JsonResultService):
 
             acts= queryCache[skip:limit]
             for act in acts:
-                dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit','days',])
+                dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit','days','cat','amount',])
                 dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
                 data.append(dataTmp)

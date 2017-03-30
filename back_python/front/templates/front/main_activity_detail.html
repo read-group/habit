@@ -33,6 +33,7 @@
                   <button  class="btn btn-success" role="button">已报名</button>
                 </p>
                 <p>活动类别：{? @item.cat ?}</p>
+                <p>费用金额：{? @item.amount ?}元</p>
                 <p>关键词:{? @item.desc ?}</p>
                 <p>起止日期：{? @item.startTime ?}——{? @item.endTime ?}</p>
                 <p>
@@ -63,8 +64,11 @@
             <p class="text-right" ms-if="@item['habitCat'].length">
               <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
             </p>
-            <p class="text-right" ms-if="@item['habitCat'].length==0">
+            <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FREE'">
               <button  class="btn button-highlight" role="button" ms-click="@digOk">确认报名</button>
+            </p>
+            <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FEE'">
+              <button  class="btn button-highlight" role="button" ms-click="@digFeeOk">付费报名</button>
             </p>
           </div>
           <div class="col-sm-12" ms-if="@rptOk">
