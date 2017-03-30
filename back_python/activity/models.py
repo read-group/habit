@@ -31,9 +31,19 @@ class Activity(EntityBase):
     uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
     rtnLazyUnit=models.IntegerField(default=1,verbose_name="每日打卡返回押金")
+    lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
+    lazyJoinNumber=models.IntegerField(default=0,verbose_name="已经参与懒人计划人数")
+    days=models.IntegerField(default=0,verbose_name="活动天数")
     status=models.IntegerField(default=0,choices=ACTIVITY_STATUS,verbose_name="活动状态")
     isTop=models.BooleanField(default=False,verbose_name="是否置顶")
     memo=models.TextField(max_length=2048,verbose_name="注意事项")
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            pass
+        else:
+            self.days=(self.endTime-self.startTime).days+1
+            self.lazyFund=self.days * self.rtnLazyUnit
+        super(Activity,self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name;

@@ -112,6 +112,7 @@ class ActivityService(JsonResultService):
 
     def activityJoin(self,user,actid,cats):
         content={}
+        lazyInfo={}
         try:
             # 获取家庭对象
             org=user.profile.org
@@ -157,9 +158,10 @@ class ActivityService(JsonResultService):
                 # orgActivityHistory.getMily=activity.zeroableMily
                 orgActivityHistory.habits=habitStr
                 # 活动持续天数
-                orgActivityHistory.activityDays=(activity.endTime-activity.startTime).days+1
+                orgActivityHistory.activityDays=activity.days
                 # 懒人基金金额
-                orgActivityHistory.lazyFund=orgActivityHistory.activityDays * activity.rtnLazyUnit
+                orgActivityHistory.lazyFund=activity.lazyFund
+
                 orgActivityHistory.save()
 
                 # 更新活动报名人数
@@ -194,6 +196,9 @@ class ActivityService(JsonResultService):
                 org_activitys.push(orgActivityHistory)
             cache.set(orgActivityKey,org_activitys,cacheDays)
             content["data"]=rtnArray
+
+
+            #
         except:
             info=sys.exc_info()
             logger.error(info)
@@ -202,7 +207,5 @@ class ActivityService(JsonResultService):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult
-
-
 
 activityService=ActivityService()
