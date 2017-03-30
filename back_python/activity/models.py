@@ -16,6 +16,14 @@ ACTIVITY_STATUS = (
     (1, '进行中'),
     (-1, '已结束'),
 )
+ACTIVITY_LAZY_UNIT = (
+    (1, '1元'),
+    (2, '２元'),
+    (3, '３元'),
+    (5, '５元'),
+    (8, '８元'),
+    (10, '10元'),
+)
 class Activity(EntityBase):
     startTime=models.DateTimeField(verbose_name="开始日期")
     endTime=models.DateTimeField(verbose_name="结束日期")
