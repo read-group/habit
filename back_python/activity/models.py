@@ -38,7 +38,7 @@ class Activity(EntityBase):
     applyNumber=models.IntegerField(default=0,verbose_name="已报名人数",editable=False)
     uplimit=models.IntegerField(default=0,verbose_name="人数上限")
     amount=models.IntegerField(default=0,verbose_name="报名费")
-    rtnLazyUnit=models.IntegerField(default=1,verbose_name="每日打卡返回押金")
+    rtnLazyUnit=models.IntegerField(default=1,choices=ACTIVITY_LAZY_UNIT,verbose_name="每日打卡返回押金")
     lazyFund=models.IntegerField(default=0,verbose_name="懒人基金")
     lazyJoinNumber=models.IntegerField(default=0,verbose_name="已经参与懒人计划人数")
     days=models.IntegerField(default=0,verbose_name="活动天数")
