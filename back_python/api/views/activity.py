@@ -25,10 +25,8 @@ class ActivityDetailView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
         try:
-            logger.error("ActivityDetailView")
             reqData=json.loads(str(req.body,'utf-8'))
             idParam=reqData["id"]
-            logger.error("ActivityDetailView")
             jsResult=activityService.activityDetail(req.user,idParam,req.scheme+"://"+req.META["HTTP_HOST"])
         except:
             info=sys.exc_info()
@@ -39,11 +37,9 @@ class ActivityJoinlView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
         try:
-            logger.error("in join....")
             reqData=json.loads(str(req.body,'utf-8'))
             actId=reqData["actId"]
             cats=reqData["cats"]
-            logger.error("in join....")
             jsResult=activityService.activityJoin(req.user,actId,cats)
         except:
             info=sys.exc_info()

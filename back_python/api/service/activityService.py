@@ -18,9 +18,7 @@ class ActivityService(JsonResultService):
         content={}
         data=[]
         try:
-            logger.error(tag)
             topQuery=(tag=='t')
-            logger.error(topQuery)
             queryCache=Activity.objects.filter(isTop__exact=topQuery).filter(status__exact=1).order_by("createdTime");
             count=queryCache.count();
             logger.error("query count....................")
@@ -121,7 +119,6 @@ class ActivityService(JsonResultService):
         content={}
         try:
             # 获取家庭对象
-            logger.error(user.profile)
             org=user.profile.org
             # 获取活动对象
             activity= Activity.objects.get(pk=actid)
