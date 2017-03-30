@@ -72,7 +72,7 @@
               <div class="caption">
                 <h4><i class="fa fa-balance-scale" aria-hidden="true"></i>为您的孩子匹配了如下习惯</h4>
                 <p ms-for="(i,h) in @selectedHabits">
-                    <span>{? h.name ?}</span>
+                    <span><i ms-attr="{class:@h.icon}" aria-hidden="true"></i>{? h.name ?}</span>
                 </p>
               </div>
             </div>
