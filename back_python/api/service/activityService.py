@@ -24,7 +24,7 @@ class ActivityService(JsonResultService):
 
             acts= queryCache[skip:limit]
             for act in acts:
-                dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit'])
+                dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit','days',])
                 dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
                 data.append(dataTmp)
