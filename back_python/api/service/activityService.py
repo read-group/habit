@@ -67,7 +67,7 @@ class ActivityService(JsonResultService):
             dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc",'memo','status','applyNumber','uplimit','days','rtnLazyUnit','amount','cat',])
 
             dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
-            dataTmp["cat"]=act.get_cat_display()
+            dataTmp["catName"]=act.get_cat_display()
             cats=[]
 
             for item in act.activityitem_set.all():
