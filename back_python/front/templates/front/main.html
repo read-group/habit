@@ -174,12 +174,12 @@
                                     ,'uploadVoice'
                                     ,'downloadVoice','chooseWXPay','hideMenuItems'];
                  wx.ready(function(){
-                                     // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
-                          //             var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
-                          //             var encodeurl=encodeURIComponent(redirect_uri);
-                          //             var scope="snsapi_userinfo";
-                          //             var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
-                          //  　　　　　　　　　　　　　//var url="http://www.163.com";
+                          // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
+                          // var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
+                          // var encodeurl=encodeURIComponent(redirect_uri);
+                          // var scope="snsapi_userinfo";
+                          // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
+                          // var url="http://www.163.com";
 
                                         wx.hideMenuItems({
                                               menuList:["menuItem:share:timeline",'menuItem:share:qq',
@@ -187,7 +187,7 @@
                                               "menuItem:originPage","menuItem:readMode",
                                               "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
                                         });
-                                     });
+                  });
 
                   wx.config(config);
                 }
