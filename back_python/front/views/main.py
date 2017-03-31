@@ -25,7 +25,7 @@ class MainView(TemplateView):
     #     return ctx
     def get_template_names(self):
         logger.error("get_template_names")
-        role=request.GET["role"];
+        role=self.request.GET["role"];
         if role=="teacher":
             return ["front/tmain.html"]
 
