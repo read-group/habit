@@ -202,6 +202,7 @@
 
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
+              alert(location.href)
               $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
 
               $av.scan(document.getElementById("main"),[vm])
