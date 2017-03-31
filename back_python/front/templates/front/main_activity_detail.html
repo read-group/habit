@@ -89,7 +89,7 @@
                <p>目前已经有{? @item.lazyIn ?}人参与懒人基金</p>
             </div>
             <p class="text-right">
-              <button  class="btn button-highlight" role="button" ms-click="@nextClick">点击参与</button>
+              <button  class="btn button-highlight" role="button" ms-click="@lazyShare">点击参与</button>
             </p>
           </div>
        </div>
@@ -142,6 +142,9 @@
         selectRadio:function(e){
           var level=$(e.currentTarget).data("level");
           $yml.page.$vmPage.curQuestion.level=level;
+        },
+        lazyShare:function(){
+          alert("敬请期待...")
         },
         digOk:function(){
           this.isDiagnose=false;
