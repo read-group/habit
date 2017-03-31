@@ -25,7 +25,7 @@ class MainView(TemplateView):
     #     return ctx
     def get_template_names(self):
         logger.error("get_template_names")
-        return [template_name]
+        return ["front/main.html"]
     @transaction.atomic
     def get(self,request,*args,**kwargs):
         # 获取openid，昵称，头像url,性别等信息
