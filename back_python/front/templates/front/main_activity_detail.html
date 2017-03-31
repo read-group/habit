@@ -95,6 +95,17 @@
        </div>
     </div>
   </div>
+  <div class="modal fade" id="maskHint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body" style="padding:20px">
+           ddfs
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
   $yml.page=$yml.pageBase.New(null,{
     ctor:function(){
@@ -147,6 +158,8 @@
           alert("敬请期待...")
         },
         digOk:function(){
+          $("#maskHint").modal("show")
+          return
           this.isDiagnose=false;
           this.isDetail=false;
           //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
