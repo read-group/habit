@@ -15,7 +15,7 @@ logger = logging.getLogger("django")
 class MainView(TemplateView):
     template_name="front/main.html"
     def get_context_data(self, **kwargs):
-        ctx=super(ActivityDetailView,self).get_context_data(**kwargs)
+        ctx=super(MainView,self).get_context_data(**kwargs)
         # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
         pathfrom=self.request.GET["pathfrom"];
         ctx['pathfrom']=pathfrom
