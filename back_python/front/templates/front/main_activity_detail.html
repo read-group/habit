@@ -98,8 +98,11 @@
   <div class="modal fade"  id="maskHint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
+        <div class="modal-header">
+            <span><i class="fa fa-information" aria-hidden="true"></i>分享报名</span>
+        </div>
         <div class="modal-body" style="padding:20px">
-           ddfs
+
         </div>
       </div>
     </div>
@@ -147,6 +150,9 @@
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
+          if($yml.page.$vmPage.item["habitCat"].length==0){
+            $("#maskHint").modal("show")
+          }
         },
         selectRadio:function(e){
           var level=$(e.currentTarget).data("level");
