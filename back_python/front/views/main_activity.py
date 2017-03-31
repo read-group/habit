@@ -18,7 +18,8 @@ class ActivityDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx=super(ActivityDetailView,self).get_context_data(**kwargs)
         # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
-　　　　　hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+self.request.path
+        path=self.request.path
+        hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+path
         ctx["host"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect}))
         return ctx
     def get(self,request,*args,**kwargs):
