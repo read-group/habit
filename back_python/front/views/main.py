@@ -19,9 +19,9 @@ class MainView(TemplateView):
         # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
         pathfrom=self.request.GET["pathfrom"];
         if pathfrom:
-            ctx['pathfrom']=pathfrom
+            ctx['pt']=pathfrom
         else:
-            ctx['pathfrom']=""
+            ctx['pt']=""
         return ctx
     @transaction.atomic
     def get(self,request,*args,**kwargs):
