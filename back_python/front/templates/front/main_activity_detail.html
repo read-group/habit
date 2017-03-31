@@ -64,9 +64,7 @@
             <p class="text-right" ms-if="@item['habitCat'].length">
               <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
             </p>
-            <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FREE'">
-              <button  class="btn button-highlight" role="button" ms-click="@digOk">确认报名</button>
-            </p>
+
             <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FEE'">
               <button  class="btn button-highlight" role="button" ms-click="@digFeeOk">付费报名</button>
             </p>
@@ -165,8 +163,6 @@
           alert("敬请期待...")
         },
         digOk:function(){
-          $("#maskHint").modal("show")
-          return
           this.isDiagnose=false;
           this.isDetail=false;
           //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
@@ -222,7 +218,7 @@
            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
            success: function (r) {
                // 用户确认分享后执行的回调函数
-               alert("分享成功.");
+               $yml.page.$vmPage.digOk();
            },
            cancel: function () {
                // 用户取消分享后执行的回调函数
