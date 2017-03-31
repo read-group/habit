@@ -133,6 +133,9 @@
           this.isDetail=false;
           this.title="答题";
           //this.rptOk=false;
+          if($yml.page.$vmPage.item["habitCat"].length==0){
+            $("#maskHint").modal("show")
+          }
         },
         cleanUp:function(){
           console.log("clean up...")
