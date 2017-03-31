@@ -202,13 +202,20 @@
 
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
+              var match=location.href.match("&pathinfo=(.*)&")
+              if(match && match[1]){
+                var go=match[1];
+                $av.router.navigate(hash || go, 0)//默认打开
+              }else{
+                $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
+              }
               // var pathfrom="{{ pathfrom }}"
               // if(pathfrom && pathfrom!=""){
               //   $av.router.navigate(hash || pathfrom, 0)//默认打开
               // }else{
-              //   $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
+              //
               // }
-              alert(location.href)
+
               $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
               $av.scan(document.getElementById("main"),[vm])
               //设置初始激活
