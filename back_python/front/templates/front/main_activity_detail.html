@@ -196,7 +196,7 @@
            title: '和我一起来参加米粒习惯活动吧', // 分享标题
          //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
            desc: '孩子们需要大家的赞美....', // 分享描述
-           link: "{{detailUrl}}", // 分享链接
+           link: "{{detailUrl|safe}}", // 分享链接
            imgUrl: 'http://ll.yimilan.com/app/res/images/ll2.png', // 分享图标
            type: '', // 分享类型,music、video或link，不填默认为link
            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
