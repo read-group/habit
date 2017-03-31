@@ -18,7 +18,8 @@ class MainView(TemplateView):
         ctx=super(MainView,self).get_context_data(**kwargs)
         # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
         pathfrom=self.request.GET["pathfrom"];
-        ctx['pathfrom']=pathfrom
+        if pathfrom:
+            ctx['pathfrom']=pathfrom
         return ctx
     @transaction.atomic
     def get(self,request,*args,**kwargs):
