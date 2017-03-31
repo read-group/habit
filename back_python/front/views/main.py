@@ -14,6 +14,12 @@ logger = logging.getLogger("django")
 #     return render(request,"front/index.html");
 class MainView(TemplateView):
     template_name="front/main.html"
+    def get_context_data(self, **kwargs):
+        ctx=super(ActivityDetailView,self).get_context_data(**kwargs)
+        # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
+        pathfrom=self.request.GET["pathfrom"];
+        ctx['pathfrom']=pathfrom
+        return ctx
     @transaction.atomic
     def get(self,request,*args,**kwargs):
         # 获取openid，昵称，头像url,性别等信息
