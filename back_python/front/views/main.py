@@ -20,6 +20,8 @@ class MainView(TemplateView):
         pathfrom=self.request.GET["pathfrom"];
         if pathfrom:
             ctx['pathfrom']=pathfrom
+        else:
+            ctx['pathfrom']=""
         return ctx
     @transaction.atomic
     def get(self,request,*args,**kwargs):
