@@ -15,3 +15,7 @@ class GrainAddChildView(TemplateView):
     template_name="front/main_grain_addchild.html"
     def get(self,request,*args,**kwargs):
         return super(GrainAddChildView,self).get(request,*args,**kwargs)
+class GrainEditChildView(TemplateView):
+    template_name="front/main_grain_editchild.html"
+    def get(self,request,*args,**kwargs):
+        return super(GrainEditChildView,self).get(request,*args,**kwargs)

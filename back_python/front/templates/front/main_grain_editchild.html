@@ -1,4 +1,4 @@
-<div class="container page" id="addChild" data-page-root="addChild" ms-controller="addChild">　
+<div class="container page" id="editChild" data-page-root="editChild" ms-controller="editChild">　
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
@@ -55,7 +55,7 @@ $yml.page=$yml.pageBase.New(null,{
   vmDef:function(){
     var self=this;
     return {
-      $id:"addChild",
+      $id:"editChild",
       headUrl:"",
       nickname:"",
       password:"",
@@ -82,7 +82,7 @@ $yml.page=$yml.pageBase.New(null,{
            alert("请给孩子选择一个登录口令。");
            return false;
          }
-         $yml.ajax('/api/grain/family/addmember',{"childinfo":params},
+         $yml.ajax('/api/grain/family/updatemember',{"childinfo":params},
          　  function(res){
                if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
                  //$yml.page.$router.pop();
@@ -130,9 +130,10 @@ $yml.page=$yml.pageBase.New(null,{
       }
     };
   },
-  pageReady:function(){
+  pageReady:function(params){
     var self=this;
-    // $yml.ajax('/api/habit/cats',null,
+    console.log(params)
+    // $yml.ajax('/api/grain/cats',null,
     // 　  function(res){
     //       $yml.page.$vmPage.cats=res.content;
     //     }

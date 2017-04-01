@@ -30,3 +30,16 @@ class GrainFamilyAddMemberView(View):
             info=sys.exc_info()
             logging.error(info)
         return jsResult.renderToJsonResponse()
+
+class GrainFamilyUpdateMemberView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("GrainFamilyUpdateMemberView")
+        reqData=json.loads(str(req.body,'utf-8'))
+        childid=reqData["childid"]
+        jsResult=None
+        try:
+            jsResult= grainService.updatemember(childid)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()

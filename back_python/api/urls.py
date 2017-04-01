@@ -24,4 +24,5 @@ urlpatterns = [
      url(r'^activity/check$',ActivityLoopCheckView.as_view()),
      url(r'^grain/family$',GrainFamilyView.as_view()),
      url(r'^grain/family/addmember$',GrainFamilyAddMemberView.as_view()),
+     url(r'^grain/family/updatemember$',GrainFamilyAddMemberView.as_view()),
 ]
