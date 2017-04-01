@@ -23,13 +23,13 @@ class MainView(TemplateView):
     #     else:
     #         ctx['pt']=""
     #     return ctx
-    def get_template_names(self):
-        logger.error("get_template_names")
-        role=self.request.GET["role"];
-        if role=="teacher":
-            return ["front/tmain.html"]
-
-        return ["front/main.html"]
+    # def get_template_names(self):
+    #     logger.error("get_template_names")
+    #     role=self.request.GET["role"];
+    #     if role=="teacher":
+    #         return ["front/tmain.html"]
+    #
+    #     return ["front/main.html"]
     @transaction.atomic
     def get(self,request,*args,**kwargs):
         # 获取openid，昵称，头像url,性别等信息
