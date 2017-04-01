@@ -133,11 +133,11 @@ $yml.page=$yml.pageBase.New(null,{
   pageReady:function(params){
     var self=this;
     console.log(params)
-    // $yml.ajax('/api/grain/cats',null,
-    // 　  function(res){
-    //       $yml.page.$vmPage.cats=res.content;
-    //     }
-    // );
+    $yml.ajax('/api/grain/family/getmember',params,
+    　  function(res){
+          $yml.page.$vmPage.cats=res.content;
+        }
+    );
   }
 });
 

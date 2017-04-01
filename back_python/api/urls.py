@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView,GrainFamilyView,GrainFamilyAddMemberView
+from api.views import GrainFamilyGetMemberView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
@@ -24,5 +25,5 @@ urlpatterns = [
      url(r'^activity/check$',ActivityLoopCheckView.as_view()),
      url(r'^grain/family$',GrainFamilyView.as_view()),
      url(r'^grain/family/addmember$',GrainFamilyAddMemberView.as_view()),
-     url(r'^grain/family/updatemember$',GrainFamilyAddMemberView.as_view()),
+     url(r'^grain/family/getmember$',GrainFamilyGetMemberView.as_view()),
 ]

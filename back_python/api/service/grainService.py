@@ -63,5 +63,20 @@ class GrainService(JsonResultService):
         finally:
             return self.jsonResult
 
+    def getmember(self,cid):
+        logger.error("getmember ")
+        content={}
+        try:
+            # 创建新的用户信息
+            userC=User.objects.get(pk=cid).profile
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
 
 grainService=GrainService()

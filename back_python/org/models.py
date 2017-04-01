@@ -35,6 +35,7 @@ class Profile(models.Model):
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     # disabled=models.BooleanField(default=False,verbose_name="是否禁用")
+    childpwd=models.CharField(max_length=256,null=True,blank=True)
     user=models.OneToOneField(
             User,
             on_delete=models.CASCADE,
