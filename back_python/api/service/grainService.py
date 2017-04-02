@@ -55,8 +55,8 @@ class GrainService(JsonResultService):
                     classids=childinfo["classid"].split(",")
                     for cid in classids:
                         cg=ClassGroup.objects.get(pk=int(cid))
-                        classGroups.append(cg)
-                    profile.classGroups.add(classGroups)
+                        profile.classGroups.add(cg)
+
                 except ClassGroup.DoesNotExist:
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
 
