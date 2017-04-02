@@ -88,7 +88,7 @@ $yml.page=$yml.pageBase.New(null,{
          　  function(res){
                if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
                  //$yml.page.$router.pop();
-                  avalon.router.navigate('/main/grain', 1)
+                  avalon.router.navigate('/main/grain', 0)
                   //$("#backAfterSave").trigger("click")
                }else{
                  alert(res.errMsg);
