@@ -136,8 +136,11 @@ $yml.page=$yml.pageBase.New(null,{
     $yml.ajax('/api/grain/family/getmember',params,
     　  function(res){
           // $yml.page.$vmPage.cats=res.content;
-          console.log("res.contentddddd")
           console.log(res.content)
+          $yml.page.$vmPage.headUrl=res.content.imgUrl;
+          $yml.page.$vmPage.nickname=res.content.nickname;
+          $yml.page.$vmPage.password=res.content.childpwd;
+          $yml.page.$vmPage.classid=res.content.classid;
         }
     );
   }
