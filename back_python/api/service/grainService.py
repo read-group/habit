@@ -82,16 +82,16 @@ class GrainService(JsonResultService):
                 # 用户信息
 
                 try:
-                    userUpdate=User.objects.get(pk=int(childinfo["cid"]))
+                    profile=Profile.objects.get(pk=int(childinfo["cid"]))
                     #创建另一个Profile
-                    userUpdate.username=childinfo["nickname"]
-                    profile=userUpdate.profile
+                    usertmp=profile.user
+                    usertmp.username=childinfo["nickname"]
                     profile.nickname=childinfo["nickname"]
                     profile.imgUrl=childinfo["headingImgUrl"]
                     profile.childpwd=childinfo["password"]
                     # profile.role=MapEngToRole["child"]
                     # profile.org=familyOrg
-                    userUpdate.save()
+                    usertmp.save()
                     profile.save()
                     profile.classGroups.clear()
                     classGroups=[]
