@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
-          <a  href="#!/main/grain" id="backAfterSave">
+          <a  href="#!/main/grain" id="backAfterSave2">
             <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
           </a>
         </div>
@@ -89,6 +89,7 @@ $yml.page=$yml.pageBase.New(null,{
                if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
                  //$yml.page.$router.pop();
                   //avalon.router.navigate('/main/grain', 1)
+                  console.log($("#backAfterSave").attr("href"))
                   $("#backAfterSave").click()
                }else{
                  alert(res.errMsg);
