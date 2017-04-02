@@ -47,7 +47,7 @@ class GrainFamilyUpdateMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyUpdateMemberView")
         reqData=json.loads(str(req.body,'utf-8'))
-        childinfo=reqData
+        childinfo=reqData["childinfo"]
         jsResult=None
         try:
             jsResult= grainService.updatemember(childinfo)
