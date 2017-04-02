@@ -69,8 +69,8 @@ class GrainService(JsonResultService):
         try:
             # 创建新的用户信息
             profile=User.objects.get(pk=cid).profile
-            content=self.toJSON(profile,["id","nickname","imgUrl","password",])
-            
+            content=self.toJSON(profile,["id","nickname","imgUrl","childpwd",])
+
         except:
             info=sys.exc_info()
             logger.error(info)
