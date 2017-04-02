@@ -48,12 +48,7 @@ class Profile(models.Model):
             verbose_name="所属家庭",
             null=True
     )
-    classGroup=models.ForeignKey(
-            ClassGroup,
-            on_delete=models.SET_NULL,
-            verbose_name="所属班级",
-            null=True
-    )
+    classGroups=models.ManyToManyField(ClassGroup)
     def __str__(self):
         return self.nickname or self.user.username;
     class Meta:

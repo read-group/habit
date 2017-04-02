@@ -52,8 +52,16 @@ class GrainService(JsonResultService):
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
                 #创建另一个Profile
                 profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
-                imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,classGroup=classGroupF,childpwd=childinfo["password"])
+                imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
                 profile.save()
+                # 获取班级
+                classids=childinfo["classid"].split(",")
+                classGroups=[]
+                for cid in classids:
+                    cg=ClassGroup.objects.get(pk=cid)
+                    classGroups.append(cg)
+                profile.classGroups.add(classGroups)
+
         except:
             info=sys.exc_info()
             logger.error(info)
