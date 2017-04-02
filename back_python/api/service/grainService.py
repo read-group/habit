@@ -73,6 +73,49 @@ class GrainService(JsonResultService):
         finally:
             return self.jsonResult
 
+    def updatemember(self,childinfo):
+        logger.error("updatemember")
+        content={}
+        try:
+            # 获取班级
+            with transaction.atomic():
+                # 用户信息
+
+                try:
+                    userUpdate=User.objects.get(pk=childinfo["cid"])
+                    #创建另一个Profile
+                    userUpdate.username=childinfo["nickname"]
+                    profile=userUpdate.profile
+                    profile.nickname=childinfo["nickname"]
+                    profile.imgUrl=childinfo["headingImgUrl"]
+                    profile.childpwd=childinfo["password"]
+                    # profile.role=MapEngToRole["child"]
+                    # profile.org=familyOrg
+                    userUpdate.save()
+                    profile.save()
+                    profile.classGroups.clear()
+                    classGroups=[]
+                    classids=childinfo["classid"].split(",")
+                    if len(classids)==1:
+                        try:
+                            int(classids[0])
+                        except:
+                            classids=childinfo["classid"].split("，")
+                    for cid in classids:
+                        cg=ClassGroup.objects.get(pk=int(cid))
+                        profile.classGroups.add(cg)
+                except User.DoesNotExist:
+                    self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
+                # 获取班级
+        except:
+            info=sys.exc_info()
+            logger.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
+
     def getmember(self,cid):
         logger.error("getmember ")
         content={}

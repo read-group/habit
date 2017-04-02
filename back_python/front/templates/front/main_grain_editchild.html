@@ -19,7 +19,7 @@
         <form>
            <div class="form-group">
              <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:40px;height:40px"/>
-             <span  id="takePhoto"　 ms-click="@btnPhoto"   class="active"><i class="fa fa-camera-retro fa-2x"></i><i class="fa fa-plus"></i></span>
+             <span  id="takePhoto"　 ms-click="@btnPhoto"   class="active"><i class="fa fa-camera-retro fa-2x"></i><i  class="fa fa-refresh"></i></span>
            </div>
             <div class="form-group">
               <label for="exampleInputEmail1">昵称</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">班级编码</label>
-              <input type="text" ms-duplex="classid" class="form-control" id="classid" readonly="readonly">
+              <input type="text" ms-duplex="classid" class="form-control" id="classid">
             </div>
             <!-- <div class="checkbox">
               <label>
@@ -56,6 +56,7 @@ $yml.page=$yml.pageBase.New(null,{
     var self=this;
     return {
       $id:"editChild",
+      $childId:"",
       headUrl:"",
       nickname:"",
       password:"",
@@ -66,6 +67,7 @@ $yml.page=$yml.pageBase.New(null,{
       },
       saveClick:function(){
          var params={};
+         params.cid=$yml.page.$vmPage.$childId;
          params.headingImgUrl=$yml.page.$vmPage.headUrl;
          params.nickname=$yml.page.$vmPage.nickname;
          params.password=$yml.page.$vmPage.password;
@@ -113,8 +115,6 @@ $yml.page=$yml.pageBase.New(null,{
                       $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"img"},
                       　  function(res){
                             if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
-                              console.log("upload ok......");
-                              console.log(res.resUrl);
                               $yml.page.$vmPage.headUrl=res.resUrl;
                             }
                           }
@@ -141,6 +141,7 @@ $yml.page=$yml.pageBase.New(null,{
           $yml.page.$vmPage.nickname=res.content.nickname;
           $yml.page.$vmPage.password=res.content.childpwd;
           $yml.page.$vmPage.classid=res.content.classids;
+          $yml.page.$vmPage.$childId=res.content.id;
         }
     );
   }
