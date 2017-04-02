@@ -55,7 +55,9 @@ class GrainService(JsonResultService):
                 imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
                 profile.save()
                 # 获取班级
+                logger.error(childinfo["classid"])
                 classids=childinfo["classid"].split(",")
+
                 classGroups=[]
                 for cid in classids:
                     cg=ClassGroup.objects.get(pk=int(cid))
