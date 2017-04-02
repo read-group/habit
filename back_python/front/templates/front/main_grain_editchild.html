@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">班级编码</label>
-              <input type="text" ms-duplex="classid" class="form-control" id="classid" placeholder="请输入班级编码">
+              <input type="text" ms-duplex="classid" class="form-control" id="classid" readonly="readonly">
             </div>
             <!-- <div class="checkbox">
               <label>
@@ -140,7 +140,7 @@ $yml.page=$yml.pageBase.New(null,{
           $yml.page.$vmPage.headUrl=res.content.imgUrl;
           $yml.page.$vmPage.nickname=res.content.nickname;
           $yml.page.$vmPage.password=res.content.childpwd;
-          $yml.page.$vmPage.classid=res.content.classid;
+          $yml.page.$vmPage.classid=res.content.classids;
         }
     );
   }

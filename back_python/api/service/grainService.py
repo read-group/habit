@@ -80,7 +80,11 @@ class GrainService(JsonResultService):
             # 创建新的用户信息
             profile=Profile.objects.get(pk=cid)
             content=self.toJSON(profile,["id","nickname","imgUrl","childpwd",])
-
+            cgids=[]
+            for cg in profile.classGroups.all():
+                cgids.append(cg.id)
+            cgidstr=cgids.join(",")
+            content["classids"]=cgidstr
         except:
             info=sys.exc_info()
             logger.error(info)
