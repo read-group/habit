@@ -443,7 +443,6 @@
 	    setHash: function(s, replace) {
 	        switch (this.mode) {
 	            case 'iframepoll':
-						    	console.log("xxxxlllllll iframepoll")
 	                if (replace) {
 	                    var iframe = this.iframe
 	                    if (iframe) {
@@ -460,14 +459,12 @@
 	                var method = replace ? 'replaceState' : 'pushState'
 	                history[method]({}, document.title, path)
 	                    // 手动触发onpopstate event
-									console.log("xxxxlllllll popstate")
 	                this.onHashChanged()
 	                break
 	            default:
 	                //http://stackoverflow.com/questions/9235304/how-to-replace-the-location-hash-and-only-keep-the-last-history-entry
 	                var newHash = this.options.hashPrefix + s
 	                if (replace && location.hash !== newHash) {
-										  console.log("xxxxlllllll"+newHash)
 	                    history.back()
 	                }
 	                location.hash = newHash
