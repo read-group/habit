@@ -85,6 +85,7 @@ $yml.page=$yml.pageBase.New(null,{
            return false;
          }
          $yml.ajax('/api/grain/family/updatemember',{"childinfo":params},
+             console.log(params)
          　  function(res){
                if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
                  //$yml.page.$router.pop();
