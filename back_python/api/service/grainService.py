@@ -63,7 +63,6 @@ class GrainService(JsonResultService):
                         profile.classGroups.add(cg)
                 except ClassGroup.DoesNotExist:
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
-
                 # 获取班级
         except:
             info=sys.exc_info()
