@@ -58,7 +58,7 @@ class GrainService(JsonResultService):
                 classids=childinfo["classid"].split(",")
                 classGroups=[]
                 for cid in classids:
-                    cg=ClassGroup.objects.get(pk=cid)
+                    cg=ClassGroup.objects.get(pk=int(cid))
                     classGroups.append(cg)
                 profile.classGroups.add(classGroups)
 
