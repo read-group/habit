@@ -80,8 +80,8 @@ class GrainService(JsonResultService):
             # 获取班级
             with transaction.atomic():
                 # 用户信息
-
                 try:
+                    logger.error(childinfo["cid"])
                     profile=Profile.objects.get(pk=int(childinfo["cid"]))
                     #创建另一个Profile
                     usertmp=profile.user
