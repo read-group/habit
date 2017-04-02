@@ -90,7 +90,8 @@ $yml.page=$yml.pageBase.New(null,{
                  //$yml.page.$router.pop();
                   //avalon.router.navigate('/main/grain', 1)
                   console.log($("#backAfterSave2").attr("href"))
-                  $("#backAfterSave2").click()
+                  var hash = location.hash.replace(/#!?/, '')
+                  avalon.router.navigate('#!/main/grain',1)
                }else{
                  alert(res.errMsg);
                }
