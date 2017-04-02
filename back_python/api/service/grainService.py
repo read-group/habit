@@ -41,30 +41,23 @@ class GrainService(JsonResultService):
         content={}
         try:
             # 获取班级
-            logger.error(childinfo["classid"])
-            classids=childinfo["classid"].split(",")
             with transaction.atomic():
                 # 创建新的用户信息
                 userC=User.objects.create(username=childinfo["nickname"])
                 # 查询班级
                 classGroupF=None
                 try:
-                    classGroupF=ClassGroup.objects.get(pk=int(childinfo["classid"]))
+                    #创建另一个Profile
+                    profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
+                    imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
+                    profile.save()
+                    classGroups=[]
+                    for cid in classids:
+                        cg=ClassGroup.objects.get(pk=int(cid))
+                        classGroups.append(cg)
+                    profile.classGroups.add(classGroups)
                 except ClassGroup.DoesNotExist:
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
-                #创建另一个Profile
-                profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
-                imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
-                profile.save()
-                # 获取班级
-                logger.error(childinfo["classid"])
-                classids=childinfo["classid"].split(",")
-
-                classGroups=[]
-                for cid in classids:
-                    cg=ClassGroup.objects.get(pk=int(cid))
-                    classGroups.append(cg)
-                profile.classGroups.add(classGroups)
 
         except:
             info=sys.exc_info()
