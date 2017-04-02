@@ -82,7 +82,7 @@ class GrainService(JsonResultService):
                 # 用户信息
 
                 try:
-                    userUpdate=User.objects.get(pk=childinfo["cid"])
+                    userUpdate=User.objects.get(pk=int(childinfo["cid"]))
                     #创建另一个Profile
                     userUpdate.username=childinfo["nickname"]
                     profile=userUpdate.profile
