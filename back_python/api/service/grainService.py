@@ -82,7 +82,7 @@ class GrainService(JsonResultService):
             content=self.toJSON(profile,["id","nickname","imgUrl","childpwd",])
             cgids=[]
             for cg in profile.classGroups.all():
-                cgids.append(cg.id)
+                cgids.append(str(cg.id))
             cgidstr=",".join(cgids)
             content["classids"]=cgidstr
         except:
