@@ -40,13 +40,15 @@ class GrainService(JsonResultService):
         logger.error("addmember ")
         content={}
         try:
+            # 获取班级
+            logger.error(childinfo["classid"])
+            classids=childinfo["classid"].split(",")
             with transaction.atomic():
                 # 创建新的用户信息
                 userC=User.objects.create(username=childinfo["nickname"])
                 # 查询班级
                 classGroupF=None
                 try:
-
                     classGroupF=ClassGroup.objects.get(pk=int(childinfo["classid"]))
                 except ClassGroup.DoesNotExist:
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
