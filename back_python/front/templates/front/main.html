@@ -92,7 +92,7 @@
                 //子页面离开时，调用清理方法
                 if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
                   console.log("clean up")
-                  vm.$currentPageVm.cleanUp()
+                  vm.$currentPageVm.cleanUp(vm.$currentPageVm)
                   // if(refererUrl){//说明是子页面返回操作
                   //   //设置当前data-url属性等于子页面url的元素，处于激活状态
                   //   var m=function(x){
