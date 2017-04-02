@@ -53,8 +53,8 @@
         },
         cleanUp:function(){
           console.log("clean up grain list")
-          this.familys.length=0;
-          this.familys=[]
+          // this.familys.length=0;
+          // this.familys=[]
         }
       };
     },
@@ -63,6 +63,7 @@
       console.log(" grain pageReady");
       $yml.ajax('/api/grain/family',null,
       　  function(res){
+           $yml.page.$vmPage.familys=[]
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
             });
