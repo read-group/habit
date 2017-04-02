@@ -48,10 +48,9 @@ class GrainFamilyUpdateMemberView(View):
         logger.error("GrainFamilyUpdateMemberView")
         reqData=json.loads(str(req.body,'utf-8'))
         childinfo=reqData
-
         jsResult=None
         try:
-            jsResult= grainService.updatemember(childid)
+            jsResult= grainService.updatemember(childinfo)
         except:
             info=sys.exc_info()
             logging.error(info)
