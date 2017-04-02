@@ -63,6 +63,7 @@
       console.log(" grain pageReady");
       $yml.ajax('/api/grain/family',null,
       　  function(res){
+            console.log("-----")
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
             });
