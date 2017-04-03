@@ -34,23 +34,19 @@ class TeacherService(JsonResultService):
             cgidParam=int(cgid)
             profilesRtn=None
             if -1==cgidParam:
-                logger.error("-1============")
                 profilesRtn=cgs[0].profile_set.all()
                 logger.error(len(profilesRtn))
-                logger.error("-1============")
             else:
-                logger.error("no -1============")
                 cg=ClassGroup.objects.get(pk=cgidParam)
-                logger.error("after cg ============")
+                content["cgname"]=cg.name
                 profilesRtn=cg.profile_set.all()
-                logger.error("after profilesRtn ============")
             for p in profilesRtn:
                 ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
                 currentCgStudents.append(ptemp)
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
+
         except:
-            logging.error("error...............")
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
