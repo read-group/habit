@@ -36,6 +36,7 @@ class TeacherService(JsonResultService):
             if -1==cgidParam:
                 logger.error("-1============")
                 profilesRtn=cgs[0].profile_set
+                logger.error(len(profilesRtn))
                 logger.error("-1============")
             else:
                 logger.error("no -1============")
