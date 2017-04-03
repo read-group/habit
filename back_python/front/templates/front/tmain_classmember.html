@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ms-for="(i,cg) in @cgs"><a ms-attr="{href:'#!/tmain/classmember/'+@cg.id}">{? cg.name ?}</a></li>
+            <li ms-for="(i,cg) in @cgs"><a ms-attr="{href:'#!/tmain/classmember/'+@cg.id,class:'list-group-item'}">{? cg.name ?}</a></li>
           </ul>
         </div>
       </div>
