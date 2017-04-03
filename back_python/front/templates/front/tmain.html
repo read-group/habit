@@ -17,7 +17,7 @@
       <div class="container">
         <div class="row navButton">
             <div ms-for="(i,item) in @mainMenu"  class="col-xs-6 col-md-6 text-center sound" style="padding:0px;">
-              <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+              <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'tmainDefault':null}"   ms-click="@focus">
                 <span ms-class="['glyphicon',item.icon]"></span>
                 <div>{? item.title ?}</div>
               </a>
@@ -213,10 +213,10 @@
               // }else{
               //
               // }
-              $av.scan(document.getElementById("main"),[vm])
+              $av.scan(document.getElementById("tmain"),[vm])
               //设置初始激活
-              $("span","#mainDefault").addClass("active")
-              $("div","#mainDefault").addClass("active")
+              $("span","#tmainDefault").addClass("active")
+              $("div","#tmainDefault").addClass("active")
 
             })
 
