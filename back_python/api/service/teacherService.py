@@ -25,13 +25,13 @@ class TeacherService(JsonResultService):
         try:
             logger.error(user.username)
             cgs=ClassGroup.objects.filter(creator__id=user.id);
-            logger.error(len(cgs))
+            logger.error("vvvvvvvvvv")
+            logger.error(cgid)
             for cg in cgs:
                 dataTmp=self.toJSON(cg,["id","name"])
                 data.append(dataTmp)
             content["data"]=data
         except:
-            logger.error("error.................")
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
