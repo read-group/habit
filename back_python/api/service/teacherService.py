@@ -20,17 +20,29 @@ logger = logging.getLogger("django")
 class TeacherService(JsonResultService):
     def classmember(self,user,cgid):
         content={}
-        data=[]
+        cgArray=[]
+        currentCgStudents=[]
         logger.error("TeacherService")
         try:
             logger.error(user.username)
-            cgs=ClassGroup.objects.filter(creator__id=user.id);
+            cgs=ClassGroup.objects.filter(creator__id=user.id).order_by("createdTime");
             logger.error("vvvvvvvvvv")
             logger.error(cgid)
             for cg in cgs:
                 dataTmp=self.toJSON(cg,["id","name"])
-                data.append(dataTmp)
-            content["data"]=data
+                cgArray.append(dataTmp)
+            cgidParam=int(cgid)
+            profilesRtn=None
+            if -1==cgidParam:
+                profilesRtn=cgs[0].profile_set
+            else:
+                cg=ClassGroup.objects.get(pk=cgidParam)
+                profilesRtn=cg.profile_set
+            for p in profilesRtn:
+                ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
+                currentCgStudents.append(ptemp)
+            content["cgArray"]=cgArray
+            content["currentCgStudents"]=currentCgStudents
         except:
             info=sys.exc_info()
             logging.error(info)

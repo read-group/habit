@@ -65,8 +65,11 @@
       $yml.ajax('/api/teacher/classmember',{"cg":params},
       　  function(res){
             self.$vmPage.cleanUp()
-            res.content.data.forEach(function(r){
+            res.content.cgArray.forEach(function(r){
               $yml.page.$vmPage.cgs.push(r)
+            });
+            res.content.currentCgStudents.forEach(function(r){
+              $yml.page.$vmPage.students.push(r)
             });
           }
       );
