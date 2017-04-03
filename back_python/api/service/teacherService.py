@@ -23,6 +23,7 @@ class TeacherService(JsonResultService):
         data=[]
         logger.error("TeacherService")
         try:
+            logger.error(user.username)
             cgs=user.classGroup_set.all().order_by("createdTime");
             logger.error(len(cgs))
             for cg in cgs:
