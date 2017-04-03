@@ -1,4 +1,4 @@
-<div class="container page" id="activity" data-page-root="activity"  ms-controller="activity">　
+<div class="container page" id="students" data-page-root="students"  ms-controller="students">　
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div class="container-fluid" style="padding-left:10px;padding:right:1px">
         <div class="navbar-header">
@@ -8,37 +8,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand"　 href="#!/main/activity/t"><i class="fa fa-diamond fa-lg  active" aria-hidden="true"></i></a>
-          <a class="navbar-brand"　 href="#!/main/activity/n"><i class="fa fa-fire fa-lg  active" aria-hidden="true"></i></a>
+          <a class="navbar-brand"　 href="#">大圣阅读号</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">历史活动</a></li>
+            <li class="active"><a href="#">部落1</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <ul class="list-group">
-          <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item" ms-click="@activeSet">
-            <div class="media" style="margin-top:5px">
-                <div class="media-body">
-                  <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
-                  <br/>
-                  <p>活动类别：{? @item.cat ?}</p>
-                  <p>关键词:{? @item.desc ?}</p>
-                  <p>开始日期：{? @item.startTime ?}</p>
-                  <p>截止日期：{? @item.endTime ?}</p>
-                  <p>持续天数：{? @item.days ?}天</p>
-                  <p>还剩名额：{? @item.uplimit - @item.applyNumber?}个</p>
-                </div>
-                <a  ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
-                    <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
-                    <button class="btn btn-primary btn-lg">报名详情</button>
-                </a>
-             </div>
-          </li>
-        </ul>
+      <ul class="list-group">
+        <li  ms-for="(i,item) in @students"   class="list-group-item">
+          <div class="media" style="margin-top:5px">
+            <a  href="#" class="media-left">
+                <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">
+                  <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x"></i></a>
+                </h4>
+                <br/>
+                <p>米仓：
+                <p>钱包：
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
   <script>
@@ -51,66 +47,26 @@
     },
     vmDef:function(){
       return {
-        $id:"activity",
-        hello:'20天习惯养成',
-        activitys:[],
-        helpClick:function(){
+        $id:"students",
+        students:[],
+        backClick:function(){
           //$yml.page.$router.pop();
-          console.log("helpClick")
         },
-        cleanUp:function(){
-          this.activitys.length=0;
-          this.activitys=[]
-        },
-        activeSet:function(e){
-          $(".list-group-item.active").removeClass("active")
-          $(e.currentTarget).addClass("active")
-          //console.log(e)
-          console.log("activeSet")
+        cleanUp:function(toCleanVm){
+          this.students.clear();
         }
       };
     },
     pageReady:function(params){
       var self=this;
-      console.log("pageReady");
-      // $yml.ajax('/api/habit/cats',null,
+      console.log(" classmember pageReady");
+      // $yml.ajax('/api/teacher/classgroup',{"cg":params},
       // 　  function(res){
-      //       $yml.page.$vmPage.cats=res.content;
+      //       res.content.data.forEach(function(r){
+      //         $yml.page.$vmPage.students.push(r)
+      //       });
       //     }
       // );
-
-      //初始化分页器
-      var pager= $yml.pagination.New({
-          currentPage:1,
-          totalCount:1,
-          pageSize:6,
-          url:"/api/activity/",
-          query:params,
-        },{
-          ctor:function(){
-            this.initData(function(res){
-               //如果
-               self.$vmPage.cleanUp()
-               initUi(res);
-               //console.log(res)
-            });
-          }
-        }
-      );
-      pager.onScroll("childContent",function(res){
-           console.log("scroll....")
-           initUi(res);
-      });
-      function initUi(data){
-        console.log("init data")
-         if(data){
-           var c=null;
-           data.forEach(function(d){
-             self.$vmPage.activitys.push(d)
-           });
-
-         }
-      }
     }
   });
   </script>

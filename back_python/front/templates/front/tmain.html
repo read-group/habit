@@ -4,7 +4,7 @@
 {% endblock %}
 <!-- 内容区 -->
 {% block content %}
-<div class="container mainPage" style="width:100%"  id="main"  ms-controller="main">
+<div class="container mainPage" style="width:100%"  id="tmain"  ms-controller="tmain">
   <nav class="navbar navbar-default  navbar-fixed-top" style="z-index:10000" ms-if="isLoading">
     <div  class="col-xs-12 text-center">
         <i style="color:#03BC00;margin-top:10px"  class="fa fa-spinner fa-pulse fa-2x"></i>
@@ -54,12 +54,12 @@
             $(function(){
               //console.log(typeof(avalon))
               var vm=$av.define({
-                $id:"main",
+                $id:"tmain",
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
                 $refererUrl:null,
-                $history:["/main/activity/t"],
+                $history:["/tmain/classmember/t"],
                 mainMenu:[
                 {"title":"部落","url":"/main/activity/t","icon":"glyphicon-tint","isDefault":true},
                 {"title":"我的","url":"/main/my","icon":"glyphicon-asterisk","isDefault":false}
@@ -139,14 +139,14 @@
                    }
                   })
               }
-              $av.router.add("/main/activity/:tag", callback);
-              $av.router.add("/main/activity/detail/:id", callback);
-              $av.router.add("/main/grain", callback);
-              $av.router.add("/main/grain/addchild", callback);
-              $av.router.add("/main/sns", callback);
+              $av.router.add("/tmain/classmember/:cgid", callback);
+              // $av.router.add("/main/activity/detail/:id", callback);
+              // $av.router.add("/main/grain", callback);
+              // $av.router.add("/main/grain/addchild", callback);
+              // $av.router.add("/main/sns", callback);
               $av.router.add("/main/my", callback);
               $av.history.start({
-                  root: "/main",
+                  root: "/tmain",
                   html5:false,
                   hashPrefix:"!",
                   autoScroll:true //滚动
@@ -205,7 +205,7 @@
                 var go=match[1];
                 $av.router.navigate(hash || go, 0)//默认打开
               }else{
-                $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
+                $av.router.navigate(hash || '/tmain/classmember/t', 0)//默认打开
               }
               // var pathfrom="{{ pathfrom }}"
               // if(pathfrom && pathfrom!=""){
