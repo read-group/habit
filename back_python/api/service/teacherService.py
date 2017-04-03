@@ -42,7 +42,7 @@ class TeacherService(JsonResultService):
                 logger.error("no -1============")
                 cg=ClassGroup.objects.get(pk=cgidParam)
                 logger.error("after cg ============")
-                profilesRtn=cg.profile_set
+                profilesRtn=cg.profile_set.all()
                 logger.error("after profilesRtn ============")
             for p in profilesRtn:
                 ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
