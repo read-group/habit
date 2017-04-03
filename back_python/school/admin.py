@@ -6,13 +6,14 @@ from .models import ClassGroup
 
 class ClassInline(admin.TabularInline):
     model = ClassGroup
-    extra = 3
+    extra = 0
 class SchoolAdmin(admin.ModelAdmin):
     list_display=('id','code','name')
     inlines = [ClassInline]
 
 
-
+class ClassGroupAdmin(admin.ModelAdmin):
+    list_display=('id','code','name')
 
 admin.site.register(School,SchoolAdmin)
-admin.site.register(ClassGroup)
+admin.site.register(ClassGroup,ClassGroupAdmin)
