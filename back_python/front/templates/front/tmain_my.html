@@ -1,0 +1,74 @@
+<div class="container page" id="my" data-page-root="my"  ms-controller="my">　
+    <nav class="navbar navbar-default  navbar-fixed-top">
+      <div  class="row navButton">
+          <div  class="col-xs-4 text-left">
+            <a href="#" ms-click="helpClick()">
+              <span class="fa fa-cog"></span>
+            </a>
+          </div>
+          <div class="col-xs-4 text-center">
+              <h4 id="title" class="topNavButton">我</h4>
+          </div>
+          <div class="col-xs-4 text-right">
+            <a>
+              <i class="fa fa-cart-plus fa-2x"></i>
+            </a>
+          </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-6">
+            <div class="thumbnail">
+              <img src="http://mily365.com/media/upload/mily.png"  alt="...">
+              <div class="caption">
+                <h3>{? hello ?}</h3>
+                <p>...</p>
+                <p class="text-right"><a href="" class="btn button-highlight" role="button">详情</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="thumbnail">
+              <img src="http://mily365.com/media/upload/mily.png" alt="...">
+              <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+              </div>
+            </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  <script>
+  $yml.page=$yml.pageBase.New(null,{
+    ctor:function(){
+      console.log("addChild loaded..."+this.getVmEleName());
+      //基类里在pageReady方法里和可以访问成员$vmPage和$router
+      //this.$vmPage
+      //this.$router
+    },
+    vmDef:function(){
+      return {
+        $id:"my",
+        hello:'60天习惯养成',
+        backClick:function(){
+          //$yml.page.$router.pop();
+        },
+        cleanUp:function(){
+          console.log("clean up...")
+        }
+      };
+    },
+    pageReady:function(){
+      var self=this;
+      console.log(" my grain pageReady");
+      // $yml.ajax('/api/habit/cats',null,
+      // 　  function(res){
+      //       $yml.page.$vmPage.cats=res.content;
+      //     }
+      // );
+    }
+  });
+  </script>
