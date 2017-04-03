@@ -21,7 +21,7 @@ class TeacherService(JsonResultService):
     def classmember(self,user,cgid):
         content={}
         data=[]
-        logger.error("GrainService")
+        logger.error("TeacherService")
         try:
             cgs=user.classGroup_set.all().order_by("createdTime");
             for cg in cgs:
