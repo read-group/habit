@@ -44,6 +44,7 @@ class TeacherService(JsonResultService):
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
         except:
+            logging.error("error...............")
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
