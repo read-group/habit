@@ -34,7 +34,9 @@ class TeacherService(JsonResultService):
             cgidParam=int(cgid)
             profilesRtn=None
             if -1==cgidParam:
-                profilesRtn=cgs[0].profile_set.all()
+                cg=cgs[0]
+                content["cgname"]=cg.name
+                profilesRtn=cg.profile_set.all()
                 logger.error(len(profilesRtn))
             else:
                 cg=ClassGroup.objects.get(pk=cgidParam)
