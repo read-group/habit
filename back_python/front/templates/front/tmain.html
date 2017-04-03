@@ -4,7 +4,7 @@
 {% endblock %}
 <!-- 内容区 -->
 {% block content %}
-<div class="container mainPage" style="width:100%"  id="tmain"  ms-controller="tmain">
+<div class="container mainPage" style="width:100%"  id="main"  ms-controller="main">
   <nav class="navbar navbar-default  navbar-fixed-top" style="z-index:10000" ms-if="isLoading">
     <div  class="col-xs-12 text-center">
         <i style="color:#03BC00;margin-top:10px"  class="fa fa-spinner fa-pulse fa-2x"></i>
@@ -16,7 +16,7 @@
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
         <div class="row navButton">
-            <div ms-for="(i,item) in @mainMenu"  class="col-xs-6 col-md-6 text-center sound" style="padding:0px;">
+            <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center sound" style="padding:0px;">
               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                 <span ms-class="['glyphicon',item.icon]"></span>
                 <div>{? item.title ?}</div>
@@ -54,12 +54,12 @@
             $(function(){
               //console.log(typeof(avalon))
               var vm=$av.define({
-                $id:"tmain",
+                $id:"main",
                 isLoading:true,
                 isRoot:true,
                 htmlcontent:"hello",
                 $refererUrl:null,
-                $history:["/tmain/classmember/t"],
+                $history:["/main/activity/t"],
                 $currentPageVm:null,
                 mainMenu:[
                 {"title":"活动","url":"/tmain/classmember/t","icon":"glyphicon-tint","isDefault":true},
