@@ -59,7 +59,7 @@
                 isRoot:true,
                 htmlcontent:"hello",
                 $refererUrl:null,
-                $history:["/main/activity/t"],
+                $history:["/tmain/classmember/t"],
                 $currentPageVm:null,
                 mainMenu:[
                 {"title":"活动","url":"/tmain/classmember/t","icon":"glyphicon-tint","isDefault":true},
@@ -210,7 +210,7 @@
                 var go=match[1];
                 $av.router.navigate(hash || go, 0)//默认打开
               }else{
-                $av.router.navigate(hash || '/tmain/classmember/t', 0)//默认打开
+                $av.router.navigate(hash || '/tmain/classmember/-1', 0)//默认打开
               }
               // var pathfrom="{{ pathfrom }}"
               // if(pathfrom && pathfrom!=""){

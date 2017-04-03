@@ -18,6 +18,7 @@ from django.contrib import admin
 from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView,GrainFamilyView,GrainFamilyAddMemberView
 from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
+from api.views import TeacherClassMemberView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
@@ -28,4 +29,5 @@ urlpatterns = [
      url(r'^grain/family/addmember$',GrainFamilyAddMemberView.as_view()),
      url(r'^grain/family/getmember$',GrainFamilyGetMemberView.as_view()),
      url(r'^grain/family/updatemember$',GrainFamilyUpdateMemberView.as_view()),
+     url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
 ]

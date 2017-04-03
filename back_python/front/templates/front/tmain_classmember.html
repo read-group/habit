@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">部落1</a></li>
+            <li ms-for="(i,cg) in @cgs"><a ms-attr="{href:'#!/tmain/classmember/'+@cg.id}">{? cg.name ?}</a></li>
           </ul>
         </div>
       </div>
@@ -49,6 +49,7 @@
       return {
         $id:"students",
         students:[],
+        cgs:[],
         backClick:function(){
           //$yml.page.$router.pop();
         },
@@ -60,13 +61,13 @@
     pageReady:function(params){
       var self=this;
       console.log(" classmember pageReady");
-      // $yml.ajax('/api/teacher/classgroup',{"cg":params},
-      // 　  function(res){
-      //       res.content.data.forEach(function(r){
-      //         $yml.page.$vmPage.students.push(r)
-      //       });
-      //     }
-      // );
+      $yml.ajax('/api/teacher/classmember',{"cg":params},
+      　  function(res){
+            res.content.data.forEach(function(r){
+              $yml.page.$vmPage.cgs.push(r)
+            });
+          }
+      );
     }
   });
   </script>
