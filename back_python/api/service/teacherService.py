@@ -30,6 +30,7 @@ class TeacherService(JsonResultService):
                 data.append(dataTmp)
             content["data"]=data
         except:
+            logger.error("error.................")
             info=sys.exc_info()
             logging.error(info)
             self.jsonResult.rtnDic["status"]=-1
