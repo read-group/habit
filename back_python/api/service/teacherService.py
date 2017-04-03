@@ -24,6 +24,7 @@ class TeacherService(JsonResultService):
         logger.error("TeacherService")
         try:
             cgs=user.classGroup_set.all().order_by("createdTime");
+            logger.error(len(cgs))
             for cg in cgs:
                 dataTmp=self.toJSON(cg,["id","name"])
                 data.append(dataTmp)
