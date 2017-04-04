@@ -18,6 +18,7 @@ from django.contrib import admin
 from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,ActivityDetailView,GrainView,GrainAddChildView,SnsView,MyView
 from .views import GrainEditChildView
 from .views import TMainClassMemberView
+from .views import TMyView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
@@ -30,5 +31,6 @@ urlpatterns = [
     url(r'^main/sns$', SnsView.as_view(),name="main.sns"),
     url(r'^main/my$', MyView.as_view(),name="main.my"),
     url(r'^tmain/classmember/.*$', TMainClassMemberView.as_view(),name="tmain.classmember"),
+    url(r'^tmain/my$', TMyView.as_view(),name="tmain.my"),
 
 ]

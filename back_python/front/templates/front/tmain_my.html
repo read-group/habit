@@ -1,5 +1,5 @@
 <div class="container page" id="my" data-page-root="my"  ms-controller="my">　
-    <nav class="navbar navbar-default  navbar-fixed-top">
+    <!-- <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left">
             <a href="#" ms-click="helpClick()">
@@ -15,29 +15,17 @@
             </a>
           </div>
       </div>
-    </nav>
+    </nav> -->
     <div class="container-fluid">
-      <div class="row">
-          <div class="col-sm-6">
-            <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png"  alt="...">
-              <div class="caption">
-                <h3>{? hello ?}</h3>
-                <p>...</p>
-                <p class="text-right"><a href="" class="btn button-highlight" role="button">详情</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="thumbnail">
-              <img src="http://mily365.com/media/upload/mily.png" alt="...">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div>
+       <div class="row">
+         <div class="col-sm-12" ms-if="@isDetail">
+           <div class="thumbnail noborder">
+             <img class="media-object" ms-attr="{src:@myinfo.imgUrl}" style="width:400px;height:300px" alt="...">
+             <div class="caption">
+
+             </div>
+           </div>
+         </div>
        </div>
     </div>
   </div>
@@ -52,7 +40,7 @@
     vmDef:function(){
       return {
         $id:"my",
-        hello:'60天习惯养成',
+        myinfo:'',
         backClick:function(){
           //$yml.page.$router.pop();
         },
@@ -64,11 +52,11 @@
     pageReady:function(){
       var self=this;
       console.log(" my grain pageReady");
-      // $yml.ajax('/api/habit/cats',null,
-      // 　  function(res){
-      //       $yml.page.$vmPage.cats=res.content;
-      //     }
-      // );
+      $yml.ajax('/api/teacher/my',null,
+      　  function(res){
+            $yml.page.$vmPage.myinfo=res.content.myinfo;
+          }
+      );
     }
   });
   </script>

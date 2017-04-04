@@ -30,4 +30,5 @@ urlpatterns = [
      url(r'^grain/family/getmember$',GrainFamilyGetMemberView.as_view()),
      url(r'^grain/family/updatemember$',GrainFamilyUpdateMemberView.as_view()),
      url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
+     url(r'^teacher/my$',TeacherMyView.as_view()),
 ]

@@ -18,19 +18,18 @@ class TeacherClassMemberView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
-# class GrainFamilyAddMemberView(View):
-#     def post(self,req,*arg,**kwargs):
-#         logger.error("GrainFamilyAddMemberView")
-#         reqData=json.loads(str(req.body,'utf-8'))
-#         childinfo=reqData["childinfo"]
-#         jsResult=None
-#         try:
-#             logger.error(req.user.profile.org.id)
-#             jsResult= grainService.addmember(req.user.profile.org,childinfo)
-#         except:
-#             info=sys.exc_info()
-#             logging.error(info)
-#         return jsResult.renderToJsonResponse()
+class TeacherMyView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("TeacherMyView")
+        # reqData=json.loads(str(req.body,'utf-8'))
+        # childinfo=reqData["childinfo"]
+        jsResult=None
+        try:
+            jsResult= teacherService.myfunc(req.user)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
 #
 # class GrainFamilyGetMemberView(View):
 #     def post(self,req,*arg,**kwargs):

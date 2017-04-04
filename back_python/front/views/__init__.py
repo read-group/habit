@@ -5,3 +5,4 @@ from .main_grain import GrainView,GrainAddChildView,GrainEditChildView
 from .main_sns  import SnsView
 from .main_my  import MyView
 from .tmain_classmember  import TMainClassMemberView
+from .tmain_my import TMyView

@@ -57,5 +57,17 @@ class TeacherService(JsonResultService):
         finally:
             return self.jsonResult
 
-
+    def myfunc(self,user):
+        content={}
+        try:
+            dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl"])
+            content["myinfo"]=dataTmp
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
 teacherService=TeacherService()
