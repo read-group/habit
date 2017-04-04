@@ -61,8 +61,8 @@ class TeacherService(JsonResultService):
         content={}
         try:
             logger.error(user.profile.nickname)
-            dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl"])
-            logger.error("myfunc")
+            dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl",])
+            logger.error(dataTmp['nickname'])
             content["myinfo"]=dataTmp
         except:
             info=sys.exc_info()
