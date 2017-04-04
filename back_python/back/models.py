@@ -7,7 +7,7 @@ from django.http import JsonResponse
 
 # Create your models here.
 class EntityBase(models.Model):
-    code =models.CharField(max_length=30,verbose_name="编码")
+    code =models.CharField(max_length=30,verbose_name="编码",null=True,blank=True)
     name = models.CharField(max_length=100,verbose_name="名称")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
