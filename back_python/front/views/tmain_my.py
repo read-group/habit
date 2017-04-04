@@ -9,4 +9,4 @@ import json
 class TMyView(TemplateView):
     template_name="front/tmain_my.html"
     def get(self,request,*args,**kwargs):
-        return super(MyView,self).get(request,*args,**kwargs)
+        return super(TMyView,self).get(request,*args,**kwargs)
