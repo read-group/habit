@@ -51,7 +51,7 @@
       $yml.ajax('/api/teacher/my',null,
       　  function(res){
             $yml.page.$vmPage.myinfo=res.content.myinfo;
-            alert(JSON.stringify(res.content))
+            alert(JSON.stringify(res.content.myinfo))
           }
       );
     }
