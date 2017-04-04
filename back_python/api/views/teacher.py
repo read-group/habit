@@ -25,6 +25,7 @@ class TeacherMyView(View):
         # childinfo=reqData["childinfo"]
         jsResult=None
         try:
+            logger.error("yyyyy")
             jsResult= teacherService.myfunc(req.user)
         except:
             logger.error("xxxxxxxxx")
