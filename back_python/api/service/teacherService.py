@@ -60,7 +60,7 @@ class TeacherService(JsonResultService):
     def myfunc(self,user):
         content={}
         try:
-            logger.error("myfunc")
+            logger.error(user.profile.nickname)
             dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl"])
             logger.error("myfunc")
             content["myinfo"]=dataTmp
