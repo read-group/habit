@@ -2,17 +2,13 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left">
-            <a href="#" ms-click="helpClick()">
-              <span class="fa fa-cog"></span>
-            </a>
+
           </div>
           <div class="col-xs-4 text-center">
               <h4 id="title" class="topNavButton">我</h4>
           </div>
           <div class="col-xs-4 text-right">
-            <a>
-              <i class="fa fa-cart-plus fa-2x"></i>
-            </a>
+
           </div>
       </div>
     </nav>
@@ -55,7 +51,7 @@
       $yml.ajax('/api/teacher/my',null,
       　  function(res){
             $yml.page.$vmPage.myinfo=res.content.myinfo;
-            alert(res.status)
+            alert(JSON.stringify(res.content))
           }
       );
     }
