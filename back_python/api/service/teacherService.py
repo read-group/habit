@@ -2,7 +2,7 @@ from django.db import transaction
 from django.db.models import Q
 from django.contrib.auth.models import User
 from org.models import Profile,MapEngToRole,Org
-from school.models import ClassGroup
+from school.models import ClassGroup,School
 import datetime
 from activity.models import Activity
 from django.conf import settings
@@ -22,9 +22,18 @@ class TeacherService(JsonResultService):
         content={}
         try:
             logger.error("addclass")
+            scodeClass=-1
+            school=None
+            try:
+                scodeClass=int(classinfo["scode"])
+                school=School.objects.get(pk=scodeClass)
+            except:
+                self.jsonResult.rtnDic["status"]=-1
+                self.jsonResult.rtnDic["errMsg"]="请检查您输入的学校编码."
             nameClass=classinfo["name"]
             imgUrlClass=classinfo["imgUrl"]
             cg=ClassGroup(name=nameClass,imgUrl=imgUrlClass)
+            cg.school=school
             cg.save()
             logger.error(cg.id)
             # content["data"]=dataTmp

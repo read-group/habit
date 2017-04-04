@@ -21,10 +21,15 @@
              <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:40px;height:40px"/>
              <span  id="takePhoto"　 ms-click="@btnPhoto"   class="active"><i class="fa fa-camera-retro fa-2x"></i><i class="fa fa-plus"></i></span>
            </div>
+           <div class="form-group">
+             <label for="exampleInputEmail1">学校编码</label>
+             <input type="text" ms-duplex="scode" class="form-control" id="scode" placeholder="请输入学校编码">
+           </div>
             <div class="form-group">
               <label for="exampleInputEmail1">名称</label>
               <input type="text" ms-duplex="name" class="form-control" id="name" placeholder="请输入部落名称">
             </div>
+
             <!-- <div class="checkbox">
               <label>
                 <input type="checkbox"> Check me out
@@ -50,6 +55,7 @@ $yml.page=$yml.pageBase.New(null,{
       $id:"addclass",
       headUrl:"",
       name:"",
+      scode:"",
       isRequired:"true",
       cleanUp:function(){
 
@@ -57,7 +63,12 @@ $yml.page=$yml.pageBase.New(null,{
       saveClick:function(){
          var params={};
          params.imgUrl=$yml.page.$vmPage.headUrl;
+         params.scode=$yml.page.$vmPage.scode;
          params.name=$yml.page.$vmPage.name;
+         if($.trim(params.scode)==""){
+           alert("学校编码不能为空。");
+           return false;
+         }
          if($.trim(params.name)==""){
            alert("昵称不能为空。");
            return false;
