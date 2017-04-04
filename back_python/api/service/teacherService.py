@@ -56,7 +56,7 @@ class TeacherService(JsonResultService):
             logger.error("vvvvvvvvvv")
             logger.error(cgid)
             for cg in cgs:
-                dataTmp=self.toJSON(cg,["id","name"])
+                dataTmp=self.toJSON(cg,["id","name","imgUrl"])
                 cgArray.append(dataTmp)
             cgidParam=int(cgid)
             profilesRtn=None
@@ -64,10 +64,10 @@ class TeacherService(JsonResultService):
                 cg=cgs[0]
                 content["cgname"]=cg.name
                 profilesRtn=cg.profile_set.all()
-                logger.error(len(profilesRtn))
             else:
                 cg=ClassGroup.objects.get(pk=cgidParam)
                 content["cgname"]=cg.name
+                content["imgUrl"]=cg.imgUrl
                 profilesRtn=cg.profile_set.all()
             for p in profilesRtn:
                 ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
