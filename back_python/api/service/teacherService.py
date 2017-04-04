@@ -24,10 +24,8 @@ class TeacherService(JsonResultService):
             logger.error("addclass")
             scodeClass=-1
             school=None
-            us=None
-            logger.error(user.id)
             try:
-                scodeClass=int(classinfo["school"])
+                scodeClass=int(classinfo["scode"])
                 school=School.objects.get(pk=scodeClass)
             except:
                 self.jsonResult.rtnDic["status"]=-1
@@ -36,7 +34,7 @@ class TeacherService(JsonResultService):
             imgUrlClass=classinfo["imgUrl"]
             cg=ClassGroup(name=nameClass,imgUrl=imgUrlClass)
             cg.school=school
-            # cg.creator=user
+            cg.creator=user
             cg.save()
             content["cgid"]=cg.id
         except:
