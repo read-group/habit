@@ -19,6 +19,7 @@ from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoin
 from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
 from api.views import TeacherClassMemberView
+from api.views import TeacherMyView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
