@@ -25,7 +25,7 @@ class TeacherService(JsonResultService):
             scodeClass=-1
             school=None
             try:
-                scodeClass=int(classinfo["scode"])
+                scodeClass=int(classinfo["school"])
                 school=School.objects.get(pk=scodeClass)
             except:
                 self.jsonResult.rtnDic["status"]=-1
@@ -34,6 +34,7 @@ class TeacherService(JsonResultService):
             imgUrlClass=classinfo["imgUrl"]
             cg=ClassGroup(name=nameClass,imgUrl=imgUrlClass)
             cg.school=school
+            cg.creator=user
             cg.save()
             logger.error(cg.id)
             # content["data"]=dataTmp
