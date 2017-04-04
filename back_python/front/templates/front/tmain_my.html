@@ -55,7 +55,7 @@
       $yml.ajax('/api/teacher/my',null,
       　  function(res){
             if(res.status!=-1)
-               alert(JSON.stringify(res.content.myinfo))
+               alert("ok")
                $yml.page.$vmPage.myinfo=res.content.myinfo;
             else {
               alert("error")
