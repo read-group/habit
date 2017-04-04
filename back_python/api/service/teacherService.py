@@ -72,4 +72,5 @@ class TeacherService(JsonResultService):
             self.jsonResult.rtnDic["content"]=content
         finally:
             return self.jsonResult
+
 teacherService=TeacherService()

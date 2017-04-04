@@ -27,6 +27,7 @@ class TeacherMyView(View):
         try:
             jsResult= teacherService.myfunc(req.user)
         except:
+            logger.error("xxxxxxxxx")
             info=sys.exc_info()
             logging.error(info)
         return jsResult.renderToJsonResponse()
