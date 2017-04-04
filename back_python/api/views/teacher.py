@@ -21,8 +21,6 @@ class TeacherClassMemberView(View):
 class TeacherMyView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("TeacherMyView")
-        # reqData=json.loads(str(req.body,'utf-8'))
-        # childinfo=reqData["childinfo"]
         jsResult=None
         try:
             logger.error("yyyyy")
