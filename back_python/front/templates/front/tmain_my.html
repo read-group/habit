@@ -18,7 +18,7 @@
            <div class="thumbnail noborder">
              <img class="media-object" ms-attr="{src:@myinfo.imgUrl}" style="width:400px;height:300px" alt="...">
              <div class="caption">
-
+                  sdgsdfsdf
              </div>
            </div>
          </div>
@@ -50,9 +50,8 @@
       console.log(" my grain pageReady");
       $yml.ajax('/api/teacher/my',null,
       　  function(res){
-      　　　 alert(JSON.stringify(res.content.myinfo))
             $yml.page.$vmPage.myinfo=res.content.myinfo;
-            
+
           }
       );
     }
