@@ -36,7 +36,7 @@ class TeacherService(JsonResultService):
             imgUrlClass=classinfo["imgUrl"]
             cg=ClassGroup(name=nameClass,imgUrl=imgUrlClass)
             cg.school=school
-            cg.creator=user
+            # cg.creator=user
             cg.save()
             content["cgid"]=cg.id
         except:
