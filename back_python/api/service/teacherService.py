@@ -24,6 +24,8 @@ class TeacherService(JsonResultService):
             logger.error("addclass")
             scodeClass=-1
             school=None
+            us=None
+            logger.error(user.id)
             try:
                 scodeClass=int(classinfo["school"])
                 school=School.objects.get(pk=scodeClass)
