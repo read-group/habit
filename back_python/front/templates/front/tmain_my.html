@@ -54,7 +54,12 @@
       console.log(" my grain pageReady");
       $yml.ajax('/api/teacher/my',null,
       　  function(res){
-            $yml.page.$vmPage.myinfo=res.content.myinfo;
+            if(res.status!=-1)
+               $yml.page.$vmPage.myinfo=res.content.myinfo;
+            else {
+              alert("error")
+            }
+
           }
       );
     }
