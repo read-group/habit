@@ -36,8 +36,7 @@ class TeacherService(JsonResultService):
             cg.school=school
             cg.creator=user
             cg.save()
-            logger.error(cg.id)
-            # content["data"]=dataTmp
+            content["cgid"]=cg.id
         except:
             info=sys.exc_info()
             logging.error(info)
