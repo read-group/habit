@@ -18,6 +18,24 @@ logger = logging.getLogger("django")
 
 # Create your views here.
 class TeacherService(JsonResultService):
+    def addclass(self,user,classinfo):
+        content={}
+        try:
+            logger.error("addclass")
+            nameClass=classinfo["name"]
+            imgUrlClass=classinfo["imgUrl"]
+            cg=ClassGroup(name=nameClass,imgUrl=imgUrlClass)
+            cg.save()
+            logger.error(cg.id)
+            # content["data"]=dataTmp
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+            self.jsonResult.rtnDic["status"]=-1
+        else:
+            self.jsonResult.rtnDic["content"]=content
+        finally:
+            return self.jsonResult
     def classmember(self,user,cgid):
         content={}
         cgArray=[]

@@ -6,6 +6,17 @@ logger = logging.getLogger("django")
 from django.views.generic.base import View
 from api.service import teacherService
 # Create your views here.
+class TeacherAddClassView(View):
+    def post(self,req,*arg,**kwargs):
+        jsResult=None
+        try:
+            reqData=json.loads(str(req.body,'utf-8'))
+            classinfo=reqData["classinfo"]
+            jsResult= teacherService.addclass(req.user,classinfo)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
 class TeacherClassMemberView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
