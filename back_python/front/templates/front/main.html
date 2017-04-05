@@ -208,7 +208,7 @@
               var match=location.href.match("&pathfrom=(.*?)&")
               if(match && match[1]){
                 var go=match[1];
-                $av.router.navigate("#!"+go, 1)//默认打开
+                $av.router.navigate("#!"+go, 0)//默认打开
               }else{
                 $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
               }
