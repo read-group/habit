@@ -156,7 +156,6 @@ class ActivityService(JsonResultService):
                     # 去库里查询
                     habitTmp=Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
                     cache.set(habitLevelKeyRun,habitTmp,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
-
                 dataTmp=self.toJSON(habitTmp,["id","name","icon"])
                 rtnArray.append(dataTmp)
                 # 如果是父母习惯，加一个字段区分,0专用，-1非专用
@@ -178,7 +177,6 @@ class ActivityService(JsonResultService):
                 orgActivityHistory.activityDays=activity.days
                 # 懒人基金金额
                 orgActivityHistory.lazyFund=activity.lazyFund
-
                 orgActivityHistory.save()
 
                 # 更新活动报名人数
@@ -190,16 +188,6 @@ class ActivityService(JsonResultService):
                 else:
                     activity.save()
 
-
-
-                # # 平台米仓修改
-                # sysAccountHistory=SysAccountHistory()
-                # sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMily"]
-                # sysAccountHistory.tradeAmount=0-orgActivityHistory.getMily
-                # # 查询米仓类型的系统账户
-                # sysAccount=SysAccount.objects.get(accountType__exact=MAP_ACCOUNT_TYPE["rice"])
-                # sysAccountHistory.sysAccount=sysAccount
-                # sysAccountHistory.save()
             # 构建家庭习惯缓存org:id:habit:id=habit
             orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
             #计算缓存天数
