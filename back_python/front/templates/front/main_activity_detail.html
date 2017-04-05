@@ -201,6 +201,12 @@
       console.log("pageReady");
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
+      　　　 self.$vmMain.$history.pop();
+            $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
+            $yml.page.$vmPage.item=res.content.data;
+            var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
+            $yml.page.$vmPage.curQuestion=initFirstQuestion;
+            $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
             wx.onMenuShareAppMessage({
                  title: '和我家孩子一起来挑战米粒习惯吧！', // 分享标题
                //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
@@ -218,13 +224,6 @@
                      alert("取消分享.");
                  }
              });
-      　　　 self.$vmMain.$history.pop();
-            $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
-            $yml.page.$vmPage.item=res.content.data;
-            var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
-            $yml.page.$vmPage.curQuestion=initFirstQuestion;
-            $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
-
           }
       );
 
