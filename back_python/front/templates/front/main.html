@@ -122,7 +122,7 @@
                                      title: '和我家孩子一起来挑战米粒习惯吧！', // 分享标题
                                    //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
                                      desc: '孩子们需要朋友的陪伴与关注....', // 分享描述
-                                     link: "{{detailUrl|safe}}", // 分享链接
+                                     link:ts, // 分享链接
                                      imgUrl: 'http://mily365.com/media/upload/mily.png', // 分享图标
                                      type: '', // 分享类型,music、video或link，不填默认为link
                                      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -149,6 +149,7 @@
 
                 }
               });
+              //微信环境初始化
               vm.wxinit()
               function cleanUp($pageVm) {
                 //子页面离开时，调用清理方法
