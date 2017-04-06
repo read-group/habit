@@ -86,24 +86,75 @@
                   $(".active").removeClass("active")
                   $("span",el.currentTarget).addClass("active")
                   $("div",el.currentTarget).addClass("active")
+                },
+                wxinit:function(ts){
+                  var urlstr=document.location.href;
+                  $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
+                　  function(res){
+                      var config={};
+                      //alert(JSON.stringify(res));
+                      config.debug=false;
+                      config.appId=res.content.appid;
+                      config.timestamp=res.content.timestamp;
+                      config.nonceStr=res.content.nonceStr;
+                      config.signature=res.content.signature;
+                      config.jsApiList=['checkJsApi','uploadImage','chooseImage','onMenuShareAppMessage','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice'
+                                        ,'stopVoice'
+                                        ,'onVoicePlayEnd'
+                                        ,'uploadVoice'
+                                        ,'downloadVoice','chooseWXPay','hideMenuItems'];
+                     wx.ready(function(){
+                              // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
+                              // var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
+                              // var encodeurl=encodeURIComponent(redirect_uri);
+                              // var scope="snsapi_userinfo";
+                              // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
+                              // var url="http://www.163.com";
+
+                              wx.hideMenuItems({
+                                                  menuList:['menuItem:share:qq',
+                                                  "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
+                                                  "menuItem:originPage","menuItem:readMode",
+                                                  "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                              });
+                              if(ts){
+                                wx.onMenuShareAppMessage({
+                                     title: '和我家孩子一起来挑战米粒习惯吧！', // 分享标题
+                                   //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
+                                     desc: '孩子们需要朋友的陪伴与关注....', // 分享描述
+                                     link: "{{detailUrl|safe}}", // 分享链接
+                                     imgUrl: 'http://mily365.com/media/upload/mily.png', // 分享图标
+                                     type: '', // 分享类型,music、video或link，不填默认为link
+                                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                     success: function (r) {
+                                         // 用户确认分享后执行的回调函数
+                                         $yml.page.$vmPage.digOk();
+                                     },
+                                     cancel: function () {
+                                         // 用户取消分享后执行的回调函数
+                                         alert("取消分享.");
+                                     }
+                                });
+
+                              }
+                      });
+                      wx.config(config);
+                     }
+                  );
+                  wx.error(function(e){
+                    //当有错误发生的时候，需要重新去配置wx
+                    alert("zhifu.....");
+                    alert(JSON.stringify(e));
+                  });
+
                 }
               });
+              vm.wxinit()
               function cleanUp($pageVm) {
                 //子页面离开时，调用清理方法
                 if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
                   console.log("clean up")
                   vm.$currentPageVm.cleanUp(vm.$currentPageVm)
-                  // if(refererUrl){//说明是子页面返回操作
-                  //   //设置当前data-url属性等于子页面url的元素，处于激活状态
-                  //   var m=function(x){
-                  //     return function(){
-                  //       $("li[data-url='"+x+"']").addClass("active")
-                  //     };
-                  //   }
-                  //   setTimeout(m(refererUrl),100);
-                  //  //  console.log($li)
-                  //   //refererUrl=null;
-                  // }
                 }
                 //保存当前的pageVm
                 vm.$currentPageVm=$pageVm;
@@ -156,51 +207,6 @@
                   hashPrefix:"!",
                   autoScroll:true //滚动
               })
-              var urlstr=document.location.href;
-              $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
-            　  function(res){
-                  var config={};
-                  //alert(JSON.stringify(res));
-                  config.debug=false;
-                  config.appId=res.content.appid;
-                  config.timestamp=res.content.timestamp;
-                  config.nonceStr=res.content.nonceStr;
-                  config.signature=res.content.signature;
-                 //  config.jsApiList=['uploadImage','chooseImage','checkJsApi','onMenuShareAppMessage','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice'
-                 //                   ,'stopVoice'
-                 //                   ,'onVoicePlayEnd'
-                 //                   ,'uploadVoice'
-                 //                   ,'downloadVoice','chooseWXPay','hideMenuItems','getNetworkType'];
-                 config.jsApiList=['checkJsApi','uploadImage','chooseImage','onMenuShareAppMessage','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice'
-                                    ,'stopVoice'
-                                    ,'onVoicePlayEnd'
-                                    ,'uploadVoice'
-                                    ,'downloadVoice','chooseWXPay','hideMenuItems'];
-                 wx.ready(function(){
-                          // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
-                          // var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
-                          // var encodeurl=encodeURIComponent(redirect_uri);
-                          // var scope="snsapi_userinfo";
-                          // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
-                          // var url="http://www.163.com";
-
-                          wx.hideMenuItems({
-                                              menuList:['menuItem:share:qq',
-                                              "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
-                                              "menuItem:originPage","menuItem:readMode",
-                                              "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                          });
-                  });
-
-                  wx.config(config);
-                 }
-              );
-
-              wx.error(function(e){
-                //当有错误发生的时候，需要重新去配置wx
-                alert("zhifu.....");
-                alert(JSON.stringify(e));
-              });
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)&")
