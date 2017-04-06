@@ -184,12 +184,12 @@
                           // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
                           // var url="http://www.163.com";
 
-                                        wx.hideMenuItems({
+                              wx.hideMenuItems({
                                               menuList:["menuItem:share:timeline",'menuItem:share:qq',
                                               "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
                                               "menuItem:originPage","menuItem:readMode",
                                               "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                                        });
+                              });
                   });
 
                   wx.config(config);
@@ -201,14 +201,12 @@
                 alert("zhifu.....");
                 alert(JSON.stringify(e));
               });
-
-
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)&")
               if(match && match[1]){
                 var go=match[1];
-                $av.router.navigate(hash || go, 0)//默认打开
+                $av.router.navigate("#!"+go, 0)//默认打开
               }else{
                 $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
               }
