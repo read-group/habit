@@ -19,7 +19,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class TeacherService(JsonResultService):
     def addclass(self,user,classinfo):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         try:
             logger.error("addclass")
@@ -47,7 +47,7 @@ class TeacherService(JsonResultService):
         finally:
             return jsonResult
     def classmember(self,user,cgid):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         cgArray=[]
         currentCgStudents=[]
@@ -84,7 +84,7 @@ class TeacherService(JsonResultService):
             return jsonResult
 
     def myfunc(self,user):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         try:
             logger.error(user.profile.nickname)

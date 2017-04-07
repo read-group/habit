@@ -19,7 +19,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class GrainService(JsonResultService):
     def family(self,familyOrg):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         data=[]
         logger.error("GrainService")
@@ -38,7 +38,7 @@ class GrainService(JsonResultService):
         finally:
             return jsonResult
     def addmember(self,familyOrg,childinfo):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         logger.error("addmember ")
         content={}
         try:
@@ -77,7 +77,7 @@ class GrainService(JsonResultService):
             return jsonResult
 
     def updatemember(self,childinfo):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         logger.error("updatemember")
         content={}
         try:
@@ -120,7 +120,7 @@ class GrainService(JsonResultService):
             return jsonResult
 
     def getmember(self,cid):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         logger.error("getmember ")
         content={}
         try:

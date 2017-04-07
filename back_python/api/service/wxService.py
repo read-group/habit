@@ -13,7 +13,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class WxService(JsonResultService):
     def welcome(self,host):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         try:
             welcome= WxWelcome.objects.latest("createdTime")

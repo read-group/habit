@@ -17,7 +17,7 @@ logger = logging.getLogger("django")
 class ActivityService(JsonResultService):
     # 参与懒人基金分享
     def lazyFundShareIn(self,user,actId):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         data={}
         try:
@@ -36,7 +36,7 @@ class ActivityService(JsonResultService):
             return jsonResult
 
     def activitys(self,skip,limit,schema,tag):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         data=[]
         try:
@@ -62,7 +62,7 @@ class ActivityService(JsonResultService):
             return jsonResult
     # 构造一个分享链接，返回到客户端
     def activityDetail(self,user,id,schema):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         try:
             act= Activity.objects.get(pk=id)
@@ -112,7 +112,7 @@ class ActivityService(JsonResultService):
 
 
     def activityLoopCheck(self):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         try:
             dnow=datetime.datetime.now()
@@ -132,7 +132,7 @@ class ActivityService(JsonResultService):
 
 
     def activityJoin(self,user,actid,cats):
-        jsonResult＝self.initJsonResult()
+        jsonResult=self.initJsonResult()
         content={}
         lazyInfo={}
         try:
