@@ -62,7 +62,10 @@ $yml.page=$yml.pageBase.New(null,{
       classid:"",
       isRequired:"true",
       cleanUp:function(){
-
+        params.headingImgUrl="";
+        params.nickname="";
+        params.password="";
+        params.classid="";
       },
       saveClick:function(){
          var params={};
