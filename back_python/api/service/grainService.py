@@ -65,7 +65,7 @@ class GrainService(JsonResultService):
                     self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
                 # 获取班级
         except:
-            logger.error("except............").
+            logger.error("except............")
             info=sys.exc_info()
             logger.error(info)
             self.jsonResult.rtnDic["status"]=-1
