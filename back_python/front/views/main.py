@@ -65,6 +65,8 @@ class MainView(TemplateView):
                 fp2=urllib.request.urlopen(userInfoUrl)
                 r2 = fp2.read()
                 decodeUserInfoJson=json.loads(r2)
+                fp1.close()
+                fp2.close()
                 # 按照openid查找用户，如果不存在就创建，存在就绕过
                 userTry=None
                 try:
@@ -117,9 +119,8 @@ class MainView(TemplateView):
                 import sys
                 info=sys.exc_info()
                 logging.error(info)
-            finally:
-                fp1.close()
-                fp2.close()
+
+
         else:
             logger.error("logined=================================")
             logger.debug(request.user.username)
