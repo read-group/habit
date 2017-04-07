@@ -19,6 +19,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class GrainService(JsonResultService):
     def family(self,familyOrg):
+        jsonResult＝self.initJsonResult()
         content={}
         data=[]
         logger.error("GrainService")
@@ -31,12 +32,13 @@ class GrainService(JsonResultService):
         except:
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
     def addmember(self,familyOrg,childinfo):
+        jsonResult＝self.initJsonResult()
         logger.error("addmember ")
         content={}
         try:
@@ -62,19 +64,20 @@ class GrainService(JsonResultService):
                         cg=ClassGroup.objects.get(pk=int(cid))
                         profile.classGroups.add(cg)
                 except ClassGroup.DoesNotExist:
-                    self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
+                    jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
                 # 获取班级
         except:
             logger.error("except............")
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
     def updatemember(self,childinfo):
+        jsonResult＝self.initJsonResult()
         logger.error("updatemember")
         content={}
         try:
@@ -105,18 +108,19 @@ class GrainService(JsonResultService):
                         cg=ClassGroup.objects.get(pk=int(cid))
                         profile.classGroups.add(cg)
                 except User.DoesNotExist:
-                    self.jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
+                    jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
                 # 获取班级
         except:
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
     def getmember(self,cid):
+        jsonResult＝self.initJsonResult()
         logger.error("getmember ")
         content={}
         try:
@@ -131,11 +135,11 @@ class GrainService(JsonResultService):
         except:
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
 
 grainService=GrainService()

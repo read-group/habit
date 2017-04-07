@@ -31,8 +31,8 @@ class JsonResult(object):
 class JsonResultMixin(object):
     queryset=None
     def initJsonResult(self):
-        self.jsonResult=JsonResult()
-        return self.jsonResult
+        jsonResult=JsonResult()
+        return jsonResult
     def getQuerySet(self):
         if queryset is None:
            raise Exception("getQuerySet need implement")
@@ -55,10 +55,4 @@ class JsonResultMixin(object):
         # return json.dumps(d)
 class JsonResultService(JsonResultMixin):
     def __init__(self,*arg,**kwargs):
-        self.initJsonResult()
         super(JsonResultService,self).__init__(*arg,**kwargs)
-
-class JsonResultView(View,JsonResultMixin):
-    def __init__(self,*arg,**kwargs):
-        self.initJsonResult()
-        super(JsonResultView,self).__init__(*arg,**kwargs)

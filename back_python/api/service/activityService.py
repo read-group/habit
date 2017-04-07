@@ -17,6 +17,7 @@ logger = logging.getLogger("django")
 class ActivityService(JsonResultService):
     # 参与懒人基金分享
     def lazyFundShareIn(self,user,actId):
+        jsonResult＝self.initJsonResult()
         content={}
         data={}
         try:
@@ -28,13 +29,14 @@ class ActivityService(JsonResultService):
         except (Exception ,e):
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
     def activitys(self,skip,limit,schema,tag):
+        jsonResult＝self.initJsonResult()
         content={}
         data=[]
         try:
@@ -53,13 +55,14 @@ class ActivityService(JsonResultService):
         except (Exception ,e):
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
     # 构造一个分享链接，返回到客户端
     def activityDetail(self,user,id,schema):
+        jsonResult＝self.initJsonResult()
         content={}
         try:
             act= Activity.objects.get(pk=id)
@@ -101,14 +104,15 @@ class ActivityService(JsonResultService):
         except:
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
 
     def activityLoopCheck(self):
+        jsonResult＝self.initJsonResult()
         content={}
         try:
             dnow=datetime.datetime.now()
@@ -120,14 +124,15 @@ class ActivityService(JsonResultService):
         except:
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
 
     def activityJoin(self,user,actid,cats):
+        jsonResult＝self.initJsonResult()
         content={}
         lazyInfo={}
         try:
@@ -209,10 +214,10 @@ class ActivityService(JsonResultService):
         except:
             info=sys.exc_info()
             logger.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
 activityService=ActivityService()

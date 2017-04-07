@@ -19,6 +19,7 @@ logger = logging.getLogger("django")
 # Create your views here.
 class TeacherService(JsonResultService):
     def addclass(self,user,classinfo):
+        jsonResult＝self.initJsonResult()
         content={}
         try:
             logger.error("addclass")
@@ -40,21 +41,19 @@ class TeacherService(JsonResultService):
         except:
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
     def classmember(self,user,cgid):
+        jsonResult＝self.initJsonResult()
         content={}
         cgArray=[]
         currentCgStudents=[]
         logger.error("TeacherService")
         try:
-            logger.error(user.username)
             cgs=ClassGroup.objects.filter(creator__id=user.id).order_by("createdTime");
-            logger.error("vvvvvvvvvv")
-            logger.error(cgid)
             for cg in cgs:
                 dataTmp=self.toJSON(cg,["id","name","imgUrl"])
                 cgArray.append(dataTmp)
@@ -78,13 +77,14 @@ class TeacherService(JsonResultService):
         except:
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
     def myfunc(self,user):
+        jsonResult＝self.initJsonResult()
         content={}
         try:
             logger.error(user.profile.nickname)
@@ -94,10 +94,10 @@ class TeacherService(JsonResultService):
         except:
             info=sys.exc_info()
             logging.error(info)
-            self.jsonResult.rtnDic["status"]=-1
+            jsonResult.rtnDic["status"]=-1
         else:
-            self.jsonResult.rtnDic["content"]=content
+            jsonResult.rtnDic["content"]=content
         finally:
-            return self.jsonResult
+            return jsonResult
 
 teacherService=TeacherService()
