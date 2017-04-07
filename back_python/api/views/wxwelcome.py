@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from api.service import wxService
+from django.views.generic.base import View
 import sys
 import json
 # Create your views here.
