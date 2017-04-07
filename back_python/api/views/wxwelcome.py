@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from back.models import JsonResultView
 from api.service import wxService
 import sys
 import json
