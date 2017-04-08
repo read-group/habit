@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,ActivityDetailView,GrainView,GrainAddChildView,SnsView,MyView
-from .views import GrainEditChildView,GrainFeedbackView
+from .views import GrainEditChildView,GrainFeedbackView,GrainFeedbackNoteView
 from .views import TMainClassMemberView,TMainAddClassView
 from .views import TMyView
 urlpatterns = [
@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^main/grain$', GrainView.as_view(),name="main.grain"),
     url(r'^main/grain/addchild$', GrainAddChildView.as_view(),name="main.grain.addchild"),
     url(r'^main/grain/editchild/.*$', GrainEditChildView.as_view(),name="main.grain.editchild"),
+    url(r'^main/grain/feedback/note.*$', GrainFeedbackNoteView.as_view(),name="main.grain.feedback"),
     url(r'^main/grain/feedback/.*$', GrainFeedbackView.as_view(),name="main.grain.feedback"),
     url(r'^main/sns$', SnsView.as_view(),name="main.sns"),
     url(r'^main/my$', MyView.as_view(),name="main.my"),

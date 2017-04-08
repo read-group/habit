@@ -1,17 +1,19 @@
 <div class="container page" id="note" data-page-root="note" ms-controller="note">　
     <nav class="navbar navbar-default  navbar-fixed-top">
-      <div  class="col-xs-4 text-left">
-        <div class="navButton topNavButton active" id="btnPubBack"　ms-click="backClick">
-          <span class="glyphicon glyphicon-arrow-left"></span>
-        </div>
-      </div>
-      <div class="col-xs-4 text-center">
-          <h4 id="title" class="topNavButton">留住光阴</h4>
-      </div>
-      <div class="col-xs-4 text-right">
-        <div class="navButton topNavButton" ms-click="publishClick">
-          <a href="#"   style="margin-top:-5px" class="btn btn-success btn-sm">发布</a>
-        </div>
+      <div  class="row navButton">
+          <div  class="col-xs-4 text-left icon">
+            <a ms-attr="{href:'#!'+@refererUrl}">
+              <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+            </a>
+          </div>
+          <div class="col-xs-4 text-center">
+              <h4 id="title" class="topNavButton">光阴</h4>
+          </div>
+          <div class="col-xs-4 text-right">
+            <div class="col-xs-4 text-right">
+                 <button  ms-click="@publishClick" class="btn btn-success btn-sm">发布</button>
+            </div>
+          </div>
       </div>
     </nav>
     <div class="childContent">
@@ -222,16 +224,11 @@
               }
             });
           }
-
-         },
-         backClick:function(){
-           $yml.page.$router.pop();
          },
        }
      },
      pageReady:function(){
        var self=this;
-
        //小小提示
        $yml.dlgCenter("noteHelp");
        if(!$.localStorage.get("noteHelpKnow")){

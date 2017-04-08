@@ -24,3 +24,7 @@ class GrainFeedbackView(TemplateView):
     template_name="front/main_grain_feedback.html"
     def get(self,request,*args,**kwargs):
         return super(GrainFeedbackView,self).get(request,*args,**kwargs)
+class GrainFeedbackNoteView(TemplateView):
+    template_name="front/main_grain_feedback_note.html"
+    def get(self,request,*args,**kwargs):
+        return super(GrainFeedbackNoteView,self).get(request,*args,**kwargs)
