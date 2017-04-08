@@ -28,6 +28,8 @@
                   {? @item.name ?}
                 </h5>
                 <br/>
+                <p>你已坚持：天
+                <p>今日得米：粒
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
@@ -39,7 +41,7 @@
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
                    <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
-                     <span  style="color:orange">
+                     <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
                   </a>
