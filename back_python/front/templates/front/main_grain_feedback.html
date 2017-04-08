@@ -32,8 +32,8 @@
             <div class="media-right">
                 <span class="button-wrap">
                     <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
-                      <span style="color:orange">记</span>
-                      <!-- <i class="fa fa-check fa-fw"></i> -->
+                      <span ms-if="@item.isFeedBack==false" style="color:orange">记</span>
+                      <i ms-if="@item.isFeedBack==true" class="fa fa-check fa-fw"></i>
                    </a>
                </span>
             </div>
