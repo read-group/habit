@@ -138,6 +138,7 @@
            }
          },
          stopRecord:function(){
+           alert("stopRecord")
            $("#recordDlg").modal("hide");
            wx.stopRecord({
                 success: function (res) {
