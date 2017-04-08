@@ -20,12 +20,12 @@ HABIT_LEVEL_PRAISE = (
     (600, '600'),
 )
 HABIT_ICON_CHOICES = (
-    ("fa fa-sun-o sun", '生活'),
-    ("fa fa-diamond diamond", '诚实'),
-    ("fa fa-share-alt", '分享'),
-    ("fa fa-birthday-cake thank", '感恩'),
-    ("fa fa-book read", '阅读'),
-    ("fa fa-bicycle", '运动'),
+    ("fa fa-sun-o fa-lg sun", '生活'),
+    ("fa fa-diamond fa-lg diamond", '诚实'),
+    ("fa fa-share-alt fa-lg", '分享'),
+    ("fa fa-birthday-cake fa-lg thank", '感恩'),
+    ("fa fa-book fa-lg read", '阅读'),
+    ("fa fa-bicycle fa-lg", '运动'),
 )
 # 	"life":"fa fa-sun-o sun",
 #     "honest":"fa fa-diamond diamond",
