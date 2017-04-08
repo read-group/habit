@@ -23,4 +23,4 @@ class GrainEditChildView(TemplateView):
 class GrainFeedbackView(TemplateView):
     template_name="front/main_grain_feedback.html"
     def get(self,request,*args,**kwargs):
-        return super(GrainChildFeedbackView,self).get(request,*args,**kwargs)
+        return super(GrainFeedbackView,self).get(request,*args,**kwargs)
