@@ -28,14 +28,14 @@
         </button>
         <button type="button"  class="list-group-item">
           <div  class="row">
-              <div  class="col-xs-4 text-left icon">
-                <span ms-click="@selImageClick"><i class="fa fa-camera fa-2x"></i></span>
+              <div  class="col-xs-4 text-left icon" ms-click="@selImageClick">
+                <span><i class="fa fa-camera fa-2x"></i></span>
               </div>
-              <div class="col-xs-4 text-center">
-                  <span ms-click="@startRecord"><i class="fa fa-microphone fa-2x"></i></span>
+              <div class="col-xs-4 text-center" ms-click="@startRecord">
+                  <span><i class="fa fa-microphone fa-2x"></i></span>
               </div>
-              <div class="col-xs-4 text-right">
-                <span ms-click="@listenHistoryClick" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
+              <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
+                <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
               </div>
           </div>
         </button>
@@ -49,7 +49,7 @@
                 <div class="text-center" style="width:100%;height:120px;margin-top:15px">
                   <i class="fa fa-refresh fa-spin fa-3x"></i>
                   <div style="margin-top:5px">
-                    <a href="#" class="button button-pill  button-action"　ms-click="stopRecord">停止留言</a>
+                    <button  class="button button-pill  button-action"　ms-click="@stopRecord">停止留言</button>
                   </div>
                </div>
             </div>
