@@ -35,7 +35,7 @@
                   <span><i class="fa fa-microphone fa-2x"></i></span>
               </div>
               <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
-                <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
+                <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? recordCount ?}</span>
               </div>
           </div>
         </button>
@@ -48,8 +48,8 @@
                 </div>
                 <div class="text-center" style="width:100%;height:120px;margin-top:15px">
                   <i class="fa fa-refresh fa-spin fa-3x"></i>
-                  <div style="margin-top:5px">
-                    <button  class="button button-pill  button-action"　ms-click="@stopRecord">停止留言</button>
+                  <div style="margin-top:5px" ms-click="@stopRecord">
+                    <button  class="button button-pill  button-action">停止留言</button>
                   </div>
                </div>
             </div>
@@ -102,7 +102,6 @@
          recordCount:0,
          $isPlay:false,
          startRecord:function(){
-           alert("startRecord")
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
            wx.startRecord();
