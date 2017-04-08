@@ -133,6 +133,7 @@
          },
          listenHistoryClick:function(){
            if(!$yml.sound.isPlay){
+             alert(JSON.stringify($yml.page.$vmPage.$audioUrls))
              $yml.sound.groupPlay($yml.page.$vmPage.$audioUrls);
            }
          },
