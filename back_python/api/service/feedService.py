@@ -41,7 +41,7 @@ class FeedbackService(JsonResultService):
                         habittmp["name"]=habitstrArray[1]
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
-                        habittmp["isFeedBack"]="1"
+                        habittmp["isFeedBack"]="0"
                         # habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
