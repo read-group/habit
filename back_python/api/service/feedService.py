@@ -40,7 +40,7 @@ class FeedbackService(JsonResultService):
                         habittmp["name"]=habitstrArray[1]
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
-                        habittmp["isFeedBack"]=False
+                        habittmp["isFeedBack"]="0"
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
                 content["data"]=data
