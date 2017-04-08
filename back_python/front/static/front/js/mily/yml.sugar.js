@@ -383,22 +383,22 @@
 									image: '\uf118', // <img src="path/to/image.png" width="16" height="16" alt="" />
 									popup: function( $popup, $button ) {
 													var list_smilies = [
-																	'<img src="/vendor/editor/smiley/1.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/2.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/3.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/4.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/5.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/6.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/7.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/8.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/9.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/10.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/11.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/12.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/13.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/14.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/15.png" width="24" height="24" alt="" />',
-																	'<img src="/vendor/editor/smiley/16.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/1.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/2.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/3.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/4.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/5.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/6.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/7.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/8.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/9.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/10.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/11.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/12.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/13.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/14.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/15.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/16.png" width="24" height="24" alt="" />',
 
 													];
 													var $smilies = $('<div/>').addClass('well')
