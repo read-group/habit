@@ -59,7 +59,6 @@ class GrainService(JsonResultService):
                         try:
                             int(classids[0])
                         except:
-                            logger.error("classgroup no error.....")
                             classids=childinfo["classid"].split("，")
                     for cid in classids:
                         cg=ClassGroup.objects.get(pk=int(cid))
