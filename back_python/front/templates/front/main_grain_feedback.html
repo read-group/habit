@@ -31,8 +31,8 @@
             </div>
             <span class="button-wrap">
                 <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id}" class="button button-circle  button-action button-large">
-                    <i ms-if="@item.isFeedBack" class="fa fa-hand-o-up"></i>
-                    <i ms-if="@item.isFeedBack" class="fa fa-check fa-fw active"></i>
+                    <i ms-if="@item.isFeedBack==true" class="fa fa-hand-o-up"></i>
+                    <i ms-if="@item.isFeedBack==false" class="fa fa-check fa-fw active"></i>
                </a>
            </span>
           </div>
