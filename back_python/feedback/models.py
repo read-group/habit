@@ -65,14 +65,10 @@ class Post(models.Model):
         verbose_name="时光记录"
     )
     content=models.CharField(max_length=150,null=True,blank=True)
-    img=models.ForeignKey(
-        MediaResource,
-        on_delete=models.CASCADE,
-        verbose_name="活动"
-    )
+    imgUrl=models.CharField(max_length=256,null=True,blank=True,verbose_name="反馈图片")
     accumPrases=models.IntegerField(default=0,verbose_name="累积赞")
     accumAudios=models.IntegerField(default=0,verbose_name="累积语音")
-    accumAudios=models.IntegerField(default=0,verbose_name="累积打赏")
+    accumMonkeys=models.IntegerField(default=0,verbose_name="累积打赏")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
@@ -102,7 +98,7 @@ class Comment(models.Model):
     audio=models.ForeignKey(
             MediaResource,
             on_delete=models.CASCADE,
-            verbose_name="活动",
+            verbose_name="音频",
             null=True,
     )
     content=models.CharField(max_length=150,null=True,blank=True)
