@@ -27,12 +27,16 @@
           </div>
         </button>
         <button type="button"  class="list-group-item">
-          <div class="text-center">
-            <span ms-click="@selImageClick"><i class="fa fa-camera fa-2x"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span ms-click="@startRecord"><i class="fa fa-microphone fa-2x"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span ms-click="@listenHistoryClick" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
+          <div  class="row">
+              <div  class="col-xs-4 text-left icon">
+                <span ms-click="@selImageClick"><i class="fa fa-camera fa-2x"></i></span>
+              </div>
+              <div class="col-xs-4 text-center">
+                  <span ms-click="@startRecord"><i class="fa fa-microphone fa-2x"></i></span>
+              </div>
+              <div class="col-xs-4 text-right">
+                <span ms-click="@listenHistoryClick" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
+              </div>
           </div>
         </button>
         <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
