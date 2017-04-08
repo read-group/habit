@@ -32,8 +32,8 @@
             <div class="media-right">
                 <span class="button-wrap">
                     <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
-                      <span ms-if="@item.isFeedBack=='0'" style="color:orange">记</span>
-                      <i ms-if="@item.isFeedBack=='1'" class="fa fa-check fa-fw"></i>
+                      <span  style="color:orange">记</span>
+                      <i ms-if="@item.isFeedBack=='0'" class="fa fa-check fa-fw"></i>
                    </a>
                </span>
             </div>
@@ -72,6 +72,7 @@
       //显示当前家庭的孩子参加活动所涉及的习惯列表
       $yml.ajax('/api/grain/feedback/habits',params,
       　  function(res){
+            console.log(res.content.data)
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.habits.push(r)
             });
