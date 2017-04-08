@@ -24,14 +24,20 @@
                 <i ms-attr="{class:@item.icon}"   aria-hidden="true"></i>
             </a>
             <div class="media-body">
-                <h3 class="media-heading">
+                <h4 class="media-heading">
                   {? @item.name ?}
-                </h3>
+                </h4>
                 <br/>
             </div>
             <a  ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id}" class="media-right media-middle">
                 打卡
             </a>
+            <span class="button-wrap media-right media-middle ">
+                <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id}" class="button button-circle  button-action button-large">
+                    <i ms-if="@item.isFeedBack" class="fa fa-hand-o-up"></i>
+                    <i ms-if="@item.isFeedBack" class="fa fa-check fa-fw active"></i>
+               </a>
+           </span>
           </div>
         </li>
       </ul>
