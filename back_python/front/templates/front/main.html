@@ -18,7 +18,7 @@
         <div class="row navButton">
             <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center sound" style="padding:0px;">
               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
-                <span ms-class="['glyphicon',item.icon]"></span>
+                <span ms-attr="{class:@item.icon}"></span>
                 <div>{? item.title ?}</div>
               </a>
             </div>
@@ -62,8 +62,8 @@
                 $history:["/main/activity/t"],
                 $currentPageVm:null,
                 mainMenu:[
-                {"title":"活动","url":"/main/activity/t","icon":"glyphicon-tint","isDefault":true},
-                {"title":"成长","url":"/main/grain","icon":"glyphicon-tree-deciduous","isDefault":false},
+                {"title":"活动","url":"/main/activity/t","icon":"glyphicon glyphicon-tint","isDefault":true},
+                {"title":"成长","url":"/main/grain","icon":"glyphicon glyphicon-tree-deciduous","isDefault":false},
                 {"title":"舞台","url":"/main/sns","icon":"fa fa-sign-language","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"fa fa-user","isDefault":false}
                 ],
