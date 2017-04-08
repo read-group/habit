@@ -19,7 +19,7 @@
   <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="list-group">
         <li  ms-for="(i,item) in @habits"   class="list-group-item">
-          <img class="thumbnail" ms-attr="{src:@item.actImg}"/>
+          <div class="thumbnail"><img  ms-attr="{src:@item.actImg}"/></div>
           <div class="media" style="margin-top:5px">
             <a  href="#" class="media-left">
                 <i ms-attr="{class:@item.icon}"   aria-hidden="true"></i>
