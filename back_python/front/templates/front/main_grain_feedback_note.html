@@ -101,6 +101,7 @@
          comment:null,
          recordCount:0,
          $isPlay:false,
+         refererUrl:"",
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
@@ -249,6 +250,7 @@
        $yml.page.$vmPage.$audioUrls=[];
        $yml.page.$vmPage.comment=null;
        $yml.page.$vmPage.recordCount=0;
+       $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
 
        //设置当前主题贴的id
        //$yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
