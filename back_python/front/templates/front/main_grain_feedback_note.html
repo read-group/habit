@@ -28,11 +28,11 @@
         </button>
         <button type="button"  class="list-group-item">
           <div class="text-center">
-            <span ms-click="selImageClick"><i class="fa fa-camera fa-2x"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span ms-click="startRecord"><i class="fa fa-microphone fa-2x"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span ms-click="listenHistoryClick" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
+            <span ms-click="@selImageClick"><i class="fa fa-camera fa-2x"></i></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span ms-click="@startRecord"><i class="fa fa-microphone fa-2x"></i></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span ms-click="@listenHistoryClick" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{{recordCount}}</span>
           </div>
         </button>
         <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -173,7 +173,7 @@
                          isShowProgressTips: 1, // 默认为1，显示进度提示
                          success: function (res) {
                              var serverId = res.serverId; // 返回图片的服务器端ID
-                             //给公司微信服务器发送下载文件的指令
+                             //给公司微信服务器发送下载文件的指令http://wx.mily365.com/wx/api/download
                              $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"img"},
                              　  function(res){
                                    if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
