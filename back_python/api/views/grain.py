@@ -31,6 +31,20 @@ class GrainFamilyAddMemberView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
+class GrainFeedbackView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("GrainFeedbackView")
+        reqData=json.loads(str(req.body,'utf-8'))
+        pid=reqData["pid"]
+        role=reqData["role"]
+        jsResult=None
+        try:
+            jsResult= grainService.addmember(req.user.profile.org,int(pid),role)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
+
 class GrainFamilyGetMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyGetMemberView")

@@ -200,6 +200,7 @@
               $av.router.add("/main/grain", callback);
               $av.router.add("/main/grain/addchild", callback);
               $av.router.add("/main/grain/editchild/:childid", callback);
+              $av.router.add("/main/grain/feedback/:pid/:role", callback);
               $av.router.add("/main/sns", callback);
               $av.router.add("/main/my", callback);
               $av.history.start({
@@ -227,7 +228,7 @@
               //设置初始激活
               $("span","#mainDefault").addClass("active")
               $("div","#mainDefault").addClass("active")
-              
+
             })
 
          })(jQuery,avalon)

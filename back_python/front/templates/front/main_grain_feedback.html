@@ -21,17 +21,15 @@
         <li  ms-for="(i,item) in @habits"   class="list-group-item">
           <div class="media" style="margin-top:5px">
             <a  href="#" class="media-left">
-                <i class="fa fa-bell fa-3x  active"  aria-hidden="true"></i>
+                <i ms-attr="{class:@item.icon}"   aria-hidden="true"></i>
             </a>
             <div class="media-body">
                 <h3 class="media-heading">
-                  <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x"></i></a>
+                  {? @item.name ?}
                 </h3>
                 <br/>
-                <p>米仓：
-                <p>钱包：
             </div>
-            <a  ms-attr="{href:'#!/main/grain/feedback/'+@item.id}" class="media-right media-middle">
+            <a  ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id}" class="media-right media-middle">
                 打卡
             </a>
           </div>
@@ -50,23 +48,27 @@
     vmDef:function(){
       return {
         $id:"grain",
+        $currentUserId:none,
         habits:[],
         backClick:function(){
           //$yml.page.$router.pop();
         },
         cleanUp:function(toCleanVm){
           this.habits.clear();
+          //$yml.page.$vmPage.$currentUserId=none;
         }
       };
     },
-    pageReady:function(){
+    pageReady:function(params){
       var self=this;
       console.log(" feedback pageReady");
+      //缓存当前打卡用户的id
+      $yml.page.$vmPage.$currentUserId=params.pid;
       //显示当前家庭的孩子参加活动所涉及的习惯列表
-      $yml.ajax('/api/grain/feedback',null,
+      $yml.ajax('/api/grain/feedback/habits',params,
       　  function(res){
             res.content.data.forEach(function(r){
-              $yml.page.$vmPage.familys.push(r)
+              $yml.page.$vmPage.habits.push(r)
             });
           }
       );
