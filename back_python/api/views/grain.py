@@ -5,6 +5,7 @@ import logging
 logger = logging.getLogger("django")
 from django.views.generic.base import View
 from api.service import grainService
+from api.service import feedbackService
 # Create your views here.
 class GrainFamilyView(View):
     def post(self,req,*arg,**kwargs):
@@ -39,7 +40,7 @@ class GrainFeedbackView(View):
         role=reqData["role"]
         jsResult=None
         try:
-            jsResult= grainService.addmember(req.user.profile.org,int(pid),role)
+            jsResult= feedbackService.orghabits(req.user.profile.org,role)
         except:
             info=sys.exc_info()
             logging.error(info)
