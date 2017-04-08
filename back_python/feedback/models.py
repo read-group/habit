@@ -65,7 +65,7 @@ class Post(models.Model):
         verbose_name="时光记录"
     )
     content=models.CharField(max_length=150,null=True,blank=True)
-    imgUrl=models.CharField(max_length=256,null=True,blank=True,verbose_name="反馈图片")
+    imgUrl=models.CharField(max_length=256,default="http://mily365.com/media/upload/mily.png",verbose_name="反馈图片")
     accumPrases=models.IntegerField(default=0,verbose_name="累积赞")
     accumAudios=models.IntegerField(default=0,verbose_name="累积语音")
     accumMonkeys=models.IntegerField(default=0,verbose_name="累积打赏")

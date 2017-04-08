@@ -2,26 +2,26 @@
   <nav class="navbar navbar-default  navbar-fixed-top">
     <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
-          <!-- <a  href="#!/main/activity">
+          <a  href="#!/main/grain">
             <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
-          </a> -->
+          </a>
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" class="topNavButton">成长</h4>
+            <h4 id="title" class="topNavButton">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
-          <a href="#!/main/grain/addchild">
+          <!-- <a href="#!/main/grain/addchild">
             <i class="fa fa-plus fa-2x active"></i>
-          </a>
+          </a> -->
         </div>
     </div>
   </nav>
   <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="list-group">
-        <li  ms-for="(i,item) in @familys"   class="list-group-item">
+        <li  ms-for="(i,item) in @habits"   class="list-group-item">
           <div class="media" style="margin-top:5px">
             <a  href="#" class="media-left">
-                <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
+                <i class="fa fa-bell fa-3x  active"  aria-hidden="true"></i>
             </a>
             <div class="media-body">
                 <h3 class="media-heading">
@@ -32,7 +32,7 @@
                 <p>钱包：
             </div>
             <a  ms-attr="{href:'#!/main/grain/feedback/'+@item.id}" class="media-right media-middle">
-                <i class="fa fa-bell fa-3x fa-spin active" style="margin-right:5px;color:orange" aria-hidden="true"></i>
+                打卡
             </a>
           </div>
         </li>
@@ -42,7 +42,7 @@
   <script>
   $yml.page=$yml.pageBase.New(null,{
     ctor:function(){
-      console.log("addChild loaded..."+this.getVmEleName());
+      console.log("feedback loaded..."+this.getVmEleName());
       //基类里在pageReady方法里和可以访问成员$vmPage和$router
       //this.$vmPage
       //this.$router
@@ -50,21 +50,20 @@
     vmDef:function(){
       return {
         $id:"grain",
-        familys:[],
+        habits:[],
         backClick:function(){
           //$yml.page.$router.pop();
         },
         cleanUp:function(toCleanVm){
-          console.log("clean up grain list")
-          this.familys.clear();
-          console.log(toCleanVm.familys.length)
+          this.habits.clear();
         }
       };
     },
     pageReady:function(){
       var self=this;
-      console.log(" grain pageReady");
-      $yml.ajax('/api/grain/family',null,
+      console.log(" feedback pageReady");
+      //显示当前家庭的孩子参加活动所涉及的习惯列表
+      $yml.ajax('/api/grain/feedback',null,
       　  function(res){
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
