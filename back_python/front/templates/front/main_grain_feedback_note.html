@@ -98,6 +98,7 @@
          recordCount:0,
          $isPlay:false,
          startRecord:function(){
+           alert("startRecord")
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
            wx.startRecord();
