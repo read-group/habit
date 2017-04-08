@@ -18,7 +18,7 @@ logger = logging.getLogger("django")
 
 # Create your views here.
 class FeedbackService(JsonResultService):
-    def orghabits(self,org,role):
+    def orghabits(self,org,role,schema):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -33,6 +33,7 @@ class FeedbackService(JsonResultService):
                 orgacthistorys=OrgActivityHistory.objects.filter(org__id__exact=org.id).filter(habits__contains=fstr).order_by("createdTime");
                 for orgacthistory in orgacthistorys:
                     habitsArrayStr=orgacthistory.habits.split(",")
+                    activity=orgacthistory.activity
                     for habitstr in habitsArrayStr:
                         habitstrArray=habitstr.split("|")
                         habittmp={}
@@ -41,6 +42,7 @@ class FeedbackService(JsonResultService):
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
                         habittmp["isFeedBack"]="1"
+                        habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
                 content["data"]=data

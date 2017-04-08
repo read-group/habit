@@ -40,7 +40,7 @@ class GrainFeedbackView(View):
         role=reqData["role"]
         jsResult=None
         try:
-            jsResult= feedbackService.orghabits(req.user.profile.org,role)
+            jsResult= feedbackService.orghabits(req.user.profile.org,role,req.scheme+"://"+req.META["HTTP_HOST"])
         except:
             info=sys.exc_info()
             logging.error(info)
