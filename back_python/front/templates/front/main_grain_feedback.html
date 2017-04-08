@@ -30,15 +30,20 @@
                 <br/>
             </div>
             <div class="media-right">
-                <span class="button-wrap">
+                <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
                     <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:orange">
-                        <span ms-if="@item.isFeedBack=='0'">记</span>
-                        <span ms-if="@item.isFeedBack=='1'"><i    class="fa fa-check fa-fw"></i></span>
+                        <span>记</span>
                       </span>
-
                    </a>
                </span>
+               <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
+                   <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
+                     <span  style="color:orange">
+                       <i    class="fa fa-check fa-fw"></i>
+                     </span>
+                  </a>
+              </span>
             </div>
           </div>
         </li>
