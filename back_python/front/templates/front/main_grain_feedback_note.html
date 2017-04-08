@@ -227,7 +227,7 @@
          },
        }
      },
-     pageReady:function(){
+     pageReady:function(params){
        var self=this;
        //小小提示
       //  $yml.dlgCenter("noteHelp");
@@ -246,7 +246,7 @@
        $yml.page.$vmPage.recordCount=0;
 
        //设置当前主题贴的id
-       $yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
+       //$yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
        //按照这个habitId去查询有关这个习惯的发布信息表，查询规则是时间倒序，朋友前置
        var habitId=$yml.page.$router.params.habitId;
       //  $("#recordDlg").on('show.bs.modal', function(){
