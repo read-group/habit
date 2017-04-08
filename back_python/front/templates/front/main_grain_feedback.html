@@ -24,12 +24,12 @@
                 <i ms-attr="{class:@item.icon}"   aria-hidden="true"></i>
             </a>
             <div class="media-body">
-                <h4 class="media-heading">
+                <h5 class="media-heading">
                   {? @item.name ?}
-                </h4>
+                </h5>
                 <br/>
             </div>
-            <span class="button-wrap media-right media-middle ">
+            <span class="button-wrap">
                 <a ms-attr="{href:'#!/main/grain/feedback/do/'+@item.id}" class="button button-circle  button-action button-large">
                     <i ms-if="@item.isFeedBack" class="fa fa-hand-o-up"></i>
                     <i ms-if="@item.isFeedBack" class="fa fa-check fa-fw active"></i>
