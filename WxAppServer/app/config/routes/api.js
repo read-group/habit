@@ -1,6 +1,7 @@
 var crypto=require("crypto");
 var weixin=require("../../service/wx.service");
 var weixinKey=require("../../service/yml.service.wxapi");
+var wxpay=require("../../lib/wxpay/wxpay").wxpay;
 module.exports = function (app) {
 	app.post('/wx/api/jsConfig', function(req, res) {
 		 var url=req.body.url;
@@ -32,7 +33,7 @@ module.exports = function (app) {
 		 });
 	});
 	//支付结果异步通知
-	app.use('/api/wxpay/notify', wxpay.useWXCallback(function(msg, req, res, next){
+	app.use('/api/wxpay/notify',wxpay.useWXCallback(function(msg, req, res, next){
 			// 处理商户业务逻辑
 			console.log("通知........-------------------------------------------");
 			console.log(msg);
