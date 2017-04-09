@@ -47,8 +47,9 @@ class FeedbackService(JsonResultService):
                         habittmp["hid"]=orgacthistory.id
                         # 检查缓存是否已经反馈过uid:habitid:date
                         nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
-                        logger.error(nowstr)
+
                         userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
+                        logger.error(userid_habitid_date_key)
                         isfeed=cache.get(userid_habitid_date_key)
                         habittmp["isFeedBack"]="0"
                         if not isfeed:
@@ -109,6 +110,7 @@ class FeedbackService(JsonResultService):
                 # 初始化缓存　Key:打卡用户id+habitid+打卡日期 value:1-表示已经打卡，０表示未打卡
                 logger.error("date format...........")
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),post.postDate)
+                logger.error(userid_habitid_date_key)
                 cache.set(userid_habitid_date_key,1,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
                 # 返回当前帖子
                 # rtnPost=self.toJSON(post,["id"])
