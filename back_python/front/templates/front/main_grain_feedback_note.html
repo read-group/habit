@@ -251,6 +251,7 @@
 
        //进入页面时清空
        self.$vmMain.$history.pop();
+       console.log(self.$vmMain.$history)
        $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
 
        //设置当前主题贴的id
