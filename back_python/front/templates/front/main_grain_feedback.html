@@ -74,6 +74,7 @@
         },
         gonote:function(ev){
           var gourl=$(ev.currentTarget).attr("noteurl")
+          alert(gourl)
           avalon.router.navigate(gourl,1)
         }
       };
