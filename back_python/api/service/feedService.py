@@ -57,7 +57,7 @@ class FeedbackService(JsonResultService):
                         if not isfeed:
                             habittmp["isFeedBack"]="0"
                         else:
-                            if isfeed=="1":
+                            if isfeed==1:
                                 habittmp["isFeedBack"]="1"
                             else:
                                 habittmp["isFeedBack"]="0"
