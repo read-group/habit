@@ -90,7 +90,7 @@ CACHE_FORMAT_STR={
    'userid_habitid_date_key':'feedback:%d:%d:%s',
    'userid_habitid_date_key_timeout':3600*24*2,
    # 最近一次打卡缓存
-   'userid_habitid_key':'feedback:%d:%d:%s',
+   'userid_habitid_key':'feedback:%d:%d',
    'userid_habitid_key_timeout':3600*24*365,
 }
 MIDDLEWARE = [
