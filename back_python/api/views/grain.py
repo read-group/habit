@@ -46,6 +46,21 @@ class GrainFeedbackView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
+class GrainFeedbackCreateView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("GrainFeedbackCreateView")
+        reqData=json.loads(str(req.body,'utf-8'))
+        pid=reqData["pid"]
+        hid=reqData["hid"]
+        habitid=reqData["habitid"]
+        jsResult=None
+        try:
+            jsResult= feedbackService.create(pid,habitid,hid)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
+
 class GrainFamilyGetMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyGetMemberView")

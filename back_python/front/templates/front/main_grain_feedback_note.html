@@ -264,7 +264,7 @@
       $yml.dlgCenter("recordDlg");
       $yml.editor("editorFeed","bottom");
       //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
-      $yml.ajax('/api/main/grain/feedback/create',params,function(rtnData){
+      $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
           if(rtnData.status==0){
             alert("创建");
           }else{

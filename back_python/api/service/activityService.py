@@ -156,10 +156,15 @@ class ActivityService(JsonResultService):
                 # 如果是不需要诊断,level2＝‘M/L’
 
                 habitLevelKeyRun=settings.CACHE_FORMAT_STR['cat_habit_level'] % (catid, level2)
+
                 habitTmp=cache.get(habitLevelKeyRun)
                 if not habitTmp:
                     # 去库里查询
                     habitTmp=Habit.objects.filter(habitCatalog__id=catid).filter(level=level2)
+                    # 建立习惯缓存，缓存key habit:habitid value：habit
+                    habit_key=settings.CACHE_FORMAT_STR['habit_key'] % (habitTmp.id)
+                    cache.set(habit_key,habitTmp)
+
                     cache.set(habitLevelKeyRun,habitTmp,settings.CACHE_FORMAT_STR['cat_habit_level_timeout'])
                 dataTmp=self.toJSON(habitTmp,["id","name","icon"])
                 rtnArray.append(dataTmp)
@@ -194,22 +199,12 @@ class ActivityService(JsonResultService):
                     activity.save()
 
             # 构建家庭习惯缓存org:id:habit:id=habit
-            orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
+            acthistory_key=settings.CACHE_FORMAT_STR['acthistory_key'] % (orgActivityHistory.id)
             #计算缓存天数
             cacheDays=(activity.endTime-activity.startTime).days+1
-
-            org_activitys=cache.get(orgActivityKey)
-            if not org_activitys:
-                # 先去库里获取
-                org_activitys=list(OrgActivityHistory.objects.filter(org__id=org.id))
-                if not org_activitys:
-                    org_activitys=[orgActivityHistory]
-            else:
-                org_activitys.push(orgActivityHistory)
-            cache.set(orgActivityKey,org_activitys,cacheDays)
+            # 按照id缓存创建的活动历史，历史的留存期是活动的时间跨度
+            cache.set(acthistory_key,orgActivityHistory,cacheDays*24*3600)
             content["data"]=rtnArray
-
-
             #
         except:
             info=sys.exc_info()

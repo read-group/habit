@@ -80,9 +80,15 @@ CACHE_FORMAT_STR={
     # 缓存习惯类别和习惯难度对应的习惯
    'cat_habit_level':'cat:%d:habit:%s',
    'cat_habit_level_timeout':3600*24*7,
-   # 家庭活动历史
-   'org_activity':'org:%d',
-   'org_activity_timeout':3600*24*7,
+   # 活动历史缓存
+   'acthistory_key':'acthistory:%d',
+   'acthistory_key_timeout':3600*24*7,
+   # 习惯缓存
+   'habit_key':'habit:%d',
+   'habit_key_timeout':3600*24*10000,
+   # 今日打卡缓存
+   'userid_habitid_date_key':'feedback:%d:%d:%s',
+   'userid_habitid_date_key_timeout':3600*24*2,
 }
 MIDDLEWARE = [
     #'django.middleware.cache.UpdateCacheMiddleware',
