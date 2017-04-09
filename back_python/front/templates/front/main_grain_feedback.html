@@ -41,11 +41,11 @@
                    </a>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <a ms-attr="{href:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{data-noteurl:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
-                  </a>
+                  </button>
               </span>
             </div>
           </div>
@@ -72,6 +72,9 @@
         cleanUp:function(toCleanVm){
           this.habits.clear();
           //$yml.page.$vmPage.$currentUserId=none;
+        },
+        gonote:function(){
+          console.log($(this).data("noteurl"))
         }
       };
     },
