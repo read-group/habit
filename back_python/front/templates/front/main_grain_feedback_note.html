@@ -240,14 +240,14 @@
      pageReady:function(params){
        var self=this;
        //小小提示
-      //  $yml.dlgCenter("noteHelp");
-      //  if(!$.localStorage.get("noteHelpKnow")){
-      //    $("#noteHelp").modal("show");
-      //  }
-      //  $("#noteHelpKnow").click(function(){
-      //    $("#noteHelp").modal("hide");
-      //    $.localStorage.set("noteHelpKnow","1");
-      //  });
+       $yml.dlgCenter("noteHelp");
+       if(avalon.router.localStorage.getItem("noteHelpKnow")){
+         $("#noteHelp").modal("show");
+       }
+       $("#noteHelpKnow").click(function(){
+         $("#noteHelp").modal("hide");
+         avalon.router.localStorage.setItem("noteHelpKnow","1");
+       });
 
        //进入页面时清空
        self.$vmMain.$history.pop();

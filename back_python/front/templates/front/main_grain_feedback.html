@@ -33,14 +33,14 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote(ev,false)" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id,isFeed:'0'，class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote(ev,true)" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id,isFeed:'1'，class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
@@ -76,11 +76,13 @@
           alert(isfeed)
           //判断是否
           var gourl=$(ev.currentTarget).attr("noteurl")
-
+          var isfeed=$(ev.currentTarget).attr("isFeed")
           //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
-
-          avalon.router.navigate(gourl,2)
-          return false;
+          if(isfeed==1){
+            //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
+          }else{
+            avalon.router.navigate(gourl,2)
+          }
         }
       };
     },
