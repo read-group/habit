@@ -45,16 +45,24 @@ class FeedbackService(JsonResultService):
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
                         habittmp["hid"]=orgacthistory.id
+
                         # 检查缓存是否已经反馈过uid:habitid:date
                         nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
                         userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
-                        logger.error(userid_habitid_date_key)
+
                         feedback=cache.get(userid_habitid_date_key)
                         if not feedback:
                             habittmp["isFeedBack"]="0"
                         else:
                             habittmp["isFeedBack"]="1"
 
+                        # 取最近一次当前习惯的打卡
+                        userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habittmp["id"]),)
+                        lastFeed=cache.get(userid_habitid_key)
+                        if not lastFeed:
+                            habittmp["accumDays"]=0
+                        else:
+                            habittmp["accumDays"]=lastFeed.accumDays
                         # habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
@@ -116,7 +124,7 @@ class FeedbackService(JsonResultService):
                 # 返回当前帖子
                 content["postid"]=post.id
                 # 奖励米粒
-                
+
         except:
             info=sys.exc_info()
             logging.error(info)
