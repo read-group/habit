@@ -167,6 +167,7 @@
                 vm.currPath = this.path;
                 //压入访问路径到栈
                 vm.$history.push(vm.currPath);
+                console.log(vm.$history)
                 var params=this.params;
                 vm.isLoading=true;
                 var fetchUrl=vm.currPath;
