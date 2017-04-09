@@ -102,6 +102,7 @@
          recordCount:0,
          $isPlay:false,
          refererUrl:"",
+         $currentUserId:null,
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
@@ -258,13 +259,7 @@
        //$yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
        //按照这个habitId去查询有关这个习惯的发布信息表，查询规则是时间倒序，朋友前置
        var habitId=params.habitid;
-      //  $("#recordDlg").on('show.bs.modal', function(){
-      //            var $this = $(this);
-      //            var $modal_dialog = $this.find('.modal-dialog');
-      //            // 关键代码，如没将modal设置为 block，则$modala_dialog.height() 为零
-      //            $this.css('display', 'block');
-      //            $modal_dialog.css({'margin-top': Math.max(0, ($(window).height() - $modal_dialog.height()) / 2) });
-      //          });
+
 
        $yml.dlgCenter("recordDlg");
        //avalon.vmodels["feedback"].isFeedBack=true;
@@ -279,7 +274,16 @@
       //     }
       //  );
       $yml.editor("editorFeed","bottom");
-
+      //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
+      $yml.ajax('/api/main/grain/feedback/create',{"param":paramsObj},function(rtnData){
+          if(rtnData.status==0){
+            //alert("发布完成");
+            //$yml.page.$vmPage.isPub=true;
+            $("#btnPubBack").trigger('click');
+          }else{
+            alert("发布出错");
+          }
+        });
 
      }
    });
