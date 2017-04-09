@@ -15,11 +15,12 @@ import sys
 import json
 from django.core.cache import cache
 import logging
+import datetime
 logger = logging.getLogger("django")
 
 # Create your views here.
 class FeedbackService(JsonResultService):
-    def orghabits(self,org,role,schema):
+    def orghabits(self,org,role,schema,pid):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -44,7 +45,20 @@ class FeedbackService(JsonResultService):
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
                         habittmp["hid"]=orgacthistory.id
+                        # 检查缓存是否已经反馈过uid:habitid:date
+                        nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
+                        logger.error(nowstr)
+                        userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
+                        isfeed=cache.get(userid_habitid_date_key)
                         habittmp["isFeedBack"]="0"
+                        if not isfeed:
+                            habittmp["isFeedBack"]="0"
+                        else:
+                            if isfeed=="1":
+                                habittmp["isFeedBack"]="1"
+                            else:
+                                habittmp["isFeedBack"]="0"
+
                         # habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
