@@ -110,6 +110,8 @@ class FeedbackService(JsonResultService):
                 lastFeed=cache.get(userid_habitid_key)
                 if lastFeed:
                     feedBack.accumDays=lastFeed.accumDays+1
+                else:
+                    feedBack.accumDays=1
                 feedBack.save()
                 #创建头贴
                 post=Post()
