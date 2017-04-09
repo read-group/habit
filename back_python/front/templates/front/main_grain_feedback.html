@@ -74,8 +74,8 @@
           //$yml.page.$vmPage.$currentUserId=none;
         },
         gonote:function(ev){
-          
-          console.log($(ev.currentTarget).attr("noteurl"))
+          var gourl=$(ev.currentTarget).attr("noteurl")
+          avalon.router.navigate(gourl,1)
         }
       };
     },
