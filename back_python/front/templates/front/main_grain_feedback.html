@@ -33,14 +33,14 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+"/"+"@currentUserId"+"/"+"@item.hid",isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+"/"+"@currentUserId",isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+"/"+"@currentUserId"+"/"+"@item.hid",isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>

@@ -258,8 +258,8 @@
        //设置当前主题贴的id
        //$yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
        //按照这个habitId去查询有关这个习惯的发布信息表，查询规则是时间倒序，朋友前置
-       var habitId=params.habitid;
-
+      //  var habitId=params.habitid;
+      //  $yml.page.$vmPage.currentUserId
 
        $yml.dlgCenter("recordDlg");
        //avalon.vmodels["feedback"].isFeedBack=true;
@@ -274,16 +274,15 @@
       //     }
       //  );
       $yml.editor("editorFeed","bottom");
+      alert(JSON.stringify(paramsObj))
       //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
-      $yml.ajax('/api/main/grain/feedback/create',{"param":paramsObj},function(rtnData){
-          if(rtnData.status==0){
-            //alert("发布完成");
-            //$yml.page.$vmPage.isPub=true;
-            $("#btnPubBack").trigger('click');
-          }else{
-            alert("发布出错");
-          }
-        });
+      // $yml.ajax('/api/main/grain/feedback/create',{"param":paramsObj},function(rtnData){
+      //     if(rtnData.status==0){
+      //       alert("创建");
+      //     }else{
+      //       alert("发布出错");
+      //     }
+      //   });
 
      }
    });
