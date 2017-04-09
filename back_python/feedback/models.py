@@ -49,6 +49,12 @@ class FeedBack(models.Model):
             verbose_name="家庭个人历史习惯",
             null=True
     )
+    habit=models.ForeignKey(
+            Habit,
+            on_delete=models.CASCADE,
+            verbose_name="习惯",
+            null=True
+    )
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:

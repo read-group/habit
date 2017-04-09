@@ -261,27 +261,16 @@
       //  var habitId=params.habitid;
       //  $yml.page.$vmPage.currentUserId
 
-       $yml.dlgCenter("recordDlg");
-       //avalon.vmodels["feedback"].isFeedBack=true;
-       //进行今日反馈的调用，调用成功后，设置反馈feedback页面的
-      //  $yml.ajax('/api/habit/myFamilyHabit',null,
-      // 　  function(res){
-      //       //vmSelHabits.habits.clear();
-      //       console.log("page ready........");
-      //       console.log(res.content);
-      //       self.$vmPage.habits=res.content;
-      //
-      //     }
-      //  );
+      $yml.dlgCenter("recordDlg");
       $yml.editor("editorFeed","bottom");
       //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
-      // $yml.ajax('/api/main/grain/feedback/create',{"param":paramsObj},function(rtnData){
-      //     if(rtnData.status==0){
-      //       alert("创建");
-      //     }else{
-      //       alert("发布出错");
-      //     }
-      //   });
+      $yml.ajax('/api/main/grain/feedback/create',params,function(rtnData){
+          if(rtnData.status==0){
+            alert("创建");
+          }else{
+            alert("发布出错");
+          }
+        });
 
      }
    });
