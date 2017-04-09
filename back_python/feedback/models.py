@@ -55,6 +55,7 @@ class FeedBack(models.Model):
             verbose_name="习惯",
             null=True
     )
+    accumDays=models.IntegerField(default=0,verbose_name="累积天数")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:

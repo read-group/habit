@@ -97,19 +97,26 @@ class FeedbackService(JsonResultService):
                     habitTmp=Habit.objects.get(pk=int(habitid))
                     cache.set(habit_key,habitTmp)
                 feedBack.habit=habitTmp
+                # 取最近一次当前习惯的打卡
+                userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habitid),)
+                lastFeed=cache.get(userid_habitid_key)
+                if lastFeed:
+                    feedBack.accumDays=lastFeed.accumDays+1
                 feedBack.save()
                 #创建头贴
                 post=Post()
                 post.feedBack=feedBack
                 post.save()
-                # 初始化缓存　Key:打卡用户id+habitid+打卡日期 value:1-表示已经打卡，０表示未打卡
-                logger.error("date format...........")
+                # 初始化缓存　Key:打卡用户id+habitid+打卡日期 feedBack:1-表示已经打卡，０表示未打卡
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),post.postDate)
                 logger.error(userid_habitid_date_key)
                 cache.set(userid_habitid_date_key,feedBack,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
+                # 缓存最后一次打卡记录
+                cache.set(userid_habitid_key,feedBack,acthistoryTmp.activityDays*24*3600)
                 # 返回当前帖子
-                # rtnPost=self.toJSON(post,["id"])
                 content["postid"]=post.id
+                # 奖励米粒
+                
         except:
             info=sys.exc_info()
             logging.error(info)
