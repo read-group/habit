@@ -94,6 +94,7 @@ class FeedbackService(JsonResultService):
                 post.save()
                 # 初始化缓存　Key:打卡用户id+habitid+打卡日期 value:1-表示已经打卡，０表示未打卡
                 logger.error("date format...........")
+                logger.error(type(post.feedDate))
                 dtmpstr=post.feedDate.strftime('%Y-%m-%d')
                 logger.error(dtmpstr)
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),dtmpstr)
