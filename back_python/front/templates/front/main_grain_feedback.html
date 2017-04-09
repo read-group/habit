@@ -33,14 +33,14 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@currentUserId+'/'+@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@currentUserId+'/'+@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
@@ -70,7 +70,7 @@
         },
         cleanUp:function(toCleanVm){
           this.habits.clear();
-          $yml.page.$vmPage.currentUserId=null;
+          this.currentUserId=null;
         },
         gonote:function(ev){
           //判断是否
@@ -89,7 +89,7 @@
       var self=this;
       console.log(" feedback pageReady");
       //缓存当前打卡用户的id
-      $yml.page.$vmPage.currentUserId=params.pid;
+      self.$vmPage.currentUserId=params.pid;
       //显示当前家庭的孩子参加活动所涉及的习惯列表
       $yml.ajax('/api/grain/feedback/habits',params,
       　  function(res){
