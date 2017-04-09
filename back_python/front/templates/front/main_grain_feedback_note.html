@@ -241,7 +241,7 @@
        var self=this;
        //小小提示
        $yml.dlgCenter("noteHelp");
-       if(avalon.router.localStorage.getItem("noteHelpKnow")){
+       if(!avalon.router.localStorage.getItem("noteHelpKnow")){
          $("#noteHelp").modal("show");
        }
        $("#noteHelpKnow").click(function(){
