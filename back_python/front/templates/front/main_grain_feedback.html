@@ -73,8 +73,9 @@
           this.habits.clear();
           //$yml.page.$vmPage.$currentUserId=none;
         },
-        gonote:function(){
-          console.log($(this).attr("noteurl"))
+        gonote:function(ev){
+          
+          console.log($(ev.currentTarget).attr("noteurl"))
         }
       };
     },
