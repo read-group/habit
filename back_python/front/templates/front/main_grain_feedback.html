@@ -34,11 +34,11 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <a ms-attr="{href:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{data-noteurl:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
-                   </a>
+                   </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
                    <button ms-click="@gonote" ms-attr="{data-noteurl:'#!/main/grain/feedback/note/'+@item.id,class:'button button-glow button-circle button-action button-jumbo'}">
