@@ -87,8 +87,8 @@ class ActivityService(JsonResultService):
             dataTmp["habitCat"]=cats
             # 检查是否已经报名
             org=user.profile.org
-            orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
-            orgActivityHistorys=cache.get(orgActivityKey)
+            # orgActivityKey=settings.CACHE_FORMAT_STR['org_activity'] % (org.id)
+            orgActivityHistorys=None
             dataTmp["applied"]="0"
             dataTmp["lazyIn"]=act.lazyJoinNumber
             if not orgActivityHistorys:
