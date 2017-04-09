@@ -51,6 +51,8 @@ class FeedbackService(JsonResultService):
                         userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
                         logger.error(userid_habitid_date_key)
                         isfeed=cache.get(userid_habitid_date_key)
+                        logger.error("cache value isfeed")
+                        logger.error(isfeed)
                         habittmp["isFeedBack"]="0"
                         if not isfeed:
                             habittmp["isFeedBack"]="0"
