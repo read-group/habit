@@ -47,20 +47,13 @@ class FeedbackService(JsonResultService):
                         habittmp["hid"]=orgacthistory.id
                         # 检查缓存是否已经反馈过uid:habitid:date
                         nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
-
                         userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
                         logger.error(userid_habitid_date_key)
-                        isfeed=cache.get(userid_habitid_date_key)
-                        logger.error("cache value isfeed")
-                        logger.error(isfeed)
-                        habittmp["isFeedBack"]="0"
-                        if not isfeed:
+                        feedback=cache.get(userid_habitid_date_key)
+                        if not feedback:
                             habittmp["isFeedBack"]="0"
                         else:
-                            if isfeed==1:
-                                habittmp["isFeedBack"]="1"
-                            else:
-                                habittmp["isFeedBack"]="0"
+                            habittmp["isFeedBack"]="1"
 
                         # habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
@@ -113,7 +106,7 @@ class FeedbackService(JsonResultService):
                 logger.error("date format...........")
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),post.postDate)
                 logger.error(userid_habitid_date_key)
-                cache.set(userid_habitid_date_key,1,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
+                cache.set(userid_habitid_date_key,feedBack,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
                 # 返回当前帖子
                 # rtnPost=self.toJSON(post,["id"])
                 content["postid"]=post.id

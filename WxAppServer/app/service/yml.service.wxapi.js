@@ -7,6 +7,7 @@ var ak=require("../lib/channel/wx.accessKey");
 var uuid=require("node-uuid");
 var settings=require("../config/settings");
 var ffmpeg = require('fluent-ffmpeg');
+var wxpay=require("../lib/wxpay/wxpay").wxpay;
 var yml = {};
 yml.service={};
 /**
@@ -19,6 +20,26 @@ yml.service.wxapi=services.service.base.New({
 		 this.folder="wxdownload/";
 		 this.audioFolder="audio/";
 		 this.imgFolder="img/";
+	},
+	order:function(bizOrderId,desc,amount,actid,opid,cbk){
+		var self=this;
+		var nc={}
+		var order={
+				body: desc,
+				out_trade_no: bizOrderId,
+				total_fee: amount,
+				notify_url: 'http://mily365.com/api/wxpay/notify',
+				product_id: actid,//取反馈的id
+				openid:opid
+		};
+　　 nc.bizOrderId=bizOrderId;//把oid传到客户端，付款成功后，传递到服务端，确认付款成功
+		wxpay.getBrandWCPayRequestParams(order,function(err,paramWxJsPay){
+			console.log(paramWxJsPay);
+			nc.wxpayParam=paramWxJsPay;
+			return callback(err,nc);
+		});
+
+
 	},
 	getJsApiConfig:function(url,cbk){
 		var self=this;

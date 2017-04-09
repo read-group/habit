@@ -95,7 +95,7 @@
          $id:"note",
          iconMap:$yml.icons,
          //isPub:false,
-         $commentId:null,
+         $postid:null,
          imageUrl:"#",
          $audioUrls:[],
          comment:null,
@@ -213,7 +213,7 @@
           if($yml.page.$vmPage.$isPlay==false){
             //$yml.page.$vmPage.isPub=true;
             //保存当前页面信息到后台主贴
-            var commentId=$yml.page.$vmPage.$commentId;
+            var postid=$yml.page.$vmPage.$postid;
             var content=$("#editorFeed").val();
             var imageUrl=$yml.page.$vmPage.imageUrl;
             var audioUrls=$yml.page.$vmPage.$audioUrls.join(",");
@@ -256,7 +256,7 @@
        $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
 
        //设置当前主题贴的id
-       //$yml.page.$vmPage.$commentId=$yml.page.$router.params.commentId;
+       //$yml.page.$vmPage.$postid=$yml.page.$router.params.commentId;
        //按照这个habitId去查询有关这个习惯的发布信息表，查询规则是时间倒序，朋友前置
       //  var habitId=params.habitid;
       //  $yml.page.$vmPage.currentUserId
@@ -266,7 +266,7 @@
       //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
       $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
           if(rtnData.status==0){
-            alert(JSON.stringify(rtnData));
+              $yml.page.$vmPage.$postid=rtnData.postid;
           }else{
             alert("发布出错");
           }

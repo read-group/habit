@@ -6,8 +6,8 @@ var childproc = require('child_process');
 
 yml.wxconfig = {
 		//grant_type=client_credential&appid=APPID&secret=APPSECRET
-	AppId:"wx88e66f6e2bf540bd",
-	Secret : "70fd2d1c13d593e50b581a7170ec98b9",
+	AppId:"wx8f428820d2150a9e",
+	Secret : "751afbe404efaee85ba8638ceeb1dc44",
 	AccessTokenPath : "https://api.weixin.qq.com/cgi-bin/token?",
 	SendMsgPath : "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token={ACCESS_TOKEN}"
 }
@@ -86,13 +86,13 @@ yml.wxchannel = system.object.Abstract({
 		 var menuObj={
 		     "button":[
 		     {
-		          "type":"click",
-		          "name":"家",
-		          "key":"newestMsg"
+						 "type":"view",
+						 "name":"米粒帮助",
+						 "url":url
 		      },
 		     {
 		 		               "type":"view",
-		 		               "name":"小小领袖",
+		 		               "name":"进入应用",
 		 		               "url":url
 		    }
 		      ]
@@ -124,9 +124,9 @@ var wxclient = yml.wxchannel.New(yml.wxconfig, {})
 
 wxclient.setAccessKey(function(err) {
 	//群发消息
-	wxclient.sendTextMsg("hello world",["wxid_9775577755611"],function(err,out){
-		console.log(out);
-	});
+	// wxclient.sendTextMsg("hello world",["wxid_9775577755611"],function(err,out){
+	// 	console.log(out);
+	// });
 
 	//删除自定义菜单
 	wxclient.delMenu(function(err,out){
@@ -134,7 +134,8 @@ wxclient.setAccessKey(function(err) {
 	});
 	//建立自定义菜单
 	//wx88e66f6e2bf540bd
-	var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3a%2f%2fll.yimilan.com%2ff1&response_type=code&scope=snsapi_userinfo&#wechat_redirect";
+	//var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3a%2f%2fll.yimilan.com%2ff1&response_type=code&scope=snsapi_userinfo&#wechat_redirect";
+	var url="http://mily365.com";
 	wxclient.createUrlMenu(url,function(err,out){
 		console.log(out);
 	//https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect

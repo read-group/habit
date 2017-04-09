@@ -9,7 +9,7 @@ netstat -tnlup | grep node | awk '{print $7}' | cut -d '/' -f1 | xargs   kill -9
 nohup node /mnt/s/mygit/habit/WxAppServer/wxApp.js & >/dev/null
 #删除会话文件
 /etc/init.d/redis-server stop
-#rm -rf /var/lib/redis/dump.rdb
+rm -rf /mnt/d/redis-data/dump.rdb
 /etc/init.d/redis-server start
 
 # nohup node /yimilan/node/nodeapp/Seed/Platform/WxAppServer/wxApp.js & >/dev/null
