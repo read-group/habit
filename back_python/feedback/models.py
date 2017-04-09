@@ -55,7 +55,9 @@ class FeedBack(models.Model):
             verbose_name="习惯",
             null=True
     )
+    freeMily =models.IntegerField(default=0,verbose_name="打卡得米")
     accumDays=models.IntegerField(default=0,verbose_name="累积天数")
+    accumMily=models.IntegerField(default=0,verbose_name="累积得米")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:

@@ -61,8 +61,12 @@ class FeedbackService(JsonResultService):
                         lastFeed=cache.get(userid_habitid_key)
                         if not lastFeed:
                             habittmp["accumDays"]=0
+                            habittmp["freeMily"]=0
+                            habittmp["accumMily"]=0
                         else:
                             habittmp["accumDays"]=lastFeed.accumDays
+                            habittmp["freeMily"]=lastFeed.freeMily
+                            habittmp["accumMily"]=lastFeed.accumMily
                         # habittmp["actImg"]=schema+settings.MEDIA_URL+activity.img.img.name
                         if fstr==habittmp["isForParent"]:
                             data.append(habittmp)
@@ -108,12 +112,18 @@ class FeedbackService(JsonResultService):
                 # 取最近一次当前习惯的打卡
                 userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habitid),)
                 lastFeed=cache.get(userid_habitid_key)
+                a1=feedBack.habit.freePraiseMilyUnit
+                d=feedBack.habit.freePraiseMilyStep
                 if lastFeed:
                     feedBack.accumDays=lastFeed.accumDays+1
+                    feedBack.freeMily=a1+(feedBack.accumDays-1)*d
+                    feedBack.accumMily=feedBack.accumDays*(a1+feedBack.freeMily)/2
                 else:
                     feedBack.accumDays=1
+                    feedBack.freeMily=a1
+                    feedBack.accumMily=a1
                 feedBack.save()
-                #创建头贴
+                #创建头贴*
                 post=Post()
                 post.feedBack=feedBack
                 post.save()
@@ -126,6 +136,7 @@ class FeedbackService(JsonResultService):
                 # 返回当前帖子
                 content["postid"]=post.id
                 # 奖励米粒
+
 
         except:
             info=sys.exc_info()
