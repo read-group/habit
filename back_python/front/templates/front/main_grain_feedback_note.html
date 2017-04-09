@@ -198,9 +198,13 @@
                  }
      　　　　　　});
          },
-         navClick:function(){
-           console.log("...........habit.........");
-           $yml.page.$router.$vm.navClick.call(this);
+         cleanUp:function(){
+           console.log("...........note cleanUp.........");
+           this.imageUrl=null;
+           this.$audioUrls.clear();
+           this.comment=null;
+           this.recordCount=0;
+
          },
          publishClick:function(){
           //设置当前孩子反馈页面的状态为已经发布
@@ -246,10 +250,7 @@
       //  });
 
        //进入页面时清空
-       $yml.page.$vmPage.imageUrl=null;
-       $yml.page.$vmPage.$audioUrls=[];
-       $yml.page.$vmPage.comment=null;
-       $yml.page.$vmPage.recordCount=0;
+
        $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
 
        //设置当前主题贴的id
