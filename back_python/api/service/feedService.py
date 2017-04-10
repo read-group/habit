@@ -169,7 +169,6 @@ class FeedbackService(JsonResultService):
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
-                # 设置当前用户的最新个人账户缓存
                 cache.set(accountkey,accountHistory.account))
                 # 返回当前帖子
                 content["postid"]=post.id
