@@ -164,7 +164,8 @@ class FeedbackService(JsonResultService):
                     account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
                     cache.set(accountkey,account)
                 accountHistory.account=account
-
+                logger.error("accountkey")
+                logger.error(accountkey)
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
