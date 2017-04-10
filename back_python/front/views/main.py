@@ -97,10 +97,10 @@ class MainView(TemplateView):
                         accountCash.accountType="cash"
                         accountCash.profile=profile
                         accountCash.save()
-                        accountDeposit=Account()
-                        accountDeposit.accountType="deposit"
-                        accountDeposit.profile=profile
-                        accountDeposit.save()
+                        # accountDeposit=Account()
+                        # accountDeposit.accountType="deposit"
+                        # accountDeposit.profile=profile
+                        # accountDeposit.save()
                 finally:
                     #登录
                     # 只要不是学生，就登录

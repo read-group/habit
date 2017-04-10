@@ -53,6 +53,17 @@ class GrainService(JsonResultService):
                     profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
                     imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
                     profile.save()
+
+                    #创建三个个人账户（米仓、现金、押金）
+                    accountMily=Account()
+                    accountMily.accountType="rice"
+                    accountMily.profile=profile
+                    accountMily.save()
+                    accountCash=Account()
+                    accountCash.accountType="cash"
+                    accountCash.profile=profile
+                    accountCash.save()
+
                     classGroups=[]
                     classids=childinfo["classid"].split(",")
                     if len(classids)==1:
