@@ -27,6 +27,14 @@ class GrainService(JsonResultService):
             profiles=Profile.objects.filter(org__id__exact=familyOrg.id).order_by("createdTime");
             for profile in profiles:
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (profile.id)
+                account=cache.get(accountkey)
+                if not account:
+                    account=Account.objects.filter(profile__id=profile.id).filter(accountType="rice")[0]
+                    dataTmp['milyAccount']=account.balance
+                    cache.set(accountkey,account)
+                else:
+                    dataTmp['milyAccount']=account.balance
                 data.append(dataTmp)
             content["data"]=data
         except:

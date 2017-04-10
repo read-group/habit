@@ -146,10 +146,12 @@ class FeedbackService(JsonResultService):
                 sysAccount=cache.get("sysAccount")
                 if not sysAccount:
                     sysAccount=SysAccount.objects.get(pk=settings.CACHE_FORMAT_STR['sys_mily_account_id'])
-                    cache.set("sysAccount",sysAccount)
+
                 sysAccountHistory.sysAccount=sysAccount
                 sysAccountHistory.save()
-
+                # 设置平台最新账户缓存
+                cache.set("sysAccount",sysAccountHistory.sysAccount)
+　
                 # 设置个人账户历史　　　　　　　　　　
                 accountHistory=AccountHistory()
                 accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInput"]
@@ -164,12 +166,15 @@ class FeedbackService(JsonResultService):
                 if not account:
                     logger.error("accountkey")
                     account=Account.objects.filter(profile__id=int(pid)).filter(accountType="rice")[0]
-                    cache.set(accountkey,account)
+
                 accountHistory.account=account
                 logger.error("accountkey")
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
+                # 设置当前用户的最新个人账户缓存
+                cache.set(accountkey,accountHistory.account))
+
                 # 返回当前帖子
                 content["postid"]=post.id
         except:
