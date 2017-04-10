@@ -151,7 +151,6 @@ class FeedbackService(JsonResultService):
                 sysAccountHistory.save()
                 # 设置平台最新账户缓存
                 cache.set("sysAccount",sysAccountHistory.sysAccount)
-　
                 # 设置个人账户历史　　　　　　　　　　
                 accountHistory=AccountHistory()
                 accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInput"]
