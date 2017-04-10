@@ -163,7 +163,7 @@ class FeedbackService(JsonResultService):
                 account=cache.get(accountkey)
                 if not account:
                     logger.error("accountkey")
-                    account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
+                    account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0:1]
                     logger.error("account get .....")
                     cache.set(accountkey,account)
                 accountHistory.account=account
@@ -175,9 +175,9 @@ class FeedbackService(JsonResultService):
                 # 返回当前帖子
                 content["postid"]=post.id
         except:
-            if not userid_habitid_key:
+            if userid_habitid_key:
                 cache.set(userid_habitid_key,lastFeed)
-            if not userid_habitid_date_key:
+            if userid_habitid_date_key:
                 cache.delete(userid_habitid_date_key)
             # 清空当前保存的最后一个反馈和当前日期的反馈
             info=sys.exc_info()
