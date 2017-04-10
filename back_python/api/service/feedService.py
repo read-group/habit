@@ -84,6 +84,9 @@ class FeedbackService(JsonResultService):
         jsonResult=self.initJsonResult()
         content={}
         logger.error("create")
+        userid_habitid_date_key=None
+        userid_habitid_key=None
+        lastFeed=None
         try:
             with transaction.atomic():
                 # 创建反馈
@@ -127,14 +130,12 @@ class FeedbackService(JsonResultService):
                 post=Post()
                 post.feedBack=feedBack
                 post.save()
+
                 # 初始化缓存　Key:打卡用户id+habitid+打卡日期 feedBack:1-表示已经打卡，０表示未打卡
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),post.postDate)
-                logger.error(userid_habitid_date_key)
                 cache.set(userid_habitid_date_key,feedBack,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
                 # 缓存最后一次打卡记录
                 cache.set(userid_habitid_key,feedBack,acthistoryTmp.activityDays*24*3600)
-                # 返回当前帖子
-                content["postid"]=post.id
 
                 # 设置系统账户历史
                 sysAccountHistory=SysAccountHistory()
@@ -163,6 +164,7 @@ class FeedbackService(JsonResultService):
                 if not account:
                     logger.error("accountkey")
                     account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
+                    logger.error("account get .....")
                     cache.set(accountkey,account)
                 accountHistory.account=account
                 logger.error("accountkey")
@@ -170,7 +172,14 @@ class FeedbackService(JsonResultService):
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
+                # 返回当前帖子
+                content["postid"]=post.id
         except:
+            if not userid_habitid_key:
+                cache.set(userid_habitid_key,lastFeed)
+            if not userid_habitid_date_key:
+                cache.delete(userid_habitid_date_key)
+            # 清空当前保存的最后一个反馈和当前日期的反馈
             info=sys.exc_info()
             logging.error(info)
             jsonResult.rtnDic["status"]=-1
