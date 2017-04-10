@@ -77,6 +77,11 @@ CACHES = {
     },
 }
 CACHE_FORMAT_STR={
+    # 系统账户ID
+    'sys_mily_account_id':1,
+    'sys_monkey_account_id':2,
+    'account_mily_profileid_key':'account:rice:%d',
+    'account_monkey_profileid_key':'account:cash:%d',
     # 缓存习惯类别和习惯难度对应的习惯
    'cat_habit_level':'cat:%d:habit:%s',
    'cat_habit_level_timeout':3600*24*7,

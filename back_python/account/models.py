@@ -11,18 +11,15 @@ logger = logging.getLogger("django")
 TRADE_TYPE=(
     ("fee","套餐服务费"),
     ("deposit","押金"),#计入当前参与活动，如果全部打卡，那么全部退还。如果当前无参与活动，那么就不能支付押金。支付押金时，自动按照支付日期以前的打卡次数，返还押金
-    ("milyInput","套餐囤米"),
-    ("freeMilyInput","免费的套餐"),
-    ("milyInputByDeposit","押金囤米"),
     ("milyOutput","米粒打赏"),
     ("milyOutputByDonate","米粒捐赠"),
-    ("feedBack","打卡奖励米粒"),
+    ("feedBackMilyInput","打卡奖励米粒"),
     ("feedBackReturnDeposit","打卡返还押金"),
     ("aveDeposit","平均分配懒人押金"),
     ("takeCash","用户提现"),
 )
 MAP_TRADE_TYPE={
-   "freeMilyInput":"freeMilyInput"
+   "feedBackMilyInput":"feedBackMilyInput"
 }
 SYS_TRADE_TYPE=(
   ("sysFillMily","平台生产米粒"),
@@ -146,21 +143,6 @@ class AccountHistory(models.Model):
         verbose_name="平台账务",
         null=True
     )
-    # purchaser=models.ForeignKey(
-    #     Porfile,
-    #     on_delete=models.CASCADE,
-    #     verbose_name="购买套餐者"
-    # ）
-    # depositor=models.ForeignKey(
-    #     Porfile,
-    #     on_delete=models.CASCADE,
-    #     verbose_name="押金者"
-    # ）
-    # feedbacker=models.ForeignKey(
-    #             Porfile,
-    #             on_delete=models.CASCADE,
-    #             verbose_name="打卡者"
-    # ）
     feedback=models.ForeignKey(
             FeedBack,
             on_delete=models.CASCADE,

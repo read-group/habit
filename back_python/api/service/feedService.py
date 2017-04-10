@@ -80,7 +80,7 @@ class FeedbackService(JsonResultService):
         finally:
             return jsonResult
 
-    def create(self,pid,habitid,hid):
+    def create(self,pid,habitid,hid,org):
         jsonResult=self.initJsonResult()
         content={}
         logger.error("create")
@@ -135,9 +135,39 @@ class FeedbackService(JsonResultService):
                 cache.set(userid_habitid_key,feedBack,acthistoryTmp.activityDays*24*3600)
                 # 返回当前帖子
                 content["postid"]=post.id
-                # 奖励米粒
 
+                # 设置系统账户历史
+                sysAccountHistory=SysAccountHistory()
+                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMily"]
+                sysAccountHistory.tradeAmount=-feedBack.freeMily
 
+                # 设置系统账户
+                sysAccount=cache.get("sysAccount")
+                if not sysAccount:
+                    sysAccount=SysAccount.objects.get(pk=settings.CACHE_FORMAT_STR['sys_mily_account_id'])
+                    cache.set("sysAccount",sysAccount)
+                sysAccountHistory.sysAccount=sysAccount
+                sysAccountHistory.save()
+
+                # 设置个人账户历史　　　　　　　　　　
+                accountHistory=AccountHistory()
+                accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInput"]
+                accountHistory.org=org
+                accountHistory.operator=profileTmp
+                accountHistory.activity=feedBack.orgActivityHistory.activity
+                logger.error("accountHistory.activity=feedBack.orgActivityHistory.activity")
+                accountHistory.sysAccountHistory=sysAccountHistory
+                # 设置米仓账户
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (pid,)
+                account=cache.get(accountkey)
+                if　not account:
+                    account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
+                    cache.set(accountkey,account)
+                accountHistory.account=account
+
+                accountHistory.feedback=feedBack
+                accountHistory.tradeAmount=feedBack.freeMily
+                accountHistory.save()
         except:
             info=sys.exc_info()
             logging.error(info)
