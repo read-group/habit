@@ -166,7 +166,10 @@ class FeedbackService(JsonResultService):
                     account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0:1]
                     logger.error("account get .....")
                     logger.error(pid)
-                    logger.error(account.id)
+                    if　account:
+                        logger.error(account.id)
+                    else:
+                        logger.error("none。。。")
                     cache.set(accountkey,account)
                 accountHistory.account=account
                 logger.error("accountkey")
