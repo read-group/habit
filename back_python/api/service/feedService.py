@@ -165,9 +165,7 @@ class FeedbackService(JsonResultService):
                 if not account:
                     logger.error("accountkey")
                     account=Account.objects.filter(profile__id=int(pid)).filter(accountType="rice")[0]
-
                 accountHistory.account=account
-                logger.error("accountkey")
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
