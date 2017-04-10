@@ -161,6 +161,7 @@ class FeedbackService(JsonResultService):
                 accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (int(pid))
                 account=cache.get(accountkey)
                 if not account:
+                    logger.error("accountkey")
                     account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
                     cache.set(accountkey,account)
                 accountHistory.account=account
