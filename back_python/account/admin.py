@@ -2,7 +2,7 @@ from django.contrib import admin
 from account.models import Account,SysAccount,SysAccountHistory
 # Register your models here.
 class AccountAdmin(admin.ModelAdmin):
-    pass
+    list_display=('profile.nickname','accountType','balance')
 class SysAccountHistoryInline(admin.TabularInline):
     model = SysAccountHistory
     extra = 1
