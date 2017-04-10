@@ -158,12 +158,12 @@ class FeedbackService(JsonResultService):
                 logger.error("accountHistory.activity=feedBack.orgActivityHistory.activity")
                 accountHistory.sysAccountHistory=sysAccountHistory
                 # 设置米仓账户
-                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (int(pid))
-                account=cache.get(accountkey)
-                if　not account:
-                    account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
-                    cache.set(accountkey,account)
-                accountHistory.account=account
+                # accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (int(pid))
+                # account=cache.get(accountkey)
+                # if　not account:
+                #     account=Account.objects.filter(profile__id__exact=int(pid)).filter(accountType__exact='rice')[0]
+                #     cache.set(accountkey,account)
+                # accountHistory.account=account
 
                 accountHistory.feedback=feedBack
                 accountHistory.tradeAmount=feedBack.freeMily
