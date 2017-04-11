@@ -152,7 +152,6 @@
                             $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
                             　  function(res){
                                   if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
-                                    alert(res.resUrl)
                                     $yml.page.$vmPage.$audioUrls.push(res.resUrl);
                                     $yml.page.$vmPage.$isPlay=false;
                                   }
@@ -224,7 +223,6 @@
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
-            alert(JSON.stringify(paramsObj))
             $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
               if(rtnData.status==0){
                 //alert("发布完成");
