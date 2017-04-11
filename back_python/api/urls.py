@@ -19,7 +19,7 @@ from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoin
 from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
 from api.views import GrainFeedbackView
-from api.views import GrainFeedbackCreateView
+from api.views import GrainFeedbackCreateView,GrainFeedbackPublishView
 from api.views import TeacherClassMemberView,TeacherAddClassView
 from api.views import TeacherMyView
 urlpatterns = [
@@ -34,7 +34,7 @@ urlpatterns = [
      url(r'^grain/family/updatemember$',GrainFamilyUpdateMemberView.as_view()),
      url(r'^grain/feedback/habits$',GrainFeedbackView.as_view()),
      url(r'^grain/feedback/create$',GrainFeedbackCreateView.as_view()),
-
+     url(r'^grain/feedback/publish$',GrainFeedbackPublishView.as_view()),
      url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
      url(r'^teacher/addclass$',TeacherAddClassView.as_view()),
      url(r'^teacher/my$',TeacherMyView.as_view()),

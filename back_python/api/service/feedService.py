@@ -80,6 +80,25 @@ class FeedbackService(JsonResultService):
         finally:
             return jsonResult
 
+    def publish(self,pinfo):
+        jsonResult=self.initJsonResult()
+        content={}
+        logger.error("publish")
+        try:
+            with transaction.atomic():
+                # to do performance
+                post=Post.objects.get(pk=int(pinfo['postid']))
+                post.content=pinfo['content']
+                post.imgUrl=pinfo['imageUrl']
+                post.accumAudios=pinfo['audioUrls']
+                post.save()
+        except:
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
+
     def create(self,pid,habitid,hid,org):
         jsonResult=self.initJsonResult()
         content={}
