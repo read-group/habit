@@ -218,22 +218,23 @@
             var imageUrl=$yml.page.$vmPage.imageUrl;
             var audioUrls=$yml.page.$vmPage.$audioUrls.join(",");
             var paramsObj={};
-            paramsObj.commentId=commentId;
+            paramsObj.postid=commentId;
             if(content.length>150){
               content=content.substr(0,147)+"..."
             }
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
-            $yml.ajax('/api/feed/publish',{"param":paramsObj},function(rtnData){
-              if(rtnData.status==0){
-                //alert("发布完成");
-                //$yml.page.$vmPage.isPub=true;
-                $("#btnPubBack").trigger('click');
-              }else{
-                alert("发布出错");
-              }
-            });
+            alert(JSON.stringify(paramsObj))
+            // $yml.ajax('/api/feed/publish',{"param":paramsObj},function(rtnData){
+            //   if(rtnData.status==0){
+            //     //alert("发布完成");
+            //     //$yml.page.$vmPage.isPub=true;
+            //     $("#btnPubBack").trigger('click');
+            //   }else{
+            //     alert("发布出错");
+            //   }
+            // });
           }
          },
        }
