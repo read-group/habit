@@ -209,8 +209,9 @@
          },
          publishClick:function(){
           //设置当前孩子反馈页面的状态为已经发布
-        　//  avalon.vmodels["feedback"].isPub=true;
+        　alert("publishClick")
           if($yml.page.$vmPage.$isPlay==false){
+            alert("publishClickin")
             //$yml.page.$vmPage.isPub=true;
             //保存当前页面信息到后台主贴
             var postid=$yml.page.$vmPage.$postid;
