@@ -209,9 +209,7 @@
          },
          publishClick:function(){
           //设置当前孩子反馈页面的状态为已经发布
-        　alert("publishClick")
           if($yml.page.$vmPage.$isPlay==false){
-            alert("publishClickin")
             //$yml.page.$vmPage.isPub=true;
             //保存当前页面信息到后台主贴
             var postid=$yml.page.$vmPage.$postid;
@@ -219,10 +217,11 @@
             var imageUrl=$yml.page.$vmPage.imageUrl;
             var audioUrls=$yml.page.$vmPage.$audioUrls.join(",");
             var paramsObj={};
-            paramsObj.postid=postid;
+
             if(content.length>150){
               content=content.substr(0,147)+"..."
             }
+            paramsObj.postid=postid;
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
