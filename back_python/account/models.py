@@ -91,8 +91,8 @@ class SysAccountHistory(models.Model):
             # self.sysAccount.balance-=self._loaded_values['tradeAmount'];
             qs.update(balance=F('balance')-self._loaded_values['tradeAmount']+self.tradeAmount)
             # self.sysAccount.balance+=self.tradeAmount
-        logger.error(self.sysAccount.balance);
-        self.sysAccount.save()
+        # logger.error(self.sysAccount.balance);
+        # self.sysAccount.save()
         super(SysAccountHistory,self).save(*args, **kwargs)
     class Meta:
         verbose_name="系统账务"
