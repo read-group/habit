@@ -84,10 +84,13 @@ class SysAccountHistory(models.Model):
         return instance
     def save(self, *args, **kwargs):
         if self._state.adding:
-           self.sysAccount.balance+=self.tradeAmount
+            # self.sysAccount.balance+=self.tradeAmount
+            SysAccount.objects.filter(pk=self.sysAccount.id).update(balance=F('balance')+self.tradeAmount)
         else:
-            self.sysAccount.balance-=self._loaded_values['tradeAmount'];
-            self.sysAccount.balance+=self.tradeAmount
+            qs=SysAccount.objects.filter(pk=self.sysAccount.id)
+            # self.sysAccount.balance-=self._loaded_values['tradeAmount'];
+            qs.update(balance=F('balance')-self._loaded_values['tradeAmount']+self.tradeAmount)
+            # self.sysAccount.balance+=self.tradeAmount
         logger.error(self.sysAccount.balance);
         self.sysAccount.save()
         super(SysAccountHistory,self).save(*args, **kwargs)
