@@ -181,7 +181,7 @@ class FeedbackService(JsonResultService):
                 cache.set(accountkey,accountHistory.account)
                 # 返回当前帖子
                 content["postid"]=post.id
-        except Exception,e:
+        except Exception as e:
             logger.error(e)
             if userid_habitid_key:
                 cache.set(userid_habitid_key,lastFeed)
