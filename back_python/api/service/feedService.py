@@ -126,12 +126,11 @@ class FeedbackService(JsonResultService):
                     try:
                         logger.error("fffffffffffffffffffff")
                         lastFeed=FeedBack.objects.filter(profile__id=int(pid)).filter(habit__id=int(habitid)).order_by('-createdTime')[0]
-                        logger.error("ffffffffffffffffffffffffgggggggg")
                         cache.set(userid_habitid_key,lastFeed)
                         feedBack.accumDays=lastFeed.accumDays+1
                         feedBack.freeMily=a1+(feedBack.accumDays-1)*d
                         feedBack.accumMily=feedBack.accumDays*(a1+feedBack.freeMily)/2
-                    except FeedBack.DoesNotExist:
+                    except:
                         feedBack.accumDays=1
                         feedBack.freeMily=a1
                         feedBack.accumMily=a1
