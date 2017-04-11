@@ -124,7 +124,9 @@ class FeedbackService(JsonResultService):
                 else:
                     # 获取当前用户最后一次的反馈
                     try:
+                        logger.error("fffffffffffffffffffff")
                         lastFeed=FeedBack.objects.filter(profile__id=int(pid)).filter(habit__id=int(habitid)).order_by('-createdTime')[0]
+                        logger.error("ffffffffffffffffffffffffgggggggg")
                         cache.set(userid_habitid_key,lastFeed)
                         feedBack.accumDays=lastFeed.accumDays+1
                         feedBack.freeMily=a1+(feedBack.accumDays-1)*d
