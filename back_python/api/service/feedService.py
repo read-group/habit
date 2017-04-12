@@ -54,7 +54,7 @@ class FeedbackService(JsonResultService):
                         if not feedback:
                             habittmp["isFeedBack"]="0"
                         else:
-                            habittmp["isFeedBack"]="0"
+                            habittmp["isFeedBack"]="1"
 
                         # 取最近一次当前习惯的打卡
                         userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habittmp["id"]),)
