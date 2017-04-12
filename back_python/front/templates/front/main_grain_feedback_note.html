@@ -261,13 +261,14 @@
       $yml.dlgCenter("recordDlg");
       $yml.editor("editorFeed","bottom");
       //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
-      $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
-          if(rtnData.status==0){
-              $yml.page.$vmPage.$postid=rtnData.content.postid;
-          }else{
-            alert("发布出错");
-          }
-        });
+      $yml.page.$vmPage.$postid=rtnData.content.postid;
+      // $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
+      //     if(rtnData.status==0){
+      //         $yml.page.$vmPage.$postid=rtnData.content.postid;
+      //     }else{
+      //       alert("发布出错");
+      //     }
+      //   });
 
      }
    });
