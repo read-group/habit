@@ -223,15 +223,14 @@
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
-            avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,1)
-            // $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
-            //   if(rtnData.status==0){
-            //     //alert("发布完成");
-            //      avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,1)
-            //   }else{
-            //     alert("发布出错");
-            //   }
-            // });
+            $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
+              if(rtnData.status==0){
+                //alert("发布完成");
+                 avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,1)
+              }else{
+                alert("发布出错");
+              }
+            });
           }
          },
        }
