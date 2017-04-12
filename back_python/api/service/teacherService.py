@@ -70,6 +70,14 @@ class TeacherService(JsonResultService):
                 profilesRtn=cg.profile_set.all()
             for p in profilesRtn:
                 ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (p.id)
+                account=cache.get(accountkey)
+                if not account:
+                    account=Account.objects.filter(profile__id=p.id).filter(accountType="rice")[0]
+                    ptemp['milyAccount']=account.balance
+                    cache.set(accountkey,account)
+                else:
+                    ptemp['milyAccount']=account.balance
                 currentCgStudents.append(ptemp)
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
