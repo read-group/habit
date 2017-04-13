@@ -24,7 +24,6 @@ class StageService(JsonResultService):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
-        logger.error("posts")
         try:
             queryCache=Post.objects.select_related('feedBack').order_by("createdTime");
             count=queryCache.count();
