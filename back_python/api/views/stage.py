@@ -14,6 +14,7 @@ class StageListView(View):
         skip=reqData["pageParam"]["skip"]
         limit=skip+reqData["pageParam"]["limit"]
         try:
+            logging.error("post view")
             jsResult= stageService.posts(skip,limit)
         except Exception as e:
             logging.error(e)
