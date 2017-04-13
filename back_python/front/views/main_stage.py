@@ -9,4 +9,4 @@ import json
 class StageView(TemplateView):
     template_name="front/main_stage.html"
     def get(self,request,*args,**kwargs):
-        return super(GrainView,self).get(request,*args,**kwargs)
+        return super(StageView,self).get(request,*args,**kwargs)
