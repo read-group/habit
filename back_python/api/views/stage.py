@@ -9,6 +9,7 @@ from api.service import stageService
 # Create your views here.
 class StageListView(View):
     def post(self,req,*arg,**kwargs):
+        logging.error("post view")
         jsResult=None
         reqData=json.loads(str(req.body,'utf-8'))
         skip=reqData["pageParam"]["skip"]
