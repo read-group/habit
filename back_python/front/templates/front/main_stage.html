@@ -47,36 +47,7 @@
                            <img class="img-thumbnail" style="width:100%;height:320px" ms-attr="{src:@item.imgUrl}"/>
                         </div>
                      </div>
-                     <div class="col-xs-12 text-left"　 ms-click="maskClick">
-                        <div class="row" style="margin-top:10px">
-                           <div class="col-xs-12 text-left">
-                             {? @item.content | html ?}
-                           </div>
-                           <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
-                             <span>
-                               <i  class="fa fa-heart"></i>:
-                             </span>
-                           </div>
-                           <div class="col-xs-12 text-left" style="margin-top:10px;margin-bottom:15px">
-                             <span>
-                               <i class="fa fa-money"></i>:
-                             </span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 text-center" ms-click="@maskClick">
-                      <div style="margin-top:15px">
-                        <span ms-click="praseClick" ms-attr="{cid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrase ?}</span></span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="listenFeedClick"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">2</span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="startRecord" ms-attr="{cid:@item.id}"><i class="fa fa-microphone fa-1x"></i></span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="moneyPraseClick" ms-attr="{cid:@item.id}"  style="font-size:14px;color:red">奖<span class="badge" style="font-size:8px"></span></span>
-                      </div>
-                   </div>
+              
               </div>
             <!-- </div> -->
         </button>
