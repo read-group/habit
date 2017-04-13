@@ -195,11 +195,10 @@
 
            },
            cleanUp:function(){//析构函数
-             $yml.page.$vmPage.feeds.clear();
+             this.feeds.clear();
              $yml.sound.isPlay=false;
-             $yml.page.$vmPage.$praseAmount=null;
-             $yml.page.$vmPage.$openid=null;
-             console.log("deCor...................................");
+             this.$praseAmount=null;
+             this.$openid=null;
            },
            moneyPraseClick:function(){//奖励单击,选择单击金额
   　　　　　　　//显示单击对话框，选择金额，点击确定，开始后台支付
