@@ -52,43 +52,29 @@
                            <div class="col-xs-12 text-left">
                              {? item.content | html ?}
                            </div>
-                           <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px"  ms-click="@navClick()">
+                           <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
                              <span>
-                               <i ms-class-2="red:item.accumPrase>0" class="fa fa-heart"></i>:
-                               <img class="img-circle" style="width:30px;height:30px" ms-for="(i,m) in @item.commenterImgUrls" ms-attr="{src:@m}"></img>
+                               <i  class="fa fa-heart"></i>:
                              </span>
                            </div>
-                           <div class="col-xs-12 text-left" style="margin-top:10px;margin-bottom:15px"  ms-click="@navClick()">
+                           <div class="col-xs-12 text-left" style="margin-top:10px;margin-bottom:15px">
                              <span>
-                               <i ms-class-2="gold:item.accumMoneyPrase>0" class="fa fa-money"></i>:
-                               <img class="img-circle" style="width:30px;height:30px" ms-for="(i,n) in @item.commenterMoneyImgUrls" ms-attr="{src:@n}"></img>
+                               <i class="fa fa-money"></i>:
                              </span>
-                           </div>
-                           <div class="col-xs-12 text-left" ms-for="(i,rec) in @item.commentContents">
-                             <div class="row" ms-if="@rec.commentType!='prase' && @rec.commentType!='money'">
-                                 <div class="col-xs-9 text-left">
-                                   <span class="active" ms-data-pid="@rec.idCommenter">{? @rec.commenterName ?}</span><span ms-if="!@rec.toId">:</span><span ms-if="@rec.toId">@<span class="active">{? @rec.toName ?}:</span></span>
-                                   <span ms-if="@rec.audioUrls" ms-click="@listenFeedClick" ms-attr="{class:@rec.audioUrls?'active':'',audiourls:@rec.audioUrls}">&nbsp;&nbsp;<i class="fa fa-volume-up fa-1x"></i></span>
-                                   <span ms-if="rec.content" style="font-size:10px">{? @rec.content | html}}</span>
-                                 </div>
-                                 <div class="col-xs-3 text-right">
-                                       <span ms-if="@idUser!=@rec.idCommenter" ms-attr="{cid:@item.id,rpyid:@rec.idCommenter,rpyname:@rec.commenterName}"   ms-click="txtCommentClick"><i class="fa fa-reply"></i></span>
-                                 </div>
-                             </div>
                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 text-center" ms-click="maskClick">
+                    <div class="col-xs-12 text-center" ms-click="@maskClick">
                       <div style="margin-top:15px">
                         <span ms-click="praseClick" ms-attr="{cid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrase ?}</span></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <span ms-click="listenFeedClick" ms-attr="{class:@item.audioUrls:'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span><span class="badge">{? @item.txtCommentCount ?}</span>
+                         <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <span ms-click="startRecord" ms-attr="{cid:@item.id}"><i class="fa fa-microphone fa-1x"></i></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="moneyPraseClick" ms-attr="{cid:@item.id}"  style="font-size:14px;color:red">奖<span class="badge" style="font-size:8px">{? item.accumMoneyPrase ?}</span></span>
+                         <span ms-click="moneyPraseClick" ms-attr="{cid:@item.id}"  style="font-size:14px;color:red">奖<span class="badge" style="font-size:8px">{? item.accumMonkeys ?}</span></span>
                       </div>
                    </div>
               </div>
@@ -493,61 +479,13 @@
            console.log(res);
            if(res){
                res.forEach(function(r){
-                 try {
-                   if(r.trackRecords && r.trackRecords!=""){
-                     var limitStrCount=0;
-                     try {
-                        r.trackRecords=JSON.parse(r.trackRecords);
-                     } catch (e) {
-                       r.trackRecords=[];
-                     } finally {
 
-                     }
-
-                     r.txtCommentCount=0;
-                     r.commenterImgUrls=[];
-                     r.commenterMoneyImgUrls=[];
-                     r.trackRecords.forEach(function(t){
-                       if(t.commentType=="text"){
-                         r.txtCommentCount++;
-                       }
-                       if(t.commentType=="prase"){
-                         //var x=$.inArray(t.commenterImgUrl,r.commenterImgUrls);
-                        // if(x==-1){
-                           limitStrCount++;
-                           if(limitStrCount<=8)
-                              r.commenterImgUrls.push(t.commenterImgUrl);
-                        // }
-                         //当前主贴的日期和赞日期比较，如果相同那么就设置主贴的isPrased=true
-                         var tdate=new Date(t.commentDate).format("yyyy-MM-dd");
-                         var nowdate=new Date().format("yyyy-MM-dd");
-                         if(t.idCommenter==localUserId && tdate==nowdate){
-                             r.isPrased=true;
-                             //return false;
-                         }
-                       }
-                       if(t.commentType=="money"){
-                         r.commenterMoneyImgUrls.push(t.commenterImgUrl);
-                       }
-                     });
-                   }else{
-                     r.trackRecords=[];
-                     r.commenterImgUrls=[];
-                     r.commenterMoneyImgUrls=[];
-                   }
-
-                 } catch (e) {
-
-                 } finally {
-                   $yml.page.$vmPage.feeds.push(r);
-                 }
                });
            }
          };
          //页面加载时先获取首页数据，返回总记录数字、数据
          //初始化分页器
          var self=this;
-         var localUserId=$.localStorage.get("idUser");
          var pager= $yml.pagination.New({
              currentPage:1,
              totalCount:1,

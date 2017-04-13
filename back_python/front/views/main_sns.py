@@ -6,7 +6,7 @@ import json
 # def index(request):
 #     return render(request,"front/index.html");
 
-class SnsView(TemplateView):
-    template_name="front/main_sns.html"
+class StageView(TemplateView):
+    template_name="front/main_stage.html"
     def get(self,request,*args,**kwargs):
-        return super(SnsView,self).get(request,*args,**kwargs)
+        return super(StageView,self).get(request,*args,**kwargs)
