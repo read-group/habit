@@ -35,6 +35,7 @@ class StageService(JsonResultService):
                 dataTmp["headingImgUrl"]=post.feedBack.profile.imgUrl
                 dataTmp["accumDays"]=post.feedBack.accumDays
                 dataTmp["habitName"]=post.feedBack.habit.name
+                logger.error(dataTmp)
                 data.append(dataTmp)
             content["total"]=count
             content["data"]=data
