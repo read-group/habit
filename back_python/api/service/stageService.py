@@ -24,7 +24,7 @@ class StageService(JsonResultService):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
-        logging.error("posts")
+        logger.error("posts")
         try:
             queryCache=Post.objects.select_related('feedBack').order_by("createdTime");
             count=queryCache.count();
@@ -36,7 +36,7 @@ class StageService(JsonResultService):
             content["total"]=count
             content["data"]=data
         except Exception as e:
-            logging.error(e)
+            logger.error(e)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
