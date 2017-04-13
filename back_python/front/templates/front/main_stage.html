@@ -68,13 +68,13 @@
                       <div style="margin-top:15px">
                         <span ms-click="praseClick" ms-attr="{cid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrase ?}</span></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="listenFeedClick" ms-attr="{class:@item.audioUrls:'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
+                         <span ms-click="listenFeedClick"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">2</span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <span ms-click="startRecord" ms-attr="{cid:@item.id}"><i class="fa fa-microphone fa-1x"></i></span>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="moneyPraseClick" ms-attr="{cid:@item.id}"  style="font-size:14px;color:red">奖<span class="badge" style="font-size:8px">{? item.accumMonkeys ?}</span></span>
+                         <span ms-click="moneyPraseClick" ms-attr="{cid:@item.id}"  style="font-size:14px;color:red">奖<span class="badge" style="font-size:8px"></span></span>
                       </div>
                    </div>
               </div>
