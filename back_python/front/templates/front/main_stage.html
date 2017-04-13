@@ -194,8 +194,8 @@
              $yml.page.$vmPage.$praseAmount=$(this).data("num");
 
            },
-           deCor:function(){//析构函数
-             $yml.page.$vmPage.feeds=[];
+           cleanUp:function(){//析构函数
+             $yml.page.$vmPage.feeds.clear();
              $yml.sound.isPlay=false;
              $yml.page.$vmPage.$praseAmount=null;
              $yml.page.$vmPage.$openid=null;
@@ -479,7 +479,7 @@
            console.log(res);
            if(res){
                res.forEach(function(r){
-
+                  $yml.page.$vmPage.feeds.push(r)
                });
            }
          };
