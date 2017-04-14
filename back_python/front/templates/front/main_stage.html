@@ -50,17 +50,20 @@
                      <div class="col-xs-12 text-left">
                          <div ms-html="@item.content?@item.content:'这家伙啥都没留下...'"></div>
                     </div>
-                    <div class="col-xs-12 text-center" ms-click="maskClick">
-                      <div style="margin-top:15px">
-                        <span ms-click="praseClick" ms-attr="{cid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrases ?}</span></span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="listenFeedClick" ms-attr="{class:@item.audioUrls:'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span><span class="badge">{? @item.accumContents ?}</span>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <span ms-click="startRecord" ms-attr="{cid:@item.id}"><i class="fa fa-microphone fa-1x"></i></span>
-                      </div>
-                   </div>
+
+              </div>
+              <div class="row">
+                <div class="col-xs-12 text-center" ms-click="maskClick">
+                  <div style="margin-top:15px">
+                    <span ms-click="praseClick" ms-attr="{cid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrases ?}</span></span>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <span ms-click="listenFeedClick" ms-attr="{class:@item.audioUrls:'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span><span class="badge">{? @item.accumContents ?}</span>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <span ms-click="startRecord" ms-attr="{cid:@item.id}"><i class="fa fa-microphone fa-1x"></i></span>
+                  </div>
+               </div>
               </div>
 
             <!-- </div> -->
