@@ -20,13 +20,18 @@ logger = logging.getLogger("django")
 
 # Create your views here.
 class StageService(JsonResultService):
-    def postlist(self,skip,limit):
+    def postlist(self,skip,limit,pid):
 
         jsonResult=self.initJsonResult()
         content={}
         data=[]
         try:
-            queryCache=Post.objects.select_related('feedBack').order_by("createdTime");
+            queryCache=None
+            if int(pid)==-1:
+                queryCache=Post.objects.select_related('feedBack').order_by("createdTime");
+            else:
+                queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__id=int(pid)).order_by("createdTime");
+
             count=queryCache.count();
             posts= queryCache[skip:limit]
             for post in posts:

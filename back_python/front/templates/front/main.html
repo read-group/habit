@@ -64,7 +64,7 @@
                 mainMenu:[
                 {"title":"活动","url":"/main/activity/t","icon":"glyphicon glyphicon-tint","isDefault":true},
                 {"title":"成长","url":"/main/grain","icon":"glyphicon glyphicon-tree-deciduous","isDefault":false},
-                {"title":"舞台","url":"/main/stage","icon":"fa fa-trophy","isDefault":false},
+                {"title":"舞台","url":"/main/stage/-1","icon":"fa fa-trophy","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"fa fa-user","isDefault":false}
                 ],
                 backClick:function(refererUrl){
@@ -202,7 +202,7 @@
               $av.router.add("/main/grain/editchild/:childid", callback);
               $av.router.add("/main/grain/feedback/:pid/:role", callback);
               $av.router.add("/main/grain/feedback/note/:habitid/:pid/:hid", callback);
-              $av.router.add("/main/stage", callback);
+              $av.router.add("/main/stage/:pid", callback);
               $av.router.add("/main/my", callback);
               $av.history.start({
                   root: "/main",

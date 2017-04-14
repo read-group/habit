@@ -443,7 +443,7 @@
            }
          }
        },
-       pageReady:function(){
+       pageReady:function(params){
          //设置初始值
          $yml.page.$vmPage.$praseAmount=1;
          //先清空
@@ -463,7 +463,7 @@
              totalCount:1,
              pageSize:5,
              url:"/api/stage/posts",
-             query:null,
+             query:params,
            },{
              ctor:function(){
                this.initData(function(res){

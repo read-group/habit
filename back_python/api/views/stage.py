@@ -11,11 +11,14 @@ class StageListView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
         reqData=json.loads(str(req.body,'utf-8'))
-        skip=reqData["pageParam"]["skip"]
-        limit=skip+reqData["pageParam"]["limit"]
+        pageObj=reqData["pageParam"]
+        skip=pageObj["skip"]
+        limit=skip+pageObj["limit"]
+        pid=reqData["pid"]
+        pid
         try:
             logger.error("post view")
-            jsResult= stageService.postlist(skip,limit)
+            jsResult= stageService.postlist(skip,limit,pid)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()
