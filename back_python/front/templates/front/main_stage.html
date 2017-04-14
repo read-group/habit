@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default  navbar-fixed-top">
     <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
-          <a  ms-attr="{href:'#!'+@refererUrl}">
+          <a ms-if="@refererUrl!=''"  ms-attr="{href:'#!'+@refererUrl}">
             <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
           </a>
         </div>
@@ -173,6 +173,7 @@
              $yml.sound.isPlay=false;
              this.$praseAmount=null;
              this.$openid=null;
+             this.refererUrl='';
            },
            moneyPraseClick:function(){//奖励单击,选择单击金额
   　　　　　　　//显示单击对话框，选择金额，点击确定，开始后台支付
@@ -446,9 +447,12 @@
        },
        pageReady:function(params){
          //设置初始值
+
          $yml.page.$vmPage.$praseAmount=1;
-         this.$vmMain.$history.pop();
-         $yml.page.$vmPage.refererUrl=this.$vmMain.$history.pop();
+          if(params.pid>=0){
+            this.$vmMain.$history.pop();
+            $yml.page.$vmPage.refererUrl=this.$vmMain.$history.pop();
+          }
          //先清空
          var initUi=function(res){
            console.log(res);
