@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default  navbar-fixed-top">
     <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
-          <a ms-if="@refererUrl!=''"  ms-attr="{href:'#!'+@refererUrl}">
+          <a ms-if="@refererUrl.length>0"  ms-attr="{href:'#!'+@refererUrl}">
             <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
           </a>
         </div>
