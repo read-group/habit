@@ -78,6 +78,7 @@ class Post(models.Model):
     accumPrases=models.IntegerField(default=0,verbose_name="累积赞")
     accumAudios=models.IntegerField(default=0,verbose_name="累积语音")
     accumMonkeys=models.IntegerField(default=0,verbose_name="累积打赏")
+    accumContents=models.IntegerField(default=0,verbose_name="累积内容")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
     class Meta:
