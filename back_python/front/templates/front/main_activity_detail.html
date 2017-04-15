@@ -131,9 +131,9 @@
           this.isDetail=false;
           this.title="答题";
           //this.rptOk=false;
-          if(this.item["habitCat"].length==0　&& this.item["cat"]=="FREE"){
-            $("#maskHint").modal("show")
-          }
+          // if(this.item["habitCat"].length==0　&& this.item["cat"]=="FREE"){
+          //   $("#maskHint").modal("show")
+          // }
         },
         cleanUp:function(){
           console.log("clean up...")
@@ -151,13 +151,15 @@
           var initFirstQuestion=$yml.page.$vmPage.item["habitCat"].pop();
           $yml.page.$vmPage.curQuestion=initFirstQuestion;
           $yml.page.$vmPage.$toSubmit.push($yml.page.$vmPage.curQuestion)
-          if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
-            $("#maskHint").modal("show")
-          }
+
         },
         selectRadio:function(e){
           var level=$(e.currentTarget).data("level");
           $yml.page.$vmPage.curQuestion.level=level;
+          if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
+            $("#maskHint").modal("show")
+          }
+
         },
         lazyShare:function(){
           alert("敬请期待...")
