@@ -56,7 +56,7 @@
                                 <span ms-click="praseClick" ms-attr="{postid:@item.id,class:@item.isPrased:'red':''}"><i class="fa fa-heart"></i><span class="badge">{? item.accumPrases ?}</span></span>
                           </div>
                           <div class="col-xs-3">
-                            <span ms-click="@listenFeedClick" ms-attr="{class:@item.audioUrls:'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
+                            <span ms-click="@listenFeedClick" ms-attr="{class:@item.audioUrls?'active':'',audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
                           </div>
                            <div class="col-xs-3">
                                <span ms-click="txtCommentClick" ms-attr="{cid:@item.id}"><i class="fa fa-commenting fa-1x"></i></span><span class="badge">{? @item.accumContents ?}</span>
