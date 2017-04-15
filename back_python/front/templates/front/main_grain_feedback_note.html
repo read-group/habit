@@ -225,7 +225,7 @@
             paramsObj.audioUrls=audioUrls;
             $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
               if(rtnData.status==0){
-                //alert("发布完成");
+                 alert('#!'+$yml.page.$vmPage.refererUrl);
                  avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,1)
               }else{
                 alert("发布出错");
