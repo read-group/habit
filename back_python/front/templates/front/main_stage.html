@@ -171,6 +171,7 @@
            listenFeedClick:function(event){
              if(!$yml.sound.isPlay){
                var aurl=$(this).attr("audiourls");
+               alert(aurl)
                if(aurl && $.trim(aurl)!=""){
                  var audioArray= aurl.split(",");
                  $yml.sound.groupPlay(audioArray);
