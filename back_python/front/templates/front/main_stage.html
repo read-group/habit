@@ -169,9 +169,9 @@
              $yml.page.$router.$vm.navClick.call(this);
            },
            listenFeedClick:function(event){
+             var target=el.currentTarget;
              if(!$yml.sound.isPlay){
-               var aurl=$(this).attr("audiourls");
-               alert(aurl)
+               var aurl=$(target).attr("audiourls");
                if(aurl && $.trim(aurl)!=""){
                  var audioArray= aurl.split(",");
                  $yml.sound.groupPlay(audioArray);
