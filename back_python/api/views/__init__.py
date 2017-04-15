@@ -4,3 +4,4 @@ from .grain    import GrainFamilyView,GrainFamilyAddMemberView,GrainFamilyGetMem
 from .grain    import GrainFeedbackView,GrainFeedbackCreateView,GrainFeedbackPublishView
 from .teacher   import TeacherClassMemberView,TeacherMyView,TeacherAddClassView
 from .stage import StageListView
+from .stage import StagePraseView

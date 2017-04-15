@@ -256,50 +256,40 @@
              }
            },
            praseClick:function(){//表扬单击
+             var target=el.currentTarget;
               if(!$yml.page.$vmPage.$isPlaying){
               //if(!$yml.page.$vmPage.$isPraseClicked){
                 $yml.page.$vmPage.$isPlaying=true;
-                $yml.page.$vmPage.$postid=$(this).attr("postid");//当前的主题id
+                $yml.page.$vmPage.$postid=$(target).attr("postid");//当前的主题id
                             var param={};
                             param.postid=$yml.page.$vmPage.$postid;
-                            param.pobj.openidDest=$(this).data("openid");
-                            $yml.ajax('/api/feed/praseComment',param,function(rtnData){
+                            $yml.ajax('/api/stage/praseComment',param,function(rtnData){
                               if(rtnData.status==0){
                                 var prase=rtnData.content;
                                 $yml.page.$vmPage.feeds.forEach(function(c){
-                                  if(c.id==$yml.page.$vmPage.$cid){
-                                    //设置是否已赞字段，影响星星颜色，在服务端查询是否已经赞，如果已赞那么就累积减一，追踪也删除掉
-                                    //如果没赞就赞，累积加一
-                                    // if(c.trackRecords){
-                                    //    c.trackRecords.push(prase);
+                                  if(c.id==$yml.page.$vmPage.$postid){
+                                    // if(prase.isPrased){//
+                                    //   c.accumPrase++;
+                                    // //  if(c.commenterImgUrls.length<=8 &&  ($.inArray(prase.commenterImgUrl,c.commenterImgUrls)==-1)){
+                                    //   if(!c.commenterImgUrls){
+                                    //     c.commenterImgUrls=[];
+                                    //     c.commenterImgUrls.push(prase.commenterImgUrl);
+                                    //   }else{
+                                    //      c.commenterImgUrls.push(prase.commenterImgUrl);
+                                    //   }
                                     //
-                                    // }else{
-                                    //        c.trackRecords=[];
-                                    //        c.trackRecords.push(prase);
+                                    //   //}
+                                    //   c.isPrased=true;
+                                    // }else{//取消表扬
+                                    //   if(c.commenterImgUrls){
+                                    //     $yml.utils.deleteElementFromArrayByFilter(c.commenterImgUrls,prase.commenterImgUrl,function(todel,item){
+                                    //       return todel==item;
+                                    //     });
+                                    //     c.isPrased=false;
+                                    //     c.accumPrase--;
+                                    //   }
                                     //
                                     // }
-                                    if(prase.isPrased){//
-                                      c.accumPrase++;
-                                    //  if(c.commenterImgUrls.length<=8 &&  ($.inArray(prase.commenterImgUrl,c.commenterImgUrls)==-1)){
-                                      if(!c.commenterImgUrls){
-                                        c.commenterImgUrls=[];
-                                        c.commenterImgUrls.push(prase.commenterImgUrl);
-                                      }else{
-                                         c.commenterImgUrls.push(prase.commenterImgUrl);
-                                      }
-
-                                      //}
-                                      c.isPrased=true;
-                                    }else{//取消表扬
-                                      if(c.commenterImgUrls){
-                                        $yml.utils.deleteElementFromArrayByFilter(c.commenterImgUrls,prase.commenterImgUrl,function(todel,item){
-                                          return todel==item;
-                                        });
-                                        c.isPrased=false;
-                                        c.accumPrase--;
-                                      }
-
-                                    }
 
                                   }
                                 });
