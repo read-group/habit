@@ -94,7 +94,7 @@
       //显示当前家庭的孩子参加活动所涉及的习惯列表
       $yml.ajax('/api/grain/feedback/habits',params,
       　  function(res){
-            console.log(res.content.data)
+            $yml.page.$vmPage.habits.clear()
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.habits.push(r)
             });
