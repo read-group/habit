@@ -201,10 +201,8 @@
     pageReady:function(paramObj){
       var self=this;
       self.$vmMain.wxinit("{{detailUrl|safe}}")
-      alert(JSON.stringify(paramObj))
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
-            alert(JSON.stringify(res.content.data))
       　　　 self.$vmMain.$history.pop();
             $yml.page.$vmPage.refererUrl=self.$vmMain.$history.pop();
             $yml.page.$vmPage.item=res.content.data;
