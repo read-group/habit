@@ -168,7 +168,7 @@
              console.log("...........habit.........");
              $yml.page.$router.$vm.navClick.call(this);
            },
-           listenFeedClick:function(event){
+           listenFeedClick:function(el){
              var target=el.currentTarget;
              if(!$yml.sound.isPlay){
                var aurl=$(target).attr("audiourls");
