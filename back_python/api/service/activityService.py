@@ -101,9 +101,8 @@ class ActivityService(JsonResultService):
                     break;
 
             content["data"]=dataTmp
-        except:
-            info=sys.exc_info()
-            logger.error(info)
+        except Exception as e:
+            logger.error(e)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
