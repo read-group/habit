@@ -227,7 +227,9 @@
               if(rtnData.status==0){
                  alert('#!'+$yml.page.$vmPage.refererUrl);
                  alert(window.__wxjs_is_wkwebview )
-                 $("a").attr("href",'#!'+$yml.page.$vmPage.refererUrl).click()
+                 $aa=$("a")
+                　$aa.attr("href",'#!'+$yml.page.$vmPage.refererUrl)
+                　$aa.trigger("click")
                  //avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,2)
               }else{
                 alert("发布出错");
