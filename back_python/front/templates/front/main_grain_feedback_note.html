@@ -219,7 +219,6 @@
               content=content.substr(0,147)+"..."
             }
             paramsObj.postid=postid;
-            alert(paramsObj.postid)
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
@@ -228,7 +227,7 @@
               //    alert('#!'+$yml.page.$vmPage.refererUrl);
               //    alert(window.__wxjs_is_wkwebview )
               // 　　location.href="main?role=host#!"+$yml.page.$vmPage.refererUrl
-                 avalon.router.navigate($yml.page.$vmPage.refererUrl,2)
+                 avalon.router.navigate($yml.page.$vmPage.refererUrl,1)
               }else{
                 alert("发布出错");
               }
