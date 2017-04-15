@@ -199,6 +199,7 @@
       };
     },
     pageReady:function(paramObj){
+      alert(JSON.stringify(paramObj))
       var self=this;
       self.$vmMain.wxinit("{{detailUrl|safe}}")
       $yml.ajax('/api/activity/detail',paramObj,
