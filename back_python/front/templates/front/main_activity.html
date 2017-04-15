@@ -32,7 +32,7 @@
                   <p>持续天数：{? @item.days ?}天</p>
                   <p>还剩名额：{? @item.uplimit - @item.applyNumber?}个</p>
                 </div>
-                <a  onclick="sanxing(this)"  ms-attr="{hrefurl:'#!/main/activity/detail/'+@item.id}"  class="media-right">
+                <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
                     <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
                     <button class="btn btn-primary btn-lg">报名详情</button>
                 </a>
@@ -42,11 +42,6 @@
     </div>
   </div>
   <script>
-  function sanxing(t){
-    detailutl=$(t).attr("hrefurl")
-    alert(detailutl)
-    avalon.router.navigate('/main/activity/detail/14',2)
-  }
   $yml.page=$yml.pageBase.New(null,{
     ctor:function(){
       console.log("addChild loaded..."+this.getVmEleName());
@@ -83,7 +78,7 @@
       //       $yml.page.$vmPage.cats=res.content;
       //     }
       // );
-      
+
       //初始化分页器
       var pager= $yml.pagination.New({
           currentPage:1,
