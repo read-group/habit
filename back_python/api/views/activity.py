@@ -28,9 +28,8 @@ class ActivityDetailView(View):
             reqData=json.loads(str(req.body,'utf-8'))
             idParam=reqData["id"]
             jsResult=activityService.activityDetail(req.user,idParam,req.scheme+"://"+req.META["HTTP_HOST"])
-        except:
-            info=sys.exc_info()
-            logger.error(info)
+        except Exception as e:
+            logger.error(e)
         return jsResult.renderToJsonResponse()
 
 class ActivityJoinlView(View):
