@@ -226,7 +226,9 @@
             $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
               if(rtnData.status==0){
                  alert('#!'+$yml.page.$vmPage.refererUrl);
-                 avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,2)
+                 alert(window.__wxjs_is_wkwebview )
+                 $("a").attr("href",'#!'+$yml.page.$vmPage.refererUrl).click()
+                 //avalon.router.navigate('#!'+$yml.page.$vmPage.refererUrl,2)
               }else{
                 alert("发布出错");
               }
