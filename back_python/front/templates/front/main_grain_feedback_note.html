@@ -18,14 +18,25 @@
       <div class="list-group">
         <button type="button"  class="list-group-item">
           <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default" data-level="L" ms-click="@selectRadio">
-                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" /> 较差
+              <label ms-attr="{class:'btn btn-default',xq:'PJ'}"  ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"/>
               </label>
-              <label class="btn btn-default" data-level="M" ms-click="@selectRadio">
-                <input type="radio" name="options" value="M"  id="option2"  autocomplete="off" checked/> 一般
+              <label ms-attr="{class:'btn btn-default',xq:'GX'}"  ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"/>
               </label>
-              <label class="btn btn-default" data-level="H" ms-click="@selectRadio">
-                <input type="radio" name="options" value="H"   id="option3" autocomplete="off"/> 良好
+              <label ms-attr="{class:'btn btn-default',xq:'DX'}"  ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"/>
+              </label>
+              <label ms-attr="{class:'btn btn-default',xq:'JS'}"  ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"/>
+              </label>
+              <label ms-attr="{class:'btn btn-default',xq:'DK'}"  ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"/>
               </label>
           </div>
         </button>
@@ -47,13 +58,6 @@
                 </div>
                 <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
                   <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? recordCount ?}</span>
-                </div>
-            </div>
-          </button>
-          <button type="button"  class="list-group-item">
-            <div  class="row">
-                <div  class="col-xs-4 text-left icon" ms-click="@test">
-                  <span><i class="fa fa-camera fa-2x"></i></span>
                 </div>
             </div>
           </button>
@@ -217,8 +221,7 @@
      　　　　　　});
          },
          selectRadio:function(ev){
-           alert("ddd")
-
+           alert($(ev.currentTarget).attr("xq"))
          },
          cleanUp:function(){
            console.log("...........note cleanUp.........");
