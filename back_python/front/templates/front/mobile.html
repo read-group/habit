@@ -59,6 +59,7 @@
             　  function(res){
                   var i=0;
                   if(res.status==0){
+                    console.log(res.content.data)
                     res.content.data.forEach(function(r){
                       if(i==0){
                         r.active="active"
