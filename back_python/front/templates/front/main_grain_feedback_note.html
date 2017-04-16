@@ -39,7 +39,7 @@
         </button>
         <button type="button"  class="list-group-item">
           <div  class="row">
-              <div  class="col-xs-4 text-left icon" ms-click="@selImageClick">
+              <div  class="col-xs-4 text-left icon" ms-click="@test">
                 <span><i class="fa fa-camera fa-2x"></i></span>
               </div>
           </div>
@@ -202,13 +202,9 @@
                  }
      　　　　　　});
          },
-         ok:function(e){
-          //  var level=$(e.currentTarget).data("level");
-          //  $yml.page.$vmPage.curQuestion.level=level;
-          //  if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
-          //    $("#maskHint").modal("show")
-          //  }
-          alert("ddddd")
+         test:function(){
+           alert("ddd")
+
          },
          cleanUp:function(){
            console.log("...........note cleanUp.........");
