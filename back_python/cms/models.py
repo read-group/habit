@@ -12,3 +12,23 @@ class WxWelcome(EntityBase):
     class Meta:
         verbose_name="微信欢迎"
         verbose_name_plural="微信欢迎"
+CMS_USAGE = (
+    ('0', '移动'),
+    ('1', 'ＰＣ'),
+)
+CMS_STATUS = (
+    ('0', '停用'),
+    ('1', '启用'),
+)
+class LoopHead(EntityBase):
+    status=models.CharField(max_length=2,default='1',choices=CMS_STATUS,verbose_name="状态")
+    usage=models.CharField(max_length=2,default='0',choices=CMS_STATUS,verbose_name="用途")
+    desc=models.CharField(max_length=100,verbose_name="概述")
+    imgResource=models.ForeignKey(
+            MediaResource,
+            on_delete=models.CASCADE,
+            verbose_name="图片"
+    )
+    class Meta:
+        verbose_name="首页轮换图"
+        verbose_name_plural="首页轮换图"

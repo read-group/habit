@@ -6,7 +6,7 @@
 {% block adv %}
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" ms-controller="myCarousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -59,7 +59,7 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-    <div id="market" class="container marketing" ms-controller="market">
+    <div id="market" class="container marketing">
       <!-- Three columns of text below the carousel -->
 
       <div class="note">
@@ -76,12 +76,15 @@
   <script>
     　　 $(function(){
             avalon.define({
-              $id:"market",
-              activitys:[
-              {name:"21天习惯养成包",memo:"行为养成习惯"},
-              {name:"36天习惯养成包",memo:"习惯形成性格"},
-              {name:"90天习惯养成包",memo:"性格决定命运"}]
+              $id:"myCarousel",
+              activitys:[]
             });
+            //区查询
+            $yml.ajax('/api/welcome/loopHead',null,
+            　  function(res){
+                  alert(JSON.stringify(res.content.data))
+                }
+            );
          })
 
   </script>

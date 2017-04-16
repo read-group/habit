@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import WxWelcomeView,ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView,GrainFamilyView,GrainFamilyAddMemberView
+from api.views import ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView,GrainFamilyView,GrainFamilyAddMemberView
 from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
 from api.views import GrainFeedbackView
@@ -24,8 +24,10 @@ from api.views import TeacherClassMemberView,TeacherAddClassView
 from api.views import TeacherMyView
 from api.views import StageListView
 from api.views import StagePraseView
+from api.views import WxWelcomeView,LoopHeadView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
+     url(r'^welcome/loopHead$',LoopHeadView.as_view()),
      url(r'^activity/$',ActivityView.as_view()),
      url(r'^activity/detail$',ActivityDetailView.as_view()),
      url(r'^activity/join$',ActivityJoinlView.as_view()),

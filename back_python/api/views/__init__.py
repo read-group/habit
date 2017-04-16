@@ -1,4 +1,4 @@
-from .wxwelcome import WxWelcomeView
+from .welcome import WxWelcomeView,LoopHeadView
 from .activity  import ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView
 from .grain    import GrainFamilyView,GrainFamilyAddMemberView,GrainFamilyGetMemberView,GrainFamilyUpdateMemberView
 from .grain    import GrainFeedbackView,GrainFeedbackCreateView,GrainFeedbackPublishView
