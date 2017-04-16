@@ -16,38 +16,40 @@
     </nav>
     <div class="childContent">
       <div class="list-group">
-        <button type="button"  class="list-group-item">
-          <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
-        </button>
-        <button type="button"  class="list-group-item">
-          <div class="text-center">
-             <div><img class="img-thumbnail"   ms-attr="{src:@imageUrl}"/></div>
-          </div>
-        </button>
-        <button type="button"  class="list-group-item">
-          <div  class="row">
-              <div  class="col-xs-4 text-left icon" ms-click="@selImageClick">
-                <span><i class="fa fa-camera fa-2x"></i></span>
-              </div>
-              <div class="col-xs-4 text-center" ms-click="@startRecord">
-                  <span><i class="fa fa-microphone fa-2x"></i></span>
-              </div>
-              <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
-                <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? recordCount ?}</span>
-              </div>
-          </div>
-        </button>
-        <button type="button"  class="list-group-item">
-          <div  class="row">
-              <div  class="col-xs-4 text-left icon" ms-click="@test">
-                <span><i class="fa fa-camera fa-2x"></i></span>
-              </div>
-          </div>
-        </button>
-        <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
+          <button type="button"  class="list-group-item">
+            <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
+          </button>
+          <button type="button"  class="list-group-item">
+            <div class="text-center">
+               <div><img class="img-thumbnail"   ms-attr="{src:@imageUrl}"/></div>
+            </div>
+          </button>
+          <button type="button"  class="list-group-item">
+            <div  class="row">
+                <div  class="col-xs-4 text-left icon" ms-click="@selImageClick">
+                  <span><i class="fa fa-camera fa-2x"></i></span>
+                </div>
+                <div class="col-xs-4 text-center" ms-click="@startRecord">
+                    <span><i class="fa fa-microphone fa-2x"></i></span>
+                </div>
+                <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
+                  <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? recordCount ?}</span>
+                </div>
+            </div>
+          </button>
+          <button type="button"  class="list-group-item">
+            <div  class="row">
+                <div  class="col-xs-4 text-left icon" ms-click="@test">
+                  <span><i class="fa fa-camera fa-2x"></i></span>
+                </div>
+            </div>
+          </button>
+　　  </div>
+   </div>
+  <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
                 <div class="modal-header">
                   <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>语音留言中</h4>
                 </div>
@@ -57,35 +59,34 @@
                     <button  class="button button-pill  button-action">停止留言</button>
                   </div>
                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-　　</div>
-</div>
-<div class="modal fade" id="noteHelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-smile-o" style="color:orange"></i>小小提示</h4>
-            </div>
-            <div class="text-center" style="width:100%;height:120px;margin-top:15px">
-              <div class="text-center">
-                <span><i class="fa fa-camera fa-2x"></i>照片</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span ><i class="fa fa-microphone fa-2x"></i>录音</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span  style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span>收听</span>
-              </div>
-
-              <div style="margin-top:15px;">
-                <button href="#" class="button button-pill  button-action" id="noteHelpKnow">我知道了</button>
-              </div>
            </div>
         </div>
       </div>
-    </div>
+  </div>
+  <div class="modal fade" id="noteHelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-smile-o" style="color:orange"></i>小小提示</h4>
+                  </div>
+                  <div class="text-center" style="width:100%;height:120px;margin-top:15px">
+                    <div class="text-center">
+                      <span><i class="fa fa-camera fa-2x"></i>照片</span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span ><i class="fa fa-microphone fa-2x"></i>录音</span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span  style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span>收听</span>
+                    </div>
+
+                    <div style="margin-top:15px;">
+                      <button href="#" class="button button-pill  button-action" id="noteHelpKnow">我知道了</button>
+                    </div>
+                 </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 <script>
    $yml.page=$yml.pageBase.New(null,{
