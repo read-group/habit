@@ -38,10 +38,10 @@ class MainView(TemplateView):
         # 然后去模拟登录login
         # logger.debug("begin main")
         # # logger.debug(request.user.is_authenticated)
-        if(not request.user.is_authenticated):
-            userTmp= User.objects.get(pk=11)
-            login(request,userTmp)
-        return super(MainView,self).get(request,*args,**kwargs)
+        # if(not request.user.is_authenticated):
+        #     userTmp= User.objects.get(pk=11)
+        #     login(request,userTmp)
+        # return super(MainView,self).get(request,*args,**kwargs)
 
         if(not request.user.is_authenticated):
             logger.error("not logined=================================")
