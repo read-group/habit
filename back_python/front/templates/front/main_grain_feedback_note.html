@@ -118,11 +118,16 @@
          $postid:null,
          imageUrl:null,
          $audioUrls:[],
+         $feel:"PJ",
          comment:null,
          recordCount:0,
          $isPlay:false,
          refererUrl:"",
          $currentUserId:null,
+         selectRadio:function(el){
+           var target=el.currentTarget;
+           alert($(target).data('level'))
+         },
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
