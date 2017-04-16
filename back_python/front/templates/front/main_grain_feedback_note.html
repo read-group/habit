@@ -16,7 +16,7 @@
     </nav>
     <div class="childContent">
       <div class="list-group">
-        <!-- <button type="button"  class="list-group-item">
+        <button type="button"  class="list-group-item">
           <div class="btn-group" data-toggle="buttons">
               <label ms-attr="{class:'btn btn-default',xq:'PJ'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
@@ -39,7 +39,7 @@
                 <img src="http://mily365.com/static/front/js/editor/smiley/29.jpg" style="width:40px;height:40px" />
               </label>
           </div>
-        </button> -->
+        </button>
           <button type="button"  class="list-group-item">
             <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
           </button>
@@ -173,7 +173,7 @@
                             var serverId = res.serverId; // 返回音频的服务器端ID
                             //给公司微信服务器发送下载文件的指令
                             $yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
-                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audiimageUrlo"},
+                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
                             　  function(res){
                                   if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
                                     $yml.page.$vmPage.$audioUrls.push(res.resUrl);
