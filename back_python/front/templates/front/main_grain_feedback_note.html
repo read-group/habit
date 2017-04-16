@@ -17,23 +17,18 @@
     <div class="childContent">
       <div class="list-group">
         <button  class="list-group-item">
-            <div class="text-center">
-              <label ms-attr="{class:'btn btn-default',xq:'PJ'}" ms-click="@selectRadio">
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"  style="width:30px;height:30px"/>
+          <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default" data-level="L" ms-click="@selectRadio">
+                <input type="radio" name="options" value="L"  id="option1" autocomplete="off" /> 较差
               </label>
-              <label ms-attr="{class:'btn btn-default',xq:'GX'}" ms-click="@selectRadio">
-                <img src="http://mily365.com/static/front/js/editor/smiley/26.jpg"  style="width:30px;height:30px"/>
+              <label class="btn btn-default" data-level="M" ms-click="@selectRadio">
+                <input type="radio" name="options" value="M"  id="option2"  autocomplete="off" checked/> 一般
               </label>
-              <label ms-attr="{class:'btn btn-default',xq:'DX'}" ms-click="@selectRadio">
-                <img src="http://mily365.com/static/front/js/editor/smiley/27.jpg"  style="width:30px;height:30px"/>
-              </label>
-              <label ms-attr="{class:'btn btn-default',xq:'JS'}" ms-click="@selectRadio">
-                <img src="http://mily365.com/static/front/js/editor/smiley/28.jpg"  style="width:30px;height:30px"/>
-              </label>
-              <label ms-attr="{class:'btn btn-default',xq:'DK'}" ms-click="@selectRadio">
-                <img src="http://mily365.com/static/front/js/editor/smiley/29.jpg"  style="width:30px;height:30px"/>
+              <label class="btn btn-default" data-level="H" ms-click="@selectRadio">
+                <input type="radio" name="options" value="H"   id="option3" autocomplete="off"/> 良好
               </label>
           </div>
+          
         </button>
         <button type="button"  class="list-group-item">
           <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
