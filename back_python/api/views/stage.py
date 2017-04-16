@@ -24,14 +24,13 @@ class StageListView(View):
         return jsResult.renderToJsonResponse()
 
 class StagePraseView(View):
-    def prase(self,req,*arg,**kwargs):
+    def post(self,req,*arg,**kwargs):
         jsResult=None
         reqData=json.loads(str(req.body,'utf-8'))
         postid=reqData["postid"]
         pid
         try:
-            logger.error("post view")
-            jsResult= stageService.prase(pid)
+            jsResult= stageService.prase(postid)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()

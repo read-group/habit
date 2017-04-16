@@ -263,7 +263,7 @@
                 $yml.page.$vmPage.$postid=$(target).attr("postid");//当前的主题id
                             var param={};
                             param.postid=$yml.page.$vmPage.$postid;
-                            $yml.ajax('/api/stage/praseComment',param,function(rtnData){
+                            $yml.ajax('/api/stage/prase',param,function(rtnData){
                               if(rtnData.status==0){
                                 var prase=rtnData.content;
                                 $yml.page.$vmPage.feeds.forEach(function(c){

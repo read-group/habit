@@ -21,7 +21,6 @@ logger = logging.getLogger("django")
 # Create your views here.
 class StageService(JsonResultService):
     def postlist(self,skip,limit,pid):
-
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -52,4 +51,20 @@ class StageService(JsonResultService):
         finally:
             return jsonResult
 
+    def prase(self,postid):
+        jsonResult=self.initJsonResult()
+        content={}
+        data=[]
+        try:
+            post=Post.objects.get(pk=int(postid));
+            
+
+            content["data"]=data
+        except Exception as e:
+            logger.error(e)
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
 stageService=StageService()
