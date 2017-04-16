@@ -15,7 +15,7 @@ class WxWelcomeView(View):
         return jsResult.renderToJsonResponse()
 
 class LoopHeadView(View):
-    def get(self,req,*arg,**kwargs):
+    def post(self,req,*arg,**kwargs):
         jsResult=None
         try:
             jsResult= welcomeService.loopHead(req.scheme+"://"+req.META["HTTP_HOST"])
