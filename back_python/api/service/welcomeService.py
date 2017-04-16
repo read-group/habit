@@ -34,7 +34,7 @@ class WelcomeService(JsonResultService):
         content={}
         dataTmp=[]
         try:
-            heads= LoopHead.objects.order_by("code")
+            heads= LoopHead.objects.filter(status='1').order_by("code")
             for head in heads:
                 headDic=self.toJSON(head,['usage',"name","desc"])
                 headDic["img"]=host+settings.MEDIA_URL+head.imgResource.img.name
