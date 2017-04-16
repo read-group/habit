@@ -221,7 +221,7 @@
      　　　　　　});
          },
          selectRadio:function(ev){
-           alert($(ev.currentTarget).attr("xq"))
+           $yml.page.$vmPage.$feel=$(ev.currentTarget).attr("xq")
          },
          cleanUp:function(){
            console.log("...........note cleanUp.........");
@@ -250,6 +250,7 @@
             paramsObj.content=content;
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
+            paramsObj.feel=feel;
             $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
               if(rtnData.status==0){
                  avalon.router.navigate($yml.page.$vmPage.refererUrl,1)

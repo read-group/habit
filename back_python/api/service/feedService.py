@@ -91,6 +91,7 @@ class FeedbackService(JsonResultService):
                 post.content=pinfo['content']
                 post.imgUrl=pinfo['imageUrl']
                 post.audioUrls=pinfo['audioUrls']
+                post.feel=pinfo['feel']
                 post.save()
         except:
             jsonResult.rtnDic["status"]=-1

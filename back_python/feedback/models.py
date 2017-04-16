@@ -73,6 +73,7 @@ class Post(models.Model):
         verbose_name="时光记录"
     )
     content=models.CharField(max_length=150,null=True,blank=True)
+    feel=models.CharField(max_length=4,default="PJ",verbose_name="心情")
     imgUrl=models.CharField(max_length=256,default="http://mily365.com/media/upload/mily.png",verbose_name="反馈图片")
     audioUrls=models.CharField(max_length=1024,default="",verbose_name="音频")
     accumPrases=models.IntegerField(default=0,verbose_name="累积赞")
