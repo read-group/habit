@@ -28,7 +28,7 @@
                 <input type="radio" name="options" value="H"   id="option3" autocomplete="off"/> 良好
               </label>
           </div>
-          
+
         </button>
         <button type="button"  class="list-group-item">
           <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
@@ -114,10 +114,13 @@
          $isPlay:false,
          refererUrl:"",
          $currentUserId:null,
-         selectRadio:function(el){
-           alert("....")
-          //  var target=el.currentTarget;
-          //  alert($(target).data('level'))
+         selectRadio:function(e){
+          //  var level=$(e.currentTarget).data("level");
+          //  $yml.page.$vmPage.curQuestion.level=level;
+          //  if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
+          //    $("#maskHint").modal("show")
+          //  }
+          alert("ddddd")
          },
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
