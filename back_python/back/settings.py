@@ -37,7 +37,7 @@ WX={
 }
 
 # Application definition
- SITE_ID=1
+SITE_ID=1
 INSTALLED_APPS = [
     'api',
     'cms',
