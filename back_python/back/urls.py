@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^',include('front.urls')),
     url(r'^api/',include('api.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 
 ]
