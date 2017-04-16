@@ -14,7 +14,7 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active" ms-for="(i,head) in @heads">
+        <div class="item" ms-for="(i,head) in @heads">
           <img  ms-attr="{src:@head.img,class:'first-slide'}"  alt="First slide">
           <div class="container">
             <div class="carousel-caption">
@@ -24,7 +24,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -69,7 +68,6 @@
                       $vmmotile.heads.push(r)
                     })
                   }
-                  alert(JSON.stringify(res.content.data))
                 }
             );
          })
