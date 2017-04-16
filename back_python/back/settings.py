@@ -37,7 +37,7 @@ WX={
 }
 
 # Application definition
-
+ SITE_ID=1
 INSTALLED_APPS = [
     'api',
     'cms',
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'sysinfo',
     'school',
     'django_wysiwyg',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -99,6 +101,7 @@ CACHE_FORMAT_STR={
    'userid_habitid_key_timeout':3600*24*365,
 }
 MIDDLEWARE = [
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
