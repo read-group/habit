@@ -20,23 +20,23 @@
           <div class="btn-group" data-toggle="buttons">
               <label ms-attr="{class:'btn btn-default',xq:'PJ'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg"　style="width:40px;height:40px"/>
+                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg" style="width:40px;height:40px" />
               </label>
               <label ms-attr="{class:'btn btn-default',xq:'GX'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg" style="width:40px;height:40px"/>
+                <img src="http://mily365.com/static/front/js/editor/smiley/26.jpg" style="width:40px;height:40px" />
               </label>
               <label ms-attr="{class:'btn btn-default',xq:'DX'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg" style="width:40px;height:40px"/>
+                <img src="http://mily365.com/static/front/js/editor/smiley/27.jpg" style="width:40px;height:40px" />
               </label>
               <label ms-attr="{class:'btn btn-default',xq:'JS'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg" style="width:40px;height:40px"/>
+                <img src="http://mily365.com/static/front/js/editor/smiley/28.jpg" style="width:40px;height:40px" />
               </label>
               <label ms-attr="{class:'btn btn-default',xq:'DK'}"  ms-click="@selectRadio">
                 <input type="radio" name="options" value="L"  id="option1" autocomplete="off" />
-                <img src="http://mily365.com/static/front/js/editor/smiley/25.jpg" style="width:40px;height:40px"/>
+                <img src="http://mily365.com/static/front/js/editor/smiley/29.jpg" style="width:40px;height:40px" />
               </label>
           </div>
         </button>
@@ -173,7 +173,7 @@
                             var serverId = res.serverId; // 返回音频的服务器端ID
                             //给公司微信服务器发送下载文件的指令
                             $yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
-                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
+                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audiimageUrlo"},
                             　  function(res){
                                   if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
                                     $yml.page.$vmPage.$audioUrls.push(res.resUrl);
@@ -240,6 +240,7 @@
             var content=$("#editorFeed").val();
             var imageUrl=$yml.page.$vmPage.imageUrl=="#"?null:$yml.page.$vmPage.imageUrl;
             var audioUrls=$yml.page.$vmPage.$audioUrls.join(",");
+            var feel=$yml.page.$vmPage.$feel
             var paramsObj={};
 
             if(content.length>150){
