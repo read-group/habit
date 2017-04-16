@@ -57,13 +57,18 @@
   {% block extrajs %}
   <script>
     　　 $(function(){
-            avalon.define({
+            $vmmotile=avalon.define({
               $id:"myCarousel",
               heads:[]
             });
             //区查询
             $yml.ajax('/api/welcome/loopHead',null,
             　  function(res){
+                  if(res.status==0){
+                    res.content.data.forEach(function(r){
+                      $vmmotile.heads.push(r)
+                    })
+                  }
                   alert(JSON.stringify(res.content.data))
                 }
             );
