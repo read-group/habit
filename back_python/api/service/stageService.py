@@ -21,7 +21,7 @@ logger = logging.getLogger("django")
 
 # Create your views here.
 class StageService(JsonResultService):
-    def postlist(self,skip,limit,pid):
+    def postlist(self,skip,limit,pid,currentUser):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -40,7 +40,8 @@ class StageService(JsonResultService):
                 dataTmp["headingImgUrl"]=post.feedBack.profile.imgUrl
                 dataTmp["accumDays"]=post.feedBack.accumDays
                 dataTmp["habitName"]=post.feedBack.habit.name
-                logger.error(dataTmp)
+                # 构造post字典
+                self._makeComments(post,dataTmp,currentUser)
                 data.append(dataTmp)
             content["total"]=count
             content["data"]=data
@@ -52,41 +53,80 @@ class StageService(JsonResultService):
         finally:
             return jsonResult
 
-    def prase(self,postid,profile):
+    def _makeComments(self,post,postDic,currentUser):
+        praseInfos=[]
+        audioInfos=[]
+        txtInfos=[]
+        moneyInfos=[]
+        for comment in post.comment_set:
+            if comment.commentType=="prase":
+                praseinfoTmp={}
+                praseinfoTmp['imgUrl']=comment.fromProfile.imgUrl
+                praseInfos.append(praseinfoTmp)
+                if currentUser.id==comment.fromProfile.id:
+                    postDic["isPrased"]='1'
+            if comment.commentType=="txt":
+                txtinfoTmp={}
+                txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
+                txtinfoTmp['content']=comment.content
+                txtInfos.append(txtinfoTmp)
+            if comment.commentType=="sound":
+                soundinfoTmp={}
+                soundinfoTmp['imgUrl']=comment.fromProfile.imgUrl
+                soundinfoTmp['audioUrls']=comment.audioUrls
+                audioInfos.append(soundinfoTmp)
+            if comment.commentType=="money":
+                moneyinfoTmp={}
+                moneyinfoTmp['imgUrl']=comment.fromProfile.imgUrl
+                moneyInfos.append(moneyinfoTmp)
+
+        postDic["praseInfos"]=praseInfos
+        postDic["txtInfos"]=txtInfos
+        postDic["audioInfos"]=audioInfos
+        postDic["moneyInfos"]=moneyInfos
+        return postDic
+
+    def comment(self,postid,profile,commentType):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
-        praseInfos=[]
-        audioInfos=[]
+        postDic={}
         try:
             with transaction.atomic():
                 postQuery=Post.objects.select_related("feedBack").filter(id=int(postid));
                 post=postQuery[0]
                 # 按照当前点评者、按照postid查询是否已经点评过,如果点评过，就
                 comment=Comment()
-                comment.commentType=Map_Comment_TYPE["prase"]
+                comment.commentType=commentType
                 comment.post=post
                 comment.fromProfile=profile
                 comment.save()
                 # 加好友
-                # postCreator=post.feedBack.profile
-                # if postCreator.id==profile.id:
-                #     pass
-                # else:
-                #     friends=Friend()
-                #     friends.from_profile=profile
-                #     friends.to_profile=postCreator
-                #     friends.save()
+                postCreator=post.feedBack.profile
+                if postCreator.id!=profile.id:
+                    friends=Friend()
+                    friends.from_profile=profile
+                    friends.to_profile=postCreator
+                    friends.save()
                 # 增加帖子上的赞扬次数
-                postQuery.update(accumPrases=F("accumPrases")+1)
-
+                if commentType=="prase":
+                    postQuery.update(accumPrases=F("accumPrases")+1)
+                    # 表示当前是已经点赞
+                    postDic["isPrased"]='1'
+                if commentType=="txt":
+                    postQuery.update(accumPrases=F("accumContents")+1)
+                    postDic["isPrased"]='0'
+                if commentType=="sound":
+                    postQuery.update(accumPrases=F("accumAudios")+1)
+                    postDic["isPrased"]='0'
+                if commentType=="monkey":
+                    postQuery.update(accumPrases=F("accumMonkeys")+1)
+                    postDic["isPrased"]='0'
+                post.refresh_from_db()
+                self._makeComments(post,postDic,profile)
 
                 # 发送赞扬通知，给被赞扬者
-
-                #返回这个帖子，包括了
-
-
-            content["data"]=data
+            content["data"]=postDic
         except Exception as e:
             logger.error(e)
             jsonResult.rtnDic["status"]=-1

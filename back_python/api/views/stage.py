@@ -18,7 +18,7 @@ class StageListView(View):
         pid
         try:
             logger.error("post view")
-            jsResult= stageService.postlist(skip,limit,pid)
+            jsResult= stageService.postlist(skip,limit,pid,req.user.profile)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()
@@ -28,9 +28,10 @@ class StagePraseView(View):
         jsResult=None
         reqData=json.loads(str(req.body,'utf-8'))
         postid=reqData["postid"]
+        commentType=reqData["type"]
         pid
         try:
-            jsResult= stageService.prase(postid,req.user.profile)
+            jsResult= stageService.comment(postid,req.user.profile,commentType)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()

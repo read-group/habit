@@ -263,6 +263,7 @@
                 $yml.page.$vmPage.$postid=$(target).attr("postid");//当前的主题id
                             var param={};
                             param.postid=$yml.page.$vmPage.$postid;
+                            param.type="prase";
                             $yml.ajax('/api/stage/prase',param,function(rtnData){
                               if(rtnData.status==0){
                                 var prase=rtnData.content;

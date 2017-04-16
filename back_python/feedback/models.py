@@ -90,11 +90,13 @@ class Post(models.Model):
 #点评类型
 Comment_TYPE=(
   ("prase","赞扬",),
+  ("txt","留言",),
   ("sound","语音",),
   ("money","打赏",),
 )
 Map_Comment_TYPE={
    "prase":"prase",
+   "txt":"txt",
    "sound":"sound",
    "money":"money"
 
