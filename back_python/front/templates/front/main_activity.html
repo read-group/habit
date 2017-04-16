@@ -22,9 +22,11 @@
         <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item">
             <div class="media" style="margin-top:5px">
-                <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-left">
-                    <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
-                </a>
+              <div class="media-left">
+                  <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
+                      <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
+                  </a>
+              </div>
                 <div class="media-body">
                   <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
                   <br/>
@@ -32,9 +34,12 @@
                   <p>关键词:{? @item.desc ?}</p>
 
                 </div>
-                <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right media-bottom">
-                    <button class="btn btn-action btn-1x">报名</button>
-                </a>
+                <div class="media-bottom">
+                   <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
+                      <button class="btn btn-action btn-1x">报名</button>
+                   </a>
+                </div>
+
 
              </div>
           </li>
