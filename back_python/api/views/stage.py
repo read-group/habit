@@ -30,7 +30,7 @@ class StagePraseView(View):
         postid=reqData["postid"]
         pid
         try:
-            jsResult= stageService.prase(postid)
+            jsResult= stageService.prase(postid,req.user.profile)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()

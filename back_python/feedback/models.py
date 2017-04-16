@@ -93,6 +93,12 @@ Comment_TYPE=(
   ("sound","语音",),
   ("money","打赏",),
 )
+Map_Comment_TYPE={
+   "prase":"prase",
+   "sound":"sound",
+   "money":"money"
+
+}
 class Comment(models.Model):
     commentDate=models.DateTimeField(auto_now_add=True,verbose_name="点评日期")
     post=models.ForeignKey(
@@ -106,12 +112,7 @@ class Comment(models.Model):
             verbose_name="点评者"
     )
     commentType=models.CharField(max_length=10,choices=Comment_TYPE)
-    audio=models.ForeignKey(
-            MediaResource,
-            on_delete=models.CASCADE,
-            verbose_name="音频",
-            null=True,
-    )
+    audioUrls=models.CharField(max_length=1024,default="",verbose_name="音频")
     content=models.CharField(max_length=150,null=True,blank=True)
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
