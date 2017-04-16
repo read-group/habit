@@ -22,7 +22,7 @@ CMS_STATUS = (
 )
 class LoopHead(EntityBase):
     status=models.CharField(max_length=2,default='1',choices=CMS_STATUS,verbose_name="状态")
-    usage=models.CharField(max_length=2,default='0',choices=CMS_STATUS,verbose_name="用途")
+    usage=models.CharField(max_length=2,default='0',choices=CMS_USAGE,verbose_name="用途")
     desc=models.CharField(max_length=100,verbose_name="概述")
     imgResource=models.ForeignKey(
             MediaResource,
