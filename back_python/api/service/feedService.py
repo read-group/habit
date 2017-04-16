@@ -89,7 +89,10 @@ class FeedbackService(JsonResultService):
                 # to do performance
                 post=Post.objects.get(pk=int(pinfo['postid']))
                 post.content=pinfo['content']
-                post.imgUrl=pinfo['imageUrl']
+                if pinfo['imageUrl']=="":
+                    post.imgUrl="http://mily365.com/media/upload/mily.png"
+                else:
+                    post.imgUrl=pinfo['imageUrl']
                 post.audioUrls=pinfo['audioUrls']
                 post.feel=pinfo['feel']
                 post.save()
