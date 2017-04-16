@@ -58,7 +58,7 @@ class StageService(JsonResultService):
         audioInfos=[]
         txtInfos=[]
         moneyInfos=[]
-        for comment in post.comment_set:
+        for comment in post.comment_set.all():
             if comment.commentType=="prase":
                 praseinfoTmp={}
                 praseinfoTmp['imgUrl']=comment.fromProfile.imgUrl
