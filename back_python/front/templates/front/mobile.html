@@ -14,7 +14,7 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item" ms-for="(i,head) in @heads">
+        <div  ms-for="(i,head) in @heads" ms-attr="{class:'item '+@head.active}">
           <img  ms-attr="{src:@head.img,class:'first-slide'}"  alt="First slide">
           <div class="container">
             <div class="carousel-caption">
@@ -63,9 +63,16 @@
             //区查询
             $yml.ajax('/api/welcome/loopHead',null,
             　  function(res){
+                  var i=0;
                   if(res.status==0){
                     res.content.data.forEach(function(r){
+                      if(r==0){
+                        r.active="active"
+                      }else{
+                        r.active=""
+                      }
                       $vmmotile.heads.push(r)
+                      i++;
                     })
                   }
                 }
