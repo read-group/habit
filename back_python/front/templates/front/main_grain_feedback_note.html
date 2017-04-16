@@ -17,13 +17,6 @@
     <div class="childContent">
       <div class="list-group">
         <button type="button"  class="list-group-item">
-          <div  class="row">
-              <div  class="col-xs-4 text-left icon" ms-click="@selectRadio">
-                <span><i class="fa fa-camera fa-2x"></i></span>
-              </div>
-          </div>
-        </button>
-        <button type="button"  class="list-group-item">
           <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
         </button>
         <button type="button"  class="list-group-item">
@@ -41,6 +34,13 @@
               </div>
               <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
                 <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? recordCount ?}</span>
+              </div>
+          </div>
+        </button>
+        <button type="button"  class="list-group-item">
+          <div  class="row">
+              <div  class="col-xs-4 text-left icon" ms-click="@selectRadio">
+                <span><i class="fa fa-camera fa-2x"></i></span>
               </div>
           </div>
         </button>
