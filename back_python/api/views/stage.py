@@ -27,6 +27,7 @@ class StagePraseView(View):
     def post(self,req,*arg,**kwargs):
         jsResult=None
         reqData=json.loads(str(req.body,'utf-8'))
+        logger.error("StagePraseView..........")
         postid=reqData["postid"]
         commentType=reqData["type"]
         try:

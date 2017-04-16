@@ -92,6 +92,7 @@ class StageService(JsonResultService):
         data=[]
         postDic={}
         try:
+            logger.error("comment..........")
             with transaction.atomic():
                 postQuery=Post.objects.select_related("feedBack").filter(id=int(postid));
                 post=postQuery[0]
