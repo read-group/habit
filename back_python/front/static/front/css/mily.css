@@ -56,7 +56,7 @@ padding: 0px 0px;
   position: fixed;
   right:5px;
   top:65px;
-  padding: 10px 28px;
+  padding: auto;
   background:rgba(255,255,255,0.6);
   text-decoration: none;
   display: block;
