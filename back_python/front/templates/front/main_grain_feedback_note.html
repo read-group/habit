@@ -107,14 +107,6 @@
          $isPlay:false,
          refererUrl:"",
          $currentUserId:null,
-         ok:function(e){
-          //  var level=$(e.currentTarget).data("level");
-          //  $yml.page.$vmPage.curQuestion.level=level;
-          //  if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
-          //    $("#maskHint").modal("show")
-          //  }
-          alert("ddddd")
-         },
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
@@ -209,6 +201,14 @@
                    alert(JSON.stringify(err));
                  }
      　　　　　　});
+         },
+         ok:function(e){
+          //  var level=$(e.currentTarget).data("level");
+          //  $yml.page.$vmPage.curQuestion.level=level;
+          //  if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
+          //    $("#maskHint").modal("show")
+          //  }
+          alert("ddddd")
          },
          cleanUp:function(){
            console.log("...........note cleanUp.........");
