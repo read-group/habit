@@ -31,7 +31,7 @@ class StagePraseView(View):
         pid
         try:
             logger.error("post view")
-            jsResult= stageService.postlist(skip,limit,pid)
+            jsResult= stageService.prase(pid)
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()

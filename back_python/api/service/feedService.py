@@ -48,7 +48,7 @@ class FeedbackService(JsonResultService):
 
                         # 检查缓存是否已经反馈过uid:habitid:date
                         nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
-                        userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habittmp["id"]),nowstr)
+                        userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (activity.id,int(pid),int(habittmp["id"]),nowstr)
 
                         feedback=cache.get(userid_habitid_date_key)
                         if not feedback:
@@ -57,7 +57,7 @@ class FeedbackService(JsonResultService):
                             habittmp["isFeedBack"]="1"
 
                         # 取最近一次当前习惯的打卡
-                        userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habittmp["id"]),)
+                        userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (activity.id,int(pid),int(habittmp["id"]),)
                         lastFeed=cache.get(userid_habitid_key)
                         if not lastFeed:
                             habittmp["accumDays"]=0
@@ -123,6 +123,9 @@ class FeedbackService(JsonResultService):
                     cache.set(acthistory_key,acthistoryTmp,acthistoryTmp.activityDays*24*3600)
 
                 feedBack.orgActivityHistory=acthistoryTmp
+                # 设置当前活动
+                act=feedBack.orgActivityHistory.activity
+
                 # 查询出当前打卡的习惯 to do 从缓存中取
                 habitTmp=None
                 habit_key=settings.CACHE_FORMAT_STR['habit_key'] % (int(habitid))
@@ -132,7 +135,7 @@ class FeedbackService(JsonResultService):
                     cache.set(habit_key,habitTmp)
                 feedBack.habit=habitTmp
                 # 取最近一次当前习惯的打卡
-                userid_habitid_key=settings.CACHE_FORMAT_STR['userid_habitid_key'] % (int(pid),int(habitid),)
+                userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (act.id,int(pid),int(habitid),)
                 lastFeed=cache.get(userid_habitid_key)
                 a1=feedBack.habit.freePraiseMilyUnit
                 d=feedBack.habit.freePraiseMilyStep
@@ -158,8 +161,10 @@ class FeedbackService(JsonResultService):
                 post.feedBack=feedBack
                 post.save()
 
+
+
                 # 初始化缓存　Key:打卡用户id+habitid+打卡日期 feedBack:1-表示已经打卡，０表示未打卡
-                userid_habitid_date_key=settings.CACHE_FORMAT_STR['userid_habitid_date_key'] % (int(pid),int(habitid),post.postDate)
+                userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (act.id,int(pid),int(habitid),post.postDate)
                 cache.set(userid_habitid_date_key,feedBack,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
                 # 缓存最后一次打卡记录
                 cache.set(userid_habitid_key,feedBack,acthistoryTmp.activityDays*24*3600)
@@ -183,7 +188,7 @@ class FeedbackService(JsonResultService):
                 accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInput"]
                 accountHistory.org=org
                 accountHistory.operator=profileTmp
-                accountHistory.activity=feedBack.orgActivityHistory.activity
+                accountHistory.activity=act
                 logger.error("accountHistory.activity=feedBack.orgActivityHistory.activity")
                 accountHistory.sysAccountHistory=sysAccountHistory
                 # 设置米仓账户

@@ -92,10 +92,10 @@ CACHE_FORMAT_STR={
    'habit_key':'habit:%d',
    'habit_key_timeout':3600*24*10000,
    # 今日打卡缓存
-   'userid_habitid_date_key':'feedback:%d:%d:%s',
+   'actid_userid_habitid_date_key':'feedback:%d:%d:%d:%s',
    'userid_habitid_date_key_timeout':3600*24*2,
    # 最近一次打卡缓存
-   'userid_habitid_key':'feedback:%d:%d',
+   'actid_userid_habitid_key':'feedback:%d:%d:%d',
    'userid_habitid_key_timeout':3600*24*365,
 }
 MIDDLEWARE = [
