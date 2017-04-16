@@ -29,7 +29,6 @@ class StagePraseView(View):
         reqData=json.loads(str(req.body,'utf-8'))
         postid=reqData["postid"]
         commentType=reqData["type"]
-        pid
         try:
             jsResult= stageService.comment(postid,req.user.profile,commentType)
         except Exception as e:
