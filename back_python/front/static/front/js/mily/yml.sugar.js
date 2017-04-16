@@ -383,11 +383,11 @@
 									image: '\uf118', // <img src="path/to/image.png" width="16" height="16" alt="" />
 									popup: function( $popup, $button ) {
 													var list_smilies = [
-																	'<img src="/static/front/js/editor/smiley/25.png" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/26.png" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/27.png" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/28.png" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/29.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/25.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/26.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/27.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/28.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/29.jpg" width="24" height="24" alt="" />',
 													];
 													var $smilies = $('<div/>').addClass('well')
 																										.attr('unselectable','on');
