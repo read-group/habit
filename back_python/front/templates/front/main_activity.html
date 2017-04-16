@@ -24,7 +24,6 @@
             <div class="media" style="margin-top:5px">
                 <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-left">
                     <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
-                    <button class="btn btn-primary btn-lg media-right">报名详情</button>
                 </a>
                 <div class="media-body">
                   <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
@@ -33,6 +32,9 @@
                   <p>关键词:{? @item.desc ?}</p>
 
                 </div>
+                <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}"  class="media-right">
+                    <button class="btn btn-primary btn-lg">报名详情</button>
+                </a>
 
              </div>
           </li>
