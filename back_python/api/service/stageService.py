@@ -73,6 +73,7 @@ class StageService(JsonResultService):
                 txtinfoTmp={}
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
                 txtinfoTmp['content']=comment.content
+                txtinfoTmp['accumContents']=post.accumContents
                 txtInfos.append(txtinfoTmp)
             if comment.commentType=="sound":
                 soundinfoTmp={}
