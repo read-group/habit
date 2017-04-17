@@ -56,10 +56,10 @@
                         </span>
                       </div>
                       <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
-                        <div class="row" ms-for="(i,m) in @item.txtInfos">
+                        <div class="row" ms-for="(i,msg) in @item.txtInfos">
                             <div class="col-xs-12 text-left">
-                              <img   style="width:30px;height:30px" ms-attr="{class:'img-circle',src:@m.imgUrl}"></img>
-                              <span  style="font-size:10px" ms-html="@m.content"></span>
+                              <img   style="width:30px;height:30px" ms-attr="{class:'img-circle',src:@msg.imgUrl}"/>
+                              <span  style="font-size:10px" ms-html="@msg.content"></span>
                             </div>
                         </div>
                       </div>
