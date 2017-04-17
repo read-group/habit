@@ -65,6 +65,8 @@ class StageService(JsonResultService):
                 praseInfos.append(praseinfoTmp)
                 if currentUser.id==comment.fromProfile.id:
                     postDic["isPrased"]='1'
+                else:
+                    postDic["isPrased"]='0'
             if comment.commentType=="txt":
                 txtinfoTmp={}
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
@@ -97,11 +99,11 @@ class StageService(JsonResultService):
                 postQuery=Post.objects.select_related("feedBack").filter(id=int(postid));
                 post=postQuery[0]
 
-                postDic=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents",])
-                postDic["nickname"]=post.feedBack.profile.nickname
-                postDic["headingImgUrl"]=post.feedBack.profile.imgUrl
-                postDic["accumDays"]=post.feedBack.accumDays
-                postDic["habitName"]=post.feedBack.habit.name
+                # postDic=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents",])
+                # postDic["nickname"]=post.feedBack.profile.nickname
+                # postDic["headingImgUrl"]=post.feedBack.profile.imgUrl
+                # postDic["accumDays"]=post.feedBack.accumDays
+                # postDic["habitName"]=post.feedBack.habit.name
                 # 按照当前点评者、按照postid查询是否已经点评过,如果点评过，就
                 comment=Comment()
                 comment.commentType=commentType
