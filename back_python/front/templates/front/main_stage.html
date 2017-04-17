@@ -51,7 +51,7 @@
                       </div>
                       <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
                         <span>
-                          <i ms-class-2="red:item.accumPrase>0" class="fa fa-heart"></i>:
+                          <i ms-attr="{class:(@item.praseInfos.length?'red':'active')}" class="fa fa-heart"></i>:
                           <img class="img-circle" style="width:30px;height:30px" ms-for="(i,m) in @item.commenterImgUrls" ms-attr="{src:@m}"></img>
                         </span>
                       </div>
