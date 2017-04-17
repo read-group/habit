@@ -114,7 +114,7 @@ class StageService(JsonResultService):
                 comment.commentType=commentType
                 comment.post=post
                 comment.fromProfile=profile
-                if reqData.has_key("content"):
+                if "content" in reqData.keys:
                     comment.content=reqData["content"]
                 comment.save()
 
