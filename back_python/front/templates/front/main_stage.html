@@ -270,11 +270,12 @@
                             $yml.ajax('/api/stage/prase',param,function(rtnData){
                               if(rtnData.status==0){
                                 var post=rtnData.content.data;
-                                alert(JSON.stringify(post))
+                                //alert(JSON.stringify(post))
                                 $yml.page.$vmPage.feeds.forEach(function(c){
                                   if(c.id==$yml.page.$vmPage.$postid){
                                     //对c重新设置属性
                                     c.isPrased=post.isPrased
+                                    alert(c.isPrased)
                                   }
                                 });
 
