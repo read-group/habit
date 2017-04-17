@@ -269,15 +269,11 @@
                             param.type="prase";
                             $yml.ajax('/api/stage/prase',param,function(rtnData){
                               if(rtnData.status==0){
-                                var prase=rtnData.content;
+                                var post=rtnData.content.data;
                                 $yml.page.$vmPage.feeds.forEach(function(c){
                                   if(c.id==$yml.page.$vmPage.$postid){
-                                    if(prase.isPrased){//
-
-                                    }else{//取消表扬
-
-                                    }
-
+                                    //对c重新设置属性
+                                    c.isPrased=post.isPrased
                                   }
                                 });
 
