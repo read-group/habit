@@ -256,10 +256,9 @@
              }
            },
            praseClick:function(el){//表扬单击
-             var target=el.currentTarget;
-             alert("praseClick")
+             　var target=el.currentTarget;
+             　alert($(target).hasClass("red"))
               if(!$yml.page.$vmPage.$isPlaying){
-                 alert("praseClick in")
               //if(!$yml.page.$vmPage.$isPraseClicked){
                 $yml.page.$vmPage.$isPlaying=true;
                 $yml.page.$vmPage.$postid=$(target).attr("postid");//当前的主题id
