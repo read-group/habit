@@ -420,7 +420,7 @@
                          //遍历当前的反馈列表,按照id查找，追加文本
                          var post=rtnData.content.data;
                          $yml.page.$vmPage.feeds.forEach(function(c){
-                           if(c.id==$yml.page.$vmPage.$cid){
+                           if(c.id==$yml.page.$vmPage.$postid){
                                c.txtInfos.clear()
                                post.txtInfos.forEach(function(r){
                                  c.txtInfos.push(r)
