@@ -67,6 +67,7 @@ class StageService(JsonResultService):
                 praseInfos.append(praseinfoTmp)
                 if currentUser.id==comment.fromProfile.id:
                     postDic["isPrased"]=1
+                    postDic["accumPrases"]=post.accumPrases
 
             if comment.commentType=="txt":
                 txtinfoTmp={}
