@@ -96,6 +96,12 @@ class StageService(JsonResultService):
             with transaction.atomic():
                 postQuery=Post.objects.select_related("feedBack").filter(id=int(postid));
                 post=postQuery[0]
+
+                postDic=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents",])
+                postDic["nickname"]=post.feedBack.profile.nickname
+                postDic["headingImgUrl"]=post.feedBack.profile.imgUrl
+                postDic["accumDays"]=post.feedBack.accumDays
+                postDic["habitName"]=post.feedBack.habit.name
                 # 按照当前点评者、按照postid查询是否已经点评过,如果点评过，就
                 comment=Comment()
                 comment.commentType=commentType
