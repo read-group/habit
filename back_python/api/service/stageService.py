@@ -59,14 +59,14 @@ class StageService(JsonResultService):
         txtInfos=[]
         moneyInfos=[]
         # 默认当前帖子当前用户没有点赞
-        postDic["isPrased"]="0"
+        postDic["isPrased"]=0
         for comment in post.comment_set.all():
             if comment.commentType=="prase":
                 praseinfoTmp={}
                 praseinfoTmp['imgUrl']=comment.fromProfile.imgUrl
                 praseInfos.append(praseinfoTmp)
                 if currentUser.id==comment.fromProfile.id:
-                    postDic["isPrased"]="1"
+                    postDic["isPrased"]=1
 
             if comment.commentType=="txt":
                 txtinfoTmp={}
@@ -122,7 +122,7 @@ class StageService(JsonResultService):
                 if commentType=="prase":
                     postQuery.update(accumPrases=F("accumPrases")+1)
                     # 表示当前是已经点赞
-                    postDic["isPrased"]="1"
+                    postDic["isPrased"]=1
                 if commentType=="txt":
                     postQuery.update(accumPrases=F("accumContents")+1)
 
