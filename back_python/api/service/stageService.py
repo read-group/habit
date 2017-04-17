@@ -58,6 +58,8 @@ class StageService(JsonResultService):
         audioInfos=[]
         txtInfos=[]
         moneyInfos=[]
+        # 默认当前帖子当前用户没有点赞
+        postDic["isPrased"]='0'
         for comment in post.comment_set.all():
             if comment.commentType=="prase":
                 praseinfoTmp={}
@@ -65,8 +67,7 @@ class StageService(JsonResultService):
                 praseInfos.append(praseinfoTmp)
                 if currentUser.id==comment.fromProfile.id:
                     postDic["isPrased"]='1'
-                else:
-                    postDic["isPrased"]='0'
+
             if comment.commentType=="txt":
                 txtinfoTmp={}
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
