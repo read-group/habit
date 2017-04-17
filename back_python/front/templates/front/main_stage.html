@@ -50,8 +50,8 @@
                            <div ms-html="@item.content?@item.content:'这家伙啥都没留下...'"></div>
                       </div>
                       <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
-                        <span>
-                          <i ms-attr="{class:(@item.praseInfos.length?'red':'active')}" class="fa fa-heart"></i>:
+                        <span ms-attr="{class:(@item.praseInfos.length?'red':'active')}">
+                          <i  class="fa fa-heart"></i>:
                           <img class="img-circle" style="width:30px;height:30px" ms-for="(i,m) in @item.commenterImgUrls" ms-attr="{src:@m}"></img>
                         </span>
                       </div>
