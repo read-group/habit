@@ -54,6 +54,9 @@
                              <div ms-if="@item.isPrased=='1'" class="col-xs-3">
                                   <span  ms-click="praseClick" ms-attr="{postid:@item.id,class:'red'}"><i class="fa fa-heart"></i><span class="badge">{? @item.accumPrases ?}</span></span>
                             </div>
+                            <div ms-if="@item.isPrased=='0'" class="col-xs-3">
+                                 <span  ms-click="praseClick" ms-attr="{postid:@item.id,class:'red'}"><i class="fa fa-heart"></i><span class="badge">{? @item.accumPrases ?}</span></span>
+                           </div>
                           </div>
                      </div>
 
