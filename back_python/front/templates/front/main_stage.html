@@ -72,68 +72,69 @@
           </button>
         </div>
       </div>
-  </div>
-  <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>语音留言中</h4>
-            </div>
-            <div class="text-center" style="width:100%;height:120px;margin-top:15px">
-              <i class="fa fa-refresh fa-spin fa-3x"></i>
-              <div style="margin-top:5px">
-                <a href="#" class="button button-pill  button-action"　ms-click="stopRecord">停止留言</a>
-              </div>
-           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="txtPubDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+      <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit" style="color:orange"></i>文本留言</h4>
-              </div>
-              <div class="editorParent" style="margin-top:-1px;border:none">
-                  <textarea id="commentTxtEditor"  placeholder="说点什么呢..." style="width:100%;height:80px;border:none"/>
-              </div>
-          　</div>
-          　<div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" id="btnPubOk" class="btn btn-success" ms-click="txtPubOkClick">确认</button>
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>语音留言中</h4>
+                </div>
+                <div class="text-center" style="width:100%;height:120px;margin-top:15px">
+                  <i class="fa fa-refresh fa-spin fa-3x"></i>
+                  <div style="margin-top:5px">
+                    <a href="#" class="button button-pill  button-action"　ms-click="stopRecord">停止留言</a>
+                  </div>
+               </div>
+            </div>
           </div>
         </div>
       </div>
-  </div>
-  <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-info fa-1x" style="color:orange"></i>&nbsp;为坚持奖励</h4>
+      <div class="modal fade" id="txtPubDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit" style="color:orange"></i>文本留言</h4>
+                  </div>
+                  <div class="editorParent" style="margin-top:-1px;border:none">
+                      <textarea id="commentTxtEditor"  placeholder="说点什么呢..." style="width:100%;height:80px;border:none"/>
+                  </div>
+              　</div>
+              　<div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="btnPubOk" class="btn btn-success" ms-click="txtPubOkClick">确认</button>
+              </div>
             </div>
-            <div class="modal-body">
-                   <div style="margin:10px">
-                       <h5>奖励金额选择</h5>
-                       <div class="container-fluid text-center"  id="t2">
-                         <div class="row" style="margin-top:5px" ms-repeat-item="amountCount">
-                            <div class="col-xs-4" ms-repeat-p="item">
-                              <button class="button button-block  button-tiny" style="width:90px"　　ms-class-1="active:$outer.$index==0 && $index==0" ms-data-num="p" ms-click="setAmount">
-                               <span>{{p}}元</span>
-                             </button>
-                            </div>
-                         </div>
-                       </div>
-                 </div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" id="praseStartPay" class="btn btn-success" ms-click="btnPayClick">支付</button>
+      </div>
+      <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-info fa-1x" style="color:orange"></i>&nbsp;为坚持奖励</h4>
+                </div>
+                <div class="modal-body">
+                       <div style="margin:10px">
+                           <h5>奖励金额选择</h5>
+                           <div class="container-fluid text-center"  id="t2">
+                             <div class="row" style="margin-top:5px" ms-repeat-item="amountCount">
+                                <div class="col-xs-4" ms-repeat-p="item">
+                                  <button class="button button-block  button-tiny" style="width:90px"　　ms-class-1="active:$outer.$index==0 && $index==0" ms-data-num="p" ms-click="setAmount">
+                                   <span>{{p}}元</span>
+                                 </button>
+                                </div>
+                             </div>
+                           </div>
+                     </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="praseStartPay" class="btn btn-success" ms-click="btnPayClick">支付</button>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
   </div>
   <script>
