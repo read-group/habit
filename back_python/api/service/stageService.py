@@ -71,6 +71,7 @@ class StageService(JsonResultService):
 
             if comment.commentType=="txt":
                 txtinfoTmp={}
+                txtinfoTmp['nickname']=comment.fromProfile.nickname
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
                 txtinfoTmp['content']=comment.content
                 txtinfoTmp['accumContents']=post.accumContents
