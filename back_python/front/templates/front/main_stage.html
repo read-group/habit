@@ -55,6 +55,14 @@
                           <img class="img-circle" style="width:30px;height:30px" ms-for="(i,m) in @item.praseInfos" ms-attr="{src:@m.imgUrl}"></img>
                         </span>
                       </div>
+                      <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
+                        <div class="row" ms-for="(i,m) in @item.txtInfos">
+                            <div class="col-xs-12 text-left">
+                              <img   style="width:30px;height:30px" ms-attr="{class:'img-circle',src:@m.imgUrl}"></img>
+                              <span  style="font-size:10px" ms-html="@m.content"></span>
+                            </div>
+                        </div>
+                      </div>
                       <div class="col-xs-12 text-center">
                           <div class="row" style="margin-top:15px">
                              <div  class="col-xs-3">
@@ -410,9 +418,10 @@
              $yml.ajax('/api/stage/txtnote',param,function(rtnData){
                        if(rtnData.status==0){
                          //遍历当前的反馈列表,按照id查找，追加文本
+                         var post=rtnData.content.data;
                          $yml.page.$vmPage.feeds.forEach(function(c){
                            if(c.id==$yml.page.$vmPage.$cid){
-
+                               c.txtInfos=post.txtInfos
                            }
                          });
                        }
