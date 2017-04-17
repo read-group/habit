@@ -369,63 +369,49 @@
            backClick:function(){
              $yml.page.$router.pop();
            },
-           txtCommentClick:function(){
+           txtCommentClick:function(ev){
              if(!$yml.page.$vmPage.$isPlaying){
-               $yml.page.$vmPage.$cid=$(this).data("cid");
-
-               var toId=$(this).data("rpyid");
-               if(toId){//表示回答别人的发表
-                 var toUserName=$(this).data("rpyname");
-                 $yml.page.$vmPage.$toUser={};
-                 $yml.page.$vmPage.$toUser.toId=toId;
-                 $yml.page.$vmPage.$toUser.toName=toUserName;
-                 var tmpInfo=$yml.page.$vmPage.$nickName+"回复信息给"+toUserName+":";
-                 //$("#commentTxtEditor").attr("placeholder",tmpInfo);
-               }
+               $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
+              //  var toId=$(this).data("rpyid");
+              //  if(toId){//表示回答别人的发表
+              //    var toUserName=$(this).data("rpyname");
+              //    $yml.page.$vmPage.$toUser={};
+              //    $yml.page.$vmPage.$toUser.toId=toId;
+              //    $yml.page.$vmPage.$toUser.toName=toUserName;
+              //    var tmpInfo=$yml.page.$vmPage.$nickName+"回复信息给"+toUserName+":";
+              //    //$("#commentTxtEditor").attr("placeholder",tmpInfo);
+              //  }
                $("#txtPubDlg").modal("show");
              }
            },
            txtPubOkClick:function(){
              $yml.page.$vmPage.$isPlaying=true;
              var param={};
-             param.pobj={};
-             param.pobj.commentId=$yml.page.$vmPage.$cid;
+             param.postid=$yml.page.$vmPage.$postid;
              var txtVal=$("#commentTxtEditor").val();
              if($.trim(txtVal)==""){
                $("#commentTxtEditor").attr("placeholder","总得说点什么吧...");
                return false;
              }
-             param.pobj.content=txtVal;
-
+             param.content=txtVal;
+             param.type="txt";
              //检查是否有回复目标
-             if($yml.page.$vmPage.$toUser){
-               param.pobj.toId=$yml.page.$vmPage.$toUser.toId;
-               param.pobj.toName=$yml.page.$vmPage.$toUser.toName;
-             }
+            //  if($yml.page.$vmPage.$toUser){
+            //    param.pobj.toId=$yml.page.$vmPage.$toUser.toId;
+            //    param.pobj.toName=$yml.page.$vmPage.$toUser.toName;
+            //  }
              //不要忘记清空当前回复
              $("#txtPubDlg").modal("hide");
              $("#commentTxtEditor").val("");
              $(".wysiwyg-editor").text("");
              //清空
-             $yml.page.$vmPage.$toUser=null;
-             $yml.ajax('/api/feed/txtComment',param,function(rtnData){
+             //$yml.page.$vmPage.$toUser=null;
+             $yml.ajax('/api/stage/txtnote',param,function(rtnData){
                        if(rtnData.status==0){
                          //遍历当前的反馈列表,按照id查找，追加文本
                          $yml.page.$vmPage.feeds.forEach(function(c){
                            if(c.id==$yml.page.$vmPage.$cid){
-                             if(c.trackRecords){
-                               c.trackRecords.push(rtnData.content);
-                               if(c.txtCommentCount)
-                                  c.txtCommentCount++;
-                               else{
-                                 c.txtCommentCount=1;
-                               }
-                             }
-                             else{
-                               c.trackRecords=[];
-                               c.trackRecords.push(rtnData.content);
-                               c.txtCommentCount=1;
-                             }
+
                            }
                          });
                        }

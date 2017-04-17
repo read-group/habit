@@ -91,7 +91,9 @@ class StageService(JsonResultService):
         postDic["moneyInfos"]=moneyInfos
         return postDic
 
-    def comment(self,postid,profile,commentType):
+    def comment(self,profile,reqData):
+        postid=reqData["postid"]
+        commentType=reqData["type"]
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -112,27 +114,31 @@ class StageService(JsonResultService):
                 comment.commentType=commentType
                 comment.post=post
                 comment.fromProfile=profile
+                if reqData.has_key("content"):
+                    comment.content=reqData["content"]
                 comment.save()
-                # 加好友
-                postCreator=post.feedBack.profile
-                if postCreator.id!=profile.id:
-                    friends=Friend()
-                    friends.from_profile=profile
-                    friends.to_profile=postCreator
-                    friends.save()
+
                 # 增加帖子上的赞扬次数
                 if commentType=="prase":
                     postQuery.update(accumPrases=F("accumPrases")+1)
                     # 表示当前是已经点赞
                     postDic["isPrased"]=1
+                    # 加好友
+                    postCreator=post.feedBack.profile
+                    if postCreator.id!=profile.id:
+                        friends=Friend()
+                        friends.from_profile=profile
+                        friends.to_profile=postCreator
+                        friends.save()
+
                 if commentType=="txt":
-                    postQuery.update(accumPrases=F("accumContents")+1)
+                    postQuery.update(accumContents=F("accumContents")+1)
 
                 if commentType=="sound":
-                    postQuery.update(accumPrases=F("accumAudios")+1)
+                    postQuery.update(accumAudios=F("accumAudios")+1)
 
                 if commentType=="monkey":
-                    postQuery.update(accumPrases=F("accumMonkeys")+1)
+                    postQuery.update(accumMonkeys=F("accumMonkeys")+1)
 
                 post.refresh_from_db()
                 self._makeComments(post,postDic,profile)
