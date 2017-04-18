@@ -302,7 +302,6 @@
              $("#recordDlg").modal("show");
              //暂存当前操作的评价id
              $yml.page.$vmPage.$postid=$(target).attr("postid");;
-
              wx.onVoiceRecordEnd({
                 // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                 complete: function (res) {
@@ -328,8 +327,8 @@
                 }
              });
              wx.startRecord();
-             event.preventDefault();
-             event.stopPropagation();
+            //  event.preventDefault();
+            //  event.stopPropagation();
            },
            stopRecord:function(){
              var self=this;
