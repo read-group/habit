@@ -165,7 +165,7 @@
            iconMap:$yml.icons,
            isPub:true,
            feeds:[],
-           $postid:null,//当前操作的主贴id
+           $postid:"",//当前操作的主贴id
            $idUser:null,//当前操作人员id
            $nickName:null,//当前操作人员的名字
            $toUser:null,//保存要回复的人员信息
@@ -299,10 +299,10 @@
   　　　　
            },
            startRecord:function(ev){
-             $("#recordDlg").modal("show");
-             //暂存当前操作的评价id
              $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
              alert($yml.page.$vmPage.$postid)
+             $("#recordDlg").modal("show");
+             //暂存当前操作的评价id
              wx.onVoiceRecordEnd({
                 // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                 complete: function (res) {
