@@ -89,34 +89,7 @@
             </div>
           </div>
       </div>
-      <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-info fa-1x" style="color:orange"></i>&nbsp;为坚持奖励</h4>
-                </div>
-                <div class="modal-body">
-                       <div style="margin:10px">
-                           <h5>奖励金额选择</h5>
-                           <!-- <div class="container-fluid text-center"  id="t2">
-                             <div class="row" style="margin-top:5px" ms-repeat-item="amountCount">
-                                <div class="col-xs-4" ms-repeat-p="item">
-                                  <button class="button button-block  button-tiny" style="width:90px"　　ms-class-1="active:$outer.$index==0 && $index==0" ms-data-num="p" ms-click="setAmount">
-                                   <span>{{p}}元</span>
-                                 </button>
-                                </div>
-                             </div>
-                           </div> -->
-                     </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" id="@praseStartPay" class="btn btn-success" ms-click="@btnPayClick">支付</button>
-              </div>
-            </div>
-          </div>
-      </div>
+
   </div>
   <script>
      $yml.page=$yml.pageBase.New(null,{
@@ -446,9 +419,9 @@
          pager.onScroll("childContent",function(res){
               initUi(res);
          });
-         //对话框居中
-         $yml.dlgCenter("recordDlg");
-         $yml.dlgCenter("praseMoneyDlg");
+        //  //对话框居中
+        //  $yml.dlgCenter("recordDlg");
+        //  $yml.dlgCenter("praseMoneyDlg");
 
          //设置当前页面的操作人员id,name
         //  $yml.page.$vmPage.$idUser=$.localStorage.get("idUser");
