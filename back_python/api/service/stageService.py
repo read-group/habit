@@ -77,8 +77,9 @@ class StageService(JsonResultService):
                 txtInfos.append(txtinfoTmp)
             if comment.commentType=="sound":
                 soundinfoTmp={}
+                soundinfoTmp['nickname']=comment.fromProfile.nickname
                 soundinfoTmp['imgUrl']=comment.fromProfile.imgUrl
-                soundinfoTmp['audioUrls']=comment.audioUrls
+                soundinfoTmp['audioUrl']=comment.audioUrls
                 audioInfos.append(soundinfoTmp)
             if comment.commentType=="money":
                 moneyinfoTmp={}
@@ -116,6 +117,8 @@ class StageService(JsonResultService):
                 comment.fromProfile=profile
                 if "content" in reqData.keys():
                     comment.content=reqData["content"]
+                if "audiourl" in reqData.keys():
+                    comment.audioUrls=reqData["audiourl"]
                 comment.save()
 
                 # 增加帖子上的赞扬次数

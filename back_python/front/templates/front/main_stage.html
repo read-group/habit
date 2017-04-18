@@ -297,7 +297,7 @@
            startRecord:function(event){
              $("#recordDlg").modal("show");
              //暂存当前操作的评价id
-             $yml.page.$vmPage.$cid=$(this).data("cid");
+             $yml.page.$vmPage.$postid=$(target).attr("postid");;
              wx.startRecord();
              wx.onVoiceRecordEnd({
                 // 录音时间超过一分钟没有停止的时候会执行 complete 回调
@@ -345,29 +345,29 @@
                                       //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
                                       //获取当前的commentID,添加一条评论,评论类型是audio,同时要在主题贴后追加链接，便于连续播放
                                       var param={};
-                                      param.pobj={};
-                                      param.pobj.commentId=$yml.page.$vmPage.$cid;
-                                      param.pobj.audiourls=res.resUrl;
-                                      $yml.ajax('/api/feed/audioComment',param,function(rtnData){
+                                      param={};
+                                      param.postid=$yml.page.$vmPage.$postid;
+                                      param.audiourl=res.resUrl;
+                                      param.type="sound";
+                                      $yml.ajax('/api/stage/audio',param,function(rtnData){
                                                 //遍历当前的反馈列表,按照id查找，追加音频url
-                                                $yml.page.$vmPage.feeds.forEach(function(c){
-                                                  if(c.id==$yml.page.$vmPage.$cid){
-                                                    if(!c.audioUrls || $.trim(c.audioUrls)==""){
-                                                      c.audioUrls+=res.resUrl;
-                                                    }else{
-                                                      c.audioUrls+=","+res.resUrl;
-                                                    }
-                                                    if(c.trackRecords){
-                                                      c.trackRecords.push(rtnData.content);
-                                                    }
-                                                    else{
-                                                      c.trackRecords=[];
-                                                      c.trackRecords.push(rtnData.content);
-                                                    }
-                                                  }
-                                                });
+                                                if(rtnData.status==0){
+                                                  //遍历当前的反馈列表,按照id查找，追加文本
+                                                  var post=rtnData.content.data;
+                                                  $yml.page.$vmPage.feeds.forEach(function(c){
+                                                    if(c.id==$yml.page.$vmPage.$postid){
+                                                        // c.txtInfos.clear()
+                                                        // post.txtInfos.forEach(function(r){
+                                                        //   c.txtInfos.push(r)
+                                                        // })
 
-                                              }
+                                                    }
+                                                  });
+                                                }
+
+                                               $yml.page.$vmPage.$isPlaying=false;
+
+                                            }
                                       　);
                                     }
                                   }

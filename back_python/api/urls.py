@@ -24,7 +24,7 @@ from api.views import TeacherClassMemberView,TeacherAddClassView
 from api.views import TeacherMyView
 from api.views import StageListView
 from api.views import StagePraseView
-from api.views import TxtNoteView
+from api.views import TxtNoteView,StageAudioView
 from api.views import WxWelcomeView,LoopHeadView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
@@ -43,6 +43,7 @@ urlpatterns = [
      url(r'^stage/posts$',StageListView.as_view()),
      url(r'^stage/prase$',StagePraseView.as_view()),
      url(r'^stage/txtnote$',TxtNoteView.as_view()),
+     url(r'^stage/audio$',StageAudioView.as_view()),
      url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
      url(r'^teacher/addclass$',TeacherAddClassView.as_view()),
      url(r'^teacher/my$',TeacherMyView.as_view()),

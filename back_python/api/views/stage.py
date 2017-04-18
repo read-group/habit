@@ -48,3 +48,16 @@ class TxtNoteView(View):
         except Exception as e:
             logger.error(e)
         return jsResult.renderToJsonResponse()
+
+class StageAudioView(View):
+    def post(self,req,*arg,**kwargs):
+        jsResult=None
+        reqData=json.loads(str(req.body,'utf-8'))
+        logger.error("StageAudioView..........")
+        # postid=reqData["postid"]
+        # commentType=reqData["type"]
+        try:
+            jsResult= stageService.comment(req.user.profile,reqData)
+        except Exception as e:
+            logger.error(e)
+        return jsResult.renderToJsonResponse()

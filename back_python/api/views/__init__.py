@@ -5,4 +5,4 @@ from .grain    import GrainFeedbackView,GrainFeedbackCreateView,GrainFeedbackPub
 from .teacher   import TeacherClassMemberView,TeacherMyView,TeacherAddClassView
 from .stage import StageListView
 from .stage import StagePraseView
-from .stage import TxtNoteView
+from .stage import TxtNoteView,StageAudioView
