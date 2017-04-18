@@ -314,7 +314,7 @@
                             var serverId = res.serverId; // 返回音频的服务器端ID
                             //给公司微信服务器发送下载文件的指令
                             $yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
-                            $yml.ajax('http://wx.yimilan.com/wx/api/download',{mediaId:serverId,type:"audio"},
+                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
                             　  function(res){
                                   if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
                                     //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
