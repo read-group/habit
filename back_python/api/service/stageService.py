@@ -31,9 +31,13 @@ class StageService(JsonResultService):
                 queryCache=Post.objects.select_related('feedBack').order_by("createdTime");
             else:
                 queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__id=int(pid)).order_by("createdTime");
-
             count=queryCache.count();
+
             posts= queryCache[skip:limit]
+            logger.error("skip")
+            logger.error(skip)
+            logger.error("limit")
+            logger.error(skip)
             for post in posts:
                 dataTmp=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents",])
                 dataTmp["nickname"]=post.feedBack.profile.nickname
