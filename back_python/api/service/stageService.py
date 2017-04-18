@@ -68,19 +68,25 @@ class StageService(JsonResultService):
                     postDic["isPrased"]=1
                     postDic["accumPrases"]=post.accumPrases
 
-            if comment.commentType=="txt":
+            if comment.commentType=="txt"　| comment.commentType=="sound":
                 txtinfoTmp={}
                 txtinfoTmp['nickname']=comment.fromProfile.nickname
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
                 txtinfoTmp['content']=comment.content
+                txtinfoTmp['audioUrl']=comment.audioUrls
+                txtinfoTmp['accumAudios']=post.accumAudios
                 txtinfoTmp['accumContents']=post.accumContents
+                if comment.commentType=="txt":
+                    txtinfoTmp["type"]="txt"
+                else:
+                    txtinfoTmp["type"]="sound"
                 txtInfos.append(txtinfoTmp)
-            if comment.commentType=="sound":
-                soundinfoTmp={}
-                soundinfoTmp['nickname']=comment.fromProfile.nickname
-                soundinfoTmp['imgUrl']=comment.fromProfile.imgUrl
-                soundinfoTmp['audioUrl']=comment.audioUrls
-                audioInfos.append(soundinfoTmp)
+            # if comment.commentType=="sound":
+            #     soundinfoTmp={}
+            #     soundinfoTmp['nickname']=comment.fromProfile.nickname
+            #     soundinfoTmp['imgUrl']=comment.fromProfile.imgUrl
+            #     soundinfoTmp['audioUrl']=comment.audioUrls
+            #     audioInfos.append(soundinfoTmp)
             if comment.commentType=="money":
                 moneyinfoTmp={}
                 moneyinfoTmp['imgUrl']=comment.fromProfile.imgUrl
@@ -88,7 +94,7 @@ class StageService(JsonResultService):
 
         postDic["praseInfos"]=praseInfos
         postDic["txtInfos"]=txtInfos
-        postDic["audioInfos"]=audioInfos
+        # postDic["audioInfos"]=audioInfos
         postDic["moneyInfos"]=moneyInfos
         return postDic
 
