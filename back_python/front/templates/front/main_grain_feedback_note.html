@@ -223,7 +223,7 @@
               content=content.substr(0,147)+"..."
             }
             paramsObj.postid=postid;
-            paramsObj.content=content;
+            paramsObj.content=(content==null?"这家伙懒得动笔...":content);
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
             paramsObj.feel=feel;
