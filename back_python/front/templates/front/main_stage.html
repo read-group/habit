@@ -300,7 +300,6 @@
            },
            startRecord:function(ev){
              $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
-             alert($yml.page.$vmPage.$postid)
              $("#recordDlg").modal("show");
              //暂存当前操作的评价id
              wx.onVoiceRecordEnd({
@@ -347,7 +346,6 @@
                                     if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
                                       //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
                                       //获取当前的commentID,添加一条评论,评论类型是audio,同时要在主题贴后追加链接，便于连续播放
-                                      alert(res.resUrl)
                                       var param={};
                                       param={};
                                       param.postid=$yml.page.$vmPage.$postid;
