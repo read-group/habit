@@ -70,7 +70,7 @@
                                   <span  ms-click="@praseClick"      ms-attr="{postid:@item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up"></i><span ms-attr="{class:'badge'}">{? @item.accumPrases ?}</span></span>
                              </div>
                              <div  class="col-xs-3">
-                                   <span ms-click="@listenFeedClick" ms-attr="{class:(@item.audioUrls?'active':''),audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
+                                   <span ms-click="@listenFeedClick" ms-attr="{class:(@item.audioUrls?'active':'red'),audiourls:@item.audioUrls}"><i class="fa fa-volume-up fa-1x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
                              </div>
                              <div  class="col-xs-3">
                                   <span ms-click="@txtCommentClick"  ms-attr="{postid:@item.id,class:'active'}"><i class="fa fa-commenting fa-1x"></i></span><span class="badge">{? @item.accumContents ?}</span>
