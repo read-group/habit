@@ -68,7 +68,7 @@ class StageService(JsonResultService):
                     postDic["isPrased"]=1
                     postDic["accumPrases"]=post.accumPrases
 
-            if comment.commentType=="txt"　| comment.commentType=="sound":
+            if comment.commentType=="txt" or comment.commentType=="sound":
                 txtinfoTmp={}
                 txtinfoTmp['nickname']=comment.fromProfile.nickname
                 txtinfoTmp['imgUrl']=comment.fromProfile.imgUrl
