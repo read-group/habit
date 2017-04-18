@@ -335,7 +335,6 @@
              wx.stopRecord({
                   success: function (res) {
                       var localId = res.localId;
-                      alert(localId)
                       wx.uploadVoice({
                           localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
                           isShowProgressTips: 1, // 默认为1，显示进度提示
@@ -348,6 +347,7 @@
                                     if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
                                       //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
                                       //获取当前的commentID,添加一条评论,评论类型是audio,同时要在主题贴后追加链接，便于连续播放
+                                      alert(res.resUrl)
                                       var param={};
                                       param={};
                                       param.postid=$yml.page.$vmPage.$postid;
