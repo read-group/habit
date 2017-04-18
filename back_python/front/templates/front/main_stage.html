@@ -298,10 +298,11 @@
               }
   　　　　
            },
-           startRecord:function(event){
+           startRecord:function(ev){
              $("#recordDlg").modal("show");
              //暂存当前操作的评价id
-             $yml.page.$vmPage.$postid=$(event.currentTarget).attr("postid");
+             $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
+             alert($yml.page.$vmPage.$postid)
              wx.onVoiceRecordEnd({
                 // 录音时间超过一分钟没有停止的时候会执行 complete 回调
                 complete: function (res) {
