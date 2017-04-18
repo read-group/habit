@@ -163,6 +163,7 @@ class FeedbackService(JsonResultService):
                 #创建头贴*
                 post=Post()
                 post.feedBack=feedBack
+                post.content="这家伙一句留言都没有...."
                 post.save()
 
 
