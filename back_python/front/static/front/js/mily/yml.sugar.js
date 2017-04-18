@@ -140,13 +140,7 @@
 									 if(lentmp>0)
 									   self.tmpDataRefId=rtnDataCallback[lentmp-1].id;
 									 return cbk(rtnDataCallback);
-									//  if(self.tmpDataRefId==rtnLastData.id){
-									// 	 return cbk(null);
-									//  }else{
-									// 	 var len=resData.content.data.length;
-									// 	 self.tmpDataRefId=resData.content.data[len-1].id;
-									// 	 return cbk(resData.content.data);
-									//  }
+
 								 }else{
 										return cbk(null);
 								 }
