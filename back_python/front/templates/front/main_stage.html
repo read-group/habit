@@ -301,7 +301,7 @@
            startRecord:function(ev){
              $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
              $("#recordDlg").modal("show");
-             alert($yml.page.$vmPage.$postid);
+             wx.startRecord();
              //暂存当前操作的评价id
              wx.onVoiceRecordEnd({
                 // 录音时间超过一分钟没有停止的时候会执行 complete 回调
@@ -327,7 +327,7 @@
 
                 }
              });
-            wx.startRecord();
+
            },
            stopRecord:function(){
              var self=this;
@@ -335,7 +335,6 @@
              wx.stopRecord({
                   success: function (res) {
                       var localId = res.localId;
-                      alert(localId)
                       wx.uploadVoice({
                           localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
                           isShowProgressTips: 1, // 默认为1，显示进度提示
