@@ -452,10 +452,8 @@
           }
          //先清空
          var initUi=function(res){
-           console.log(res);
            if(res){
-               var rev=res.reverse()
-               rev.forEach(function(r){
+               res.forEach(function(r){
                   $yml.page.$vmPage.feeds.unshift(r)
                });
            }
