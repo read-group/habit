@@ -454,7 +454,8 @@
          var initUi=function(res){
            console.log(res);
            if(res){
-               res.reverse().forEach(function(r){
+               var rev=res.reverse()
+               rev.forEach(function(r){
                   $yml.page.$vmPage.feeds.unshift(r)
                });
            }
