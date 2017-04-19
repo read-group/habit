@@ -67,6 +67,9 @@
             <p class="text-right" ms-if="@item['habitCat'].length">
               <button  class="btn button-highlight" role="button" ms-click="@nextClick">下一个</button>
             </p>
+            <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FREE'">
+              <button  class="btn button-highlight" role="button" ms-click="@digOk">免费报名</button>
+            </p>
 
             <p class="text-right" ms-if="@item['habitCat'].length==0 && @item['cat']=='FEE'">
               <button  class="btn button-highlight" role="button" ms-click="@digFeeOk">付费报名</button>
@@ -75,20 +78,24 @@
           <div class="col-sm-12" ms-if="@rptOk">
             <div class="thumbnail noborder">
               <div class="caption">
-                <h4><i class="fa fa-balance-scale" aria-hidden="true"></i>为您的孩子匹配了如下习惯</h4>
+                <h4><i class="fa fa-balance-scale active" aria-hidden="true"></i>报名成功,已为您的孩子匹配了如下习惯</h4>
                 <p ms-for="(i,h) in @selectedHabits">
                     <span><i ms-attr="{class:@h.icon}" aria-hidden="true"></i>{? h.name ?}</span>
                 </p>
               </div>
             </div>
             <div class="well">
+               <h5><span  style="color:orange><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
+               <p>请点击下方菜单中的"成长"，去添加要坚持习惯的家庭成员！</p>
+            </div>
+            <!-- <div class="well">
                <h5><i class="fa fa-users" aria-hidden="true"></i>懒人基金分享</h5>
                <p>存入懒人基金，每天打卡赢回基金</p>
                <p>活动持续时间：{? @item.days ?}天</p>
                <p>每天打卡：返还{? @item.rtnLazyUnit ?}元</p>
                <p>活动结束：所有参与者均分剩余基金</p>
                <p>目前已经有{? @item.lazyIn ?}人参与懒人基金</p>
-            </div>
+            </div> -->
             <p class="text-right">
               <button  class="btn button-highlight" role="button" ms-click="@lazyShare">点击参与</button>
             </p>
@@ -103,7 +110,7 @@
             <span><i class="fa fa-info" style="color:orange" aria-hidden="true"></i>分享报名</span>
         </div>
         <div class="modal-body" style="padding:20px">
-            点击右上角，发送给好友老师，就可以完成报名，并查看参与的习惯！
+            您可以点击右上角，发送给好友老师，通知已经完成了报名。您还可以发送给朋友，邀请朋友一起来挑战习惯！
         </div>
       </div>
     </div>
@@ -159,10 +166,6 @@
         selectRadio:function(e){
           var level=$(e.currentTarget).data("level");
           $yml.page.$vmPage.curQuestion.level=level;
-          if(this.item["habitCat"].length==0  && this.item["cat"]=="FREE"){
-            $("#maskHint").modal("show")
-          }
-
         },
         lazyShare:function(){
           alert("敬请期待...")
@@ -195,7 +198,9 @@
                 })
                 self.rptOk=true;
                 self.title="报名完成";
-                $("#maskHint").modal("hide")
+                if(self.item["habitCat"].length==0  && self.item["cat"]=="FREE"){
+                  $("#maskHint").modal("show")
+                }
               }
           );
         }
