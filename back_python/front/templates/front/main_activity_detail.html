@@ -49,7 +49,7 @@
           <div class="col-sm-12" ms-if="@isDiagnose">
             <div class="thumbnail noborder">
               <div class="caption">
-                <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i><span>正在了解您的孩子，请回答问题</h4>
+                <h4><span class="warncolor"><i class="fa fa-question fa-lg"></i></span>正在了解您的孩子，请回答问题</h4>
                 <h3>{? @curQuestion.name ?}</h3><br/>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-default" data-level="L" ms-click="@selectRadio">
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="well">
-               <h5><span  style="color:orange><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
+               <h5><span style="color:orange><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
                <p>请点击下方菜单中的"成长"，去添加要坚持习惯的家庭成员！</p>
             </div>
             <!-- <div class="well">
@@ -198,9 +198,7 @@
                 })
                 self.rptOk=true;
                 self.title="报名完成";
-                if(self.item["habitCat"].length==0  && self.item["cat"]=="FREE"){
-                  $("#maskHint").modal("show")
-                }
+                $("#maskHint").modal("show")
               }
           );
         }
