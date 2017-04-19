@@ -454,8 +454,8 @@
          var initUi=function(res){
            console.log(res);
            if(res){
-               res.forEach(function(r){
-                  $yml.page.$vmPage.feeds.push(r)
+               res.reverse().forEach(function(r){
+                  $yml.page.$vmPage.feeds.unshift(r)
                });
            }
          };
