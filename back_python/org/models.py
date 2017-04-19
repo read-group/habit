@@ -5,15 +5,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from school.models import ClassGroup
 # Create your models here.
-#家庭
-class Org(EntityBase):
-    createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
-    updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
-    def __str__(self):
-        return self.name;
-    class Meta:
-        verbose_name="B.家庭"
-        verbose_name_plural="B.家庭"
 #1-家长，２－老师，３既是家长也是老师，４是学生
 #升级利用用户创建时的信号，来更新user角色
 PROFILE_ROLE=(
@@ -27,6 +18,16 @@ MapEngToRole={
 "teacher":"2",
 "child":"4"
 }
+#家庭
+class Org(EntityBase):
+    createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
+    updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")
+    def __str__(self):
+        return self.name;
+    class Meta:
+        verbose_name="B.家庭"
+        verbose_name_plural="B.家庭"
+
 class Profile(models.Model):
     nickname=models.CharField(max_length=20,null=True,blank=True)
     openid=models.CharField(max_length=128,null=True,blank=True)
@@ -61,20 +62,18 @@ class Profile(models.Model):
 #         user.profile=instance
 #         profile.save()
 # pre_save.connect(create_user,sender=Profile)
-
 class Friend(models.Model):
-    from_profile=models.ForeignKey(
-            Profile,
-            on_delete=models.SET_NULL,
-            verbose_name="发起者",
-            null=True,
-            related_name="fromFriendSet"
-
+    fromp=models.ForeignKey(
+                Profile,
+                on_delete=models.CASCADE,
+                verbose_name="所属家庭",
+                null=True,
+                related_name="fromFriendSet"
     ),
-    to_profile=models.ForeignKey(
+    top=models.ForeignKey(
             Profile,
-            on_delete=models.SET_NULL,
-            verbose_name="接受者",
+            on_delete=models.CASCADE,
+            verbose_name="所属家庭",
             null=True,
             related_name="toFriendSet"
     ),
