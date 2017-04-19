@@ -179,7 +179,6 @@
           var self=this;
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
-                alert("ok")
                 res.content.data.forEach(function(r){
                   $yml.page.$vmPage.selectedHabits.push(r)
                 })
