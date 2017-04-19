@@ -28,6 +28,8 @@ class Org(EntityBase):
         verbose_name="B.家庭"
         verbose_name_plural="B.家庭"
 
+
+
 class Profile(models.Model):
     nickname=models.CharField(max_length=20,null=True,blank=True)
     openid=models.CharField(max_length=128,null=True,blank=True)
@@ -56,25 +58,22 @@ class Profile(models.Model):
         verbose_name="A.个人补充信息"
         verbose_name_plural="A.个人补充信息"
 
-# def create_user(sender,instance,created,**kwargs):
-#     if(created):
-#         user=User()
-#         user.profile=instance
-#         profile.save()
-# pre_save.connect(create_user,sender=Profile)
 class Friend(models.Model):
     fromp=models.ForeignKey(
                 Profile,
                 on_delete=models.CASCADE,
-                verbose_name="所属家庭",
+                verbose_name="发起者",
                 null=True,
                 related_name="fromFriendSet"
-    ),
+    )
     top=models.ForeignKey(
             Profile,
             on_delete=models.CASCADE,
-            verbose_name="所属家庭",
+            verbose_name="被发起者",
             null=True,
             related_name="toFriendSet"
-    ),
+    )
     isAccessed=models.BooleanField(default=True,verbose_name="是否通过好友请求")
+    class Meta:
+        verbose_name="C.朋友"
+        verbose_name_plural="C.朋友"

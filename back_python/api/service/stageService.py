@@ -136,8 +136,8 @@ class StageService(JsonResultService):
                     postCreator=post.feedBack.profile
                     if postCreator.id!=profile.id:
                         friends=Friend()
-                        friends.from_profile=profile
-                        friends.to_profile=postCreator
+                        friends.fromp=profile
+                        friends.top=postCreator
                         friends.save()
 
                 if commentType=="txt":
