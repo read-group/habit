@@ -193,35 +193,35 @@
 				contentH =$(this).get(0).scrollHeight,//内容高度
 				scrollTop =$(this).scrollTop();//滚动高度
 				//if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容
-				// if(scrollTop/(contentH -viewH)>=0.98 && scrollTop>self.initTop){ //到达底部100px时,加载新内容
-				// // 这里加载数据..
-				// 	self.nextPage(function(res){
-				// 		if(res){
-				// 				return cbk(res);
-				// 		}else{
-				// 			//	alert("目前没有数据");
-				// 				return cbk(null);
-				// 		}
-				// 		//$this.scrollTop(1);
-				// 	});
-				//     // setTimeout(function(){
-				// 		//
-				// 		// },500);
-				// }
-				if(scrollTop==0){
-					setTimeout(function(){
-						self.nextPage(function(res){
-							if(res){
-										return cbk(res);
-							}else{
-								//alert("目前没有数据");
+				if(scrollTop/(contentH -viewH)>=0.98 && scrollTop>self.initTop){ //到达底部100px时,加载新内容
+				// 这里加载数据..
+					self.nextPage(function(res){
+						if(res){
+								return cbk(res);
+						}else{
+							//	alert("目前没有数据");
 								return cbk(null);
-							}
-							//$this.scrollTop(100);
-						});
-					},500);
-
+						}
+						//$this.scrollTop(1);
+					});
+				    // setTimeout(function(){
+						//
+						// },500);
 				}
+			// 	if(scrollTop==0){
+			// 		setTimeout(function(){
+			// 			self.prevPage(function(res){
+			// 				if(res){
+			// 							return cbk(res);
+			// 				}else{
+			// 					//alert("目前没有数据");
+			// 					return cbk(null);
+			// 				}
+			// 				//$this.scrollTop(100);
+			// 			});
+			// 		},500);
+			//
+			// 	}
 			 	self.initTop=scrollTop;
 			});
 		},
