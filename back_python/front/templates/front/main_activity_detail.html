@@ -85,20 +85,10 @@
               </div>
             </div>
             <div class="well">
-               <h5><span style="color:orange><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
-               <p>请点击下方菜单中的"成长"，去添加要坚持习惯的家庭成员！</p>
+               <h5><span style="color:orange"><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
+               <p>请点击下方菜单中的"成长"，去添加要坚持习惯的家庭成员！
             </div>
-            <!-- <div class="well">
-               <h5><i class="fa fa-users" aria-hidden="true"></i>懒人基金分享</h5>
-               <p>存入懒人基金，每天打卡赢回基金</p>
-               <p>活动持续时间：{? @item.days ?}天</p>
-               <p>每天打卡：返还{? @item.rtnLazyUnit ?}元</p>
-               <p>活动结束：所有参与者均分剩余基金</p>
-               <p>目前已经有{? @item.lazyIn ?}人参与懒人基金</p>
-            </div>
-            <p class="text-right">
-              <button  class="btn button-highlight" role="button" ms-click="@lazyShare">点击参与</button>
-            </p> -->
+
           </div>
        </div>
     </div>
@@ -173,10 +163,6 @@
         digOk:function(){
           this.isDiagnose=false;
           this.isDetail=false;
-          //当前用户，活动id，[习惯类别id,习惯类别name,难度level],当前用户报名参加活动
-          //在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
-          //清空用户表，在创建用户时(用户、家庭)要同时初始化账户表
-          //要启动事务
           var catsArray=[]
           this.$toSubmit.forEach(function(r){
              var tmp={}
@@ -193,6 +179,7 @@
           var self=this;
           $yml.ajax('/api/activity/join',postParam,
           　  function(res){
+                alert("ok")
                 res.content.data.forEach(function(r){
                   $yml.page.$vmPage.selectedHabits.push(r)
                 })
