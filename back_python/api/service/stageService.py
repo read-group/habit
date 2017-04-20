@@ -135,10 +135,15 @@ class StageService(JsonResultService):
                     # 加好友
                     postCreator=post.feedBack.profile
                     if postCreator.id!=profile.id:
-                        friends=Friend()
-                        friends.fromp=profile
-                        friends.top=postCreator
-                        friends.save()
+                        # 检查是否已经成为朋友，如果已经成为朋友，那么无需再去创建
+                        (Q(fromp.id=profile.id) & Q(top.id=postCreator.id)) | (Q(fromp.id=postCreator.id) & Q(top.id=profile.id))
+                        c=Friend.objects.filter((Q(fromp.id=profile.id) & Q(top.id=postCreator.id)) | (Q(fromp.id=postCreator.id) & Q(top.id=profile.id))).count()
+                        logger.error("Q ok")
+                        if c==0:
+                            friends=Friend()
+                            friends.fromp=profile
+                            friends.top=postCreator
+                            friends.save()
 
                 if commentType=="txt":
                     postQuery.update(accumContents=F("accumContents")+1)
