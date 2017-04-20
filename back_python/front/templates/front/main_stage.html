@@ -17,8 +17,8 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <div class="list-group">
-          <button type="button"  ms-for="(i,item) in @feeds"  class="list-group-item">
+        <ul class="list-group">
+          <li   ms-for="(i,item) in @feeds"  class="list-group-item">
                 <div class="row">
                      <div class="col-xs-8 text-left">
                        <div class="row">
@@ -83,8 +83,8 @@
                           </div>
                      </div>
                 </div>
-          </button>
-        </div>
+          </li>
+        </ul>
       </div>
 
       <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
