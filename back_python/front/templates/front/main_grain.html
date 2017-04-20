@@ -43,6 +43,25 @@
     </div>
 
   </div>
+  <div class="modal fade" id="grainHelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-smile-o" style="color:orange"></i>小小提示</h4>
+                  </div>
+                  <div class="text-center" style="width:100%;height:120px;margin-top:15px">
+                      <div class="text-center">
+                        <span><i class="fa fa-bell fa-3x fa-spin active" style="margin-right:5px;color:orange" aria-hidden="true"></i>点铃铛打卡</span>
+                      </div>
+                      <div style="margin-top:15px;">
+                        <button href="#" class="button button-pill  button-action" id="grainHelpKnow">我知道了</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+      </div>
+  </div>
   <script>
   $yml.page=$yml.pageBase.New(null,{
     ctor:function(){
@@ -68,6 +87,14 @@
     pageReady:function(){
       var self=this;
       console.log(" grain pageReady");
+      $yml.dlgCenter("grainHelp");
+      if(!avalon.router.localStorage.getItem("grainHelpKnow")){
+        $("#grainHelp").modal("show");
+      }
+      $("#grainHelpKnow").click(function(){
+        $("#grainHelp").modal("hide");
+        avalon.router.localStorage.setItem("grainHelpKnow","1");
+      });
       $yml.ajax('/api/grain/family',null,
       　  function(res){
             $yml.page.$vmPage.familys.clear()
