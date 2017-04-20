@@ -126,7 +126,6 @@ class StageService(JsonResultService):
                 if "audiourl" in reqData.keys():
                     comment.audioUrls=reqData["audiourl"]
                 comment.save()
-
                 # 增加帖子上的赞扬次数
                 if commentType=="prase":
                     postQuery.update(accumPrases=F("accumPrases")+1)
@@ -144,7 +143,6 @@ class StageService(JsonResultService):
                             friends.fromp=profile
                             friends.top=postCreator
                             friends.save()
-
                 if commentType=="txt":
                     postQuery.update(accumContents=F("accumContents")+1)
 

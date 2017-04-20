@@ -21,7 +21,7 @@ from api.views import GrainFamilyUpdateMemberView
 from api.views import GrainFeedbackView
 from api.views import GrainFeedbackCreateView,GrainFeedbackPublishView
 from api.views import TeacherClassMemberView,TeacherAddClassView
-from api.views import TeacherMyView
+from api.views import TeacherMyView,HomeMyView
 from api.views import StageListView
 from api.views import StagePraseView
 from api.views import TxtNoteView,StageAudioView
@@ -46,5 +46,6 @@ urlpatterns = [
      url(r'^stage/audio$',StageAudioView.as_view()),
      url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
      url(r'^teacher/addclass$',TeacherAddClassView.as_view()),
+     url(r'^home/my$',HomeMyView.as_view()),
      url(r'^teacher/my$',TeacherMyView.as_view()),
 ]

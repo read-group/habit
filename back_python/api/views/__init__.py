@@ -6,3 +6,4 @@ from .teacher   import TeacherClassMemberView,TeacherMyView,TeacherAddClassView
 from .stage import StageListView
 from .stage import StagePraseView
 from .stage import TxtNoteView,StageAudioView
+from .home import HomeMyView
