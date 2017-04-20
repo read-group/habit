@@ -124,22 +124,43 @@
 								//  var lastDataRow=self.tmpDataRef[len-1];
 								 if(resData.content.data && resData.content.data.length>0){
 									 var len2=resData.content.data.length;
-									 var rtnLastData=resData.content.data[len2-1];
-									 var revArray=resData.content.data.reverse()
-									 var appendData=[]
-									 for(var i=0;i<len2;i++){
-										 var tmpRow=revArray[i];
-										 if(tmpRow.id!=self.tmpDataRefId){
-											 appendData.push(tmpRow)
-										 }else{
-											 break;
-										 }
+									 //降序返回第一条记录
+									 var descFirstData=resData.content.data[0]
+									 //上次最后一条数据的id-self.tmpDataRefId
+									 //如果当前返回的第一条记录的id 小于上次最后一条，那么直接全部采纳
+									 if(descFirstData.id<self.tmpDataRefId){
+										 return cbk(resData.content.data);
 									 }
-									 var rtnDataCallback=appendData.reverse();
-									 var lentmp=appendData.length;
-									 if(lentmp>0)
-									   self.tmpDataRefId=rtnDataCallback[lentmp-1].id;
-									 return cbk(rtnDataCallback);
+									 var appendData=[]
+									for(var i=0;i<len2;i++){
+									 	 var tmpRow=resData.content.data[i];
+									 	 if(tmpRow.id<self.tmpDataRefId){
+									 		 appendData.push(tmpRow)
+									 	 }else{
+									 		 break;
+									 	 }
+									}
+								  var lentmp=appendData.length;
+								  if(lentmp>0)
+									    self.tmpDataRefId=appendData[lentmp-1].id;
+									return cbk(appendData)
+
+									//  var rtnLastData=resData.content.data[len2-1];
+									//  var revArray=resData.content.data.reverse()
+									//  var appendData=[]
+									//  for(var i=0;i<len2;i++){
+									// 	 var tmpRow=revArray[i];
+									// 	 if(tmpRow.id!=self.tmpDataRefId){
+									// 		 appendData.push(tmpRow)
+									// 	 }else{
+									// 		 break;
+									// 	 }
+									//  }
+									//  var rtnDataCallback=appendData.reverse();
+									//  var lentmp=appendData.length;
+									//  if(lentmp>0)
+									//    self.tmpDataRefId=rtnDataCallback[lentmp-1].id;
+									// return cbk(rtnDataCallback);
 									//  if(self.tmpDataRefId==rtnLastData.id){
 									// 	 return cbk(null);
 									//  }else{
