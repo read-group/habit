@@ -136,7 +136,9 @@ class StageService(JsonResultService):
                     postCreator=post.feedBack.profile
                     if postCreator.id!=profile.id:
                         # 检查是否已经成为朋友，如果已经成为朋友，那么无需再去创建
-                        c=Friend.objects.filter(Q(Q(fromp.id=profile.id) & Q(top.id=postCreator.id)) | Q(Q(fromp.id=postCreator.id) & Q(top.id=profile.id))).count()
+                        q1=Q(fromp.id=profile.id) & Q(top.id=postCreator.id)
+                        q2=Q(fromp.id=postCreator.id) & Q(top.id=profile.id)
+                        c=Friend.objects.get(q1 | q2)
                         logger.error("Q ok")
                         if c==0:
                             friends=Friend()
