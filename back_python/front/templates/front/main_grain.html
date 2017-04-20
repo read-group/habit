@@ -35,7 +35,7 @@
             </a>
           </div>
         </li>
-        <li ms-if="＠familys.length==1" class="list-group-item">
+        <li ms-if="＠isShowHite" class="list-group-item">
            <h5><span style="color:orange"><i class="fa fa-question" aria-hidden="true"></i></span>友情提示</h5>
            <p>请点击右上方中的"＋"，去添加要坚持习惯的家庭成员！
         </li>
@@ -74,6 +74,7 @@
       return {
         $id:"grain",
         familys:[],
+        isShowHite:false,
         backClick:function(){
           //$yml.page.$router.pop();
         },
@@ -97,10 +98,14 @@
       });
       $yml.ajax('/api/grain/family',null,
       　  function(res){
+
             $yml.page.$vmPage.familys.clear()
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
             });
+            if($yml.page.$vmPage.familys.length==1){
+              $yml.page.$vmPage.isShowHite=true;
+            }
           }
       );
     }
