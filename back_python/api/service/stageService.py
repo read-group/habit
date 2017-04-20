@@ -136,7 +136,7 @@ class StageService(JsonResultService):
                     postCreator=post.feedBack.profile
                     if postCreator.id!=profile.id:
                         # 检查是否已经成为朋友，如果已经成为朋友，那么无需再去创建
-                        rawsql="select count(id) as ct from org_friend where ( fromp_id=%s and top_id=%s ) or ( fromp_id=%s and top_id=%s )"
+                        rawsql="select id,count(id) as ct from org_friend where ( fromp_id=%s and top_id=%s ) or ( fromp_id=%s and top_id=%s )"
                         c=Friend.objects.raw(rawsql,[str(profile.id),str(postCreator.id),str(postCreator.id),str(profile.id)])[0]
                         logger.error("Q ok")
                         if c.ct==0:
