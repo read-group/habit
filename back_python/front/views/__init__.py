@@ -6,3 +6,4 @@ from .main_stage  import StageView
 from .main_my  import MyView
 from .tmain_class  import TMainClassMemberView,TMainAddClassView
 from .tmain_my import TMyView
+from .stlogin import StLoginView
