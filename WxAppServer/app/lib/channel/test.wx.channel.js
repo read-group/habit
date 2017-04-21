@@ -87,12 +87,17 @@ yml.wxchannel = system.object.Abstract({
 		     "button":[
 		     {
 						 "type":"view",
-						 "name":"米粒帮助",
+						 "name":"帮助",
 						 "url":url
 		      },
+					{
+ 		 		               "type":"view",
+ 		 		               "name":"我是老师",
+ 		 		               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8f428820d2150a9e&redirect_uri=http%3A%2F%2Fmily365.com%2Fmain%3Frole%3Dteacher&response_type=code&scope=snsapi_userinfo&#wechat_redirect"
+ 		    },
 		     {
 		 		               "type":"view",
-		 		               "name":"进入应用",
+		 		               "name":"家长学生",
 		 		               "url":url
 		    }
 		      ]

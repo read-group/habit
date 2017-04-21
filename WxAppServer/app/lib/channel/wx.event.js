@@ -300,30 +300,32 @@ Weixin.prototype.sendNewsMsg = function(msg) {
 // ------------ 主逻辑 -----------------
 // 解析
 Weixin.prototype.parse = function() {
+  if(this.data){
+		this.msgType = this.data.MsgType[0] ? this.data.MsgType[0] : "text";
 
-	this.msgType = this.data.MsgType[0] ? this.data.MsgType[0] : "text";
+		switch(this.msgType) {
+			case 'text' :
+				this.parseTextMsg();
+				break;
 
-	switch(this.msgType) {
-		case 'text' :
-			this.parseTextMsg();
-			break;
+			case 'image' :
+				this.parseImageMsg();
+				break;
 
-		case 'image' :
-			this.parseImageMsg();
-			break;
+			case 'location' :
+				this.parseLocationMsg();
+				break;
 
-		case 'location' :
-			this.parseLocationMsg();
-			break;
+			case 'link' :
+				this.parseLinkMsg();
+				break;
 
-		case 'link' :
-			this.parseLinkMsg();
-			break;
-
-		case 'event' :
-			this.parseEventMsg();
-			break;
+			case 'event' :
+				this.parseEventMsg();
+				break;
+		}
 	}
+
 }
 
 // 发送信息
