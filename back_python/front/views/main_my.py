@@ -15,4 +15,4 @@ class MyView(TemplateView):
 class MyExitView(TemplateView):
     def get(self,request,*args,**kwargs):
         logout(request)
-        return  return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/")
