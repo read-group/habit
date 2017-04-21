@@ -288,7 +288,11 @@
                                     //对c重新设置属性
                                     c.isPrased=post.isPrased
                                     c.accumPrases=post.accumPrases
-                                    c.praseInfos=post.praseInfos
+                                    c.accumPrases.clear()
+                                    post.praseInfos.forEach(function(t){
+                                      c.accumPrases.push(t)
+                                    })
+
                                   }
                                 });
 
