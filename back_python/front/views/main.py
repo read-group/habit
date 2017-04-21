@@ -49,6 +49,12 @@ class MainView(TemplateView):
             fp2=None
             try:
                 role=request.GET["role"];
+                # 检查
+                if role=="student":
+                    # 重定向到学生登录页面
+                     return HttpResponseRedirect("/stlogin")
+
+
                 code=request.GET["code"];
                 wxinfoUrl=settings.WX["WX_AUTH_URL_INFO"].replace("{code}",code);
                 # logger.debug(wxinfoUrl)
@@ -116,10 +122,6 @@ class MainView(TemplateView):
 
             except (Exception,) as e:
                 logger.error(e)
-                import sys
-                info=sys.exc_info()
-                logging.error(info)
-
 
         else:
             logger.error("logined=================================")

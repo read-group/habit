@@ -19,9 +19,11 @@ from .views import HomeMobileView,MainView,HomeWxAuthView,ActivityView,ActivityD
 from .views import GrainEditChildView,GrainFeedbackView,GrainFeedbackNoteView
 from .views import TMainClassMemberView,TMainAddClassView
 from .views import TMyView
+from .views import StLoginView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
+    url(r'^stlogin$', StLoginView.as_view(),name="stlogin"),
     url(r'^main$', MainView.as_view(),name="main"),
     url(r'^main/activity/([t|h|n]{1})$', ActivityView.as_view(),name="main.activity"),
     url(r'^main/activity/detail/.*$', ActivityDetailView.as_view(),name="main.activity.detail"),
