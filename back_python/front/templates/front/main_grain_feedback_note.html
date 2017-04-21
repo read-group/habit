@@ -48,8 +48,8 @@
                   </div>
                   <div class="text-center" style="width:100%;height:120px;margin-top:15px">
                     <i class="fa fa-refresh fa-spin fa-3x"></i>
-                    <div style="margin-top:5px" ms-click="@stopRecord">
-                      <button  class="button button-pill  button-action">停止留言</button>
+                    <div style="margin-top:5px">
+                      <button ms-click="@stopRecord"  class="button button-pill  button-action">停止留言</button>
                     </div>
                  </div>
               </div>
@@ -103,7 +103,7 @@
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
-           wx.startRecord();
+
            wx.onVoiceRecordEnd({
               // 录音时间超过一分钟没有停止的时候会执行 complete 回调
               complete: function (res) {
@@ -129,6 +129,9 @@
 
               }
            });
+           setTimeout(function(){
+              wx.startRecord();
+           },50)
 
          },
          listenHistoryClick:function(){
