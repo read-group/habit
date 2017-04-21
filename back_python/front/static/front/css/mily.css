@@ -69,6 +69,22 @@ padding: 0px 0px;
   font-size: 10px;
   z-index: 200;
 }
+.noteform{
+  position: fixed;
+  right:5px;
+  top:65px;
+  background:rgba(255,255,255,0.4);
+  text-decoration: none;
+  display: block;
+  width: 80px;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  /*-webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  -ms-transform: rotate(-6deg);
+  transform: rotate(-6deg);*/
+  font-size: 10px;
+  z-index: 200;
+}
 .navButton{
     margin-top: 8px;
     margin-left: 4px;
