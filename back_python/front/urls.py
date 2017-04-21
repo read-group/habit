@@ -20,6 +20,7 @@ from .views import GrainEditChildView,GrainFeedbackView,GrainFeedbackNoteView
 from .views import TMainClassMemberView,TMainAddClassView
 from .views import TMyView
 from .views import StLoginView
+from .views import MyExitView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
@@ -34,6 +35,7 @@ urlpatterns = [
     url(r'^main/grain/feedback/([0-9]+)/([0-9]+)', GrainFeedbackView.as_view(),name="main.grain.feedback"),
     url(r'^main/stage/([-1-9]+)$', StageView.as_view(),name="main.stage"),
     url(r'^main/my$', MyView.as_view(),name="main.my"),
+    url(r'^main/exit$', MyExitView.as_view(),name="main.myexit"),
     url(r'^tmain/classmember/.*$', TMainClassMemberView.as_view(),name="tmain.classmember"),
     url(r'^tmain/addclass/$', TMainAddClassView.as_view(),name="tmain.addclass"),
     url(r'^tmain/my$', TMyView.as_view(),name="tmain.my"),

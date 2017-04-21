@@ -33,6 +33,20 @@
              </div>
            </div>
          </button>
+         <button ms-click="@exit"  class="list-group-item">
+           <div class="row">
+              <div class="col-xs-6 text-left">
+                <div>
+                   <i class="fa fa-close" style="color:orange"></i>&nbsp;退出</a>
+                </div>
+              </div>
+              <div class="col-xs-6 text-right">
+                <div style="margin-top:20px">
+                 　
+                </div>
+             </div>
+           </div>
+         </button>
        </div>
     </div>
   </div>
@@ -53,6 +67,9 @@
         },
         cleanUp:function(){
           console.log("clean up...")
+        },
+        exit:function(){
+           location.href="/main/exit"
         }
       };
     },
