@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib.auth import login,logout
+from django.http import HttpResponseRedirect
 import json
 # Create your views here.
 # def index(request):
