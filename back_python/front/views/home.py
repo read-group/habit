@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 import urllib.request
-from org.models import Profile,MapEngToRole,Org
+from org.models import Profile,MapEngToRole,Org,MapRoleToEng
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -34,7 +34,7 @@ class HomeMobileView(TemplateView):
 
     def get(self,*args,**kwargs):
         if self.request.user.is_authenticated:
-            # rolecode=self.request.user.profile.role
-            # rolestr=MapEngToRole[rolecode]
-            return HttpResponseRedirect("/main")
+            rolecode=self.request.user.profile.role
+            rolestr=MapRoleToEng[rolecode]
+            return HttpResponseRedirect("/main?role="+rolestr)
         return super(HomeMobileView,self).get(request,*args,**kwargs)

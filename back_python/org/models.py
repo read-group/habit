@@ -16,8 +16,14 @@ PROFILE_ROLE=(
 MapEngToRole={
 "host":"1",
 "teacher":"2",
-"ht":"3",
+"host":"3",
 "child":"4"
+}
+MapRoleToEng={
+"1":"host",
+"2":"teacher",
+"3":"host",
+"4":"child"
 }
 #家庭
 class Org(EntityBase):
