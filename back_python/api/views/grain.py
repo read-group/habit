@@ -12,7 +12,8 @@ class GrainFamilyView(View):
         jsResult=None
         try:
             logger.error(req.user.profile.org.id)
-            jsResult= grainService.family(req.user.profile.org)
+            prolile=req.user.profile
+            jsResult= grainService.family(prolile.org,prolile)
         except:
             info=sys.exc_info()
             logging.error(info)
