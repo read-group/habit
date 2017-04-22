@@ -28,10 +28,10 @@ class GrainService(JsonResultService):
             for profile in profiles:
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
                 # 判断当前登录角色，如果是学生,那么需要判断当前登录用户的id与当前记录是否一致，一致则客户端可打卡，否则无法打卡
-                dataTmp["canedit"]=True
+                dataTmp["canedit"]=1
                 if profile.role=="4":
                     if dataTmp["id"]!=profile.id:
-                        dataTmp["canedit"]=False
+                        dataTmp["canedit"]=0
                 accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (profile.id)
                 account=cache.get(accountkey)
                 if not account:
