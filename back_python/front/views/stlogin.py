@@ -30,7 +30,7 @@ class StLoginView(TemplateView):
     def post(self,request,*args,**kwargs):
         #验证
         nickname=request.POST["nickname"]
-        pwd=request.POST["pwd"]
+        pwd=request.POST["password"]
         logger.error(nickname)
         try:
             p=Profile.objects.get(nickname__exact=nickname,childpwd____exact=pwd)
