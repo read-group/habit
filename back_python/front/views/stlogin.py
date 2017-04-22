@@ -36,7 +36,7 @@ class StLoginView(TemplateView):
         try:
             p=Profile.objects.filter(nickname__exact=nickname).filter(childpwd__exact=pwd)[0]
             login(request,p.user)
-            return HttpResponseRedirect("/main?role=student")
+            return HttpResponseRedirect("/main?role=child")
         except Exception as e:
             logger.error("请重试昵称密码或向家长咨询！")
             self.err="请重试昵称密码或向家长咨询！"
