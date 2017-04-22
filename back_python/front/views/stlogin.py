@@ -34,8 +34,7 @@ class StLoginView(TemplateView):
         pwd=request.POST["password"]
         logger.error(nickname)
         try:
-            q=Q(nickname__exact=nickname) & Q(childpwd____exact=pwd)
-            p=Profile.objects.get(q)
+            p=Profile.objects.get(nickname__exact=nickname,Q(childpwd__exact=pwd))
             login(request,p.user)
             return HttpResponseRedirect("/main?role=student")
         except Profile.DoesNotExist:
