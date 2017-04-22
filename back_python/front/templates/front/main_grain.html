@@ -36,6 +36,7 @@
             </div>
             <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}" class="media-right media-middle">
               <i class="fa fa-bell fa-3x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
+              {? item.canedit ?}
             </a>
           </div>
         </li>
@@ -97,7 +98,6 @@
       });
       $yml.ajax('/api/grain/family',null,
       　  function(res){
-
             $yml.page.$vmPage.familys.clear()
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
