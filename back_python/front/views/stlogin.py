@@ -10,6 +10,7 @@ import json
 from django.db import transaction
 from account.models import Account
 from org.models import Profile
+from django.http import HttpResponseRedirect
 logger = logging.getLogger("django")
 # Create your views here.
 # def index(request):
@@ -30,6 +31,7 @@ class StLoginView(TemplateView):
         try:
             p=Profile.objects.get(nickname__exact=nickname,childpwd____exact=pwd)
             login(request,p.user)
+            return HttpResponseRedirect("/main?role=student")
         except Profile.DoesNotExist:
             self.err="请检查昵称密码或向家长咨询"
             return super(StLoginView,self).get(request,*args,**kwargs)
