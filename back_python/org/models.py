@@ -16,6 +16,7 @@ PROFILE_ROLE=(
 MapEngToRole={
 "host":"1",
 "teacher":"2",
+"ht":"3",
 "child":"4"
 }
 #家庭
