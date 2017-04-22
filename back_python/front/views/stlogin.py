@@ -39,5 +39,5 @@ class StLoginView(TemplateView):
             return HttpResponseRedirect("/main?role=student")
         except Exception as e:
             logger.error("请重试昵称密码或向家长咨询！")
-            self.err="请检查昵称密码或向家长咨询"
+            self.err="请重试昵称密码或向家长咨询！"
             return super(StLoginView,self).get(request,*args,**kwargs)
