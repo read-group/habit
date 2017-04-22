@@ -37,7 +37,7 @@ class StLoginView(TemplateView):
             p=Profile.objects.filter(nickname__exact=nickname).filter(childpwd__exact=pwd)[0]
             login(request,p.user)
             return HttpResponseRedirect("/main?role=student")
-        except Profile.DoesNotExist:
+        except Exception as e:
             logger.error(请检查昵称密码或向家长咨询)
             self.err="请检查昵称密码或向家长咨询"
             return super(StLoginView,self).get(request,*args,**kwargs)
