@@ -9,11 +9,27 @@ import logging
 import json
 from django.db import transaction
 from account.models import Account
+from org.models import Profile
 logger = logging.getLogger("django")
 # Create your views here.
 # def index(request):
 #     return render(request,"front/index.html");
 class StLoginView(TemplateView):
     template_name="front/stlogin.html"
+    def get_context_data(self, **kwargs):
+        ctx=super(StLoginView,self).get_context_data(**kwargs)
+　　　　　ctx["loginerror"]self.err
+        return ctx
     def get(self,request,*args,**kwargs):
+        self.err=""
         return super(StLoginView,self).get(request,*args,**kwargs)
+    def post(self,request,*args,**kwargs):
+        #验证
+        nickname=request.POST["nickname"]
+        pwd=request.POST["pwd"]
+        try:
+            p=Profile.objects.get(nickname__exact=nickname,childpwd____exact=pwd)
+            login(request,p.user)
+        except Profile.DoesNotExist:
+            self.err="请检查昵称密码或向家长咨询"
+            return super(StLoginView,self).get(request,*args,**kwargs)
