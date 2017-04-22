@@ -19,6 +19,22 @@ class GrainFamilyView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
+class GrainFriendsView(View):
+    def post(self,req,*arg,**kwargs):
+        jsResult=None
+        try:
+            logger.error(req.user.profile.org.id)
+            prolile=req.user.profile
+            jsResult= grainService.friends(prolile)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
+
+
+
+
+
 class GrainFamilyAddMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyAddMemberView")

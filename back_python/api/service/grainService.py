@@ -50,6 +50,52 @@ class GrainService(JsonResultService):
             jsonResult.rtnDic["content"]=content
         finally:
             return jsonResult
+
+
+    def friends(self,pf):
+        jsonResult=self.initJsonResult()
+        content={}
+        data=[]
+        try:
+            # 当前作为发起者的朋友
+            for f in pf.fromFriendSet.select_related("top").all():
+                profile=f.top
+                dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
+
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (profile.id)
+                account=cache.get(accountkey)
+                if not account:
+                    account=Account.objects.filter(profile__id=profile.id).filter(accountType="rice")[0]
+                    dataTmp['milyAccount']=account.balance
+                    cache.set(accountkey,account)
+                else:
+                    dataTmp['milyAccount']=account.balance
+                data.append(dataTmp)
+
+            # 当前用户作为接受者的朋友
+            for f in pf.toFriendSet.select_related("fromp").all():
+                profile=f.fromp
+                dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
+
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (profile.id)
+                account=cache.get(accountkey)
+                if not account:
+                    account=Account.objects.filter(profile__id=profile.id).filter(accountType="rice")[0]
+                    dataTmp['milyAccount']=account.balance
+                    cache.set(accountkey,account)
+                else:
+                    dataTmp['milyAccount']=account.balance
+                data.append(dataTmp)
+            content["data"]=data
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
+
     def addmember(self,familyOrg,childinfo):
         jsonResult=self.initJsonResult()
         logger.error("addmember ")

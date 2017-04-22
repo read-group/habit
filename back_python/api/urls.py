@@ -18,6 +18,7 @@ from django.contrib import admin
 from api.views import ActivityView,ActivityDetailView,ActivityJoinlView,ActivityLoopCheckView,GrainFamilyView,GrainFamilyAddMemberView
 from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
+from api.views import GrainFriendsView
 from api.views import GrainFeedbackView
 from api.views import GrainFeedbackCreateView,GrainFeedbackPublishView
 from api.views import TeacherClassMemberView,TeacherAddClassView
@@ -34,6 +35,7 @@ urlpatterns = [
      url(r'^activity/join$',ActivityJoinlView.as_view()),
      url(r'^activity/check$',ActivityLoopCheckView.as_view()),
      url(r'^grain/family$',GrainFamilyView.as_view()),
+     url(r'^grain/friends$',GrainFriendsView.as_view()),
      url(r'^grain/family/addmember$',GrainFamilyAddMemberView.as_view()),
      url(r'^grain/family/getmember$',GrainFamilyGetMemberView.as_view()),
      url(r'^grain/family/updatemember$',GrainFamilyUpdateMemberView.as_view()),

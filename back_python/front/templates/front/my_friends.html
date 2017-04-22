@@ -1,0 +1,76 @@
+<div class="container page" id="friends" data-page-root="friends"  ms-controller="friends">　
+    <nav class="navbar navbar-default  navbar-fixed-top">
+      <div  class="row navButton">
+          <div  class="col-xs-4 text-left icon">
+            <!-- <a  href="#!/main/activity">
+              <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+            </a> -->
+          </div>
+          <div class="col-xs-4 text-center">
+              <h4 id="title" class="topNavButton">朋友们</h4>
+          </div>
+          <div class="col-xs-4 text-right">
+            <a href="#!/main/grain/addchild">
+              <i class="fa fa-plus fa-2x active"></i>
+            </a>
+          </div>
+      </div>
+    </nav>
+    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
+        <ul class="list-group">
+          <li  ms-for="(i,item) in @familys"   class="list-group-item">
+            <div class="media" style="margin-top:5px">
+              <a  href="#" class="media-left">
+                  <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}"/>
+              </a>
+              <div class="media-body">
+                  <h5 class="media-heading" style="margin-top:1px">
+                  {? @item.nickname ?}
+                  </h5>
+                  <br/>
+                  <p>米仓：{? @item.milyAccount ?}粒
+                  <p>
+                    <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
+                      <span class="active">    <i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+                  </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <script>
+  $yml.page=$yml.pageBase.New(null,{
+    ctor:function(){
+      console.log("addChild loaded..."+this.getVmEleName());
+      //基类里在pageReady方法里和可以访问成员$vmPage和$router
+      //this.$vmPage
+      //this.$router
+    },
+    vmDef:function(){
+      return {
+        $id:"friends",
+        familys:[],
+        backClick:function(){
+          //$yml.page.$router.pop();
+        },
+        cleanUp:function(toCleanVm){
+          console.log("clean up grain list")
+          this.familys.clear();
+          console.log(toCleanVm.familys.length)
+        }
+      };
+    },
+    pageReady:function(){
+      var self=this;
+      $yml.ajax('/api/grain/friends',null,
+      　  function(res){
+            $yml.page.$vmPage.familys.clear()
+            res.content.data.forEach(function(r){
+              $yml.page.$vmPage.familys.push(r)
+            });
+          }
+      );
+    }
+  });
+  </script>
