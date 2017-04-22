@@ -18,7 +18,7 @@ logger = logging.getLogger("django")
 
 # Create your views here.
 class GrainService(JsonResultService):
-    def family(self,familyOrg,profile):
+    def family(self,familyOrg,pf):
         jsonResult=self.initJsonResult()
         content={}
         data=[]
@@ -29,8 +29,8 @@ class GrainService(JsonResultService):
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
                 # 判断当前登录角色，如果是学生,那么需要判断当前登录用户的id与当前记录是否一致，一致则客户端可打卡，否则无法打卡
                 dataTmp["canedit"]=1
-                if profile.role=="4":
-                    if dataTmp["id"]!=profile.id:
+                if pf.role=="4":
+                    if dataTmp["id"]!=pf.id:
                         dataTmp["canedit"]=0
                 accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (profile.id)
                 account=cache.get(accountkey)
