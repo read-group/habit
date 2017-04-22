@@ -22,4 +22,5 @@ class MyExitView(TemplateView):
 class MyFriendsView(TemplateView):
     template_name="front/my_friends.html"
     def get(self,request,*args,**kwargs):
+        logger.error("MyFriendsView")
         return super(MyFriendsView,self).get(request,*args,**kwargs)
