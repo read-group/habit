@@ -37,4 +37,4 @@ class HomeMobileView(TemplateView):
             rolecode=self.request.user.profile.role
             rolestr=MapRoleToEng[rolecode]
             return HttpResponseRedirect("/main?role="+rolestr)
-        return super(HomeMobileView,self).get(request,*args,**kwargs)
+        return super(HomeMobileView,self).get(self.request,*args,**kwargs)
