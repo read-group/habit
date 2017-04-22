@@ -44,7 +44,7 @@ class Activity(EntityBase):
     days=models.IntegerField(default=0,verbose_name="活动天数")
     status=models.IntegerField(default=0,choices=ACTIVITY_STATUS,verbose_name="活动状态")
     isTop=models.BooleanField(default=False,verbose_name="是否置顶")
-    memo=models.TextField(max_length=2048,verbose_name="注意事项")
+    memo=models.TextField(max_length=4096,verbose_name="注意事项")
     def save(self, *args, **kwargs):
         if self._state.adding:
             pass
