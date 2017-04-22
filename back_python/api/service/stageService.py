@@ -28,11 +28,11 @@ class StageService(JsonResultService):
         try:
             queryCache=None
             if int(pid)==-1:
-                queryCache=Post.objects.select_related('feedBack').order_by("-id");
+                queryCache=Post.objects.select_related('feedBack').order_by("-createdTime");
             if int(pid)==-2:
-                queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__org__id=currentUser.org.id).order_by("-id");
+                queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__org__id=currentUser.org.id).order_by("-createdTime");
             else:
-                queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__id=int(pid)).order_by("-id");
+                queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__id=int(pid)).order_by("-createdTime");
             count=queryCache.count();
             posts= queryCache[skip:limit]
             for post in posts:
