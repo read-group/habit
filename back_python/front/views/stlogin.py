@@ -17,21 +17,26 @@ logger = logging.getLogger("django")
 #     return render(request,"front/index.html");
 class StLoginView(TemplateView):
     template_name="front/stlogin.html"
+
     def get_context_data(self, **kwargs):
         ctx=super(StLoginView,self).get_context_data(**kwargs)
         ctx["loginerror"]=self.err
         return ctx
+
     def get(self,request,*args,**kwargs):
         self.err=""
         return super(StLoginView,self).get(request,*args,**kwargs)
+
     def post(self,request,*args,**kwargs):
         #验证
         nickname=request.POST["nickname"]
         pwd=request.POST["pwd"]
+        logger.error(nickname)
         try:
             p=Profile.objects.get(nickname__exact=nickname,childpwd____exact=pwd)
             login(request,p.user)
             return HttpResponseRedirect("/main?role=student")
         except Profile.DoesNotExist:
+            logger.error(请检查昵称密码或向家长咨询)
             self.err="请检查昵称密码或向家长咨询"
             return super(StLoginView,self).get(request,*args,**kwargs)
