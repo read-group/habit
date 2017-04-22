@@ -19,7 +19,7 @@ class StLoginView(TemplateView):
     template_name="front/stlogin.html"
     def get_context_data(self, **kwargs):
         ctx=super(StLoginView,self).get_context_data(**kwargs)
-　　　　　ctx["loginerror"]self.err
+　　　　　ctx["loginerror"]=self.err
         return ctx
     def get(self,request,*args,**kwargs):
         self.err=""
