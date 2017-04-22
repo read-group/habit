@@ -43,7 +43,6 @@ class MainView(TemplateView):
         #     userTmp= User.objects.get(pk=11)
         #     login(request,userTmp)
         # return super(MainView,self).get(request,*args,**kwargs)
-
         if(not request.user.is_authenticated):
             logger.error("not logined=================================")
             fp1=None
@@ -51,7 +50,7 @@ class MainView(TemplateView):
             try:
                 role=request.GET["role"];
                 # 检查
-                if role=="student":
+                if role=="child":
                     # 重定向到学生登录页面
                      return HttpResponseRedirect("/stlogin")
 
@@ -125,6 +124,12 @@ class MainView(TemplateView):
                 logger.error(e)
 
         else:
+            role=request.GET["role"];
+            rolecode=MapEngToRole[role]
+            if request.user.profile.role!=rolecode:
+                logout(request)
+                return HttpResponseRedirect("/")
+
             logger.error("logined=================================")
             logger.debug(request.user.username)
         # 去微信认证
