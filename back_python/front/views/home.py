@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 import urllib.request
+from org.models import Profile,MapEngToRole,Org
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
@@ -29,3 +31,10 @@ class HomeMobileView(TemplateView):
         ctx["teacher"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':teacherRedirect}))
         ctx["child"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':childRedirect}))
         return ctx
+
+    def get(self,*args,**kwargs):
+        if self.request.user.is_authenticated:
+            rolecode=self.request.user.profile.role
+            rolestr=MapEngToRole[rolecode]
+            return HttpResponseRedirect("/main")
+        return super(HomeMobileView,self).get(request,*args,**kwargs)

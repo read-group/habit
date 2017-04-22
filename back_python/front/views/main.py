@@ -39,10 +39,10 @@ class MainView(TemplateView):
         # 然后去模拟登录login
         # logger.debug("begin main")
         # # logger.debug(request.user.is_authenticated)
-        if(not request.user.is_authenticated):
-            userTmp= User.objects.get(pk=11)
-            login(request,userTmp)
-        return super(MainView,self).get(request,*args,**kwargs)
+        # if(not request.user.is_authenticated):
+        #     userTmp= User.objects.get(pk=11)
+        #     login(request,userTmp)
+        # return super(MainView,self).get(request,*args,**kwargs)
         if(not request.user.is_authenticated):
             logger.error("not logined=================================")
             fp1=None
@@ -121,11 +121,11 @@ class MainView(TemplateView):
                 logger.error(e)
 
         else:
-            role=request.GET["role"];
-            rolecode=MapEngToRole[role]
-            if request.user.profile.role!=rolecode:
-                logout(request)
-                return HttpResponseRedirect("/")
+            # role=request.GET["role"];
+            # rolecode=MapEngToRole[role]
+            # if request.user.profile.role!=rolecode:
+            #     logout(request)
+            #     return HttpResponseRedirect("/")
 
             logger.error("logined=================================")
             logger.debug(request.user.username)
