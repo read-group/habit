@@ -113,10 +113,7 @@ class MainView(TemplateView):
                     if role=="teacher":
                         #重定向到一个老师的main页面
                         login(request,userTry)
-                        return
-                    if role=="child" and userTry is None:
-                        #重定向到孩子登录的页面，用户名和密码，提交后验证通过需要修改
-                        return
+                        return super(MainView,self).get(request,*args,**kwargs)
                     else:
                         login(request,userTry)
 
