@@ -8,6 +8,7 @@ from django.core.cache import cache
 import logging
 import json
 from django.db import transaction
+from django.db.models import Q
 from account.models import Account
 from org.models import Profile
 from django.http import HttpResponseRedirect
@@ -33,7 +34,8 @@ class StLoginView(TemplateView):
         pwd=request.POST["password"]
         logger.error(nickname)
         try:
-            p=Profile.objects.get(nickname__exact=nickname,childpwd____exact=pwd)
+            q=Q(nickname__exact=nickname) & Q(childpwd____exact=pwd)
+            p=Profile.objects.get(q)
             login(request,p.user)
             return HttpResponseRedirect("/main?role=student")
         except Profile.DoesNotExist:
