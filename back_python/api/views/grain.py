@@ -78,6 +78,20 @@ class GrainFeedbackCreateView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
+
+class GrainFeedbackCancelView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("GrainFeedbackCancelView")
+        reqData=json.loads(str(req.body,'utf-8'))
+        postid=reqData["postid"]
+        jsResult=None
+        try:
+            jsResult= feedbackService.cancel(postid)
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
+
 class GrainFeedbackPublishView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFeedbackPublishView")

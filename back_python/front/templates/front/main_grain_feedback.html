@@ -82,6 +82,23 @@
 
           if(isfeed=='1'){
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
+            var params={}
+            params.postid=$yml.page.$vmPage.postid;
+            $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
+                if(rtnData.status==0){
+                    habitid=rtnData.content.habitid;
+                    alert(habitid)
+                    $yml.page.$vmPage.habits.forEach(function(item){
+                      if(item.id==habitid){
+                        item.isFeedBack="0"
+                      }
+                    })
+                }else{
+                  alert("取消打卡失败");
+                }
+            });
+
+
           }else{
             var params={}
             params.habitid=$target.attr("habitid");

@@ -20,7 +20,7 @@ from api.views import GrainFamilyGetMemberView
 from api.views import GrainFamilyUpdateMemberView
 from api.views import GrainFriendsView
 from api.views import GrainFeedbackView
-from api.views import GrainFeedbackCreateView,GrainFeedbackPublishView
+from api.views import GrainFeedbackCreateView,GrainFeedbackPublishView,GrainFeedbackCancelView
 from api.views import TeacherClassMemberView,TeacherAddClassView
 from api.views import TeacherMyView,HomeMyView
 from api.views import StageListView
@@ -41,6 +41,7 @@ urlpatterns = [
      url(r'^grain/family/updatemember$',GrainFamilyUpdateMemberView.as_view()),
      url(r'^grain/feedback/habits$',GrainFeedbackView.as_view()),
      url(r'^grain/feedback/create$',GrainFeedbackCreateView.as_view()),
+     url(r'^grain/feedback/cancel$',GrainFeedbackCancelView.as_view()),
      url(r'^grain/feedback/publish$',GrainFeedbackPublishView.as_view()),
      url(r'^stage/posts$',StageListView.as_view()),
      url(r'^stage/prase$',StagePraseView.as_view()),

@@ -15,22 +15,26 @@ TRADE_TYPE=(
     ("milyOutput","米粒打赏"),
     ("milyOutputByDonate","米粒捐赠"),
     ("feedBackMilyInput","打卡奖励米粒"),
+    ("feedBackMilyInputCancel","打卡奖励米粒取消"),
     ("feedBackReturnDeposit","打卡返还押金"),
     ("aveDeposit","平均分配懒人押金"),
     ("takeCash","用户提现"),
 )
 MAP_TRADE_TYPE={
-   "feedBackMilyInput":"feedBackMilyInput"
+   "feedBackMilyInput":"feedBackMilyInput"，
+   "feedBackMilyInputCancel":"feedBackMilyInputCancel"，
 }
 SYS_TRADE_TYPE=(
   ("sysFillMily","平台生产米粒"),
   ("sysFreeOutMily","平台免费赠送米粒"),
+  ("sysFreeOutMilyCancel","平台免费赠送米粒取消"),
   ("sysFreeInputMily","平台免费赠送退回米粒"),
   ("sysTakeCash","平台提现"),
   ("sysInitCash","平台预存"),
 )
 MAP_SYS_TRADE_TYPE={
- "sysFreeOutMily":"sysFreeOutMily"
+ "sysFreeOutMily":"sysFreeOutMily",
+ "sysFreeOutMilyCancel":"sysFreeOutMilyCancel",
 }
 #账户类型
 ACCOUNT_TYPE=(

@@ -103,6 +103,73 @@ class FeedbackService(JsonResultService):
         finally:
             return jsonResult
 
+    def cancel(self,postid):
+        jsonResult=self.initJsonResult()
+        content={}
+        try:
+            with transaction.atomic():
+                post=Post.objects.select_related("feedBack").get(pk=int(postid))
+                feedback=post.feedBack
+                orgActivityHistory=feedback.orgActivityHistory
+                profile=feedback.profile
+                activity=orgActivityHistory.activity
+                actid=activity.id
+                pid=profile.id
+                habitid=feedback.habit.id
+
+                # 取最近一次当前习惯的打卡Key
+                userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (actid,pid,habitid,)
+
+                # 设置系统账户历史
+                sysAccountHistory=SysAccountHistory()
+                sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMilyCancel"]
+                sysAccountHistory.tradeAmount=feedBack.freeMily
+
+                # 设置系统账户
+                sysAccount=cache.get("sysAccount")
+                if not sysAccount:
+                    sysAccount=SysAccount.objects.get(pk=settings.CACHE_FORMAT_STR['sys_mily_account_id'])
+                sysAccountHistory.sysAccount=sysAccount
+                sysAccountHistory.save()
+                # 设置平台最新账户缓存
+                cache.set("sysAccount",sysAccountHistory.sysAccount)
+
+                # 设置个人账户历史　　　　　　　　　　
+                accountHistory=AccountHistory()
+                accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInputCancel"]
+                accountHistory.org=orgActivityHistory.org
+                accountHistory.operator=profile
+                accountHistory.activity=activity
+                logger.error("accountHistory.activity=feedBack.orgActivityHistory.activity")
+                accountHistory.sysAccountHistory=sysAccountHistory
+                # 设置米仓账户
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (pid)
+                account=cache.get(accountkey)
+                if not account:
+                    logger.error("accountkey")
+                    account=Account.objects.filter(profile__id=pid).filter(accountType="rice")[0]
+                accountHistory.account=account
+                accountHistory.feedback=feedBack
+                accountHistory.tradeAmount=-feedBack.freeMily
+                accountHistory.save()
+                # 设置最新个人账户缓存
+                cache.set(accountkey,accountHistory.account)
+
+    　　　　　　　feedback.delete()
+    　　　　　　　# 清空最近一次的缓存
+    　　　　　　　cache.delete(userid_habitid_key)
+                # 返回当前帖子对应的习惯
+                content["habitid"]=habitid
+
+        except Exception as e:
+            logger.error(e)
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
+
+
     def create(self,pid,habitid,hid,org):
         jsonResult=self.initJsonResult()
         content={}
