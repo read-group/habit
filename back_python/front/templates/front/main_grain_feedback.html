@@ -57,7 +57,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>取消反馈警告</h4>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>取消打卡警告</h4>
           </div>
           <div class="modal-body" style="padding:20px">
             　<p>您确定要取消今日打卡吗？
@@ -95,8 +95,7 @@
         },
         cancelFeedOk:function(){
           var params={}
-          params.postid=$yml.page.$vmPage.$currentPostid;
-
+          params.postid=this.$currentPostid;
           $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
               if(rtnData.status==0){
                   habitid=rtnData.content.habitid;
@@ -120,8 +119,6 @@
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
             $yml.page.$vmPage.$currentPostid=$target.attr("postid");
             $("#dlgCancelFeed").modal("show");
-
-
           }else{
             var params={}
             params.habitid=$target.attr("habitid");
