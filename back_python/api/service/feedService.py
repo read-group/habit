@@ -279,7 +279,7 @@ class FeedbackService(JsonResultService):
                 cache.set(accountkey,accountHistory.account)
                 # 返回当前帖子
                 content["postid"]=post.id
-                content["habitid"]=habitid
+                content["habitid"]=int(habitid)
         except Exception as e:
             logger.error(e)
             if userid_habitid_key:
