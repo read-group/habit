@@ -123,6 +123,7 @@ class FeedbackService(JsonResultService):
 
                 # 取最近一次当前习惯的打卡Key
                 userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (actid,pid,habitid,)
+                userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (actid,pid,habitid,post.postDate)
 
                 # 设置系统账户历史
                 sysAccountHistory=SysAccountHistory()
@@ -162,6 +163,7 @@ class FeedbackService(JsonResultService):
                 feedback.delete()
                 #清空最近一次的缓存
                 cache.delete(userid_habitid_key)
+                cache.delete(userid_habitid_date_key)
                 # 返回当前帖子对应的习惯
                 content["habitid"]=int(habitid)
 
