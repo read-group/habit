@@ -36,7 +36,8 @@ class StageService(JsonResultService):
             count=queryCache.count();
             posts= queryCache[skip:limit]
             for post in posts:
-                dataTmp=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents","accumAudios"])
+                dataTmp=self.toJSON(post,["id","content","imgUrl","audioUrls","accumPrases","accumContents","accumAudios"])
+                dataTmp["postDate"]=post.createdTime
                 dataTmp["nickname"]=post.feedBack.profile.nickname
                 dataTmp["headingImgUrl"]=post.feedBack.profile.imgUrl
                 dataTmp["accumDays"]=post.feedBack.accumDays
