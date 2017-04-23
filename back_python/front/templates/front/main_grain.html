@@ -117,13 +117,12 @@
         $("#grainHelpAddChild").modal("hide");
         avalon.router.localStorage.setItem("grainHelpAddChild","1");
       });
-
       if(avalon.router.localStorage.getItem("grainHelp")){
         $("#grainHelp").modal("show");
       }
       $("#grainHelpKnow").click(function(){
         $("#grainHelp").modal("hide");
-        avalon.router.localStorage.setItem("grainHelp",null);
+        avalon.router.localStorage.setItem("grainHelp",false);
       });
       $yml.ajax('/api/grain/family',null,
       　  function(res){
