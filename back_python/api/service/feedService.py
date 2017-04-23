@@ -163,7 +163,7 @@ class FeedbackService(JsonResultService):
                 #清空最近一次的缓存
                 cache.delete(userid_habitid_key)
                 # 返回当前帖子对应的习惯
-                content["habitid"]=habitid
+                content["habitid"]=int(habitid)
 
         except Exception as e:
             logger.error(e)

@@ -85,7 +85,6 @@
             $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
                 if(rtnData.status==0){
                     habitid=rtnData.content.habitid;
-                    alert(habitid)
                     $yml.page.$vmPage.habits.forEach(function(item){
                       if(item.id==habitid){
                         item.isFeedBack="0"
