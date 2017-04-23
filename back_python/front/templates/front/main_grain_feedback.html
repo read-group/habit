@@ -108,13 +108,11 @@
                       if(item.id==rtnData.content.habitid){
                         item.isFeedBack="1"
                         item.postid=rtnData.content.postid
+                        var gourl=$target.attr("noteurl")+item.postid
+                        avalon.router.navigate(gourl,2)
+                        return false;
                       }
                     })
-                    setTimeout(function(){
-                      alert($target.attr("postid"))
-                      var gourl=$target.attr("noteurl")
-                      avalon.router.navigate(gourl,2)
-                    },100)
 
                 }else{
                   alert("发布出错");
