@@ -87,9 +87,9 @@
                   $("span",el.currentTarget).addClass("active")
                   $("div",el.currentTarget).addClass("active")
                 },
-                wxinit:function(ts){
-                  var urlstr=document.location.href;
-                  //var urlstr="http://mily365.com";
+                wxinit:function(ts,urlSign){
+                  //var urlstr=document.location.href;
+                  var urlstr=urlSign;
                   //alert(urlstr)
                   $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
                 　  function(res){
@@ -153,7 +153,7 @@
                 }
               });
               //微信环境初始化
-              vm.wxinit()
+              vm.wxinit("#",document.location.href)
               function cleanUp($pageVm) {
                 //子页面离开时，调用清理方法
                 if(vm.$currentPageVm && vm.$currentPageVm!=$pageVm){
