@@ -117,13 +117,13 @@
         $("#grainHelpAddChild").modal("hide");
         avalon.router.localStorage.setItem("grainHelpAddChild","1");
       });
-      if(avalon.router.localStorage.getItem("grainHelp")){
+      if(avalon.router.localStorage.getItem("grainHelp")=="1"){
         $("#grainHelp").modal("show");
       }
       $("#grainHelpKnow").click(function(){
         alert("....")
         $("#grainHelp").modal("hide");
-        avalon.router.localStorage.setItem("grainHelp",false);
+        avalon.router.localStorage.setItem("grainHelp","0");
       });
       $yml.ajax('/api/grain/family',null,
       　  function(res){
