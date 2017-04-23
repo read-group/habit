@@ -159,11 +159,10 @@
       $yml.ajax('/api/grain/feedback/habits',params,
       　  function(res){
             if(res.content.data.length==0){
-              alert("ddd")
               setTimeout(function(){
-                $("#rptAct").model("show")
+                $("#rptAct").modal("show")
                 $("#rptActKnow").click(function(){
-                  $("#rptAct").model("hide")
+                  $("#rptAct").modal("hide")
                 })
               },100)
             }
