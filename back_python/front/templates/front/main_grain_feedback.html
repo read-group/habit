@@ -85,7 +85,7 @@
             var params={}
             params.habitid=$target.attr("habitid");
             params.pid=$target.attr("pid");
-            params.hid=;$target.attr("hid");
+            params.hid=$target.attr("hid");
             alert(JSON.stringify(params))
             //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
             // $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
