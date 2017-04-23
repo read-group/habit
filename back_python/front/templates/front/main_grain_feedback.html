@@ -105,12 +105,12 @@
             //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
             $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
                 if(rtnData.status==0){
-                    // $yml.page.$vmPage.habits.forEach(function(item){
-                    //   if(item.id==rtnData.content.habitid){
-                    //     item.isFeedBack="1"
-                    //     item.postid=rtnData.content.postid
-                    //   }
-                    // })
+                    $yml.page.$vmPage.habits.forEach(function(item){
+                      if(item.id==rtnData.content.habitid){
+                        item.isFeedBack="1"
+                        item.postid=rtnData.content.postid
+                      }
+                    })
                     var gourl=$target.attr("noteurl")
                     avalon.router.navigate(gourl,2)
                 }else{
