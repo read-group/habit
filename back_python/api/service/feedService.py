@@ -53,10 +53,8 @@ class FeedbackService(JsonResultService):
                         feedback=cache.get(userid_habitid_date_key)
                         if not feedback:
                             habittmp["isFeedBack"]="0"
-                            habittmp["postid"]=-1
                         else:
                             habittmp["isFeedBack"]="1"
-                            habittmp["postid"]=feedback.post.id
 
                         # 取最近一次当前习惯的打卡
                         userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (activity.id,int(pid),int(habittmp["id"]),)
@@ -279,7 +277,6 @@ class FeedbackService(JsonResultService):
                 cache.set(accountkey,accountHistory.account)
                 # 返回当前帖子
                 content["postid"]=post.id
-                content["habitid"]=habitid
         except Exception as e:
             logger.error(e)
             if userid_habitid_key:
