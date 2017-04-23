@@ -108,10 +108,12 @@ class FeedbackService(JsonResultService):
     def cancel(self,postid):
         jsonResult=self.initJsonResult()
         content={}
+        logger.error("cancel")
         try:
             with transaction.atomic():
                 post=Post.objects.select_related("feedBack").get(pk=int(postid))
                 feedback=post.feedBack
+                logger.error("feedback")
                 orgActivityHistory=feedback.orgActivityHistory
                 profile=feedback.profile
                 activity=orgActivityHistory.activity
