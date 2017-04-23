@@ -111,9 +111,12 @@
                         item.postid=rtnData.content.postid
                       }
                     })
-                    alert($target.attr("postid"))
-                    var gourl=$target.attr("noteurl")
-                    avalon.router.navigate(gourl,2)
+                    setTimeout(function(){
+                      alert($target.attr("postid"))
+                      var gourl=$target.attr("noteurl")
+                      avalon.router.navigate(gourl,2)
+                    },100)
+
                 }else{
                   alert("发布出错");
                 }
