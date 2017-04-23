@@ -34,14 +34,14 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@currentUserId+'/'+@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/',habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/'+@item.id+'/'+@currentUserId+'/'+@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feedback/note/',habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
@@ -75,13 +75,27 @@
         },
         gonote:function(ev){
           //判断是否
-          var gourl=$(ev.currentTarget).attr("noteurl")
-          var isfeed=$(ev.currentTarget).attr("isFeed")
+          var $target=$(ev.currentTarget);
+          var gourl=$target.attr("noteurl")
+          var isfeed=$target.attr("isFeed")
 
           if(isfeed==1){
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
           }else{
-            avalon.router.navigate(gourl,2)
+            var params={}
+            params.habitid=$target.attr("habitid");
+            params.pid=$target.attr("pid");
+            params.hid=;$target.attr("hid");
+            alert(JSON.stringify(params))
+            //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
+            // $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
+            //     if(rtnData.status==0){
+            //         $yml.page.$vmPage.$postid=rtnData.content.postid;
+            //     }else{
+            //       alert("发布出错");
+            //     }
+            // });
+            //avalon.router.navigate(gourl,2)
           }
         }
       };
