@@ -81,7 +81,6 @@
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
             var params={}
             params.postid=$target.attr("postid");
-            alert(JSON.stringify(params))
             $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
                 if(rtnData.status==0){
                     habitid=rtnData.content.habitid;
@@ -96,7 +95,6 @@
                 }
             });
           }else{
-            alert(isfeed)
             var params={}
             params.habitid=$target.attr("habitid");
             params.pid=$target.attr("pid");
