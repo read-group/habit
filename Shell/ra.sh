@@ -1,7 +1,7 @@
 #!/bin/bash
 #杀死进程
 netstat -tnlup | grep uwsgi | awk '{print $7}' | cut -d '/' -f1 | xargs   kill -9
-netstat -tnlup | grep node | awk '{print $7}' | cut -d '/' -f1 | xargs   kill -9
+#netstat -tnlup | grep node | awk '{print $7}' | cut -d '/' -f1 | xargs   kill -9
 #启动uwsgi
 /mnt/s/penv/bin/uwsgi --ini /mnt/s/mygit/habit/back_python/uwsgi.ini &
 
