@@ -52,21 +52,21 @@
         </li>
       </ul>
     </div>
-    <div class="modal fade" id="dlgCancelFeed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>取消打卡警告</h4>
-          </div>
-          <div class="modal-body" style="padding:20px">
-            　<p>您确定要取消今日打卡吗？
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button"　ms-click="@cancelFeedOk" id="cancelFeedOk" class="btn btn-success">确定</button>
-          </div>
+  </div>
+  <div class="modal fade" id="dlgCancelFeed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>取消打卡警告</h4>
+        </div>
+        <div class="modal-body" style="padding:20px">
+          　<p>您确定要取消今日打卡吗？
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button"　 id="cancelFeedOk" class="btn btn-success">确定</button>
         </div>
       </div>
     </div>
@@ -93,24 +93,7 @@
           this.habits.clear();
           this.currentUserId=null;
         },
-        cancelFeedOk:function(){
-          var params={}
-          params.postid=this.$currentPostid;
-          $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
-              if(rtnData.status==0){
-                  habitid=rtnData.content.habitid;
-                  $yml.page.$vmPage.habits.forEach(function(item){
-                    if(item.id==habitid){
-                      item.isFeedBack="0"
-                      item.postid=-1
-                    }
-                  })
-              }else{
-                alert("取消打卡失败");
-              }
-          });
 
-        },
         gonote:function(ev){
           //判断是否
           var $target=$(ev.currentTarget);
@@ -162,6 +145,24 @@
             });
           }
       );
+      $("#cancelFeedOk").click(function(){
+        var params={}
+        params.postid=$yml.page.$vmPage.$currentPostid;
+        $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
+           $("#dlgCancelFeed").modal("hide");
+            if(rtnData.status==0){
+                habitid=rtnData.content.habitid;
+                $yml.page.$vmPage.habits.forEach(function(item){
+                  if(item.id==habitid){
+                    item.isFeedBack="0"
+                    item.postid=-1
+                  }
+                })
+            }else{
+              alert("取消打卡失败");
+            }
+        });
+      });
     }
   });
   </script>
