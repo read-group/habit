@@ -127,9 +127,9 @@ class FeedbackService(JsonResultService):
                 # 设置系统账户历史
                 sysAccountHistory=SysAccountHistory()
                 sysAccountHistory.tradeType=MAP_SYS_TRADE_TYPE["sysFreeOutMilyCancel"]
-                sysAccountHistory.tradeAmount=feedBack.freeMily
+                sysAccountHistory.tradeAmount=feedback.freeMily
 
-                # 设置系统账户
+                # 设置系统账户feedback
                 sysAccount=cache.get("sysAccount")
                 if not sysAccount:
                     sysAccount=SysAccount.objects.get(pk=settings.CACHE_FORMAT_STR['sys_mily_account_id'])
@@ -153,8 +153,8 @@ class FeedbackService(JsonResultService):
                     logger.error("accountkey")
                     account=Account.objects.filter(profile__id=pid).filter(accountType="rice")[0]
                 accountHistory.account=account
-                accountHistory.feedback=feedBack
-                accountHistory.tradeAmount=-feedBack.freeMily
+                accountHistory.feedback=feedback
+                accountHistory.tradeAmount=-feedback.freeMily
                 accountHistory.save()
                 # 设置最新个人账户缓存
                 cache.set(accountkey,accountHistory.account)
