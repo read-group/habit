@@ -45,6 +45,25 @@
           </li>
         </ul>
     </div>
+    <div class="modal fade" id="acthelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel"><i class="fa fa-smile-o" style="color:orange"></i>小小提示</h4>
+                    </div>
+                    <div class="text-center" style="width:100%;height:120px;margin-top:15px">
+                        <div class="text-center">
+                          <span>点<button class="btn btn-success btn-1x">报名</button>参加活动，去确定家庭要坚持的习惯！</span>
+                        </div>
+                        <div style="margin-top:15px;">
+                          <button href="#" class="button button-pill  button-action" id="acthelpKnow">我知道了</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
   </div>
   <script>
   $yml.page=$yml.pageBase.New(null,{
@@ -78,11 +97,15 @@
     pageReady:function(params){
       var self=this;
       console.log("pageReady");
-      // $yml.ajax('/api/habit/cats',null,
-      // 　  function(res){
-      //       $yml.page.$vmPage.cats=res.content;
-      //     }
-      // );
+      $yml.dlgCenter("acthelp");
+
+      if(!avalon.router.localStorage.getItem("acthelp")){
+        $("#acthelp").modal("show");
+        $("#acthelpKnow").click(function(){
+          $("#acthelp").modal("hide");
+          avalon.router.localStorage.setItem("acthelp","1");
+        });
+      }
 
       //初始化分页器
       var pager= $yml.pagination.New({
