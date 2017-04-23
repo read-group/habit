@@ -192,7 +192,7 @@
     },
     pageReady:function(paramObj){
       var self=this;
-      self.$vmMain.wxinit("{{detailUrl|safe}}")
+      //self.$vmMain.wxinit("{{detailUrl|safe}}")
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
       　　　 self.$vmMain.$history.pop();
