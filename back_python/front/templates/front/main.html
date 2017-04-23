@@ -89,6 +89,7 @@
                 },
                 wxinit:function(ts){
                   var urlstr=document.location.href;
+                  alert(urlstr)
                   $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
                 　  function(res){
                       var config={};
