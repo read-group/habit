@@ -135,7 +135,7 @@ class GrainService(JsonResultService):
                             cg=ClassGroup.objects.get(pk=int(cid))
                             profile.classGroups.add(cg)
                     else:
-                        cg=ClassGroup.objects.get(pk=７)
+                        cg=ClassGroup.objects.get(pk=7)
                         profile.classGroups.add(cg)
                 except ClassGroup.DoesNotExist:
                     jsonResult.rtnDic["errMsg"]="请向管理员咨询您的班级号"
