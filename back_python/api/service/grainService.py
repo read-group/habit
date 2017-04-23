@@ -130,7 +130,6 @@ class GrainService(JsonResultService):
                             int(classids[0])
                         except:
                             classids=childinfo["classid"].split("，")
-
                         for cid in classids:
                             cg=ClassGroup.objects.get(pk=int(cid))
                             profile.classGroups.add(cg)
