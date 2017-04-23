@@ -88,7 +88,7 @@ $yml.page=$yml.pageBase.New(null,{
          　  function(res){
                if(res.status==0){//如果服务器下载成功，修改这个url为服务器地址
                   // 为了显示打卡提示
-                  avalon.router.localStorage.setItem("grainHelp",true);
+                  avalon.router.localStorage.setItem("grainHelp","1");
                   avalon.router.navigate('/main/grain',1)
                }else{
                  alert("保存出错");
