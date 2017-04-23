@@ -247,8 +247,8 @@
      pageReady:function(params){
        var self=this;
        self.$vmMain.wxinit("#",document.location.href)
-       $yml.page.$vmPage.$postid=params.postid;
-       alert($yml.page.$vmPage.$postid)
+       //$yml.page.$vmPage.$postid=params.postid;
+       alert(JSON.stringify(params))
        //小小提示
        $yml.dlgCenter("noteHelp");
        if(!avalon.router.localStorage.getItem("noteHelpKnow")){
