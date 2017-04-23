@@ -112,11 +112,11 @@
 
       if(!avalon.router.localStorage.getItem("grainHelpAddChild")){
         $("#grainHelpAddChild").modal("show");
+        $("#grainHelpAddChildHelpKnow").click(function(){
+          $("#grainHelpAddChild").modal("hide");
+          avalon.router.localStorage.setItem("grainHelpAddChild","1");
+        });
       }
-      $("#grainHelpAddChildHelpKnow").click(function(){
-        $("#grainHelpAddChild").modal("hide");
-        avalon.router.localStorage.setItem("grainHelpAddChild","1");
-      });
       if(avalon.router.localStorage.getItem("grainHelp")=="1"){
         setTimeout(function(){
           $("#grainHelp").modal("show");
@@ -125,9 +125,7 @@
             avalon.router.localStorage.setItem("grainHelp","0");
           });
         },100)
-      
       }
-
       $yml.ajax('/api/grain/family',null,
       　  function(res){
             $yml.page.$vmPage.familys.clear()
