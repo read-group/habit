@@ -370,8 +370,9 @@ Weixin.prototype.loop = function(req, res) {
             }
         });
 
-		self.data = req.body.xml;
-
+    if(req.body){
+			self.data = req.body.xml;
+		}
 		self.parse();
     });
 }
