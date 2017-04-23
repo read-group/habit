@@ -37,7 +37,7 @@ class StageService(JsonResultService):
             posts= queryCache[skip:limit]
             for post in posts:
                 dataTmp=self.toJSON(post,["id","content","imgUrl","audioUrls","accumPrases","accumContents","accumAudios"])
-                dataTmp["postDate"]=post.createdTime..strftime("%Y/%m/%d %H:%M:%S")
+                dataTmp["postDate"]=post.createdTime.strftime("%Y/%m/%d %H:%M:%S")
                 dataTmp["nickname"]=post.feedBack.profile.nickname
                 dataTmp["headingImgUrl"]=post.feedBack.profile.imgUrl
                 dataTmp["accumDays"]=post.feedBack.accumDays
