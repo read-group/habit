@@ -34,14 +34,14 @@
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+@postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
                       <span  style="color:red">
                         <span>记</span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+@postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
@@ -81,7 +81,7 @@
           if(isfeed=='1'){
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
             var params={}
-            params.postid=$yml.page.$vmPage.postid;
+            params.postid=$target.attr("postid");
             alert(JSON.stringify(params))
             $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
                 if(rtnData.status==0){
@@ -90,6 +90,7 @@
                     $yml.page.$vmPage.habits.forEach(function(item){
                       if(item.id==habitid){
                         item.isFeedBack="0"
+                        item.postid=-1
                       }
                     })
                 }else{
@@ -104,7 +105,12 @@
             //创建反馈对象feedback,并生成一个默认贴,奖励米粒,如果参与了懒人基金，返还押金
             $yml.ajax('/api/grain/feedback/create',params,function(rtnData){
                 if(rtnData.status==0){
-                    $yml.page.$vmPage.postid=rtnData.content.postid;
+                    // $yml.page.$vmPage.habits.forEach(function(item){
+                    //   if(item.id==rtnData.content.habitid){
+                    //     item.isFeedBack="1"
+                    //     item.postid=rtnData.content.postid
+                    //   }
+                    // })
                     var gourl=$target.attr("noteurl")
                     avalon.router.navigate(gourl,2)
                 }else{
