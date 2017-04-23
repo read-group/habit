@@ -76,15 +76,13 @@
         },
         gonote:function(ev){
           //判断是否
-          alert("ddd")
           var $target=$(ev.currentTarget);
           var isfeed=$target.attr("isFeed")
-
           if(isfeed=='1'){
             //如果已经反馈，弹出取消反馈窗口，进行取消打卡调用
             var params={}
             params.postid=$yml.page.$vmPage.postid;
-            alert("ddd")
+            alert(JSON.stringify(params))
             $yml.ajax('/api/grain/feedback/cancel',params,function(rtnData){
                 if(rtnData.status==0){
                     habitid=rtnData.content.habitid;
