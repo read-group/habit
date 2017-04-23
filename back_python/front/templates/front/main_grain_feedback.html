@@ -41,7 +41,7 @@
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/'+item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>
