@@ -40,7 +40,7 @@ class MainView(TemplateView):
         # logger.debug("begin main")
         # # logger.debug(request.user.is_authenticated)
         if(not request.user.is_authenticated):
-            userTmp= User.objects.get(pk=11)
+            userTmp= User.objects.get(pk=72)
             login(request,userTmp)
         return super(MainView,self).get(request,*args,**kwargs)
         if(not request.user.is_authenticated):
