@@ -21,8 +21,8 @@ TRADE_TYPE=(
     ("takeCash","用户提现"),
 )
 MAP_TRADE_TYPE={
-   "feedBackMilyInput":"feedBackMilyInput"，
-   "feedBackMilyInputCancel":"feedBackMilyInputCancel"，
+   "feedBackMilyInput":"feedBackMilyInput",
+   "feedBackMilyInputCancel":"feedBackMilyInputCancel",
 }
 SYS_TRADE_TYPE=(
   ("sysFillMily","平台生产米粒"),
