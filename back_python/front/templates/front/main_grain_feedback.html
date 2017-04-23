@@ -92,7 +92,6 @@
                 if(rtnData.status==0){
                     $yml.page.$vmPage.postid=rtnData.content.postid;
                     var gourl=$target.attr("noteurl")
-                    alert(gourl)
                     avalon.router.navigate(gourl,2)
                 }else{
                   alert("发布出错");
