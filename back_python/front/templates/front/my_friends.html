@@ -2,15 +2,15 @@
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
-            <!-- <a  href="#!/main/activity">
+            <a ms-if="@refererUrl.length>0"  ms-attr="{href:'#!'+@refererUrl}">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
-            </a> -->
+            </a>
           </div>
           <div class="col-xs-4 text-center">
               <h4 id="title" class="topNavButton">朋友们</h4>
           </div>
           <div class="col-xs-4 text-right">
-      
+
           </div>
       </div>
     </nav>
