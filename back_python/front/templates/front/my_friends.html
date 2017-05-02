@@ -49,6 +49,7 @@
       return {
         $id:"friends",
         familys:[],
+        refererUrl:'',
         backClick:function(){
           //$yml.page.$router.pop();
         },
@@ -61,6 +62,8 @@
     },
     pageReady:function(){
       var self=this;
+      this.$vmMain.$history.pop();
+      $yml.page.$vmPage.refererUrl=this.$vmMain.$history.pop();
       $yml.ajax('/api/grain/friends',null,
       　  function(res){
             $yml.page.$vmPage.familys.clear()
