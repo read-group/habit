@@ -19,7 +19,7 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
         <ul class="list-group">
           <li   ms-for="(i,item) in @feeds"  class="list-group-item">
-                <!-- <div class="row">
+                <div class="row">
                      <div class="col-xs-8 text-left">
                        <div class="row">
                            <div class="col-xs-6 text-left">
@@ -39,7 +39,7 @@
                         <span>第<span class="active">{? item.accumDays ?}</span>天</span>
                       </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="row">
                        <div class="col-xs-12 text-center">
                            <div>
@@ -47,10 +47,10 @@
                           </div>
                        </div>
                        <div class="col-xs-12 text-left"  style="margin-top:10px">
-                           <span ms-on-click="@listenFeedClick($event)"><i class="fa fa-volume-up fa-2x"></i></span><span class="badge">{? item.audioUrls?item.audioUrls.split(',').length:0 ?}</span>
+                           <span ms-click="@listenFeedClick" ms-attr="{class:(item.audioUrls?'active':''),audiourls:item.audioUrls}"><i class="fa fa-volume-up fa-2x"></i></span><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
                            <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                       </div>
-                      <!-- <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
+                      <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
                         <div class="row" ms-for="(i,msg) in item.txtInfos">
                             <div ms-if="msg.type=='txt'" class="col-xs-12 text-left">
                               <span  style="font-size:10px" class="active">{? msg.nickname ?}说:</span>
@@ -72,22 +72,22 @@
                       <div class="col-xs-12 text-center">
                           <div class="row" style="margin-top:15px">
                              <div  class="col-xs-4">
-                                  <span  ms-click="@praseClick"      ms-attr="{postid:@item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x"></i><span ms-attr="{class:'badge'}">{? @item.accumPrases ?}</span></span>
+                                  <span  ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></span>
                              </div>
                              <div  class="col-xs-4">
-                                  <span ms-click="@txtCommentClick"  ms-attr="{postid:@item.id,class:'active'}"><i class="fa fa-commenting fa-2x"></i></span><span class="badge">{? @item.accumContents ?}</span>
+                                  <span ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x"></i></span><span class="badge">{? item.accumContents ?}</span>
                              </div>
                              <div  class="col-xs-4"  style="margin-top:2px">
-                                  <span ms-click="@startRecord" ms-attr="{postid:@item.id,class:'active'}"><i class="fa fa-microphone fa-2x"></i></span><span class="badge">{? @item.accumAudios ?}</span>
+                                  <span ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x"></i></span><span class="badge">{? item.accumAudios ?}</span>
                              </div>
                           </div>
-                     </div> -->
+                     </div>
                 </div>
           </li>
         </ul>
       </div>
 
-      <!-- <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
@@ -121,8 +121,35 @@
               </div>
             </div>
           </div>
-      </div> -->
-
+      </div>
+      <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-info fa-1x" style="color:orange"></i>&nbsp;为坚持奖励</h4>
+                </div>
+                <div class="modal-body">
+                       <div style="margin:10px">
+                           <h5>奖励金额选择</h5>
+                           <!-- <div class="container-fluid text-center"  id="t2">
+                             <div class="row" style="margin-top:5px" ms-repeat-item="amountCount">
+                                <div class="col-xs-4" ms-repeat-p="item">
+                                  <button class="button button-block  button-tiny" style="width:90px"　　ms-class-1="active:$outer.$index==0 && $index==0" ms-data-num="p" ms-click="setAmount">
+                                   <span>{{p}}元</span>
+                                 </button>
+                                </div>
+                             </div>
+                           </div> -->
+                     </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="@praseStartPay" class="btn btn-success" ms-click="@btnPayClick">支付</button>
+              </div>
+            </div>
+          </div>
+      </div>
   </div>
   <script>
      $yml.page=$yml.pageBase.New(null,{
@@ -142,12 +169,17 @@
            $idUser:null,//当前操作人员id
            $nickName:null,//当前操作人员的名字
            $toUser:null,//保存要回复的人员信息
+           $isPraseClicked:false,
            $isMoneyClicked:false,//奖励是否点击
            $isPlaying:false,
            amountCount:[[1,3,5],[10,30,50],[100,300,500]],
            $praseAmount:null,
            $openid:null,
            refererUrl:'',
+           navClick:function(){
+             console.log("...........habit.........");
+             $yml.page.$router.$vm.navClick.call(this);
+           },
            listenFeedClick:function(el){
              alert("dddd")
              var target=el.currentTarget;
@@ -158,8 +190,8 @@
                  $yml.sound.groupPlay(audioArray);
                }
              }
-             el.preventDefault();
-             el.stopPropagation();
+             event.preventDefault();
+             event.stopPropagation();
            },
            setAmount:function(){
              $(".active","#t2").removeClass("active");
@@ -454,16 +486,16 @@
               initUi(res);
          });
          //对话框居中
-        //  $yml.dlgCenter("recordDlg");
-        //  $yml.dlgCenter("praseMoneyDlg");
-        //
-        //  //设置当前页面的操作人员id,name
-        // //  $yml.page.$vmPage.$idUser=$.localStorage.get("idUser");
-        // //  $yml.page.$vmPage.$nickName=$.localStorage.get("nickName");
-        //
-        //  //设置文本编辑器
-        //  $yml.dlgCenter("txtPubDlg");
-        //  $yml.editor("commentTxtEditor","top");
+         $yml.dlgCenter("recordDlg");
+         $yml.dlgCenter("praseMoneyDlg");
+
+         //设置当前页面的操作人员id,name
+        //  $yml.page.$vmPage.$idUser=$.localStorage.get("idUser");
+        //  $yml.page.$vmPage.$nickName=$.localStorage.get("nickName");
+
+         //设置文本编辑器
+         $yml.dlgCenter("txtPubDlg");
+         $yml.editor("commentTxtEditor","top");
        }
      });
   </script>
