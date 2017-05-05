@@ -144,6 +144,7 @@
          stopRecord:function(){
            $("#recordDlg").modal("hide");
            setTimeout(function(){
+             alert("s1")
              wx.stopRecord({
                   success: function (res) {
                       alert("stop")
