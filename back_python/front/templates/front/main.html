@@ -91,8 +91,6 @@
                   //var urlstr=document.location.href;
                   var index=urlSign.indexOf("#");
                   var urlstr=urlSign.substring(0,index)
-                  alert(urlstr)
-                  //alert(urlstr)
                   $yml.ajax('http://wx.mily365.com/wx/api/jsConfig',{url:urlstr,ignore:true},
                 　  function(res){
                       var config={};
