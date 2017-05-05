@@ -51,14 +51,14 @@
                            <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                       </div>
                       <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
-                        <div class="row" ms-for="(i,msg) in @item.txtInfos">
-                            <div ms-if="@msg.type=='txt'" class="col-xs-12 text-left">
-                              <span  style="font-size:10px" class="active">{? @msg.nickname ?}说:</span>
-                              <span  style="font-size:10px" ms-html="@msg.content"></span>
+                        <div class="row" ms-for="(i,msg) in item.txtInfos">
+                            <div ms-if="msg.type=='txt'" class="col-xs-12 text-left">
+                              <span  style="font-size:10px" class="active">{? msg.nickname ?}说:</span>
+                              <span  style="font-size:10px" ms-html="msg.content"></span>
                             </div>
-                            <div ms-if="@msg.type=='sound'" class="col-xs-12 text-left">
-                              <span  style="font-size:10px" class="active">{? @msg.nickname ?}语音留言:</span>
-                              <span ms-click="@listenFeedClick" ms-attr="{class:(@msg.audioUrl?'active':''),audiourls:@msg.audioUrl}"><i class="fa fa-volume-up fa-2x"></i></span>
+                            <div ms-if="msg.type=='sound'" class="col-xs-12 text-left">
+                              <span  style="font-size:10px" class="active">{? msg.nickname ?}语音留言:</span>
+                              <span ms-click="@listenFeedClick" ms-attr="{class:(msg.audioUrl?'active':''),audiourls:msg.audioUrl}"><i class="fa fa-volume-up fa-2x"></i></span>
                             </div>
                         </div>
                       </div>
