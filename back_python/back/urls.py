@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from django.contrib.flatpages import views
 urlpatterns = [
     url(r'^',include('front.urls')),
     url(r'^api/',include('api.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
-
+    url(r'^(?P<url>.*/)$', views.flatpage),
 ]
