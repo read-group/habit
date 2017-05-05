@@ -46,7 +46,7 @@
                              <img class="img-thumbnail" style="width:100%;height:320px" ms-attr="{src:item.imgUrl}"/>
                           </div>
                        </div>
-                       <div class="col-xs-12 text-left"  style="margin-top:10px"  ms-on-click="@listenFeedClick(ev)">
+                       <div class="col-xs-12 text-left"  style="margin-top:10px"  ms-on-click="@listenFeedClick">
                            <span><i class="fa fa-volume-up fa-2x"></i></span><span class="badge">{? item.audioUrls?item.audioUrls.split(',').length:0 ?}</span>
                            <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                       </div>
