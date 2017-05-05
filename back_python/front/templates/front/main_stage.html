@@ -47,7 +47,7 @@
                           </div>
                        </div>
                        <div class="col-xs-12 text-left"  style="margin-top:10px">
-                           <button  ms-click="@listenFeedClick" ms-attr="{class:(item.audioUrls?'button button-tiny button-plain button-borderless':'button button-tiny button-plain button-borderless'),audiourls:item.audioUrls}"><i class="fa fa-volume-up"></i></button><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
+                           <button  ms-click="@listenFeedClick" ms-attr="{class:(item.audioUrls?'button button-tiny button-plain button-borderless':'button button-tiny button-plain button-circle'),audiourls:item.audioUrls}"><i class="fa fa-volume-up"></i></button><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span>
                            <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                       </div>
                       <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
