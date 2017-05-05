@@ -25,16 +25,19 @@
             </div>
           </button>
           <button type="button"  class="list-group-item">
+            <div class="text-center" ms-click="@listenHistoryClick" >
+              <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? @recordCount ?}</span>
+            </div>
+          </button>
+          <button type="button"  class="list-group-item">
             <div  class="row">
                 <div  class="col-xs-4 text-left icon" ms-click="@selImageClick">
                   <span><i class="fa fa-camera fa-2x"></i></span>
                 </div>
-                <div class="col-xs-4 text-center" ms-click="@startRecord">
+                <div class="col-xs-4 text-right" ms-click="@startRecord">
                     <span><i class="fa fa-microphone fa-2x"></i></span>
                 </div>
-                <div class="col-xs-4 text-right" ms-click="@listenHistoryClick" >
-                  <span style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? @recordCount ?}</span>
-                </div>
+
             </div>
           </button>
 　　  </div>
