@@ -107,7 +107,7 @@
            $("#recordDlg").modal("show");
            wx.startRecord({
              fail:function(res){
-               alert("fail")
+               alert(JSON.stringify(res))
              }
            });
            wx.onVoiceRecordEnd({
