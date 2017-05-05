@@ -144,15 +144,6 @@
          stopRecord:function(){
            $("#recordDlg").modal("hide");
            setTimeout(function(){
-             wx.checkJsApi({
-               jsApiList: ['startRecord','stopRecord'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-               success: function(res) {
-                  alert(JSON.stringify(res))
-               }
-
-             }
-
-            );
              wx.stopRecord({
                   success: function (res) {
                       alert("stop")
@@ -174,6 +165,9 @@
                               );
                           }
                       });
+                  },
+                  fail: function (res) {
+                    alert(JSON.stringify(res));
                   }
               });
            },10)
