@@ -105,7 +105,6 @@
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
-           $("#recordDlg").modal("show");
            wx.onVoiceRecordEnd({
               // 录音时间超过一分钟没有停止的时候会执行 complete 回调
               complete: function (res) {
@@ -132,7 +131,7 @@
               }
            });
 
-        　 this.stopRecord()
+         this.stopRecord()
          setTimeout(function(){
             wx.startRecord();
          },50)
@@ -145,9 +144,10 @@
            }
          },
          stopRecord:function(){
-           $("#recordDlg").modal("hide");
+           //$("#recordDlg").modal("hide");
            wx.stopRecord({
                 success: function (res) {
+                    alert("stop")
                     var localId = res.localId;
                     wx.uploadVoice({
                         localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
