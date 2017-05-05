@@ -130,8 +130,6 @@
 
               }
            });
-
-         this.stopRecord()
          setTimeout(function(){
             wx.startRecord();
          },50)
@@ -144,30 +142,33 @@
            }
          },
          stopRecord:function(){
-           //$("#recordDlg").modal("hide");
-           wx.stopRecord({
-                success: function (res) {
-                    alert("stop")
-                    var localId = res.localId;
-                    wx.uploadVoice({
-                        localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
-                        isShowProgressTips: 1, // 默认为1，显示进度提示
-                            success: function (res) {
-                            var serverId = res.serverId; // 返回音频的服务器端ID
-                            //给公司微信服务器发送下载文件的指令
-                            $yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
-                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
-                            　  function(res){
-                                  if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
-                                    $yml.page.$vmPage.$audioUrls.push(res.resUrl);
-                                    $yml.page.$vmPage.$isPlay=false;
+           $("#recordDlg").modal("hide");
+           setTimeout(function(){
+             wx.stopRecord({
+                  success: function (res) {
+                      alert("stop")
+                      var localId = res.localId;
+                      wx.uploadVoice({
+                          localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+                          isShowProgressTips: 1, // 默认为1，显示进度提示
+                              success: function (res) {
+                              var serverId = res.serverId; // 返回音频的服务器端ID
+                              //给公司微信服务器发送下载文件的指令
+                              $yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
+                              $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
+                              　  function(res){
+                                    if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
+                                      $yml.page.$vmPage.$audioUrls.push(res.resUrl);
+                                      $yml.page.$vmPage.$isPlay=false;
+                                    }
                                   }
-                                }
-                            );
-                        }
-                    });
-                }
-            });
+                              );
+                          }
+                      });
+                  }
+              });
+           },10)
+
          },
          selImageClick:function(){
                $yml.page.$vmPage.$isPlay=true;
