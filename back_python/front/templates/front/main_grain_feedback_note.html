@@ -105,6 +105,7 @@
          startRecord:function(){
            $yml.page.$vmPage.$isPlay=true;
            $("#recordDlg").modal("show");
+           wx.startRecord();
            wx.onVoiceRecordEnd({
               // 录音时间超过一分钟没有停止的时候会执行 complete 回调
               complete: function (res) {
@@ -130,9 +131,9 @@
 
               }
            });
-         setTimeout(function(){
-            wx.startRecord();
-         },50)
+        //  setTimeout(function(){
+        //
+        //  },50)
 
          },
          listenHistoryClick:function(){
@@ -170,7 +171,7 @@
                     alert(JSON.stringify(res));
                   }
               });
-           },1000)
+           },50)
 
          },
          selImageClick:function(){
