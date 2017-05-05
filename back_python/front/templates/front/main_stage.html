@@ -46,7 +46,7 @@
                              <img class="img-thumbnail" style="width:100%;height:320px" ms-attr="{src:item.imgUrl}"/>
                           </div>
                        </div>
-                       <div class="col-xs-12 text-left"  style="margin-top:10px" ms-click="@listenFeedClick(ev)" ms-attr="{class:(item.audioUrls?'active':''),audiourls:item.audioUrls}">
+                       <div class="col-xs-12 text-left"  style="margin-top:10px" ms-click="@listenFeedClick(ev)">
                            <span><i class="fa fa-volume-up fa-2x"></i></span><span class="badge">{? item.audioUrls?item.audioUrls.split(',').length:0 ?}</span>
                            <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                       </div>
@@ -142,7 +142,6 @@
            $idUser:null,//当前操作人员id
            $nickName:null,//当前操作人员的名字
            $toUser:null,//保存要回复的人员信息
-           $isPraseClicked:false,
            $isMoneyClicked:false,//奖励是否点击
            $isPlaying:false,
            amountCount:[[1,3,5],[10,30,50],[100,300,500]],
