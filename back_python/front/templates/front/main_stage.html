@@ -451,7 +451,7 @@
          //设置初始值
          self=this;
          self.$vmMain.wxinit("#",document.location.href)
-         $yml.page.$vmPage.$praseAmount=1;
+         //$yml.page.$vmPage.$praseAmount=1;
           if(params.pid>=0 || params.pid==-2){
             this.$vmMain.$history.pop();
             $yml.page.$vmPage.refererUrl=this.$vmMain.$history.pop();
@@ -459,6 +459,7 @@
          //先清空
          var initUi=function(res){
            if(res){
+               alert(JSON.stringify(res))
                res.forEach(function(r){
                   $yml.page.$vmPage.feeds.push(r)
                });
