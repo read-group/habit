@@ -459,9 +459,10 @@
          //先清空
          var initUi=function(res){
            if(res){
-               res.forEach(function(r){
-                  $yml.page.$vmPage.feeds.push(r)
-               });
+              //  res.forEach(function(r){
+              //     $yml.page.$vmPage.feeds.push(r)
+              //  });
+               $yml.page.$vmPage.feeds.pushArray(res)
            }
          };
          //页面加载时先获取首页数据，返回总记录数字、数据
