@@ -189,6 +189,7 @@
                if(aurl && $.trim(aurl)!=""){
                  var audioArray= aurl.split(",");
                  $yml.sound.groupPlay(audioArray,function(){
+                   alert("end")
                    $("i",$t).toggleClass("fa-spin")
                  });
                }

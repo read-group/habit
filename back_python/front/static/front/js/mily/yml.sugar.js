@@ -62,7 +62,7 @@
 						soundTmp.play();
 					}else{
 						me.isPlay=false;
-						cbk()//结束播放事件
+						return cbk()//结束播放事件
 					}
 				});
 				sound.bind("error",function(err){
