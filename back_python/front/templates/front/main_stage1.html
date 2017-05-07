@@ -1,0 +1,500 @@
+<div class="container page" id="stage" data-page-root="stage"  ms-controller="stage">　
+    <nav class="navbar navbar-default  navbar-fixed-top">
+      <div  class="row navButton">
+          <div  class="col-xs-4 text-left icon">
+            <a ms-if="@refererUrl.length>0"  ms-attr="{href:'#!'+@refererUrl}">
+              <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+            </a>
+          </div>
+          <div class="col-xs-4 text-center">
+              <h4 id="title" class="topNavButton">舞台</h4>
+          </div>
+          <div class="col-xs-4 text-right">
+            <!-- <a href="#!/main/grain/addchild">
+              <i class="fa fa-plus fa-2x active"></i>
+            </a> -->
+          </div>
+      </div>
+    </nav>
+    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
+        <ul class="list-group">
+          <li   ms-for="(i,item) in @feeds"  class="list-group-item">
+                <div class="row">
+                     <div class="col-xs-8 text-left">
+                       <div class="row">
+                           <div class="col-xs-6 text-left">
+                              <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:item.headingImgUrl}"/>
+                           </div>
+                           <div class="col-xs-6 text-left" style="padding:0px;margin-left:60px;margin-top:-40px">
+                             <span>{? item.nickname ?}</span><br/>
+                             <span style="font-size:10px">坚持*<span class="active">{? item.habitName ?}</span>*</span>
+                           </div>
+                       </div>
+                     </div>
+                    <div class="col-xs-4 text-right">
+                      <div style="margin-top:-1px">
+                        <span style="font-size:10px">{? item.postDate ?}</span>
+                      </div>
+                      <div style="margin-top:2px;font-size:10px">
+                        <span>第<span class="active">{? item.accumDays ?}</span>天</span>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                       <div class="col-xs-12 text-center">
+                           <div>
+                             <img class="img-thumbnail" style="width:100%;height:320px" ms-attr="{src:item.imgUrl}"/>
+                          </div>
+                       </div>
+                       <div class="col-xs-12 text-left"  style="margin-top:10px">
+                           <button style="border:none;background:rgba(255,255,255,0.1);"  ms-click="@listenFeedClick" ms-attr="{class:(item.audioUrls?'active':''),audiourls:item.audioUrls}"><i class="fa fa-volume-up fa-2x"></i><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span></button>
+                           <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
+                      </div>
+                      <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
+                        <div class="row" ms-for="(i,msg) in item.txtInfos">
+                            <div ms-if="msg.type=='txt'" class="col-xs-12 text-left">
+                              <span  style="font-size:10px" class="active">{? msg.nickname ?}说:</span>
+                              <span  style="font-size:10px" ms-html="msg.content"></span>
+                            </div>
+                            <div ms-if="msg.type=='sound'" class="col-xs-12 text-left">
+                              <span  style="font-size:10px" class="active">{? msg.nickname ?}语音留言:</span>
+                              <button style="border:none;background:rgba(255,255,255,0.1);"  ms-click="@listenFeedClick" ms-attr="{class:(msg.audioUrl?'active':''),audiourls:msg.audioUrl}"><i class="fa fa-volume-up fa-2x"></i></button>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 text-left" style="margin-top:15px;margin-bottom:15px">
+                        <span ms-attr="{class:(@item.praseInfos.length?'red':'active')}">
+                          <i  class="fa fa-heart"></i>
+                          <img  style="width:30px;height:30px" ms-for="(i,m) in @item.praseInfos" ms-attr="{src:@m.imgUrl,class:'img-circle'}"></img>
+                        </span>
+                      </div>
+                      <hr/>
+                      <div class="col-xs-12 text-center">
+                          <div class="row" style="margin-top:15px">
+                             <div  class="col-xs-3">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);"   ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></button>
+                             </div>
+                             <div  class="col-xs-6">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x"></i><span class="badge">{? item.accumContents ?}</span></button>
+                             </div>
+                             <div  class="col-xs-3"  style="margin-top:2px">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x"></i><span class="badge">{? item.accumAudios ?}</span></button>
+                             </div>
+                          </div>
+                     </div>
+                </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning" style="color:orange"></i>语音留言中</h4>
+                </div>
+                <div class="text-center" style="width:100%;height:120px;margin-top:15px">
+                  <i class="fa fa-refresh fa-spin fa-3x"></i>
+                  <div style="margin-top:5px">
+                    <button ms-click="@stopRecord"  class="button button-pill  button-action">停止留言</button>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="txtPubDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit" style="color:orange"></i>文本留言</h4>
+                  </div>
+                  <div class="editorParent" style="margin-top:-1px;border:none">
+                      <textarea id="commentTxtEditor"  placeholder="说点什么呢..." style="width:100%;height:80px;border:none"/>
+                  </div>
+              　</div>
+              　<div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="btnPubOk" class="btn btn-success" ms-click="@txtPubOkClick">确认</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><i class="fa fa-info fa-1x" style="color:orange"></i>&nbsp;为坚持奖励</h4>
+                </div>
+                <div class="modal-body">
+                       <div style="margin:10px">
+                           <h5>奖励金额选择</h5>
+                           <!-- <div class="container-fluid text-center"  id="t2">
+                             <div class="row" style="margin-top:5px" ms-repeat-item="amountCount">
+                                <div class="col-xs-4" ms-repeat-p="item">
+                                  <button class="button button-block  button-tiny" style="width:90px"　　ms-class-1="active:$outer.$index==0 && $index==0" ms-data-num="p" ms-click="setAmount">
+                                   <span>{{p}}元</span>
+                                 </button>
+                                </div>
+                             </div>
+                           </div> -->
+                     </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" id="@praseStartPay" class="btn btn-success" ms-click="@btnPayClick">支付</button>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <script>
+     $yml.page=$yml.pageBase.New(null,{
+       ctor:function(){
+         console.log("myhabit loaded..."+this.getVmEleName());
+         //基类里在pageReady方法里和可以访问成员$vmPage和$router
+         //this.$vmPage
+         //this.$router
+       },
+       vmDef:function(){
+         return {
+           $id:"stage",
+           iconMap:$yml.icons,
+           isPub:true,
+           feeds:[],
+           $postid:"",//当前操作的主贴id
+           $idUser:null,//当前操作人员id
+           $nickName:null,//当前操作人员的名字
+           $toUser:null,//保存要回复的人员信息
+           $isPraseClicked:false,
+           $isMoneyClicked:false,//奖励是否点击
+           $isPlaying:false,
+           amountCount:[[1,3,5],[10,30,50],[100,300,500]],
+           $praseAmount:null,
+           $openid:null,
+           refererUrl:'',
+           navClick:function(){
+             console.log("...........habit.........");
+             $yml.page.$router.$vm.navClick.call(this);
+           },
+           listenFeedClick:function(el){
+             var target=el.currentTarget;
+             if(!$yml.sound.isPlay){
+               var aurl=$(target).attr("audiourls");
+               if(aurl && $.trim(aurl)!=""){
+                 var audioArray= aurl.split(",");
+                 $yml.sound.groupPlay(audioArray);
+               }
+             }
+             event.preventDefault();
+             event.stopPropagation();
+           },
+           setAmount:function(){
+             $(".active","#t2").removeClass("active");
+             $(this).addClass("active");
+             //设置奖励金额
+             $yml.page.$vmPage.$praseAmount=$(this).data("num");
+
+           },
+           cleanUp:function(){//析构函数
+             this.feeds.clear();
+             $yml.sound.isPlay=false;
+             this.$praseAmount=null;
+             this.$openid=null;
+             this.refererUrl='';
+           },
+           moneyPraseClick:function(){//奖励单击,选择单击金额
+  　　　　　　　//显示单击对话框，选择金额，点击确定，开始后台支付
+              $yml.page.$vmPage.$cid=$(this).data("cid");
+              $yml.page.$vmPage.$openid=$(this).data("openid");
+  　　　　　　　$("#praseMoneyDlg").modal('show');
+            　
+           },
+           btnPayClick:function(){
+             $("#praseMoneyDlg").modal('hide');
+             //进入支付流程
+             if(!$yml.page.$vmPage.$isPlaying){
+               $yml.page.$vmPage.$isPlaying=true;
+             //if(!$yml.page.$vmPage.$isMoneyClicked){
+               var param={};
+               param.pobj={};
+               param.pobj.commentId=$yml.page.$vmPage.$cid;
+               param.pobj.amountPrase=$yml.page.$vmPage.$praseAmount;
+               param.pobj.openidDest=$yml.page.$vmPage.$openid;
+               $yml.ajax('/api/feed/praseMoneyComment',param,function(rtnData){
+                 wx.chooseWXPay({
+                   　 timestamp: rtnData.content.wxpayParam.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                      nonceStr: rtnData.content.wxpayParam.nonceStr, // 支付签名随机串，不长于 32 位
+                      package: rtnData.content.wxpayParam.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                      signType: rtnData.content.wxpayParam.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                      paySign: rtnData.content.wxpayParam.paySign, // 支付签名
+                      success: function (res) {
+                          //alert(res.errMsg);
+                          //支付成功后的回调函数，去往助学圈创建成功页面
+                          //$("#hsOkNav").trigger("click");
+                          var prase=rtnData.content;
+                          $yml.page.$vmPage.feeds.forEach(function(c){
+                            if(c.id==$yml.page.$vmPage.$cid){
+                                c.accumMoneyPrase=prase.accumMoneyPrase;
+                                console.log(prase.accumMoneyPrase);
+                                if(!c.commenterMoneyImgUrls){
+                                  c.commenterMoneyImgUrls=[];
+                                  c.commenterMoneyImgUrls.push(prase.commenterImgUrl);
+                                }else{
+                                   c.commenterMoneyImgUrls.push(prase.commenterImgUrl);
+                                }
+
+                            };
+                            $yml.page.$vmPage.$isPlaying=false;
+                        });
+                         　
+                      },
+                      cancel:function(res){
+                        //要删除的账id,
+                        var accountId=rtnData.content.outOid;
+                        var paramObj2={};
+                        paramObj2.accountId=accountId;
+                        $yml.ajax('/api/feed/cancelMoneyPrase',paramObj2,function(rtnData2){
+                          　alert("取消奖励完成.");
+                          //$("#hsCancelNav").trigger("click");
+                          $yml.page.$vmPage.$isPlaying=false;
+                        });
+                      }
+                 });
+               });
+             }
+           },
+           praseClick:function(el){//表扬单击
+             　var target=el.currentTarget;
+             　if($(target).hasClass("red")){
+                 return false;
+               }
+               if(!$yml.page.$vmPage.$isPlaying){
+              //if(!$yml.page.$vmPage.$isPraseClicked){
+                $yml.page.$vmPage.$isPlaying=true;
+                $yml.page.$vmPage.$postid=$(target).attr("postid");//当前的主题id
+                            var param={};
+                            param.postid=$yml.page.$vmPage.$postid;
+                            param.type="prase";
+                            $yml.ajax('/api/stage/prase',param,function(rtnData){
+                              if(rtnData.status==0){
+                                var post=rtnData.content.data;
+                                //alert(JSON.stringify(post))
+                                $yml.page.$vmPage.feeds.forEach(function(c){
+                                  if(c.id==$yml.page.$vmPage.$postid){
+                                    //对c重新设置属性
+                                    c.isPrased=post.isPrased
+                                    c.accumPrases=post.accumPrases
+                                    c.praseInfos.clear()
+                                    post.praseInfos.forEach(function(t){
+                                      c.praseInfos.push(t)
+                                    })
+
+                                  }
+                                });
+
+                              }
+                              $yml.page.$vmPage.$isPlaying=false;
+                            });
+              }
+  　　　　
+           },
+           startRecord:function(ev){
+             $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
+             $("#recordDlg").modal("show");
+
+             //暂存当前操作的评价id
+             wx.onVoiceRecordEnd({
+                // 录音时间超过一分钟没有停止的时候会执行 complete 回调
+                complete: function (res) {
+                   $("#recordDlg").modal("hide");
+                    var localId = res.localId;
+                    wx.uploadVoice({
+                        localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                            var serverId = res.serverId; // 返回音频的服务器端ID
+                            //给公司微信服务器发送下载文件的指令
+                            //$yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
+                            $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
+                            　  function(res){
+                                  if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
+                                    //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
+                                  }
+                                }
+                            );
+                        }
+                    });
+
+                }
+             });
+            setTimeout(function(){
+                wx.startRecord();
+            },50);
+           },
+           stopRecord:function(){
+             var self=this;
+             $("#recordDlg").modal("hide");
+             wx.stopRecord({
+                  success: function (res) {
+                      var localId = res.localId;
+                      wx.uploadVoice({
+                          localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+                          isShowProgressTips: 1, // 默认为1，显示进度提示
+                              success: function (res) {
+                              var serverId = res.serverId; // 返回音频的服务器端ID
+                              //给公司微信服务器发送下载文件的指令
+                              //$yml.page.$vmPage.recordCount=$yml.page.$vmPage.recordCount+1;
+                              $yml.ajax('http://wx.mily365.com/wx/api/download',{mediaId:serverId,type:"audio"},
+                              　  function(res){
+                                    if(res.resUrl){//如果服务器下载成功，修改这个url为服务器地址
+                                      //$yml.page.$vmPage.$audioUrls.push(res.resUrl);
+                                      //获取当前的commentID,添加一条评论,评论类型是audio,同时要在主题贴后追加链接，便于连续播放
+                                      var param={};
+                                      param={};
+                                      param.postid=$yml.page.$vmPage.$postid;
+                                      param.audiourl=res.resUrl;
+                                      param.type="sound";
+                                      $yml.ajax('/api/stage/audio',param,function(rtnData){
+                                                //遍历当前的反馈列表,按照id查找，追加音频url
+                                                if(rtnData.status==0){
+                                                  //遍历当前的反馈列表,按照id查找，追加文本
+                                                  var post=rtnData.content.data;
+                                                  $yml.page.$vmPage.feeds.forEach(function(c){
+                                                    if(c.id==$yml.page.$vmPage.$postid){
+                                                        c.txtInfos.clear()
+                                                        post.txtInfos.forEach(function(r){
+                                                          c.txtInfos.push(r)
+                                                        })
+
+                                                    }
+                                                  });
+                                                }
+
+                                               $yml.page.$vmPage.$isPlaying=false;
+
+                                            }
+                                      　);
+                                    }
+                                  }
+                              );
+                          }
+                      });
+                  }
+              });
+           },
+           backClick:function(){
+             $yml.page.$router.pop();
+           },
+           txtCommentClick:function(ev){
+             if(!$yml.page.$vmPage.$isPlaying){
+               $yml.page.$vmPage.$postid=$(ev.currentTarget).attr("postid");
+              //  var toId=$(this).data("rpyid");
+              //  if(toId){//表示回答别人的发表
+              //    var toUserName=$(this).data("rpyname");
+              //    $yml.page.$vmPage.$toUser={};
+              //    $yml.page.$vmPage.$toUser.toId=toId;
+              //    $yml.page.$vmPage.$toUser.toName=toUserName;
+              //    var tmpInfo=$yml.page.$vmPage.$nickName+"回复信息给"+toUserName+":";
+              //    //$("#commentTxtEditor").attr("placeholder",tmpInfo);
+              //  }
+               $("#txtPubDlg").modal("show");
+             }
+           },
+           txtPubOkClick:function(){
+             $yml.page.$vmPage.$isPlaying=true;
+             var param={};
+             param.postid=$yml.page.$vmPage.$postid;
+             var txtVal=$("#commentTxtEditor").val();
+             if($.trim(txtVal)==""){
+               $("#commentTxtEditor").attr("placeholder","总得说点什么吧...");
+               return false;
+             }
+             param.content=txtVal;
+             param.type="txt";
+             //检查是否有回复目标
+            //  if($yml.page.$vmPage.$toUser){
+            //    param.pobj.toId=$yml.page.$vmPage.$toUser.toId;
+            //    param.pobj.toName=$yml.page.$vmPage.$toUser.toName;
+            //  }
+             //不要忘记清空当前回复
+             $("#txtPubDlg").modal("hide");
+             $("#commentTxtEditor").val("");
+             $(".wysiwyg-editor").text("");
+             //清空
+             //$yml.page.$vmPage.$toUser=null;
+             $yml.ajax('/api/stage/txtnote',param,function(rtnData){
+                       if(rtnData.status==0){
+                         //遍历当前的反馈列表,按照id查找，追加文本
+                         var post=rtnData.content.data;
+                         $yml.page.$vmPage.feeds.forEach(function(c){
+                           if(c.id==$yml.page.$vmPage.$postid){
+                               c.txtInfos.clear()
+                               post.txtInfos.forEach(function(r){
+                                 c.txtInfos.push(r)
+                               })
+
+                           }
+                         });
+                       }
+
+                      $yml.page.$vmPage.$isPlaying=false;
+                  }
+             　);
+           }
+         }
+       },
+       pageReady:function(params){
+         //设置初始值
+         self=this;
+         self.$vmMain.wxinit("#",document.location.href)
+         //$yml.page.$vmPage.$praseAmount=1;
+          if(params.pid>=0 || params.pid==-2){
+            this.$vmMain.$history.pop();
+            $yml.page.$vmPage.refererUrl=this.$vmMain.$history.pop();
+          }
+         //先清空
+         var initUi=function(res){
+           if(res){
+               res.forEach(function(r){
+                  $yml.page.$vmPage.feeds.push(r)
+               });
+           }
+         };
+         //页面加载时先获取首页数据，返回总记录数字、数据
+         //初始化分页器
+         var self=this;
+         var pager= $yml.pagination.New({
+             currentPage:1,
+             totalCount:1,
+             pageSize:5,
+             url:"/api/stage/posts",
+             query:params,
+           },{
+             ctor:function(){
+               this.initData(function(res){
+                  initUi(res);
+               });
+             }
+           }
+         );
+         pager.onScroll("childContent",function(res){
+              initUi(res);
+         });
+         //对话框居中
+         $yml.dlgCenter("recordDlg");
+         $yml.dlgCenter("praseMoneyDlg");
+
+         //设置当前页面的操作人员id,name
+        //  $yml.page.$vmPage.$idUser=$.localStorage.get("idUser");
+        //  $yml.page.$vmPage.$nickName=$.localStorage.get("nickName");
+
+         //设置文本编辑器
+         $yml.dlgCenter("txtPubDlg");
+         $yml.editor("commentTxtEditor","top");
+       }
+     });
+  </script>
