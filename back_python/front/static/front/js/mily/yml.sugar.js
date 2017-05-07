@@ -425,11 +425,22 @@
 									image: '\uf118', // <img src="path/to/image.png" width="16" height="16" alt="" />
 									popup: function( $popup, $button ) {
 													var list_smilies = [
-																	'<img src="/static/front/js/editor/smiley/25.jpg" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/26.jpg" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/27.jpg" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/28.jpg" width="24" height="24" alt="" />',
-																	'<img src="/static/front/js/editor/smiley/29.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/1.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/2.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/3.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/4.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/5.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/6.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/7.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/8.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/9.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/10.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/11.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/12.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/13.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/14.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/15.jpg" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/16.jpg" width="24" height="24" alt="" />',
 													];
 													var $smilies = $('<div/>').addClass('well')
 																										.attr('unselectable','on');
