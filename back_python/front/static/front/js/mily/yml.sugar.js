@@ -129,6 +129,7 @@
 									 //上次最后一条数据的id-self.tmpDataRefId
 									 //如果当前返回的第一条记录的id 小于上次最后一条，那么直接全部采纳
 									 if(descFirstData.id<self.tmpDataRefId){
+										 console.log("accept...................")
 										 return cbk(resData.content.data);
 									 }
 									 var appendData=[]
