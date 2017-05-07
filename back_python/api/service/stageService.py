@@ -126,6 +126,9 @@ class StageService(JsonResultService):
                 comment.fromProfile=profile
                 if "content" in reqData.keys():
                     comment.content=reqData["content"]
+                else:
+                    # 给个缺省值
+                    comment.content='d'
                 if "audiourl" in reqData.keys():
                     comment.audioUrls=reqData["audiourl"]
                 comment.save()
