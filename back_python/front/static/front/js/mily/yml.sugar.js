@@ -493,7 +493,7 @@
 															top += parseInt($button.outerHeight() * 3/4);
 													$popup.css({ left: left + 'px',
 																			 top: top + 'px',
-																			 height:170+'px'
+																			 height:165+'px'
 																		 });
 													// prevent applying position
 													return false;
