@@ -22,7 +22,7 @@
          <button   class="list-group-item">
            <div class="row">
               <div class="col-xs-6 text-left">
-                  <a ms-attr="{href:'#!/main/stage/-2'}">
+                  <a id="sg" ms-attr="{href:'#!/main/stage/-2'}">
                     <span class="active"><i class="fa fa-clock-o" style="color:orange"></i>&nbsp;时光足迹</span>
                   </a>
               </div>
@@ -88,9 +88,9 @@
     pageReady:function(){
       var self=this;
       console.log(" my grain pageReady");
-      $('#mf').grumble(
+      $('#sg').grumble(
       	{
-      		text: '看看朋友们...',
+      		text: '家庭打卡历史',
       		angle: 90,
       		distance: 40,
       		showAfter: 100,
