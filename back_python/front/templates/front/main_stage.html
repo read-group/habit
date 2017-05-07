@@ -54,7 +54,7 @@
                         <div ms-if="item.txtInfos.length>0" class="row" ms-for="(i,msg) in item.txtInfos">
                             <div ms-if="@msg.type=='txt'" class="col-xs-12 text-left">
                               <span  style="font-size:10px" class="active">{? @msg.nickname ?}说:</span>
-                              <!-- <span  style="font-size:10px" ms-html="@msg.content"></span> -->
+                              <span  style="font-size:10px" ms-html="@msg.content"></span>
                             </div>
                             <div ms-if="@msg.type=='sound'" class="col-xs-12 text-left">
                               <span  style="font-size:10px" class="active">{? @msg.nickname ?}语音留言:</span>
