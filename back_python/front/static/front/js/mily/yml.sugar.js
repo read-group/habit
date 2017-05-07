@@ -357,7 +357,9 @@
             data: JSON.stringify(paramObj),//要发送的数据
             //complete :function(){$("#load").hide();},//AJAX请求完成时隐藏loading提示
             success: function(res){//msg为返回的数据，在这里做数据绑定
+								console.log(res)
 						  	var obj=JSON.parse(res);
+
                 return cbk(obj);
 							}
     });
