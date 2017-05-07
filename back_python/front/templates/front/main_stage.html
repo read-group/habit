@@ -183,6 +183,7 @@
            listenFeedClick:function(el){
              var target=el.currentTarget;
              if(!$yml.sound.isPlay){
+               $(target).first().toogleClass("fa-spin")
                var aurl=$(target).attr("audiourls");
                if(aurl && $.trim(aurl)!=""){
                  var audioArray= aurl.split(",");
