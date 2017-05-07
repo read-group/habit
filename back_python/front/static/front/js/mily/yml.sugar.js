@@ -130,6 +130,7 @@
 									 //如果当前返回的第一条记录的id 小于上次最后一条，那么直接全部采纳
 									 if(descFirstData.id<self.tmpDataRefId){
 										 console.log("accept...................")
+										 console.log()
 										 return cbk(resData.content.data);
 									 }
 									 var appendData=[]
@@ -340,20 +341,29 @@
 			paramObj.pageParam=pager.getPageParam();
 		}
 		console.log(paramObj);
-		fetch(url, {
-				  method: 'POST',
-				  headers: {
-				    'Accept': 'application/json',
-				    'Content-Type': 'application/json'
-				  },
-				  body: JSON.stringify(paramObj)
-         }).then(function(response) {
-				    return response.json()
-				  }).then(function(json) {
-					  return	cbk(json);
-				  }).catch(function(ex) {
-				    console.log('parsing failed', ex)
-				  })
+		avalon.ajax({
+			url: url,
+			type: 'post',
+			data: paramObj,
+			dataType:'json'
+		}).done(function(res){
+			//var obj=JSON.parse(res);
+				return cbk(res);
+		});
+		// fetch(url, {
+		// 		  method: 'POST',
+		// 		  headers: {
+		// 		    'Accept': 'application/json',
+		// 		    'Content-Type': 'application/json'
+		// 		  },
+		// 		  body: JSON.stringify(paramObj)
+    //      }).then(function(response) {
+		// 		    return response.json()
+		// 		  }).then(function(json) {
+		// 			  return	cbk(json);
+		// 		  }).catch(function(ex) {
+		// 		    console.log('parsing failed', ex)
+		// 		  })
 	};
 	$yml.icons={
 		"life":"fa fa-sun-o sun",
