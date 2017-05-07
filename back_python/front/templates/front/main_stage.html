@@ -184,9 +184,9 @@
              var target=el.currentTarget;
              var $t=$(target)
              if(!$yml.sound.isPlay){
-               $("i",$t).toggleClass("fa-spin")
-               var aurl=$(target).attr("audiourls");
+               var aurl= $t.attr("audiourls");
                if(aurl && $.trim(aurl)!=""){
+                 $("i",$t).toggleClass("fa-spin")
                  var audioArray= aurl.split(",");
                  $yml.sound.groupPlay(audioArray,function(){
                    alert("end")
