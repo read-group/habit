@@ -359,7 +359,7 @@
             success: function(res){//msg为返回的数据，在这里做数据绑定
 						  	var obj=JSON.parse(res);
                 return cbk(obj);
-
+							}
     });
 		// fetch(url, {
 		// 		  method: 'POST',
