@@ -36,7 +36,7 @@
          <button   class="list-group-item">
            <div class="row">
               <div class="col-xs-12 text-left">
-                  <a ms-attr="{href:'#!/main/grain/friends'}">
+                  <a ms-attr="{href:'#!/main/grain/friends'}" id="mf">
                     <span class="active"><i class="fa fa-sun-o" style="color:orange"></i>&nbsp;我的朋友</span>
                   </a>
               </div>
@@ -88,6 +88,16 @@
     pageReady:function(){
       var self=this;
       console.log(" my grain pageReady");
+      $('#mf').grumble(
+      	{
+      		text: 'Ohh, blue...',
+      		angle: 180,
+      		distance: 0,
+      		showAfter: 2000,
+      		type: 'alt-',
+      		hideAfter: 2000
+      	}
+      );
       $yml.ajax('/api/home/my',null,
       　  function(res){
             $yml.page.$vmPage.myinfo=res.content.myinfo;
