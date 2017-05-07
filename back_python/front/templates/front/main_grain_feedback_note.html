@@ -31,10 +31,10 @@
           </button>
           <button type="button"  class="list-group-item">
             <div  class="row active">
-                <div  class="col-xs-6 text-left icon" ms-click="@selImageClick">
+                <div id="selImg"  class="col-xs-6 text-left icon" ms-click="@selImageClick">
                   <span><i class="fa fa-camera fa-2x"></i></span>
                 </div>
-                <div class="col-xs-6 text-right" ms-click="@startRecord">
+                <div id="startRecord" class="col-xs-6 text-right" ms-click="@startRecord">
                     <span><i class="fa fa-microphone fa-2x"></i></span>
                 </div>
             </div>
@@ -284,6 +284,26 @@
       //       alert("发布出错");
       //     }
       //   });
+      $('#selImg').grumble(
+      	{
+      		text: '打卡留影',
+      		angle: 90,
+      		distance: 40,
+      		showAfter: 100,
+      		type: 'alt-',
+      		hideAfter: 2000
+      	}
+      );
+      $('#startRecord').grumble(
+        {
+          text: '打卡留言',
+          angle: 0,
+          distance: 40,
+          showAfter: 2000,
+          type: 'alt-',
+          hideAfter: 2000
+        }
+      );
 
      }
    });
