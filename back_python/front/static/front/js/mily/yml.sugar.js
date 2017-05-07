@@ -441,6 +441,14 @@
 																	'<img src="/static/front/js/editor/smiley/14.png" width="24" height="24" alt="" />',
 																	'<img src="/static/front/js/editor/smiley/15.png" width="24" height="24" alt="" />',
 																	'<img src="/static/front/js/editor/smiley/16.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/17.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/18.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/19.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/20.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/21.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/22.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/23.png" width="24" height="24" alt="" />',
+																	'<img src="/static/front/js/editor/smiley/24.png" width="24" height="24" alt="" />',
 													];
 													var $smilies = $('<div/>').addClass('well')
 																										.attr('unselectable','on');
