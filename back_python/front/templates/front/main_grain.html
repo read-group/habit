@@ -106,6 +106,7 @@
     },
     pageReady:function(){
       var self=this;
+      self.$vmMain.wxinit("#",document.location.href)
       console.log(" grain pageReady");
       $yml.dlgCenter("grainHelp");
       $yml.dlgCenter("grainHelpAddChild");
