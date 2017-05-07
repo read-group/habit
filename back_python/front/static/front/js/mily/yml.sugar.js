@@ -35,10 +35,11 @@
 
     		this.sound.play();
 		},
-		groupPlay:function(audioUrls){
+		groupPlay:function(audioUrls,cbk){
 			var self=this;
 			this.isPlay=true;
 			this.soundsArray.length=0;
+			this.curSound=null;
 
 			var tmpArray=[];
 			audioUrls.forEach(function(r){
@@ -56,9 +57,12 @@
 					sound=null;
 					var soundTmp=me.soundsArray.shift();
 					if(soundTmp){
+						//指示当前声音
+						me.curSound=soundTmp;
 						soundTmp.play();
 					}else{
 						me.isPlay=false;
+						cbk()//结束播放事件
 					}
 				});
 				sound.bind("error",function(err){
@@ -71,6 +75,7 @@
 				});
 			});
 			var firstsound=this.soundsArray.shift();
+			this.curSound=firstsound;
 			firstsound.play();
 		}
 	});

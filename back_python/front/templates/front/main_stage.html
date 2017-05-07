@@ -188,7 +188,9 @@
                var aurl=$(target).attr("audiourls");
                if(aurl && $.trim(aurl)!=""){
                  var audioArray= aurl.split(",");
-                 $yml.sound.groupPlay(audioArray);
+                 $yml.sound.groupPlay(audioArray,function(){
+                   $("i",$t).toggleClass("fa-spin")
+                 });
                }
              }else{
                $("i",$t).toggleClass("fa-spin")
