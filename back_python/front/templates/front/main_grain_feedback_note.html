@@ -58,7 +58,7 @@
           </div>
         </div>
     </div>
-    <div class="modal fade" id="noteHelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- <div class="modal fade" id="noteHelp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-body">
@@ -80,7 +80,7 @@
                 </div>
               </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <script>
    $yml.page=$yml.pageBase.New(null,{
@@ -254,14 +254,14 @@
        self.$vmMain.wxinit("#",document.location.href)
        $yml.page.$vmPage.$postid=params.postid;
        //小小提示
-       $yml.dlgCenter("noteHelp");
-       if(!avalon.router.localStorage.getItem("noteHelpKnow")){
-         $("#noteHelp").modal("show");
-       }
-       $("#noteHelpKnow").click(function(){
-         $("#noteHelp").modal("hide");
-         avalon.router.localStorage.setItem("noteHelpKnow","1");
-       });
+      //  $yml.dlgCenter("noteHelp");
+      //  if(!avalon.router.localStorage.getItem("noteHelpKnow")){
+      //    $("#noteHelp").modal("show");
+      //  }
+      //  $("#noteHelpKnow").click(function(){
+      //    $("#noteHelp").modal("hide");
+      //    avalon.router.localStorage.setItem("noteHelpKnow","1");
+      //  });
 
        //进入页面时清空
        self.$vmMain.$history.pop();
