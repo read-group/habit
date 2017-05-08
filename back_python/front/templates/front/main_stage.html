@@ -275,6 +275,8 @@
            },
            praseClick:function(el){//表扬单击
              　var target=el.currentTarget;
+               var self=this;
+
              　if($(target).hasClass("red")){
                  return false;
                }
@@ -285,7 +287,9 @@
                             var param={};
                             param.postid=$yml.page.$vmPage.$postid;
                             param.type="prase";
+                            self.$vmMain.isLoading=true;
                             $yml.ajax('/api/stage/prase',param,function(rtnData){
+                              self.$vmMain.isLoading=false;
                               if(rtnData.status==0){
                                 var post=rtnData.content.data;
                                 //alert(JSON.stringify(post))
