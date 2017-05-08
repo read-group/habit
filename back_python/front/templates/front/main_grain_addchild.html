@@ -71,7 +71,7 @@ $yml.page=$yml.pageBase.New(null,{
          params.headingImgUrl=$yml.page.$vmPage.headUrl;
          params.nickname=$yml.page.$vmPage.nickname;
          params.password=$yml.page.$vmPage.password;
-         params.classid=$yml.page.$vmPage.classid;
+         params.classid=$.trim($yml.page.$vmPage.classid);
          if($.trim(params.nickname)==""){
            alert("昵称不能为空。");
            return false;
@@ -82,6 +82,13 @@ $yml.page=$yml.pageBase.New(null,{
          }
          if($.trim(params.password)==""){
            alert("请给孩子选择一个登录口令。");
+           return false;
+         }
+         if(params.classid==""){
+           params.classid=7;
+         }
+         if(!parseInt(params.classid)){
+           alert("请检查您输入的部落是否为数字或咨询老师");
            return false;
          }
          $yml.ajax('/api/grain/family/addmember',{"childinfo":params},
