@@ -287,9 +287,9 @@
                             var param={};
                             param.postid=$yml.page.$vmPage.$postid;
                             param.type="prase";
-                            self.$vmMain.isLoading=true;
+                            //self.$vmMain.isLoading=true;
                             $yml.ajax('/api/stage/prase',param,function(rtnData){
-                              self.$vmMain.isLoading=false;
+                              //self.$vmMain.isLoading=false;
                               if(rtnData.status==0){
                                 var post=rtnData.content.data;
                                 //alert(JSON.stringify(post))
