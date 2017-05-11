@@ -58,10 +58,18 @@
                     </a>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                        <span>打卡：</span>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}">
+                       <i class="fa fa-bell fa-3x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
+                   </a>
+                  </div>
+                </div>
             </div>
-            <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}" class="media-right media-middle">
-               <i class="fa fa-bell fa-3x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
-           </a>
+
 
           </div>
         </li>
