@@ -40,10 +40,18 @@
                     <span>{? @item.milyAccount ?}粒</span>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                    <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
+                      <span class="active">    <i class="fa fa-female fa-1x" aria-hidden="true"></i></span>
+                    </a>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <span>{? @item.milyAccount ?}粒</span>
+                  </div>
+                </div>
             </div>
-            <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
-              <span class="active">    <i class="fa fa-female fa-1x" aria-hidden="true"></i></span>
-            </a>
+
             <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}" class="media-right media-middle">
               <i class="fa fa-bell fa-3x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
             </a>
