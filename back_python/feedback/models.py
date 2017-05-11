@@ -72,7 +72,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         verbose_name="时光记录"
     )
-    content=models.CharField(max_length=150,null=True,blank=True)
+    content=models.CharField(max_length=500,null=True,blank=True)
     feel=models.CharField(max_length=4,default="PJ",verbose_name="心情")
     imgUrl=models.CharField(max_length=256,default="http://mily365.com/media/upload/mily.png",verbose_name="反馈图片")
     audioUrls=models.CharField(max_length=1024,default="",verbose_name="音频")
@@ -115,7 +115,7 @@ class Comment(models.Model):
     )
     commentType=models.CharField(max_length=10,choices=Comment_TYPE)
     audioUrls=models.CharField(max_length=1024,default="",verbose_name="音频")
-    content=models.CharField(max_length=150,null=True,blank=True)
+    content=models.CharField(max_length=500,null=True,blank=True)
     moneyPraseAmount=models.IntegerField(default=0,verbose_name="打赏金额")
     createdTime=models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
     updatedTime=models.DateTimeField(auto_now=True,verbose_name="更新时间")

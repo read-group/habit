@@ -24,15 +24,24 @@
                 <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
             </a>
             <div class="media-body">
-                <h5 class="media-heading" style="margin-top:1px">
-                  <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i></a>
-                </h5>
-                <br/>
-                <p>米仓：{? @item.milyAccount ?}粒
-                <p>
-                  <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
-                    <span class="active">    <i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
-                  </a>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                        <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i></a>
+                  </div>
+                  <div class="col-xs-6 text-left">
+                        <span>身份:</span>  <span>xxx</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                        米仓：{? @item.milyAccount ?}粒
+                  </div>
+                  <div class="col-xs-6 text-left">
+                    <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
+                      <span class="active">    <i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+                    </a>
+                  </div>
+                </div>
             </div>
             <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}" class="media-right media-middle">
               <i class="fa fa-bell fa-3x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
