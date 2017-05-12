@@ -29,7 +29,7 @@
                         <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i></a>
                   </div>
                   <div class="col-xs-6 text-right">
-                        <span>身份:</span>  <span>xxx</span>
+                        <span>身份:</span>  <span>{? item.role=='4' ? '孩子':'家主'}</span>
                   </div>
                 </div>
                 <div class="row">
