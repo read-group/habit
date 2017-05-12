@@ -99,6 +99,8 @@ CACHE_FORMAT_STR={
    # 最近一次打卡缓存
    'actid_userid_habitid_key':'feedback:%d:%d:%d',
    'userid_habitid_key_timeout':3600*24*365,
+   # 体力值缓存,永久
+   'body_userid_key':'body:%d',
 }
 MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',

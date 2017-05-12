@@ -223,7 +223,7 @@ class FeedbackService(JsonResultService):
                 else:
                     # 获取当前用户最后一次的反馈
                     try:
-                        lastFeed=FeedBack.objects.filter(profile__id=int(pid)).filter(habit__id=int(habitid)).order_by('-createdTime')[0]
+                        lastFeed=FeedBack.objects.filter(profile__id=int(pid)).filter(orgActivityHistory__id=int(hid)).(habit__id=int(habitid)).order_by('-createdTime')[0]
                         cache.set(userid_habitid_key,lastFeed)
                         feedBack.accumDays=lastFeed.accumDays+1
                         feedBack.freeMily=a1+(feedBack.accumDays-1)*d
@@ -232,7 +232,23 @@ class FeedbackService(JsonResultService):
                         feedBack.accumDays=1
                         feedBack.freeMily=a1
                         feedBack.accumMily=a1
-                feedBack.save()
+
+                # 体力值的缓存计算，body:profileid--key,value:val
+                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (int(pid))
+                bodyval=cache.get(body_userid_key)
+                if bodyval:
+                    cache.incr('body_userid_key')
+                else:
+                    c=FeedBack.objects.filter(profile__id=int(pid)).count()
+                    if c==0:
+                        cache.set("body_userid_key",1)
+                    else:
+                        cc=c+1
+                        cache.set("body_userid_key",cc)
+                try:
+                    feedBack.save()
+                except:
+                    cache.decr('body_userid_key')
                 #创建头贴*
                 post=Post()
                 post.feedBack=feedBack

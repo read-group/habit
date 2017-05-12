@@ -40,6 +40,17 @@ class GrainService(JsonResultService):
                     cache.set(accountkey,account)
                 else:
                     dataTmp['milyAccount']=account.balance
+
+                # 体力值
+                # 体力值的缓存计算，body:profileid--key,value:val
+                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (profile.id)
+                bodyval=cache.get(body_userid_key)
+                if bodyval:
+                    dataTmp["bodyval"]=int(bodyval)
+                else:
+                    c=FeedBack.objects.filter(profile__id=profile.id).count()
+                    cache.set("body_userid_key",c)
+                    dataTmp["bodyval"]=c
                 data.append(dataTmp)
             content["data"]=data
         except:
