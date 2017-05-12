@@ -53,9 +53,8 @@ class GrainService(JsonResultService):
                     dataTmp["bodyval"]=c
                 data.append(dataTmp)
             content["data"]=data
-        except:
-            info=sys.exc_info()
-            logging.error(info)
+        except Exception as e:
+            logger.error(e)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
