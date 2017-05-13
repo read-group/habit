@@ -38,7 +38,8 @@
 		},
 		tooglePlay:function(){
 			if(this.curSound){
-				this.curSound.togglePlay();
+				alert(this.curSound.isPaused)
+				//this.curSound.togglePlay();
 			}
 		},
 		groupPlay:function(audioUrls,cbk){
