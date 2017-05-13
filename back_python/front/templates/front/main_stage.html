@@ -194,7 +194,13 @@
                }
              }else{
                $("i",$t).toggleClass("fa-spin")
-               buzz.all().togglePlay();
+               for (var i in buzz.sounds) {
+                  if(buzz.sounds[i].isPaused)
+                     buzz.sounds[i].play();
+                  else {
+                     buzz.sounds[i].pause();
+                  }
+               }
              }
              event.preventDefault();
              event.stopPropagation();
