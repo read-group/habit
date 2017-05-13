@@ -37,6 +37,7 @@
     		this.sound.play();
 		},
 		tooglePlay:function(){
+			alert(this.curSound)
 			if(this.curSound){
 				alert(this.curSound.isPaused)
 				//this.curSound.togglePlay();
