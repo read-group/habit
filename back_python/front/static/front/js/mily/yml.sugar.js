@@ -35,6 +35,11 @@
 
     		this.sound.play();
 		},
+		tooglePlay:function(){
+			if(this.curSound){
+				this.curSound.togglePlay();
+			}
+		},
 		groupPlay:function(audioUrls,cbk){
 			var self=this;
 			this.isPlay=true;
@@ -55,6 +60,7 @@
 				var me=self;
 				sound.bind("ended",function(){
 					sound=null;
+					me.curSound=null;
 					var soundTmp=me.soundsArray.shift();
 					if(soundTmp){
 						//指示当前声音
@@ -62,7 +68,6 @@
 						soundTmp.play();
 					}else{
 						me.isPlay=false;
-						self.soundsArray.length=0
 						return cbk()//结束播放事件
 					}
 				});
