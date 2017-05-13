@@ -37,6 +37,7 @@
 		},
 		tooglePlay:function(){
 			alert("tooglePlay")
+			this.curSound.tooglePlay()
 			// if(this.curSound.isPaused){
 			// 	this.curSound.play();
 			// }else{
