@@ -30,6 +30,7 @@
 			this.soundsArray=[];
 			this.sound=new buzz.sound("/static/front/js/buzz/sounds/btnClick.mp3");
 			this.isPlay=false;
+			this.curSound=null;
 		},
 		openSound:function(){
 
