@@ -62,6 +62,7 @@
 						soundTmp.play();
 					}else{
 						me.isPlay=false;
+						self.soundsArray.length=0
 						return cbk()//结束播放事件
 					}
 				});
