@@ -37,11 +37,11 @@
 		},
 		tooglePlay:function(){
 			alert("tooglePlay")
-			if(this.curSound.isPaused){
-				this.curSound.play();
-			}else{
-				this.curSound.pause();
-			}
+			// if(this.curSound.isPaused){
+			// 	this.curSound.play();
+			// }else{
+			// 	this.curSound.pause();
+			// }
 		},
 		groupPlay:function(audioUrls,cbk){
 			var self=this;
