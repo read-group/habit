@@ -40,7 +40,7 @@
 			alert(this.curSound)
 			if(this.curSound){
 				alert(this.curSound.isPaused)
-				//this.curSound.togglePlay();
+				this.curSound.pause();
 			}
 		},
 		groupPlay:function(audioUrls,cbk){
