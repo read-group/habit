@@ -25,7 +25,7 @@ class GrainService(JsonResultService):
         data=[]
         logger.error("GrainService")
         try:
-            profiles=Profile.objects.filter(org__id__exact=familyOrg.id).order_by("createdTime");
+            profiles=Profile.objects.filter(org__id__exact=familyOrg.id).filter(role__exact='4').order_by("createdTime");
             for profile in profiles:
                 dataTmp=self.toJSON(profile,["id","nickname","imgUrl","role","openid"])
                 # 判断当前登录角色，如果是学生,那么需要判断当前登录用户的id与当前记录是否一致，一致则客户端可打卡，否则无法打卡
