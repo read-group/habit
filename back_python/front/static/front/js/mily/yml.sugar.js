@@ -33,11 +33,10 @@
 			this.curSound=null;
 		},
 		openSound:function(){
-
     		this.sound.play();
 		},
 		tooglePlay:function(){
-			alert(this.curSound)
+			alert("tooglePlay")
 			if(this.curSound){
 				alert(this.curSound.isPaused)
 				this.curSound.pause();
