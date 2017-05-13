@@ -194,13 +194,14 @@
                }
              }else{
                $("i",$t).toggleClass("fa-spin")
-               for (var i in buzz.sounds) {
-                  if(buzz.sounds[i].isPaused)
-                     buzz.sounds[i].play();
-                  else {
-                     buzz.sounds[i].pause();
-                  }
-               }
+               alert(buzz.sounds.length)
+              //  for (var i in buzz.sounds) {
+              //     if(buzz.sounds[i].isPaused)
+              //        buzz.sounds[i].play();
+              //     else {
+              //        buzz.sounds[i].pause();
+              //     }
+              //  }
              }
              event.preventDefault();
              event.stopPropagation();
