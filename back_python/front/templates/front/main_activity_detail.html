@@ -18,8 +18,45 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
+
           <div class="col-sm-12" ms-if="@isDetail">
-            <div class="thumbnail noborder" ms-if="@item">
+            <div class="panel panel-default" ms-if="@item">
+              <div class="panel-body">
+                <img class="media-object" ms-attr="{src:@item.img}" style="width:400px;height:300px" alt="...">
+              </div>
+              <div class="panel-heading">
+                 <h3 class="panel-title">{? @item.name ?}</h3>
+              </div>
+              <table class="table">
+                <tr>
+                  <td colspan="2">
+                    <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit>@item.applyNumber">
+                      <button  class="btn button-highlight" role="button" ms-click="@digClick">我要报名</button>
+                    </p>
+                    <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit<=@item.applyNumber">
+                      <button  class="btn button-default" role="button">名额已满</button>
+                    </p>
+                    <p class="text-left" ms-if="@item.applied=='1'">
+                      <button  class="btn btn-success" role="button">已报名</button>
+                    </p>
+                  </td>
+                </tr>
+                <tr><td>活动类别:</td><td>{? @item.catName ?}</td></tr>
+                <tr><td>费用金额:</td><td>{? @item.amount ?}元</td></tr>
+                <tr><td>关键词:</td><td>{? @item.desc ?}</td></tr>
+                <tr><td>开始日期:</td><td>{? @item.startTime ?}</td></tr>
+                <tr><td>截止日期:</td><td>{? @item.endTime ?}</td></tr>
+                <tr><td>持续天数:</td><td>{? @item.days ?}天</td></tr>
+                <tr><td>还剩名额:</td><td>{? @item.uplimit - @item.applyNumber?}个</td></tr>
+                <tr>
+                  <td colspan="2">
+                    <div ms-html="@item.memo">
+                    </div>
+                  </td>
+               </tr>
+              </table>
+            </div>
+            <!-- <div class="thumbnail noborder" ms-if="@item">
               <img class="media-object" ms-attr="{src:@item.img}" style="width:400px;height:300px" alt="...">
               <div class="caption">
                 <h3>{? @item.name ?}</h3>
@@ -44,7 +81,7 @@
                   </div>
                 </p>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="col-sm-12" ms-if="@isDiagnose">
             <div class="thumbnail noborder">
