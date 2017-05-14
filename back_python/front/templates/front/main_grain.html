@@ -121,7 +121,7 @@
       var self=this;
       self.$vmMain.wxinit("#",document.location.href)
       console.log(" grain pageReady");
-      $yml.dlgCenter("grainHelp");
+      //$yml.dlgCenter("grainHelp");
       $yml.dlgCenter("grainHelpAddChild");
 
       if(!avalon.router.localStorage.getItem("grainHelpAddChild")){
@@ -131,15 +131,15 @@
           avalon.router.localStorage.setItem("grainHelpAddChild","1");
         });
       }
-      if(avalon.router.localStorage.getItem("grainHelp")=="1"){
-        setTimeout(function(){
-          $("#grainHelp").modal("show");
-          $("#grainHelpKnow").click(function(){
-            $("#grainHelp").modal("hide");
-            avalon.router.localStorage.setItem("grainHelp","0");
-          });
-        },100)
-      }
+      // if(avalon.router.localStorage.getItem("grainHelp")=="1"){
+      //   setTimeout(function(){
+      //     $("#grainHelp").modal("show");
+      //     $("#grainHelpKnow").click(function(){
+      //       $("#grainHelp").modal("hide");
+      //       avalon.router.localStorage.setItem("grainHelp","0");
+      //     });
+      //   },100)
+      // }
       $yml.ajax('/api/grain/family',null,
       　  function(res){
             $yml.page.$vmPage.familys.clear()
