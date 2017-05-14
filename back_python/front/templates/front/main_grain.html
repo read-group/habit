@@ -22,7 +22,7 @@
           <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-              <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="...">
+              <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="...">{? @item.nickname ?}
             </div>
             <!-- <div class="panel-body">
               <p>...</p>
@@ -31,7 +31,7 @@
             <table class="table">
               <tr>
                 <td><img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="..."></td>
-                <td><a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i></a></td>
+                <td><a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}"><i  class="fa fa-edit fa-1x active"></i></a></td>
               </tr>
               <tr><td></td><td></td></tr>
               <tr><td></td><td></td></tr>
