@@ -10,6 +10,7 @@ from feedback.models import OrgActivityHistory
 from account.models import Account,AccountHistory,SysAccountHistory,SysAccount,MAP_TRADE_TYPE,MAP_ACCOUNT_TYPE,MAP_SYS_TRADE_TYPE
 from habitinfo.models import Habit
 from back.models import JsonResultService
+from feedback.models import FeedBack
 import sys
 import json
 from django.core.cache import cache
@@ -102,9 +103,8 @@ class TeacherService(JsonResultService):
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
 
-        except:
-            info=sys.exc_info()
-            logging.error(info)
+        except Exception as e:
+            logger.error(e)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
