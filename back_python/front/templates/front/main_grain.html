@@ -19,10 +19,20 @@
   <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="list-group">
         <li  ms-for="(i,item) in @familys"   class="list-group-item">
-          <!-- <table class="table">
-            <tr><td>dd</td><td>df</td></tr>
-            <tr><td>sdf</td><td>sdf</td></tr>
-          </table> -->
+          <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="..."></div>
+            <!-- <div class="panel-body">
+              <p>...</p>
+            </div> -->
+            <!-- Table -->
+            <table class="table">
+              <tr><td></td><td></td></tr>
+              <tr><td></td><td></td></tr>
+              <tr><td></td><td></td></tr>
+              <tr><td></td><td></td></tr>
+            </table>
+          </div>
           <div class="media" style="margin-top:5px">
             <a  href="#" class="media-left">
                 <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
