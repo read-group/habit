@@ -103,6 +103,12 @@ class MainView(TemplateView):
                         accountCash.accountType="cash"
                         accountCash.profile=profile
                         accountCash.save()
+
+                        # 默认创建一个孩子的用户
+                        
+
+
+
                         # accountDeposit=Account()
                         # accountDeposit.accountType="deposit"
                         # accountDeposit.profile=profile
