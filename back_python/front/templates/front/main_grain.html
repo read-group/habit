@@ -33,7 +33,7 @@
                 <td>
                   <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">
                     <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="...">
-                    {? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i>
+                    {? @item.nickname ?}<i  class="fa fa-edit fa-2x active"></i>
                   </a>
                 </td>
                 <td>
@@ -42,63 +42,27 @@
                  </a>
                 </td>
               </tr>
-              <tr><td></td><td></td></tr>
-              <tr><td></td><td></td></tr>
-              <tr><td></td><td></td></tr>
+              <tr><td>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
+              <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
+              <tr><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
+              <tr><td>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+              </a></td></tr>
             </table>
           </div>
           <div class="media" style="margin-top:5px">
             <div class="media-body">
-                <div class="row">
-                  <div class="col-xs-6 text-left">
 
-                  </div>
-                  <div class="col-xs-6 text-right">
 
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6 text-left">
-                        <span>身份:</span>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <span>{? (item.role=='4'?'孩子':'家主') ?}</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6 text-left">
-                        <span>米仓：</span>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <span>{? @item.milyAccount ?}粒</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6 text-left">
-                        <span>体力值：</span>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <span>{? @item.bodyval ?}点</span>
-                  </div>
-                </div>
+
                 <div class="row">
                   <div class="col-xs-6 text-left">
                         <span>时光：</span>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
-                      <span class="active">    <i class="fa fa-female fa-1x" aria-hidden="true"></i></span>
-                    </a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6 text-left">
-                        <span>打卡：</span>
-                  </div>
-                  <div class="col-xs-6 text-right">
 
                   </div>
                 </div>
+
             </div>
 
 
