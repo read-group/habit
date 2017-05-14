@@ -124,6 +124,7 @@ class FeedbackService(JsonResultService):
                 # 取最近一次当前习惯的打卡Key
                 userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (actid,pid,habitid,)
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (actid,pid,habitid,post.postDate)
+                userid_date_key=settings.CACHE_FORMAT_STR['userid_date_key'] % (pid,post.postDate)
 
                 # 设置系统账户历史
                 sysAccountHistory=SysAccountHistory()
@@ -164,6 +165,7 @@ class FeedbackService(JsonResultService):
                 #清空最近一次的缓存
                 cache.delete(userid_habitid_key)
                 cache.delete(userid_habitid_date_key)
+                cache.delete(userid_date_key)
                 # 返回当前帖子对应的习惯
                 content["habitid"]=int(habitid)
 
@@ -182,6 +184,7 @@ class FeedbackService(JsonResultService):
         logger.error("create")
         userid_habitid_date_key=None
         userid_habitid_key=None
+        userid_date_key=None
         lastFeed=None
         try:
             with transaction.atomic():
@@ -255,11 +258,13 @@ class FeedbackService(JsonResultService):
                 post.content="这家伙一句留言都没有...."
                 post.save()
 
-
-
                 # 初始化缓存　Key:打卡用户id+habitid+打卡日期 feedBack:1-表示已经打卡，０表示未打卡
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (act.id,int(pid),int(habitid),post.postDate)
                 cache.set(userid_habitid_date_key,feedBack,settings.CACHE_FORMAT_STR['userid_habitid_date_key_timeout'])
+                # 记录用户当前日期是否打卡
+                userid_date_key=settings.CACHE_FORMAT_STR['userid_date_key'] % (int(pid),post.postDate)
+                cache.set(userid_date_key,1,settings.CACHE_FORMAT_STR['userid_date_key_timeout'])
+
                 # 缓存最后一次打卡记录
                 cache.set(userid_habitid_key,feedBack,acthistoryTmp.activityDays*24*3600)
 
@@ -306,6 +311,8 @@ class FeedbackService(JsonResultService):
                 cache.set(userid_habitid_key,lastFeed)
             if userid_habitid_date_key:
                 cache.delete(userid_habitid_date_key)
+            if userid_date_key:
+                cache.delete(userid_date_key)
             # 清空当前保存的最后一个反馈和当前日期的反馈
             info=sys.exc_info()
             logging.error(info)

@@ -96,6 +96,9 @@ CACHE_FORMAT_STR={
    # 今日打卡缓存
    'actid_userid_habitid_date_key':'feedback:%d:%d:%d:%s',
    'userid_habitid_date_key_timeout':3600*24*2,
+    # 今日是否打卡缓存
+    'userid_date_key':'feedback:%d:%s',
+    'userid_date_key_timeout':3600*24*2,
    # 最近一次打卡缓存
    'actid_userid_habitid_key':'feedback:%d:%d:%d',
    'userid_habitid_key_timeout':3600*24*365,

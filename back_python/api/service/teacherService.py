@@ -79,6 +79,14 @@ class TeacherService(JsonResultService):
                     cache.set(accountkey,account)
                 else:
                     ptemp['milyAccount']=account.balance
+                # 今日是否打卡
+                nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
+                userid_date_key=settings.CACHE_FORMAT_STR['userid_date_key'] % (p.id,nowstr)
+                feedStatusToday=cache.get(userid_date_key)
+                if feedStatusToday:
+                    ptemp["isfeed"]="1"
+                else:
+                    ptemp["isfeed"]="0"
                 currentCgStudents.append(ptemp)
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
