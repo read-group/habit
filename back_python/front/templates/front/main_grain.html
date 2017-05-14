@@ -21,17 +21,26 @@
         <li  ms-for="(i,item) in @familys"   class="list-group-item">
           <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">
+            <!-- <div class="panel-heading">
               <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="...">{? @item.nickname ?}
-            </div>
+            </div> -->
             <!-- <div class="panel-body">
               <p>...</p>
             </div> -->
             <!-- Table -->
             <table class="table">
               <tr>
-                <td><img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="..."></td>
-                <td><a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}"><i  class="fa fa-edit fa-1x active"></i></a></td>
+                <td>
+                  <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">
+                    <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}" alt="...">
+                    {? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i>
+                  </a>
+                </td>
+                <td>
+                  <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}">
+                     <i class="fa fa-bell fa-2x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
+                 </a>
+                </td>
               </tr>
               <tr><td></td><td></td></tr>
               <tr><td></td><td></td></tr>
@@ -39,13 +48,10 @@
             </table>
           </div>
           <div class="media" style="margin-top:5px">
-            <a  href="#" class="media-left">
-                <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.imgUrl}" alt="...">
-            </a>
             <div class="media-body">
                 <div class="row">
                   <div class="col-xs-6 text-left">
-                        <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">{? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i></a>
+
                   </div>
                   <div class="col-xs-6 text-right">
 
@@ -90,9 +96,7 @@
                         <span>打卡：</span>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <a ms-if="@item.canedit==1"  ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}">
-                       <i class="fa fa-bell fa-2x fa-spin" style="margin-right:5px;color:orange" aria-hidden="true"></i>
-                   </a>
+
                   </div>
                 </div>
             </div>
