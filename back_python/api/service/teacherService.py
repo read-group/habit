@@ -87,6 +87,17 @@ class TeacherService(JsonResultService):
                     ptemp["isfeed"]="1"
                 else:
                     ptemp["isfeed"]="0"
+
+                # 体力值的缓存计算，body:profileid--key,value:val
+                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (p.id)
+                bodyval=cache.get(body_userid_key)
+                if bodyval:
+                    ptemp["bodyval"]=int(bodyval)
+                else:
+                    c=FeedBack.objects.filter(profile__id=p.id).count()
+                    cache.set("body_userid_key",c)
+                    ptemp["bodyval"]=c
+
                 currentCgStudents.append(ptemp)
             content["cgArray"]=cgArray
             content["currentCgStudents"]=currentCgStudents
