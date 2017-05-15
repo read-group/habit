@@ -99,8 +99,14 @@
           }
       );
       $("#childContent").scroll(function(){
-         alert("d")
+         scrollTop =$(this).scrollTop();
+         //缓存到本地
+         avalon.router.localStorage.setItem("initTop",scrollTop);
       })
+      var initTop=avalon.router.localStorage.getItem("initTop")
+      if(initTop){
+           $("#childContent").scrollTop(initTop)
+      }
     }
   });
   </script>
