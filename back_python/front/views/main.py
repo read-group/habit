@@ -104,15 +104,29 @@ class MainView(TemplateView):
                         accountCash.profile=profile
                         accountCash.save()
 
-                        # 默认创建一个孩子的用户
-                        
+                        # 默认创建一个默认孩子的用户
+                        nkname=decodeUserInfoJson["nickname"]+"@子"
+                        userC=User.objects.create(username=decodeUserInfoJson["openid"]+"@")
+                        # 查询班级
+                        classGroupF=None
+                        #创建另一个Profile
+                        profileC=Profile(nickname=nkname,role=MapEngToRole["child"],
+                        imgUrl=decodeUserInfoJson["headimgurl"],user=userC,org=orgC,childpwd="987654")
+                        profileC.save()
 
+                        #创建三个个人账户（米仓、现金、押金）
+                        accountMilyC=Account()
+                        accountMilyC.accountType="rice"
+                        accountMilyC.profile=profile
+                        accountMilyC.save()
+                        accountCashC=Account()
+                        accountCashC.accountType="cash"
+                        accountCashC.profile=profile
+                        accountCashC.save()
 
+                        cg=ClassGroup.objects.get(pk=7)
+                        profile.classGroups.add(cg)
 
-                        # accountDeposit=Account()
-                        # accountDeposit.accountType="deposit"
-                        # accountDeposit.profile=profile
-                        # accountDeposit.save()
                 finally:
                     #登录
                     # 只要不是学生，就登录
