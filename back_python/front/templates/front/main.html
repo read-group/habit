@@ -62,7 +62,7 @@
                 $history:["/main/activity/t"],
                 $currentPageVm:null,
                 mainMenu:[
-                {"title":"活动","url":"/main/activity/t","icon":"glyphicon glyphicon-tint","isDefault":true},
+                {"title":"首页","url":"/main/activity/t","icon":"fa fa-home","isDefault":true},
                 {"title":"打卡","url":"/main/grain","icon":"glyphicon glyphicon-tree-deciduous","isDefault":false},
                 {"title":"舞台","url":"/main/stage/-1","icon":"fa fa-trophy","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"fa fa-user","isDefault":false}
@@ -223,7 +223,7 @@
               }else{
                 $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
               }
-          
+
               $av.scan(document.getElementById("main"),[vm])
               //设置初始激活
               $("span","#mainDefault").addClass("active")
