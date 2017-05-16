@@ -43,7 +43,7 @@
           </li>
         </ul>
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>朋友们</a></li>
+            <li role="presentation" class="active"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>我的朋友们</a></li>
             <li role="presentation"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
             <li role="presentation"><a href="#"><i class="fa fa-thumbs-up fa-1x active" ></i>捐米榜</a></li>
         </ul>
@@ -99,6 +99,9 @@
         $id:"activity",
         hello:'20天习惯养成',
         activitys:[],
+        isFriend:true,
+        isBody:false,
+        isDevote:false,
         helpClick:function(){
           //$yml.page.$router.pop();
           console.log("helpClick")
