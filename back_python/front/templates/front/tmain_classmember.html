@@ -105,8 +105,8 @@
       })
       var initTop=avalon.router.localStorage.getItem("initTop")
       if(initTop){
-           var top=parseInt(initTop)
-           $("#childContent").animate({scrollTop:top},1000);
+           var top=parseInt(initTop)+200
+           $("#childContent").animate({scrollTop:top},500);
 
       }
     }
