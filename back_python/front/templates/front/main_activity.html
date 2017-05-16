@@ -48,18 +48,21 @@
             <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米榜</a></li>
         </ul>
         <div id="friends" ms-if="@isFriend==true" class="panel panel-default">
+          学会赞美，收获友谊，敬请期待
           <table class="table">
-            <tr><td>朋友们:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
+            <!-- <tr><td>朋友们:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr> -->
           </table>
         </div>
         <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
+          坚持打卡，收获体力，敬请期待
           <table class="table">
-            <tr><td>体力:</td><td>ddd</td></tr>
+            <!-- <tr><td>体力:</td><td>ddd</td></tr> -->
           </table>
         </div>
         <div id="devote" ms-if="@isDevote==true" class="panel panel-default">
+          奉献爱心，收获责任，敬请期待
           <table class="table">
-            <tr><td>捐赠:</td><td>ddd</td></tr>
+            <!-- <tr><td>捐赠:</td><td>ddd</td></tr> -->
           </table>
         </div>
     </div>
@@ -99,8 +102,8 @@
         $id:"activity",
         hello:'20天习惯养成',
         activitys:[],
-        isFriend:false,
-        isBody:true,
+        isFriend:true,
+        isBody:false,
         isDevote:false,
         loadContent:function(el){
           //$yml.page.$router.pop();
