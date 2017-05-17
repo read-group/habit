@@ -36,8 +36,10 @@
     		this.sound.play();
 		},
 		tooglePlay:function(){
+			if(this.curSound)
+			   this.curSound.stop()
 			for (var i in this.soundsArray) {
-          this.soundsArray[i].stop();
+          this.soundsArray.shift();
       }
 			this.soundsArray.length=0;
 			this.isPlay=false;
