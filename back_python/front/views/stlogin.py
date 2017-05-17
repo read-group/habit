@@ -26,6 +26,7 @@ class StLoginView(TemplateView):
 
     def get(self,request,*args,**kwargs):
         self.err=""
+        # 获取当前用户的openid,存到会话中
         return super(StLoginView,self).get(request,*args,**kwargs)
 
     def post(self,request,*args,**kwargs):

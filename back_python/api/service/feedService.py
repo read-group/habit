@@ -241,6 +241,7 @@ class FeedbackService(JsonResultService):
                 bodyval=cache.get(body_userid_key)
                 if bodyval:
                     cache.incr('body_userid_key')
+                    # 更新统计值
                 else:
                     c=FeedBack.objects.filter(profile__id=int(pid)).count()
                     if c==0:
