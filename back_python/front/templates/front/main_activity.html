@@ -42,28 +42,30 @@
              </div>
           </li>
         </ul>
-        <ul class="nav nav-tabs">
-            <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>我的朋友们</a></li>
-            <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
-            <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米榜</a></li>
-        </ul>
-        <div id="friends" ms-if="@isFriend==true" class="panel panel-default">
-          学会赞美，收获友谊，敬请期待
-          <table class="table">
-            <!-- <tr><td>朋友们:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr> -->
-          </table>
-        </div>
-        <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
-          坚持打卡，收获习惯，敬请期待
-          <table class="table">
-            <!-- <tr><td>体力:</td><td>ddd</td></tr> -->
-          </table>
-        </div>
-        <div id="devote" ms-if="@isDevote==true" class="panel panel-default">
-          奉献爱心，收获责任，敬请期待
-          <table class="table">
-            <!-- <tr><td>捐赠:</td><td>ddd</td></tr> -->
-          </table>
+        <div class="text-center">
+          <ul class="nav nav-tabs">
+              <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>我的朋友们</a></li>
+              <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
+              <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米榜</a></li>
+          </ul>
+          <div id="friends" ms-if="@isFriend==true" class="panel panel-default">
+            学会赞美，收获友谊，敬请期待
+            <table class="table">
+              <!-- <tr><td>朋友们:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr> -->
+            </table>
+          </div>
+          <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
+            坚持打卡，收获习惯，敬请期待
+            <table class="table">
+              <!-- <tr><td>体力:</td><td>ddd</td></tr> -->
+            </table>
+          </div>
+          <div id="devote" ms-if="@isDevote==true" class="panel panel-default">
+            奉献爱心，收获责任，敬请期待
+            <table class="table">
+              <!-- <tr><td>捐赠:</td><td>ddd</td></tr> -->
+            </table>
+          </div>
         </div>
     </div>
     <!-- <div id="childContent2"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
