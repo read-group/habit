@@ -36,9 +36,8 @@
     		this.sound.play();
 		},
 		tooglePlay:function(){
-			alert("tooglePlay")
-			for (var i in buzz.sounds) {
-          buzz.sounds[i].stop();
+			for (var i in this.soundsArray) {
+          this.soundsArray[i].stop();
       }
 			this.soundsArray.length=0;
 			this.isPlay=false;
