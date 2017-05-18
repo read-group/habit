@@ -48,26 +48,28 @@
               <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
               <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li>
           </ul>
-          <div id="friends" ms-if="@isFriend==true" class="panel panel-default">
+          <div id="friends" ms-if="@isFriend==true">
             <ul class="list-group">
               <li  ms-for="(i,item) in @familys"   class="list-group-item">
-                <table class="table">
-                  <tr>
-                    <td>
-                      <a ms-attr="{href:'#!/main/stage/'+@item.id}">
-                          <img class="img-circle"  style="width:50px;height:50px" ms-attr="{src:@item.imgUrl}" alt="..."/>
-                          {? @item.nickname ?}
-                      </a>
-                    </td>
-                    <td class="text-right" >
-                         今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
-                    </td>
-                  </tr>
-                  <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
-                  <tr><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
-                  <tr><td>时光:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
-                  </a></td></tr>
-                </table>
+                <div class="class="panel panel-default"">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a ms-attr="{href:'#!/main/stage/'+@item.id}">
+                            <img class="img-circle"  style="width:50px;height:50px" ms-attr="{src:@item.imgUrl}" alt="..."/>
+                            {? @item.nickname ?}
+                        </a>
+                      </td>
+                      <td class="text-right" >
+                           今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
+                      </td>
+                    </tr>
+                    <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
+                    <tr><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
+                    <tr><td>时光:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+                    </a></td></tr>
+                  </table>
+                </div>
               </li>
             </ul>
 
