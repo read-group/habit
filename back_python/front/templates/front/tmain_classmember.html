@@ -19,8 +19,8 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-      <!-- <ul class="list-group">
-        <li  ms-for="(i,item) in @students"   class="list-group-item"> -->
+      <ul class="list-group">
+        <li  ms-for="(i,item) in @students"   class="list-group-item">
           <!-- <div class="media" style="margin-top:5px">
             <a ms-attr="{href:'#!/main/stage/'+@item.id}"  class="media-left">
                 <img class="media-object thumbnail" style="width:115px;height:115px" ms-attr="{src:@item.imgUrl}" alt="...">
@@ -35,7 +35,7 @@
                 <p>体力值：{? @item.bodyval ?}点
             </div>
           </div> -->
-          <div class="panel panel-default" ms-for="(i,item) in @students">
+          <div class="panel panel-default">
             <table class="table">
               <tr>
                 <td>
@@ -54,8 +54,8 @@
               </a></td></tr>
             </table>
           </div>
-        <!-- </li>
-      </ul> -->
+        </li>
+      </ul>
     </div>
   </div>
   <script>
