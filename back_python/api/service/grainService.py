@@ -42,6 +42,15 @@ class GrainService(JsonResultService):
                 else:
                     dataTmp['milyAccount']=account.balance
 
+                # 今日是否打卡
+                nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
+                userid_date_key=settings.CACHE_FORMAT_STR['userid_date_key'] % (profile.id,nowstr)
+                feedStatusToday=cache.get(userid_date_key)
+                if feedStatusToday:
+                    dataTmp["isfeed"]="1"
+                else:
+                    dataTmp["isfeed"]="0"
+
                 # 体力值
                 # 体力值的缓存计算，body:profileid--key,value:val
                 body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (profile.id)
