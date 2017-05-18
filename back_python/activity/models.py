@@ -2,6 +2,7 @@ from django.db import models
 from habitinfo.models import HabitCatalog
 from back.models import EntityBase
 from media.models import MediaResource
+from school.models import School
 
 # Create your models here.
 ACTIVITY_CAT_CHOICES = (
@@ -45,6 +46,12 @@ class Activity(EntityBase):
     status=models.IntegerField(default=0,choices=ACTIVITY_STATUS,verbose_name="活动状态")
     isTop=models.BooleanField(default=False,verbose_name="是否置顶")
     memo=models.TextField(max_length=4096,verbose_name="注意事项")
+    school=models.ForeignKey(
+        School,
+        on_delete=models.CASCADE,
+        verbose_name="发起机构",
+        null=True
+    )
     def save(self, *args, **kwargs):
         if self._state.adding:
             pass
