@@ -51,7 +51,7 @@ class MainView(TemplateView):
                 role=request.GET["role"];
                 # 检查
                 if role=="child":
-                    # 重定向到学生登录页面
+                    # 重定向到学生登录页面,这个url
                      return HttpResponseRedirect("/stlogin")
 
 
@@ -73,6 +73,7 @@ class MainView(TemplateView):
                 decodeUserInfoJson=json.loads(r2)
                 fp1.close()
                 fp2.close()
+
                 # 按照openid查找用户，如果不存在就创建，存在就绕过
                 userTry=None
                 try:
