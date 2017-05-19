@@ -50,6 +50,7 @@ class ActivityService(JsonResultService):
                 dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
                 dataTmp["school"]=act.school.name
+                dataTmp["schoollogo"]=schema+settings.MEDIA_URL+act.school.logo.img.name
                 data.append(dataTmp)
             content["total"]=count
             content["data"]=data

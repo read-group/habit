@@ -2,8 +2,15 @@ from django.db import models
 from django.utils import timezone
 from back.models import EntityBase
 from django.contrib.auth.models import User
+from media.models import MediaResource
 # Create your models here.
 class School(EntityBase):
+    logo=models.ForeignKey(
+            MediaResource,
+            on_delete=models.CASCADE,
+            verbose_name="logo",
+            null=True
+    )
     def __str__(self):
         return self.name;
     class Meta:
