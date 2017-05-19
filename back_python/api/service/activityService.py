@@ -49,6 +49,7 @@ class ActivityService(JsonResultService):
                 dataTmp=self.toJSON(act,["id","name","code","startTime","endTime","desc","isTop",'applyNumber','uplimit','days','cat','amount',])
                 dataTmp["img"]=schema+settings.MEDIA_URL+act.img.img.name
                 dataTmp["cat"]=act.get_cat_display()
+                dataTmp["school"]=act.school.name
                 data.append(dataTmp)
             content["total"]=count
             content["data"]=data
