@@ -21,26 +21,25 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
         <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item">
-            <div class="media" style="margin-top:5px">
-              <div class="media-left">
-                  <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
-                      <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
-                  </a>
-              </div>
-                <div class="media-body">
-                  <h4 class="media-heading"><span style="padding-right:5px"><i class="fa fa-gift  active" aria-hidden="true"></i></span>{? item.name ?}</h4>
-                  <br/>
-                  <p>活动主办方：{? @item.school ?}</p>
-                  <p>活动类别：{? @item.cat ?}</p>
-                  <p>关键词:{? @item.desc ?}</p>
-
-                </div>
-                <div class="media-right media-bottom">
-                   <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
-                      <button class="btn btn-success btn-1x">报名</button>
-                   </a>
-                </div>
-             </div>
+            <div class="panel panel-default">
+              <table class="table">
+                <tr>
+                  <td>
+                    <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
+                        <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
+                    </a>
+                  </td>
+                  <td class="text-right" >
+                    <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
+                       <button class="btn btn-success btn-1x">报名</button>
+                    </a>
+                  </td>
+                </tr>
+                <tr><td>活动主办方:</td><td>{? @item.school ?}</td></tr>
+                <tr><td>活动类别:</td><td>{? @item.cat ?}</td></tr>
+                <tr><td>关键词:</td><td>{? @item.desc ?}</tr>
+              </table>
+            </div>
           </li>
         </ul>
         <div class="text-center">
