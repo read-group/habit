@@ -50,6 +50,7 @@ module.exports = function (app) {
 	}));
 	//发送通知消息
 	app.post('/wx/api/sendMsg',function(req,res){
+		 console.log(req.body)
 		 var touser=req.body.touser;
 		 var tid=req.body.tid;
 		 var queryStr=req.body.queryStr;
