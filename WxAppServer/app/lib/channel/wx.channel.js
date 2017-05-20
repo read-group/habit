@@ -20,6 +20,32 @@ yml.wxchannel = system.object.Abstract({
 		// 设置发送消息的接口地址
 		this.agentid=5;
 		this.setAccessKey(null);
+		this.sendMsgUrlPattern = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
+		this.wxserver="http://wx.yimilan.com/wx/api/getAccessKey";
+		this.mondyPraseTmplId=""
+	},
+	sendTmplMsg : function(touser,tid,queryStr,data,cbk) {
+		var that = this;
+		this.restClient.setRestUrl(this.wxserver);
+		this.restClient.callPost({},function(err,out){
+			console.log(out);
+			var ak=out.content;
+			var surl=that.sendMsgUrlPattern+ak;
+
+			var txtObj ={
+						"touser":touser,
+						"template_id":tid,
+						"url":"http://ll.yimilan.com/home/main.html?"+queryStr,
+						"topcolor":"#FF0000",
+						"data":data
+			}
+			console.log(surl);
+			that.restClient.setRestUrl(surl);
+			that.restClient.callPost(txtObj,function(err,out){
+				cbk(err,out);
+			});
+
+		});
 	},
 	setAccessKey : function(callback) {
 		this.AccessKeyUrl = yml.wxconfig.AccessTokenUrl;

@@ -48,4 +48,15 @@ module.exports = function (app) {
 			});
 			// res.success() 向微信返回处理成功信息，res.fail()返回失败信息。
 	}));
+	//发送通知消息
+	app.post('/wx/api/sendMsg',function(req,res){
+		 var touser=req.body.touser;
+		 var tid=req.body.tid;
+		 var queryStr=req.body.queryStr;
+		 var data=req.body.data;
+		 weixinKey.service.wxapi.sendTmplMsg(touser,tid,queryStr,data,function(rtnData){
+			 res.json(rtnData);
+		 });
+	});
+
 };

@@ -20,6 +20,28 @@ yml.service.wxapi=services.service.base.New({
 		 this.folder="wxdownload/";
 		 this.audioFolder="audio/";
 		 this.imgFolder="img/";
+		 // 设置发送消息的接口地址
+ 		this.sendMsgUrlPattern = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
+
+	},
+	sendTmplMsg : function(touser,tid,queryStr,data,cbk) {
+		var that = this;
+		weixinKey.accessKey.getAccessKey(function(err,rtn){
+			 var surl=that.sendMsgUrlPattern+rtn;
+			 var txtObj ={
+						 "touser":touser,
+						 "template_id":tid,
+						 "url":"http://mily365.com?"+queryStr,
+						 "topcolor":"#FF0000",
+						 "data":data
+			 }
+			 var self=that
+			 that.restClient.setRestUrl(surl);
+			 that.restClient.callPost(txtObj,function(err,out){
+				 var rtnData=self.buildRtnData(err, out, "获取js调用配置失败")
+				 return cbk(rtnData);
+			 });
+		});
 	},
 	order:function(bizOrderId,desc,amount,actid,opid,cbk){
 		var self=this;
