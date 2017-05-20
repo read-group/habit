@@ -112,7 +112,7 @@ class MainView(TemplateView):
                         classGroupF=None
                         #创建另一个Profile
                         profileC=Profile(nickname=nkname,role=MapEngToRole["child"],
-                        imgUrl=decodeUserInfoJson["headimgurl"],user=userC,org=orgC,childpwd="987654")
+                        imgUrl=decodeUserInfoJson["headimgurl"],user=userC,org=orgC,childpwd="987654",openid=decodeUserInfoJson["openid"])
                         profileC.save()
 
                         #创建三个个人账户（米仓、现金、押金）

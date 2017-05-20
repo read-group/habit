@@ -33,7 +33,8 @@ WX={
   'WX_APP_REDIRECT':'http://mily365.com/main?role={role}',
   'WX_AUTH_URL_CODE':"https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&{redirect_uri}&response_type=code&scope=snsapi_userinfo&#wechat_redirect" % ('wx8f428820d2150a9e'),
   'WX_AUTH_URL_INFO':"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code" % ('wx8f428820d2150a9e','751afbe404efaee85ba8638ceeb1dc44',"{code}"),
-  'WX_AUTH_USER_INFO':"https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN"
+  'WX_AUTH_USER_INFO':"https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN",
+  'Tmpid1':"VOYlOAQfjCDSQ7q8uigdsO1ZNi5cEICX31epBBuxyk8",
 }
 
 # Application definition

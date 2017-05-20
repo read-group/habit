@@ -149,6 +149,38 @@ class StageService(JsonResultService):
                             friends.fromp=profile
                             friends.top=postCreator
                             friends.save()
+                    # 给被赞者发送通知
+                    import urllib.request
+                    import json
+                    body={}
+                    data={
+                        "first": {
+                        "value":"您的朋友"+profile.nickname,
+                        "color":"#173177"
+                        },
+                        "keyword1": {
+                        "value":"100元",
+                        "color":"#173177"
+                        },
+                        "keyword2": {
+                        "value":"蒋勇",
+                        "color":"#173177"
+                        },
+                        "remark": {
+                        "value":"点击了解详情",
+                        "color":"#173177"
+                        }
+                    };
+                    		 var touser=req.body.touser;
+                    		 var tid=req.body.tid;
+                    		 var queryStr=req.body.queryStr;
+                    		 var data=req.body.data;
+                    body.touser=postCreator.
+                    body.data=data
+                    jdata = json.dumps(values)
+                    fp1 = urllib.request.urlopen("http://wx.mily365.com/wx/api/sendMsg")
+
+
                 if commentType=="txt":
                     postQuery.update(accumContents=F("accumContents")+1)
 
