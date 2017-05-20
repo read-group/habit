@@ -16,7 +16,6 @@ import sys
 import json
 from django.core.cache import cache
 import logging
-import datetime
 logger = logging.getLogger("django")
 
 # Create your views here.
@@ -150,7 +149,45 @@ class StageService(JsonResultService):
                             friends.top=postCreator
                             friends.save()
                     # 给被赞者发送通知
-                    
+                    # 发送赞扬通知，给被赞扬者
+                    try:
+                        import urllib.request
+                        import json
+                        from django.conf import settings
+                        body={}
+                        data={
+                            "first": {
+                            "value":profile.nickname+"刚刚赞了"+postCreator.nickname+"的打卡",
+                            "color":"#173177"
+                            },
+                            "keyword1": {
+                            "value":"米粒点赞",
+                            "color":"#173177"
+                            },
+                            "keyword2": {
+                            "value":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                            "color":"#173177"
+                            },
+                            "remark": {
+                            "value":"点击按路径'米粒习惯/我的/时光足迹'查看朋友点赞",
+                            "color":"#173177"
+                            }
+                        };
+                        body["touser"]=postCreator.openid
+                        body["data"]=data
+                        body["tid"]=settings.WX["Tmpid1"]
+                        # 当前角色
+                        body["queryStr"]="http://mily365.com?role=host"
+                        jdata = json.dumps(body)
+                        headers={'Content-Type':'application/json'}
+                        request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
+                        fp1 = urllib.request.urlopen(request2)
+                        r2=fp1.read()
+                        fp1.close()
+                    except Exception as e:
+                        logger.error(e)
+                        jsonResult.rtnDic["status"]=-1
+
                 if commentType=="txt":
                     postQuery.update(accumContents=F("accumContents")+1)
 
@@ -163,7 +200,8 @@ class StageService(JsonResultService):
                 post.refresh_from_db()
                 self._makeComments(post,postDic,profile)
 
-                # 发送赞扬通知，给被赞扬者
+
+
             content["data"]=postDic
         except Exception as e:
             logger.error(e)
