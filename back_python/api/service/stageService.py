@@ -187,6 +187,7 @@ class StageService(JsonResultService):
                         request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
                         fp1 = urllib.request.urlopen(request2)
                         r2=fp1.read()
+                        logger.error(r2)
                         fp1.close()
                     except Exception as e:
                         logger.error(e)
