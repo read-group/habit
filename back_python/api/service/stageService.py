@@ -179,7 +179,8 @@ class StageService(JsonResultService):
                         # 当前角色
                         # 获取当前登录人员的角色
                         eng=MapRoleToEng[profile.role]
-                        body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
+                        # body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
+                        body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=x"
                         jdata = json.dumps(body)
                         logger.error(jdata)
                         headers={'Content-Type':'application/json'}
