@@ -45,7 +45,7 @@
             </div>
           </li>
         </ul>
-        <div class="text-center">
+        <!-- <div class="text-center">
           <ul class="nav nav-tabs">
               <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>今日打卡</a></li>
               <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
@@ -90,7 +90,7 @@
               <!-- <tr><td>捐赠:</td><td>ddd</td></tr> -->
             </table>
           </div>
-        </div>
+        </div> -->
     </div>
     <!-- <div id="childContent2"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
 
@@ -212,14 +212,14 @@
          }
       }
       // 获取当前登录用户的家庭成员
-      $yml.ajax('/api/grain/family',null,
-      　  function(res){
-            $yml.page.$vmPage.familys.clear()
-            res.content.data.forEach(function(r){
-              $yml.page.$vmPage.familys.push(r)
-            });
-          }
-      );
+      // $yml.ajax('/api/grain/family',null,
+      // 　  function(res){
+      //       $yml.page.$vmPage.familys.clear()
+      //       res.content.data.forEach(function(r){
+      //         $yml.page.$vmPage.familys.push(r)
+      //       });
+      //     }
+      // );
     }
   });
   </script>
