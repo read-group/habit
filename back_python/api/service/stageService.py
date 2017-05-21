@@ -181,6 +181,7 @@ class StageService(JsonResultService):
                         eng=MapRoleToEng[profile.role]
                         body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
                         jdata = json.dumps(body)
+                        logger.error(jdata)
                         headers={'Content-Type':'application/json'}
                         request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
                         fp1 = urllib.request.urlopen(request2)
