@@ -100,6 +100,50 @@ class StageService(JsonResultService):
         postDic["moneyInfos"]=moneyInfos
         return postDic
 
+    def notifyTmpl(self,profile,postCreator,desc):
+        try:
+            import urllib.request
+            import json
+            from django.conf import settings
+            body={}
+            data={
+                "first": {
+                "value":profile.nickname+desc+postCreator.nickname+"的打卡",
+                "color":"#173177"
+                },
+                "keyword1": {
+                "value":"米粒点评",
+                "color":"#173177"
+                },
+                "keyword2": {
+                "value":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "color":"#173177"
+                },
+                "remark": {
+                "value":"点击按路径'米粒习惯/我的/时光足迹'查看朋友点评",
+                "color":"#173177"
+                }
+            };
+            body["touser"]=postCreator.openid
+            body["data"]=data
+            body["tid"]=settings.WX["Tmpid1"]
+            # 当前角色
+            # 获取当前登录人员的角色
+            eng=MapRoleToEng[profile.role]
+            body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
+            # body["queryStr"]="http://mily365.com?role="+"h"
+            jdata = json.dumps(body)
+            headers={'Content-Type':'application/json'}
+            request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
+            fp1 = urllib.request.urlopen(request2)
+            r2=fp1.read()
+            logger.error(r2)
+            fp1.close()
+        except Exception as e:
+            logger.error(e)
+
+
+
     def comment(self,profile,reqData):
         postid=reqData["postid"]
         commentType=reqData["type"]
@@ -150,54 +194,17 @@ class StageService(JsonResultService):
                             friends.save()
                     # 给被赞者发送通知
                     # 发送赞扬通知，给被赞扬者
-                    try:
-                        import urllib.request
-                        import json
-                        from django.conf import settings
-                        body={}
-                        data={
-                            "first": {
-                            "value":profile.nickname+"刚刚赞了"+postCreator.nickname+"的打卡",
-                            "color":"#173177"
-                            },
-                            "keyword1": {
-                            "value":"米粒点赞",
-                            "color":"#173177"
-                            },
-                            "keyword2": {
-                            "value":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                            "color":"#173177"
-                            },
-                            "remark": {
-                            "value":"点击按路径'米粒习惯/我的/时光足迹'查看朋友点赞",
-                            "color":"#173177"
-                            }
-                        };
-                        body["touser"]=postCreator.openid
-                        body["data"]=data
-                        body["tid"]=settings.WX["Tmpid1"]
-                        # 当前角色
-                        # 获取当前登录人员的角色
-                        eng=MapRoleToEng[profile.role]
-                        body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
-                        # body["queryStr"]="http://mily365.com?role="+"h"
-                        jdata = json.dumps(body)
-                        logger.error(jdata)
-                        headers={'Content-Type':'application/json'}
-                        request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
-                        fp1 = urllib.request.urlopen(request2)
-                        r2=fp1.read()
-                        logger.error(r2)
-                        fp1.close()
-                    except Exception as e:
-                        logger.error(e)
-                        jsonResult.rtnDic["status"]=-1
+                    self.notifyTmpl(profile,postCreator,"刚刚赞了")
+
 
                 if commentType=="txt":
                     postQuery.update(accumContents=F("accumContents")+1)
+                    # 发送文本通知，给被赞扬者
+                    self.notifyTmpl(profile,postCreator,"刚刚留言了")
 
                 if commentType=="sound":
                     postQuery.update(accumAudios=F("accumAudios")+1)
+                    self.notifyTmpl(profile,postCreator,"刚刚语音留言了")
 
                 if commentType=="monkey":
                     postQuery.update(accumMonkeys=F("accumMonkeys")+1)
