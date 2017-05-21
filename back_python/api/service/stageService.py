@@ -178,7 +178,7 @@ class StageService(JsonResultService):
                         body["tid"]=settings.WX["Tmpid1"]
                         # 当前角色
                         # 获取当前登录人员的角色
-                        eng=MapRoleToEng(profile.role)
+                        eng=MapRoleToEng[profile.role]
                         body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+postCreator.id
                         jdata = json.dumps(body)
                         headers={'Content-Type':'application/json'}
