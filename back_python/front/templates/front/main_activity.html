@@ -28,6 +28,7 @@
                     <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
                         <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
                     </a>
+                    <H3>{? @item.name ?}</H3>
                   </td>
                   <td class="text-right" >
                     <div>
@@ -41,7 +42,6 @@
 
                   </td>
                 </tr>
-                <tr><td>活动主题:</td><td><H3>{? @item.name ?}</H3></td></tr>
                 <tr><td>活动主办方:</td><td>{? @item.school ?}</td></tr>
                 <tr><td>活动类别:</td><td>{? @item.cat ?}</td></tr>
                 <tr><td>关键词:</td><td>{? @item.desc ?}</tr>
