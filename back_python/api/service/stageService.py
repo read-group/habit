@@ -156,7 +156,7 @@ class StageService(JsonResultService):
             with transaction.atomic():
                 postQuery=Post.objects.select_related("feedBack").filter(id=int(postid));
                 post=postQuery[0]
-
+                postCreator=post.feedBack.profile
                 # postDic=self.toJSON(post,["id","content","imgUrl","audioUrls","postDate","accumPrases","accumContents",])
                 # postDic["nickname"]=post.feedBack.profile.nickname
                 # postDic["headingImgUrl"]=post.feedBack.profile.imgUrl
@@ -181,7 +181,7 @@ class StageService(JsonResultService):
                     # 表示当前是已经点赞
                     postDic["isPrased"]=1
                     # 加好友
-                    postCreator=post.feedBack.profile
+                    
                     if postCreator.id!=profile.id:
                         # 检查是否已经成为朋友，如果已经成为朋友，那么无需再去创建
                         rawsql="select id,count(id) as ct from org_friend where ( fromp_id=%s and top_id=%s ) or ( fromp_id=%s and top_id=%s )"
