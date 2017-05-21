@@ -16,7 +16,7 @@
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom">
       <div class="container">
         <div class="row navButton">
-            <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center sound" style="padding:0px;">
+            <div ms-for="(i,item) in @mainMenu"  class="col-xs-3 col-md-3 text-center sound" style="padding:0px;background-color:#D4A753">
               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                 <span ms-attr="{class:@item.icon}"></span>
                 <div>{? item.title ?}</div>
