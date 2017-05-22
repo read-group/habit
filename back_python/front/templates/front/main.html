@@ -13,13 +13,17 @@
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
   <div class="content" id="content">
   </div>
-  <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom" style="background-image:url('/static/front/img/tab_bg.png');background-attachment:fixed;;background-position:-50px -50px 100% 100%">
+  <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom" style="background-color:#D4A753">
       <div class="container">
-        <div class="btn-group btn-group-justified" style="">
+        <div class="btn-group btn-group-justified">
           <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
              <button type="button" class="btn btn-default" style="border:none;background-color:transparent">
-               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+               <a ms-if="item.title!='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                  <span ms-attr="{class:@item.icon}"></span>
+                 <div>{? item.title ?}</div>
+               </a>
+               <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+                 <button class="button-glow button-circle button-action button-jumbo"><span ms-attr="{class:@item.icon}"></span></button>
                  <div>{? item.title ?}</div>
                </a>
              </button>
