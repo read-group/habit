@@ -15,12 +15,14 @@
   </div>
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom" style="background-color:#D4A753">
       <div class="container">
-        <div class="row navButton center-block">
-          <div ms-for="(i,item) in @mainMenu"  class="col-xs-2 col-md-2 text-center sound" style="padding:0px;">
-              <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
-                <span ms-attr="{class:@item.icon}"></span>
-                <div>{? item.title ?}</div>
-              </a>
+        <div class="btn-group btn-group-justified">
+          <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
+             <button type="button" class="btn btn-default">
+               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+                 <span ms-attr="{class:@item.icon}"></span>
+                 <div>{? item.title ?}</div>
+               </a>
+             </button>
           </div>
         </div>
       </div>
