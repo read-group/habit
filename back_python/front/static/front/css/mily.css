@@ -35,6 +35,7 @@ padding: 0px 0px;
 }
 .list-group{
   /*border-bottom: none;*/
+  border: none;
   border-top-left-radius:none;
   border-top-right-radius: none;
 }

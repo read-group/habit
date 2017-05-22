@@ -13,7 +13,7 @@
       </div>
     </nav>
     <div class="container-fluid childContent">
-       <div class="list-group" style="border:none">
+       <div class="list-group">
          <button class="list-group-item">
              <img  ms-attr="{src:@myinfo.imgUrl,class:'img-circle center-block'}" style="width:50px;height:50px" alt="...">
          </button>
@@ -26,23 +26,25 @@
               </div>
               <div class="col-xs-6 text-right">
                 <div style="margin-top:20px">
-                 　
+                 　<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </div>
              </div>
            </div>
          </button>
          <button   class="list-group-item">
            <div class="row">
-              <div class="col-xs-12 text-left">
+              <div class="col-xs-6 text-left">
                   <a ms-attr="{href:'#!/main/grain/friends'}" id="mf">
                     <span class="active"><i class="fa fa-sun-o" style="color:orange"></i>&nbsp;我的朋友</span>
                   </a>
               </div>
-              <!-- <div class="col-xs-6 text-right">
+              <div class="col-xs-6 text-right">
                 <div style="margin-top:20px">
-                 　
+                  <a ms-attr="{href:'#!/main/grain/friends'}" id="mf">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </a>       　
                 </div>
-             </div> -->
+             </div>
            </div>
          </button>
          <button ms-click="@exit"  class="list-group-item">
