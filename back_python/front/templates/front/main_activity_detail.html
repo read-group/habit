@@ -55,32 +55,6 @@
                </tr>
               </table>
             </div>
-            <!-- <div class="thumbnail noborder" ms-if="@item">
-              <img class="media-object" ms-attr="{src:@item.img}" style="width:400px;height:300px" alt="...">
-              <div class="caption">
-                <h3>{? @item.name ?}</h3>
-                <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit>@item.applyNumber">
-                  <button  class="btn button-highlight" role="button" ms-click="@digClick">我要报名</button>
-                </p>
-                <p class="text-left" ms-if="@item.applied=='0' && @item.uplimit<=@item.applyNumber">
-                  <button  class="btn button-default" role="button">名额已满</button>
-                </p>
-                <p class="text-left" ms-if="@item.applied=='1'">
-                  <button  class="btn btn-success" role="button">已报名</button>
-                </p>
-                <p>活动类别：{? @item.catName ?}</p>
-                <p>费用金额：{? @item.amount ?}元</p>
-                <p>关键词:{? @item.desc ?}</p>
-                <p>开始日期：{? @item.startTime ?}</p>
-                <p>截止日期：{? @item.endTime ?}</p>
-                <p>持续天数：{? @item.days ?}天</p>
-                <p>还剩名额：{? @item.uplimit - @item.applyNumber?}个</p>
-                <p>
-                  <div ms-html="@item.memo">
-                  </div>
-                </p>
-              </div>
-            </div> -->
           </div>
           <div class="col-sm-12" ms-if="@isDiagnose">
             <div class="thumbnail noborder">
