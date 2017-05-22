@@ -17,7 +17,7 @@
       <div class="container">
         <div class="btn-group btn-group-justified">
           <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
-             <button type="button" class="btn btn-default" style="border:none">
+             <button type="button" class="btn btn-default" style="border:none;background-color:transparent">
                <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                  <span ms-attr="{class:@item.icon}"></span>
                  <div>{? item.title ?}</div>
