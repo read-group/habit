@@ -17,14 +17,12 @@
       <div class="container">
         <div class="btn-group btn-group-justified">
           <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
-             <button ms-if="item.title!='打卡'" type="button" class="btn btn-default" style="border:none;background-color:transparent">
-               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+             <button  type="button" class="btn btn-default" style="border:none;background-color:transparent">
+               <a ms-if="item.title!='打卡'"   class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                  <span ms-attr="{class:@item.icon}"></span>
                  <div>{? item.title ?}</div>
                </a>
-             </button>
-             <button ms-if="item.title=='打卡'" type="button" class="btn btn-default" style="border:none;background-color:transparent">
-               <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+               <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                  <div style="margin-top:-20px;z-index:1024">
                    <button class="button-glow button-circle button-action button-jumbo"><i ms-attr="{class:@item.icon}"></i></button>
                  </div>
