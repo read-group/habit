@@ -19,9 +19,9 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <ul class="list-group">
-          <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item">
-            <div class="panel panel-default">
+        <!-- <ul class="list-group">
+          <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item"> -->
+            <div  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id，class:'panel panel-default'}">
               <table class="table">
                 <tr>
                   <td>
@@ -47,8 +47,8 @@
                 <tr><td>关键词:</td><td>{? @item.desc ?}</tr>
               </table>
             </div>
-          </li>
-        </ul>
+          <!-- </li>
+        </ul> -->
         <!-- <div class="text-center">
           <ul class="nav nav-tabs">
               <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>今日打卡</a></li>
