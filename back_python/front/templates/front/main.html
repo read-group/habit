@@ -24,7 +24,7 @@
                </a>
                <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                    <button class="button-glow button-circle" style="position:fixed;bottom:23px;background-color:#D4A753">
-                     <i ms-attr="{class:@item.icon}"></i>
+                     <span ms-attr="{class:@item.icon}"></span>
                      <div style="font-size:12px;margin-top:-20px">{? item.title ?}</div>
                    </button>
 
@@ -73,7 +73,7 @@
                 mainMenu:[
                 {"title":"首页","url":"/main/activity/t","icon":"fa fa-home","isDefault":true},
                 {"title":"排行","url":"/main/grain","icon":"fa fa-trophy","isDefault":false},
-                {"title":"打卡","url":"/main/grain","icon":"fa fa-plus","isDefault":false},
+                {"title":"打卡","url":"/main/grain","icon":"glyphicon glyphicon-time","isDefault":false},
                 {"title":"舞台","url":"/main/stage/-1","icon":"fa fa-trophy","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"fa fa-user","isDefault":false}
                 ],
