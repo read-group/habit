@@ -31,7 +31,7 @@
                   </td>
                   <td class="text-left" >
                     <H4><img src="/static/front/img/active_img.png" style="width:32px;height:32px">{? @item.name ?}</H4>
-                    <div>
+                    <div style="margin-top:40px">
                       <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
                          <button class="btn btn-success btn-1x">查看详情，去报名</button>
                       </a>
@@ -39,7 +39,7 @@
 
                   </td>
                 </tr>
-                <tr><td><img class="img-circle" style="width:32px;height:32px" ms-attr="{src:@item.schoollogo}" alt="..."/>活动主办方:</td><td>{? @item.school ?}</td></tr>
+                <tr><td><img class="img-circle" style="width:16px;height:16px" ms-attr="{src:@item.schoollogo}" alt="..."/>活动主办方:</td><td>{? @item.school ?}</td></tr>
                 <tr><td>活动类别:</td><td>{? @item.cat ?}</td></tr>
                 <tr><td>关键词:</td><td>{? @item.desc ?}</tr>
               </table>
