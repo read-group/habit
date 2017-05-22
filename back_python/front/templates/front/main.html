@@ -22,10 +22,8 @@
                  <span ms-attr="{class:@item.icon}"></span>
                  <div>{? item.title ?}</div>
                </a>
-               <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
-                 <div style="postion:absolute;margin-top:-20px">
-                   <button class="button-glow button-circle button-action button-jumbo"><i ms-attr="{class:@item.icon}"></i></button>
-                 </div>
+               <a ms-if="item.title=='打卡'" class="button-glow button-circle button-action button-jumbo" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+                 <i ms-attr="{class:@item.icon}"></i>
                  <div>{? item.title ?}</div>
                </a>
              </button>
