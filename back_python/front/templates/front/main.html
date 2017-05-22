@@ -23,8 +23,8 @@
                  <div>{? item.title ?}</div>
                </a>
                <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
-                 <div style="position:fixed;bottom:50px;">
-                   <button class="button-glow button-circle button-action button-jumbo"><i ms-attr="{class:@item.icon}"></i></button>
+                 <div>
+                   <button class="button-glow button-circle button-action button-jumbo" style="position:fixed;bottom:50px;"><i ms-attr="{class:@item.icon}"></i></button>
                  </div>
                  <div>{? item.title ?}</div>
                </a>
