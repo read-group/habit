@@ -15,7 +15,7 @@
   </div>
   <nav ms-visible="isRoot"  class="navbar navbar-default  navbar-fixed-bottom" style="background-color:#D4A753">
       <div class="container">
-        <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-justified" style="background-image:url('/static/front/img/tab_bg.png')">
           <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
              <button type="button" class="btn btn-default" style="border:none;background-color:transparent">
                <a  class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
@@ -66,7 +66,7 @@
                 mainMenu:[
                 {"title":"首页","url":"/main/activity/t","icon":"fa fa-home","isDefault":true},
                 {"title":"排行","url":"/main/grain","icon":"fa fa-trophy","isDefault":false},
-                {"title":"打卡","url":"/main/grain","icon":"glyphicon glyphicon-tree-deciduous","isDefault":false},
+                {"title":"打卡","url":"/main/grain","icon":"fa fa-plus","isDefault":false},
                 {"title":"舞台","url":"/main/stage/-1","icon":"fa fa-trophy","isDefault":false},
                 {"title":"我的","url":"/main/my","icon":"fa fa-user","isDefault":false}
                 ],
