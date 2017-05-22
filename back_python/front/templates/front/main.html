@@ -23,9 +23,9 @@
                  <div>{? item.title ?}</div>
                </a>
                <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
-                 <div>
+                 <div class="text-center">
                    <button class="button-glow button-circle button-action button-jumbo" style="position:fixed;bottom:25px;background-color:#D4A753"><i ms-attr="{class:@item.icon}"></i></button>
-                   <div><span>{? item.title ?}</span></div>
+                   <span>{? item.title ?}</span>
                  </div>
                </a>
              </button>
