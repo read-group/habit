@@ -7,7 +7,7 @@
           </a> -->
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" class="topNavButton">打卡</h4>
+            <h4 id="title" style="color:#D4A753">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
           <a href="#!/main/grain/addchild">
@@ -35,10 +35,10 @@
                    </a>
                   </td>
                 </tr>
-                <tr><td>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
-                <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
-                <tr><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
-                <tr><td>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+                <tr><td><i class="fa fa-address-card-o" style="color:orange" aria-hidden="true"></i>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
+                <tr><td><i class="fa fa-cubes" style="color:orange" aria-hidden="true"></i>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
+                <tr><td><i class="fa fa-thermometer-empty" style="color:orange"  aria-hidden="true"></i>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
+                <tr><td><i class="fa fa-calendar" style="color:orange" aria-hidden="true"></i>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
                 </a></td></tr>
                 <tr><td><i class="fa fa-info" style="color:orange"></i>提示:</td><td style="font-size:10px;padding-top:8px;width:210px"><span>点上方<i  class="fa fa-edit fa-1x active"></i>可以给孩子换头像和加入部落，查看孩子用于其它设备登录的昵称和密码</span></td></tr>
               </table>
