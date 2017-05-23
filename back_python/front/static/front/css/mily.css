@@ -3,8 +3,11 @@ body{
 margin: 0px 0px;
 padding: 0px 0px;
 }
-.headcolor{
-  color:#D4A753
+.topNavButton{
+
+}
+.topNavButton.headtitle{
+  fontcolor:#D4A753
 }
 [ms-controller],[ms-important]{
      visibility: hidden;
