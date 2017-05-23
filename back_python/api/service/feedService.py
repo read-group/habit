@@ -177,7 +177,7 @@ class FeedbackService(JsonResultService):
                 cache.delete(userid_habitid_date_key)
                 cache.delete(userid_date_key)
                 # 减少一个体力值
-                cache.decr('body_userid_key')
+                cache.decr(body_userid_key)
                 # 返回当前帖子对应的习惯
                 content["habitid"]=int(habitid)
 
@@ -251,20 +251,21 @@ class FeedbackService(JsonResultService):
                 # 体力值的缓存计算，body:profileid--key,value:val
                 body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (int(pid))
                 bodyval=cache.get(body_userid_key)
-                if bodyval:
-                    cache.incr('body_userid_key')
-                    # 更新统计值
-                else:
+                if not bodyval:
                     c=FeedBack.objects.filter(profile__id=int(pid)).count()
                     if c==0:
-                        cache.set("body_userid_key",1)
+                        cache.set(body_userid_key,1)
                     else:
                         cc=c+1
-                        cache.set("body_userid_key",cc)
+                        cache.set(body_userid_key,cc)
+
+                    # 更新统计值
+                else:
+                    cache.incr(body_userid_key)
                 try:
                     feedBack.save()
                 except:
-                    cache.decr('body_userid_key')
+                    cache.decr(body_userid_key)
                 #创建头贴*
                 post=Post()
                 post.feedBack=feedBack

@@ -60,7 +60,7 @@ class GrainService(JsonResultService):
                 logger.error("body val....................cache")
                 if not bodyval:
                     c=FeedBack.objects.filter(profile__id=profile.id).count()
-                    cache.set("body_userid_key",c,None)
+                    cache.set(body_userid_key,c)
                     dataTmp["bodyval"]=c
                 else:
                     dataTmp["bodyval"]=int(bodyval)
