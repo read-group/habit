@@ -37,7 +37,10 @@ class HomeService(JsonResultService):
                     bodyvalT=int(tmpval)
                 accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (pf.id)
                 tmpAccount=cache.get(accountkey)
-                milyT=tmpAccount.balance
+                if not tmpAccount:
+                    pass
+                else:
+                    milyT=tmpAccount.balance
 
             else:
                 children=Profile.objects.filter(org__id__exact=pf.org.id).filter(role__exact='4').order_by("createdTime");
