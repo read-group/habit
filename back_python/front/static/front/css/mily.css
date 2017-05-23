@@ -7,7 +7,7 @@ padding: 0px 0px;
 
 }
 .topNavButton.headtitle{
-  fontcolor:#D4A753
+  color:#D4A753
 }
 [ms-controller],[ms-important]{
      visibility: hidden;
