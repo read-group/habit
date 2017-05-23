@@ -32,7 +32,10 @@
                      今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
                 </td>
               </tr>
-              <tr><td><i class="fa fa-cubes" style="color:orange" aria-hidden="true"></i>米仓:{? @item.milyAccount ?}粒</td><td><i class="fa fa-line-chart" style="color:orange" aria-hidden="true"></i>体力值:{? @item.bodyval ?}点</td></tr>
+              <tr>
+                <td><i class="fa fa-cubes" style="color:orange" aria-hidden="true"></i>米仓:{? @item.milyAccount ?}粒</td>
+                <td class="text-right"><i class="fa fa-line-chart" style="color:orange" aria-hidden="true"></i>体力值:{? @item.bodyval ?}点</td>
+              </tr>
               <tr><td><i class="fa fa-calendar" style="color:orange" aria-hidden="true"></i>时光:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
               </a></td></tr>
             </table>
@@ -86,7 +89,7 @@
       })
       var initTop=avalon.router.localStorage.getItem("initTop")
       if(initTop){
-           var top=parseInt(initTop)+200
+           var top=parseInt(initTop)+100
            $("#childContent").animate({scrollTop:top},500);
 
       }
