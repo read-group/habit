@@ -25,17 +25,24 @@ class HomeService(JsonResultService):
             pf=user.profile
             dataTmp=self.toJSON(pf,["id","nickname","imgUrl","role"])
             logger.error(dataTmp['nickname'])
-            # 查询出当前家庭的孩子ids
-            children=Profile.objects.filter(org__id__exact=pf.org.id).filter(role__exact='4').order_by("createdTime");
             bodyvalT=0
-
-            for pc in children:
-                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (pc.id)
+            if dataTmp["role"]=="4":
+                # 查询出当前家庭的孩子ids
+                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (pf.id)
                 tmpval=cache.get(body_userid_key)
                 if not tmpval:
                     pass
                 else:
-                    bodyvalT=bodyvalT+int(tmpval)
+                    bodyvalT=int(tmpval)
+            else:
+                children=Profile.objects.filter(org__id__exact=pf.org.id).filter(role__exact='4').order_by("createdTime");
+                for pc in children:
+                    body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (pc.id)
+                    tmpval=cache.get(body_userid_key)
+                    if not tmpval:
+                        pass
+                    else:
+                        bodyvalT=bodyvalT+int(tmpval)
 
             dataTmp["bodyvalT"]=bodyvalT
             content["myinfo"]=dataTmp
