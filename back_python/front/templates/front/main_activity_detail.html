@@ -17,11 +17,11 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" style="padding:0px">
           <div class="col-sm-12" ms-if="@isDetail">
             <div class="panel panel-default" ms-if="@item">
               <div class="panel-body">
-                <img  ms-attr="{src:@item.img}" style="width:100%;height:300px" alt="...">
+                <img  ms-attr="{src:@item.img}" style="width:100%;height:300px" alt="..."/>
               </div>
 
               <h4><img src="/static/front/img/active_img.png" style="width:32px;height:32px"/>{? @item.name ?}</h4>
