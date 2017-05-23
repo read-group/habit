@@ -55,12 +55,12 @@ class GrainService(JsonResultService):
                 # 体力值的缓存计算，body:profileid--key,value:val
                 body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (profile.id)
                 bodyval=cache.get(body_userid_key)
-                if bodyval:
-                    dataTmp["bodyval"]=int(bodyval)
-                else:
+                if not bodyval:
                     c=FeedBack.objects.filter(profile__id=profile.id).count()
                     cache.set("body_userid_key",c)
                     dataTmp["bodyval"]=c
+                else:
+                    dataTmp["bodyval"]=int(bodyval)
                 data.append(dataTmp)
             content["data"]=data
         except Exception as e:

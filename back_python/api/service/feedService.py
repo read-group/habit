@@ -62,9 +62,16 @@ class FeedbackService(JsonResultService):
                         userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (activity.id,int(pid),int(habittmp["id"]),)
                         lastFeed=cache.get(userid_habitid_key)
                         if not lastFeed:
-                            habittmp["accumDays"]=0
-                            habittmp["freeMily"]=0
-                            habittmp["accumMily"]=0
+                            try:
+                                lastFeed=FeedBack.objects.filter(profile__id=int(pid)).filter(orgActivityHistory__id=orgacthistory.id).filter(habit__id=int(habittmp["id"])).order_by('-createdTime')[0]
+                                habittmp["accumDays"]=lastFeed.accumDays
+                                habittmp["freeMily"]=lastFeed.freeMily
+                                habittmp["accumMily"]=lastFeed.accumMily
+                                cache.set(userid_habitid_key,lastFeed)
+                            except:
+                                habittmp["accumDays"]=0
+                                habittmp["freeMily"]=0
+                                habittmp["accumMily"]=0
                         else:
                             habittmp["accumDays"]=lastFeed.accumDays
                             habittmp["freeMily"]=lastFeed.freeMily
@@ -125,6 +132,9 @@ class FeedbackService(JsonResultService):
                 userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (actid,pid,habitid,)
                 userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (actid,pid,habitid,post.postDate)
                 userid_date_key=settings.CACHE_FORMAT_STR['userid_date_key'] % (pid,post.postDate)
+                # 减少体力值
+                body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (pid)
+
 
                 # 设置系统账户历史
                 sysAccountHistory=SysAccountHistory()
@@ -166,6 +176,8 @@ class FeedbackService(JsonResultService):
                 cache.delete(userid_habitid_key)
                 cache.delete(userid_habitid_date_key)
                 cache.delete(userid_date_key)
+                # 减少一个体力值
+                cache.decr('body_userid_key')
                 # 返回当前帖子对应的习惯
                 content["habitid"]=int(habitid)
 
@@ -309,14 +321,13 @@ class FeedbackService(JsonResultService):
         except Exception as e:
             logger.error(e)
             if userid_habitid_key:
-                cache.set(userid_habitid_key,lastFeed)
+                # cache.set(userid_habitid_key,lastFeed)
+                cache.delete(userid_habitid_key)
             if userid_habitid_date_key:
                 cache.delete(userid_habitid_date_key)
             if userid_date_key:
                 cache.delete(userid_date_key)
             # 清空当前保存的最后一个反馈和当前日期的反馈
-            info=sys.exc_info()
-            logging.error(info)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
