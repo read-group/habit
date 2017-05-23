@@ -22,7 +22,7 @@ class HomeService(JsonResultService):
         jsonResult=self.initJsonResult()
         content={}
         try:
-            dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl",])
+            dataTmp=self.toJSON(user.profile,["id","nickname","imgUrl","role"])
             logger.error(dataTmp['nickname'])
             content["myinfo"]=dataTmp
         except:
