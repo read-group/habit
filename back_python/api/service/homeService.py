@@ -26,6 +26,7 @@ class HomeService(JsonResultService):
             dataTmp=self.toJSON(pf,["id","nickname","imgUrl","role"])
             logger.error(dataTmp['nickname'])
             bodyvalT=0
+            milyT=0
             if dataTmp["role"]=="4":
                 # 查询出当前家庭的孩子ids
                 body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (pf.id)
@@ -34,6 +35,10 @@ class HomeService(JsonResultService):
                     pass
                 else:
                     bodyvalT=int(tmpval)
+                accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (pf.id)
+                tmpAccount=cache.get(accountkey)
+                milyT=tmpAccount.balance
+
             else:
                 children=Profile.objects.filter(org__id__exact=pf.org.id).filter(role__exact='4').order_by("createdTime");
                 for pc in children:
@@ -45,6 +50,7 @@ class HomeService(JsonResultService):
                         bodyvalT=bodyvalT+int(tmpval)
 
             dataTmp["bodyvalT"]=bodyvalT
+            dataTmp["milyT"]=milyT
             content["myinfo"]=dataTmp
         except:
             info=sys.exc_info()
