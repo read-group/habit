@@ -55,6 +55,9 @@ class GrainService(JsonResultService):
                 # 体力值的缓存计算，body:profileid--key,value:val
                 body_userid_key=settings.CACHE_FORMAT_STR['body_userid_key'] % (profile.id)
                 bodyval=cache.get(body_userid_key)
+                logger.error("body val....................cache")
+                logger.error(bodyval)
+                logger.error("body val....................cache")
                 if not bodyval:
                     c=FeedBack.objects.filter(profile__id=profile.id).count()
                     cache.set("body_userid_key",c)
