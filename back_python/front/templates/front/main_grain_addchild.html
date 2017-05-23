@@ -37,7 +37,7 @@
               <label style="color:#D4A753"><i class="fa  fa-info-circle" style="color:orange"></i>提示:孩子可以利用呢称和密码在其他设备登录</label>
             </div>
             <div class="form-group text-center">
-              <button  ms-click="@saveClick" class="btn  btn-success">保存</button>
+              <button  ms-click="@saveClick" class="btn  btn-success">保存信息</button>
             </div>
         </form>
       </div>
@@ -55,7 +55,7 @@ $yml.page=$yml.pageBase.New(null,{
     var self=this;
     return {
       $id:"addChild",
-      headUrl:"",
+      headUrl:"/static/front/img/add.png",
       nickname:"",
       password:"",
       classid:"",
