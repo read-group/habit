@@ -19,43 +19,25 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-
-          <!-- <div class="media" style="margin-top:5px">
-            <a ms-attr="{href:'#!/main/stage/'+@item.id}"  class="media-left">
-                <img class="media-object thumbnail" style="width:115px;height:115px" ms-attr="{src:@item.imgUrl}" alt="...">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">
-                  {? @item.nickname ?}
-                </h4>
-                <br/>
-                <p>今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
-                <p>米仓：{? @item.milyAccount ?}粒
-                <p>体力值：{? @item.bodyval ?}点
-            </div>
-          </div> -->
           <div class="panel panel-default" ms-for="(i,item) in @students">
             <table class="table">
               <tr  style="background-color:#F6F4F2">
                 <td>
                   <a ms-attr="{href:'#!/main/stage/'+@item.id}">
-                      <img class="img-circle"  style="width:50px;height:50px" ms-attr="{src:@item.imgUrl}" alt="..."/>
+                      <img class="img-circle"  style="width:32px;height:32px" ms-attr="{src:@item.imgUrl}" alt="..."/>
                       {? @item.nickname ?}
                   </a>
                 </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td class="text-right">
+                <td class="text-right" >
                      今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
                 </td>
               </tr>
-              <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
-              <tr><td colspan="4">时光:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+              <tr><td>米仓:{? @item.milyAccount ?}粒</td><td>体力值:{? @item.bodyval ?}点</td></tr>
+              <tr><td>时光:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
               </a></td></tr>
             </table>
           </div>
+
     </div>
   </div>
   <script>
