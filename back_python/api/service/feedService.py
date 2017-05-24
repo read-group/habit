@@ -16,8 +16,10 @@ import json
 from django.core.cache import cache
 import logging
 import datetime
-logger = logging.getLogger("django")
-
+import random
+logger = logging.getLogger("django")3
+# http://mily365.com/media/upload/幻灯片3.PNG
+randPic=['http://mily365.com/media/upload/幻灯片1.PNG','http://mily365.com/media/upload/幻灯片2.PNG','http://mily365.com/media/upload/幻灯片3.PNG']
 # Create your views here.
 class FeedbackService(JsonResultService):
     def orghabits(self,org,role,schema,pid):
@@ -99,7 +101,8 @@ class FeedbackService(JsonResultService):
                 post=Post.objects.get(pk=int(pinfo['postid']))
                 post.content=pinfo['content']
                 if pinfo['imageUrl']=="#":
-                    post.imgUrl="http://mily365.com/media/upload/mily.png"
+                    rp=random.choice(randPic)   
+                    post.imgUrl=rp
                 else:
                     post.imgUrl=pinfo['imageUrl']
                 post.audioUrls=pinfo['audioUrls']
