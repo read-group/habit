@@ -101,7 +101,7 @@ class FeedbackService(JsonResultService):
                 post=Post.objects.get(pk=int(pinfo['postid']))
                 post.content=pinfo['content']
                 if pinfo['imageUrl']=="#":
-                    rp=random.choice(randPic)   
+                    rp=random.choice(randPic)
                     post.imgUrl=rp
                 else:
                     post.imgUrl=pinfo['imageUrl']
@@ -298,7 +298,7 @@ class FeedbackService(JsonResultService):
                 sysAccountHistory.sysAccount=sysAccount
                 sysAccountHistory.save()
                 # 设置平台最新账户缓存
-                cache.set("sysAccount",sysAccountHistory.sysAccount)
+                cache.set("sysAccount",sysAccountHistory.sysAccount,None)
                 # 设置个人账户历史　　　　　　　　　　
                 accountHistory=AccountHistory()
                 accountHistory.tradeType=MAP_TRADE_TYPE["feedBackMilyInput"]
@@ -318,7 +318,7 @@ class FeedbackService(JsonResultService):
                 accountHistory.tradeAmount=feedBack.freeMily
                 accountHistory.save()
                 # 设置最新个人账户缓存
-                cache.set(accountkey,accountHistory.account)
+                cache.set(accountkey,accountHistory.account,None)
                 # 返回当前帖子
                 content["postid"]=post.id
                 content["habitid"]=int(habitid)

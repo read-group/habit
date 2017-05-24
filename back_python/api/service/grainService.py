@@ -38,7 +38,7 @@ class GrainService(JsonResultService):
                 if not account:
                     account=Account.objects.filter(profile__id=profile.id).filter(accountType="rice")[0]
                     dataTmp['milyAccount']=account.balance
-                    cache.set(accountkey,account)
+                    cache.set(accountkey,account,None)
                 else:
                     dataTmp['milyAccount']=account.balance
 
