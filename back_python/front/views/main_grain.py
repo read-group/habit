@@ -11,6 +11,11 @@ class GrainView(TemplateView):
     def get(self,request,*args,**kwargs):
         return super(GrainView,self).get(request,*args,**kwargs)
 
+class GrainOrderView(TemplateView):
+    template_name="front/main_grain_order.html"
+    def get(self,request,*args,**kwargs):
+        return super(GrainOrderView,self).get(request,*args,**kwargs)
+
 class GrainAddChildView(TemplateView):
     template_name="front/main_grain_addchild.html"
     def get(self,request,*args,**kwargs):
