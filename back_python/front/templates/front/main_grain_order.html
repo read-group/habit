@@ -7,7 +7,7 @@
             </a> -->
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" style="color:#D4A753">排行榜</h4>
+              <h4 id="title" style="color:#D4A753">排行</h4>
           </div>
           <div class="col-xs-4 text-right">
 
@@ -17,34 +17,12 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <div class="text-center">
         <ul class="nav nav-tabs">
-            <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>今日打卡</a></li>
             <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
+            <li role="presentation" ms-attr="{remark:'f',class:(@isFriend?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>米粒排行榜</a></li>
             <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li>
         </ul>
-        <div id="friends" ms-if="@isFriend==true">
-          <ul class="list-group">
-            <li  ms-for="(i,item) in @familys"   class="list-group-item">
-              <div class="panel panel-default">
-                <table class="table">
-                  <tr>
-                    <td>
-                      <a ms-attr="{href:'#!/main/stage/'+@item.id}">
-                          <img class="img-circle"  style="width:50px;height:50px" ms-attr="{src:@item.imgUrl}" alt="..."/>
-                          {? @item.nickname ?}
-                      </a>
-                    </td>
-                    <td class="text-right" >
-                         今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
-                    </td>
-                  </tr>
-                  <tr><td>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
-                  <tr><td>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
-                  <tr><td>打卡历史:</td><td class="text-right"><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}"><span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
-                  </a></td></tr>
-                </table>
-              </div>
-            </li>
-          </ul>
+        <div id="friends" ms-if="@isMily==true">
+
 
         </div>
 
@@ -77,7 +55,7 @@
       return {
         $id:"order",
         friends:[],
-        isFriend:true,
+        isMily:true,
         isBody:false,
         isDevote:false,
         backClick:function(){
@@ -94,19 +72,19 @@
           var $t=$(target)
           remark=$t.attr("remark")
           if(remark=="f"){
-            this.isFriend=true;
+            this.isMily=true;
             this.isBody=false;
             this.isDevote=false;
           }
           if(remark=="b"){
             this.isBody=true;
-            this.isFriend=false;
+            this.isMily=false;
             this.isDevote=false;
           }
           if(remark=="d"){
             this.isDevote=true;
             this.isBody=false;
-            this.isFriend=false;
+            this.isMily=false;
           }
 
         },
