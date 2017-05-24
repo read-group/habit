@@ -17,7 +17,7 @@ from django.core.cache import cache
 import logging
 import datetime
 import random
-logger = logging.getLogger("django")3
+logger = logging.getLogger("django")
 # http://mily365.com/media/upload/幻灯片3.PNG
 randPic=['http://mily365.com/media/upload/幻灯片1.PNG','http://mily365.com/media/upload/幻灯片2.PNG','http://mily365.com/media/upload/幻灯片3.PNG']
 # Create your views here.
