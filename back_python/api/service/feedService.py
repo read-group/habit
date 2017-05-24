@@ -254,10 +254,10 @@ class FeedbackService(JsonResultService):
                 if not bodyval:
                     c=FeedBack.objects.filter(profile__id=int(pid)).count()
                     if c==0:
-                        cache.set(body_userid_key,1)
+                        cache.set(body_userid_key,1,None)
                     else:
                         cc=c+1
-                        cache.set(body_userid_key,cc)
+                        cache.set(body_userid_key,cc,None)
 
                     # 更新统计值
                 else:

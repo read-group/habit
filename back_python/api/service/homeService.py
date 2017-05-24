@@ -51,6 +51,13 @@ class HomeService(JsonResultService):
                         pass
                     else:
                         bodyvalT=bodyvalT+int(tmpval)
+                    accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (pc.id)
+                    tmpAccount=cache.get(accountkey)
+                    if not tmpAccount:
+                        pass
+                    else:
+                        milyT=milyT+tmpAccount.balance
+
 
             dataTmp["bodyvalT"]=bodyvalT
             dataTmp["milyT"]=milyT
