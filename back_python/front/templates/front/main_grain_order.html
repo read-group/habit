@@ -15,7 +15,7 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-         
+
     </div>
   </div>
   <script>
@@ -39,30 +39,8 @@
         cleanUp:function(toCleanVm){
           console.log("clean up grain list")
           this.friends.clear();
-          console.log(toCleanVm.familys.length)
-        },
-        loadContent:function(el){
-          //$yml.page.$router.pop();
-          var target=el.currentTarget;
-          var $t=$(target)
-          remark=$t.attr("remark")
-          if(remark=="f"){
-            this.isMily=true;
-            this.isBody=false;
-            this.isDevote=false;
-          }
-          if(remark=="b"){
-            this.isBody=true;
-            this.isMily=false;
-            this.isDevote=false;
-          }
-          if(remark=="d"){
-            this.isDevote=true;
-            this.isBody=false;
-            this.isMily=false;
-          }
+        }
 
-        },
       };
     },
     pageReady:function(){
