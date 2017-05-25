@@ -127,7 +127,7 @@ class MainView(TemplateView):
                         accountCashC.save()
 
                         cg=ClassGroup.objects.get(pk=7)
-                        profile.classGroups.add(cg)
+                        profileC.classGroups.add(cg)
 
                 finally:
                     #登录
