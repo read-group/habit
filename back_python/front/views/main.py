@@ -119,11 +119,11 @@ class MainView(TemplateView):
                         #创建三个个人账户（米仓、现金、押金）
                         accountMilyC=Account()
                         accountMilyC.accountType="rice"
-                        accountMilyC.profile=profile
+                        accountMilyC.profile=profileC
                         accountMilyC.save()
                         accountCashC=Account()
                         accountCashC.accountType="cash"
-                        accountCashC.profile=profile
+                        accountCashC.profile=profileC
                         accountCashC.save()
 
                         logger.error("add class before.........")
