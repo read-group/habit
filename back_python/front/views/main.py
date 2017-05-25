@@ -126,8 +126,10 @@ class MainView(TemplateView):
                         accountCashC.profile=profile
                         accountCashC.save()
 
+                        logger.error("add class before.........")
                         cg=ClassGroup.objects.get(pk=7)
                         profileC.classGroups.add(cg)
+                        logger.error("add class after.........")
 
                 finally:
                     #登录
