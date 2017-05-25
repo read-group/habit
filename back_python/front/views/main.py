@@ -6,6 +6,7 @@ from django.contrib.auth import login,logout
 from django.contrib.auth.models import User
 from org.models import Profile,MapEngToRole,Org
 from django.core.cache import cache
+from school.models import ClassGroup
 import logging
 import json
 from django.db import transaction
