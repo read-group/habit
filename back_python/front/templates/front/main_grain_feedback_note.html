@@ -18,53 +18,53 @@
     <div class="container-fluid childContent" style="padding:5px">
       <div class="row">
         <div  class="col-xs-12">
-          <div class="panel panel-default text-center">
-            <div class="text-left"><h5>请选择心情:</h5></div>
-            <div class="btn-group" data-toggle="buttons">
-                 <label class="btn btn-default active"  data-level="PJ" ms-click="@selectRadio">
-                    <input type="radio" name="options" value="PJ"  id="option1" autocomplete="off" checked />
-                    <img src="http://mily365.com/static/front/img/pj.png"  style="width:30px;height:30px"/>
-                 </label>
-                 <label class="btn btn-default" data-level="GX" ms-click="@selectRadio">
-                   <input type="radio" name="options" value="GX"  id="option2" autocomplete="off"/>
-                   <img src="http://mily365.com/static/front/img/gx.png"  style="width:30px;height:30px"/>
-                 </label>
-                 <label class="btn btn-default"  data-level="DX" ms-click="@selectRadio">
-                   <input type="radio" name="options" value="DX"  id="option3" autocomplete="off"/>
-                   <img src="http://mily365.com/static/front/img/dx.png"  style="width:30px;height:30px"/>
-                 </label>
-                 <label class="btn btn-default"  data-level="BS" ms-click="@selectRadio">
-                   <input type="radio" name="options" value="BS"  id="option4" autocomplete="off"/>
-                   <img src="http://mily365.com/static/front/img/bs.png"  style="width:30px;height:30px"/>
-                 </label>
-                 <label class="btn btn-default"  data-level="DK" ms-click="@selectRadio">
-                   <input type="radio" name="options" value="DK"  id="option5" autocomplete="off"/>
-                   <img src="http://mily365.com/static/front/img/kq.png"  style="width:30px;height:30px"/>
-                 </label>
-             </div>
-           </div>
+            <div class="panel panel-default text-center">
+              <div class="text-left" style="padding-left:3px"><h5>请选择心情:</h5></div>
+              <div class="btn-group" data-toggle="buttons">
+                   <label class="btn btn-default active"  data-level="PJ" ms-click="@selectRadio">
+                      <input type="radio" name="options" value="PJ"  id="option1" autocomplete="off" checked />
+                      <img src="http://mily365.com/static/front/img/pj.png"  style="width:30px;height:30px"/>
+                   </label>
+                   <label class="btn btn-default" data-level="GX" ms-click="@selectRadio">
+                     <input type="radio" name="options" value="GX"  id="option2" autocomplete="off"/>
+                     <img src="http://mily365.com/static/front/img/gx.png"  style="width:30px;height:30px"/>
+                   </label>
+                   <label class="btn btn-default"  data-level="DX" ms-click="@selectRadio">
+                     <input type="radio" name="options" value="DX"  id="option3" autocomplete="off"/>
+                     <img src="http://mily365.com/static/front/img/dx.png"  style="width:30px;height:30px"/>
+                   </label>
+                   <label class="btn btn-default"  data-level="BS" ms-click="@selectRadio">
+                     <input type="radio" name="options" value="BS"  id="option4" autocomplete="off"/>
+                     <img src="http://mily365.com/static/front/img/bs.png"  style="width:30px;height:30px"/>
+                   </label>
+                   <label class="btn btn-default"  data-level="DK" ms-click="@selectRadio">
+                     <input type="radio" name="options" value="DK"  id="option5" autocomplete="off"/>
+                     <img src="http://mily365.com/static/front/img/kq.png"  style="width:30px;height:30px"/>
+                   </label>
+               </div>
+            </div>
         </div>
-          <div  class="col-xs-12">
+        <div  class="col-xs-12">
             <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
-          </div>
-          <div class="col-xs-12 text-center">
+        </div>
+        <div class="col-xs-12 text-center">
                <div><img class="img-thumbnail"   ms-attr="{src:@imageUrl}"/></div>
-          </div>
-          <div  ms-click="@listenHistoryClick"  class="col-xs-12">
+        </div>
+        <div  ms-click="@listenHistoryClick"  class="col-xs-12">
             <div ms-attr="{class:(@recordCount?'active text-center':'text-center')}">
               <span id="listen" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? @recordCount ?}</span>
             </div>
-          </div>
-          <div   class="col-xs-12">
+        </div>
+        <div   class="col-xs-12">
             <div  class="row active">
-                <div   class="col-xs-6 text-center icon" style="border:1px dotted red" ms-click="@selImageClick">
+                <div   class="col-xs-6 text-center icon" style="border:1px dotted red;height:100px" ms-click="@selImageClick">
                   <span><i id="selImg" class="fa fa-camera fa-2x"></i></span>
                 </div>
-                <div  class="col-xs-6 text-center" ms-click="@startRecord">
+                <div  class="col-xs-6 text-center" style="border:1px dotted red;height:100px" ms-click="@startRecord">
                     <span><i id="startRecord" class="fa fa-microphone fa-2x"></i></span>
                 </div>
             </div>
-          </div>
+        </div>
 　　  </div>
    </div>
     <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
