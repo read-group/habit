@@ -24,7 +24,7 @@
          <div class="well" ms-for="(i,item) in @profiles" >
              <table class="table">
                 <tr>
-                  <td><img src="@item.imgUrl" class="img-circle" style="width:32px;height:32px"/></td>
+                  <td><img class="img-circle" style="width:32px;height:32px" ms-attr="{src:@item.imgUrl}" alt="..."/></td>
                   <td>{? item.mily ?}</td>
                 </tr>
              </table>
