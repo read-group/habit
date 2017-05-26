@@ -16,9 +16,9 @@
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="nav nav-tabs">
-          <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
+          <!-- <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li> -->
           <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>米粒排行榜</a></li>
-          <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li>
+          <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
       <div id="mily" ms-if="@isMily==true">
          <div class="well" ms-for="(i,item) in @profiles" >
