@@ -22,12 +22,20 @@
       </ul>
       <div id="mily" ms-if="@isMily==true">
          <div class="well" ms-for="(i,item) in @profiles" >
-             <table class="table">
-                <tr>
+             <div class="row">
+               <div class="col-xs-3">
+                 <span>{? @i ?}</span>
+               </div>
+                <div class="col-xs-3">
                   <td><img class="img-circle" style="width:32px;height:32px" ms-attr="{src:@item.imgUrl}" alt="..."/></td>
-                  <td>{? item.mily ?}</td>
-                </tr>
-             </table>
+                </div>
+                <div class="col-xs-3">
+                  <span>{? @item.nickname ?}</span>
+                </div>
+                <div class="col-xs-3">
+                  {? item.mily ?}
+                </div>
+             </div>
          </div>
       </div>
       <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
