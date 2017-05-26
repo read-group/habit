@@ -210,8 +210,7 @@
          },
          selectRadio:function(ev){
            var $t=$(ev.currentTarget)
-           alert($(ev.currentTarget).data("level"))
-           //$yml.page.$vmPage.$feel=
+           $yml.page.$vmPage.$feel=$t.data("level")
          },
          cleanUp:function(){
            console.log("...........note cleanUp.........");
