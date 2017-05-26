@@ -15,21 +15,19 @@
       </div>
     </nav>
     <div class="childContent">
-      <div class="list-group">
-          <button type="button"  class="list-group-item">
+      <div class="row">
+          <div  class="col-xs-12">
             <textarea id="editorFeed" placeholder="打卡已经完成，写下美好的回忆吧..." style="width:100%;height:80px;border:none"/>
-          </button>
-          <button type="button"  class="list-group-item">
-            <div class="text-center">
+          </div>
+          <div class="col-xs-12 text-center">
                <div><img class="img-thumbnail"   ms-attr="{src:@imageUrl}"/></div>
-            </div>
-          </button>
-          <button type="button" ms-click="@listenHistoryClick"  class="list-group-item">
+          </div>
+          <div  ms-click="@listenHistoryClick"  class="col-xs-12">
             <div ms-attr="{class:(@recordCount?'active text-center':'text-center')}">
               <span id="listen" style="font-size:30px" class="glyphicon glyphicon-volume-up"></span><span class="badge">{? @recordCount ?}</span>
             </div>
-          </button>
-          <button type="button"  class="list-group-item">
+          </div>
+          <div   class="col-xs-12">
             <div  class="row active">
                 <div   class="col-xs-6 text-left icon" ms-click="@selImageClick">
                   <span><i id="selImg" class="fa fa-camera fa-2x"></i></span>
@@ -38,7 +36,7 @@
                     <span><i id="startRecord" class="fa fa-microphone fa-2x"></i></span>
                 </div>
             </div>
-          </button>
+          </div>
 　　  </div>
    </div>
     <div class="modal fade" id="recordDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
