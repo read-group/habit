@@ -17,14 +17,18 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="nav nav-tabs">
           <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li>
-          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}" class="active" ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>米粒排行榜</a></li>
+          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>米粒排行榜</a></li>
           <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li>
       </ul>
-      <div id="friends" ms-if="@isMily==true">
-
-
+      <div id="mily" ms-if="@isMily==true">
+         <div class="well" ms-for="(i,item) in @profiles" >
+             <table class="table">
+                <tr>
+                  <td><img src="@item.imgUrl" class="img-circle" style="width:32px;height:32px"/></td>
+                </tr>
+             </table>
+         </div>
       </div>
-
       <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
         坚持打卡，收获习惯，敬请期待
         <table class="table">
@@ -50,7 +54,7 @@
     vmDef:function(){
       return {
         $id:"order",
-        friends:[],
+        profiles:[],
         isMily:true,
         isBody:false,
         isDevote:false,
@@ -59,8 +63,30 @@
         },
         cleanUp:function(toCleanVm){
           console.log("clean up grain list")
-          this.friends.clear();
-        }
+          this.profiles.clear();
+        },
+        loadContent:function(el){
+          //$yml.page.$router.pop();
+          var target=el.currentTarget;
+          var $t=$(target)
+          remark=$t.attr("remark")
+          if(remark=="f"){
+            this.isMily=true;
+            this.isBody=false;
+            this.isDevote=false;
+          }
+          if(remark=="b"){
+            this.isBody=true;
+            this.isMily=false;
+            this.isDevote=false;
+          }
+          if(remark=="d"){
+            this.isDevote=true;
+            this.isBody=false;
+            this.isMily=false;
+          }
+
+        },
 
       };
     },
@@ -68,6 +94,14 @@
       var self=this;
       // self.$vmMain.wxinit("#",document.location.href)
       console.log(" grain pageReady");
+      $yml.ajax('/api/grain/feedback/milyorder',null,
+      　  function(res){
+            $yml.page.$vmPage.profiles.clear()
+            res.content.data.forEach(function(r){
+              $yml.page.$vmPage.profiles.push(r)
+            });
+          }
+      );
     }
   });
   </script>

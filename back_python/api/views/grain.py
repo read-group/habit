@@ -105,6 +105,19 @@ class GrainFeedbackPublishView(View):
             logging.error(info)
         return jsResult.renderToJsonResponse()
 
+class GrainFeedbackMilyOrderView(View):
+    def post(self,req,*arg,**kwargs):
+        logger.error("GrainFeedbackMilyOrderView")
+        # reqData=json.loads(str(req.body,'utf-8'))
+        # pinfo=reqData["param"]
+        jsResult=None
+        try:
+            jsResult= feedbackService.milyOrder()
+        except:
+            info=sys.exc_info()
+            logging.error(info)
+        return jsResult.renderToJsonResponse()
+
 class GrainFamilyGetMemberView(View):
     def post(self,req,*arg,**kwargs):
         logger.error("GrainFamilyGetMemberView")

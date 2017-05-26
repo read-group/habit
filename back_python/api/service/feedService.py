@@ -115,6 +115,29 @@ class FeedbackService(JsonResultService):
         finally:
             return jsonResult
 
+
+    def milyOrder(self):
+        jsonResult=self.initJsonResult()
+        content={}
+        data=[]
+        logger.error("milyOrder")
+        try:
+            with transaction.atomic():
+                # to do performance
+                as=Account.objects.select_related("profile").filter(accountType="rice").order_by('-balance')[0:10]
+                for a in as:
+                    p=a.profile;
+                    dataTmp=self.toJSON(p,["id","nickname","imgUrl","role","openid"])
+                    dataTmp["mily"]=a.balance
+                    data.append(dataTmp)
+            content["data"]=data
+        except:
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
+
     def cancel(self,postid):
         jsonResult=self.initJsonResult()
         content={}
