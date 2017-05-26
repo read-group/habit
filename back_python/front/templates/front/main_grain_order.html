@@ -21,7 +21,7 @@
           <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
       <div id="mily" ms-if="@isMily==true">
-         <div class="well" ms-for="(i,item) in @profiles" >
+         <div class="well" style="background-color:#F6F4F2" ms-for="(i,item) in @profiles" >
              <div class="row">
                 <div class="col-xs-3">
                   <img class="img-circle" style="width:48px;height:48px" ms-attr="{src:@item.imgUrl}" alt="..."/>
