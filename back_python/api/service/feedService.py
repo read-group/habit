@@ -124,8 +124,8 @@ class FeedbackService(JsonResultService):
         try:
             with transaction.atomic():
                 # to do performance
-                as=Account.objects.select_related("profile").filter(accountType="rice").order_by('-balance')[0:10]
-                for a in as:
+                accounts=Account.objects.select_related("profile").filter(accountType="rice").order_by('-balance')[0:10]
+                for a in accounts:
                     p=a.profile;
                     dataTmp=self.toJSON(p,["id","nickname","imgUrl","role","openid"])
                     dataTmp["mily"]=a.balance
