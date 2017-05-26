@@ -25,7 +25,7 @@
              <table class="table">
                 <tr>
                   <td><img src="@item.imgUrl" class="img-circle" style="width:32px;height:32px"/></td>
-                  <td>{? item.balance ?}</td>
+                  <td>{? item.mily ?}</td>
                 </tr>
              </table>
          </div>
@@ -97,7 +97,6 @@
       console.log(" grain pageReady");
       $yml.ajax('/api/grain/feedback/milyorder',null,
       　  function(res){
-            alert(JSON.stringify(res.content.data))
             $yml.page.$vmPage.profiles.clear()
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.profiles.push(r)
