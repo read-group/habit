@@ -22,21 +22,19 @@
       </ul>
       <div id="mily" ms-if="@isMily==true">
          <div class="well" style="background-color:#F6F4F2" ms-for="(i,item) in @profiles" >
-             <div class="row">
-                <div class="col-xs-4">
-                  <img class="img-circle" style="width:48px;height:48px" ms-attr="{src:@item.imgUrl}" alt="..."/>
-
-                </div>
-                <div class="col-xs-4">
-                    <span>{? @item.nickname ?}</span>
-                </div>
-                <div class="col-xs-4">
-                  {? item.mily ?}粒
-                </div>
-                <!-- <div class="col-xs-3">
-                  <span class="badge" style="color:red">{? ++i ?}</span>
-                </div> -->
-             </div>
+             <a ms-attr="{href:'#!/main/stage/'+@item.id}">
+               <div class="row">
+                  <div class="col-xs-4">
+                    <img class="img-circle" style="width:48px;height:48px" ms-attr="{src:@item.imgUrl}" alt="..."/>
+                  </div>
+                  <div class="col-xs-4">
+                      <span>{? @item.nickname ?}</span>
+                  </div>
+                  <div class="col-xs-4">
+                    {? item.mily ?}粒
+                  </div>
+               </div>
+             </a>
          </div>
       </div>
       <div id="bodyval" ms-if="@isBody==true" class="panel panel-default">
