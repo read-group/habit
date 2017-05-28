@@ -70,7 +70,6 @@ class TeacherService(JsonResultService):
                 content["cgname"]=cg.name
                 content["imgUrl"]=cg.imgUrl
                 profilesRtn=cg.profile_set.all()
-            logger.error("point ....................")
             for p in profilesRtn:
                 ptemp=self.toJSON(p,["id","nickname","imgUrl","childpwd",])
                 accountkey=settings.CACHE_FORMAT_STR['account_mily_profileid_key'] % (p.id)

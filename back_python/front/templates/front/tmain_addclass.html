@@ -3,7 +3,7 @@
       <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
           <a  href="#!/main/grain" id="backAfterSave">
-            <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+            <img src="/static/front/img/back.png" style="width:16px;height:16px"/>
           </a>
         </div>
         <div class="col-xs-4 text-center">
@@ -17,25 +17,21 @@
     <div class="childContent">
       <div class="well">
         <form>
-           <div class="form-group">
-             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:40px;height:40px"/>
-             <span  id="takePhoto"　 ms-click="@btnPhoto"   class="active"><i class="fa fa-camera-retro fa-2x"></i><i class="fa fa-plus"></i></span>
+           <div class="form-group text-center" ms-click="@btnPhoto">
+             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:80px;height:80px"/>
+             <span  id="takePhoto"　    class="active"><i class="fa fa-camera-retro fa-2x"></i><i class="fa fa-plus"></i></span>
            </div>
            <div class="form-group">
-             <label for="exampleInputEmail1">学校编码</label>
+             <label style="color:#D4A753"><i class="fa  fa-info-circle" style="color:orange"></i>提示:请向平台服务商索要学校编码</label>
+           </div>
+           <div class="form-group">
+             <label for="scode" style="color:#D4A753">学校编码</label>
              <input type="text" ms-duplex="scode" class="form-control" id="scode" placeholder="请输入学校编码">
            </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">名称</label>
+              <label for="name" style="color:#D4A753">名称</label>
               <input type="text" ms-duplex="name" class="form-control" id="name" placeholder="请输入部落名称">
             </div>
-
-            <!-- <div class="checkbox">
-              <label>
-                <input type="checkbox"> Check me out
-              </label>
-            </div> -->
-
         </form>
       </div>
    </div>
