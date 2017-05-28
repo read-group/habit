@@ -233,7 +233,6 @@
 				//if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容
 				if(scrollTop/(contentH -viewH)>=0.98 && scrollTop>self.initTop){ //到达底部100px时,加载新内容
 				// 这里加载数据..
-
 				  setTimeout(function(){
 						self.nextPage(function(res){
 							if(res){
