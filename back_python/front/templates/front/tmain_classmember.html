@@ -29,7 +29,9 @@
                   </a>
                 </td>
                 <td class="text-right" >
-                     今日打卡状态：<span ms-if="@item.isfeed=='1'" > <i   class="fa fa-check fa-fw active"></i></span><span ms-if="@item.isfeed=='0'" > <i style="color:orange"  class="fa fa-close"></i></span>
+                     今日打卡状态：<span ms-if="@item.isfeed=='1'">
+                       <i   class="fa fa-check fa-fw active"></i></span>
+                       <span ms-if="@item.isfeed=='0'" ><i style="color:orange"  class="fa fa-close"></i></span>
                 </td>
               </tr>
               <tr>

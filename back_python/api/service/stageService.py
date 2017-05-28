@@ -17,7 +17,13 @@ import json
 from django.core.cache import cache
 import logging
 logger = logging.getLogger("django")
-
+xq={
+ "PJ":"/static/front/img/pj.png",
+ "GX":"/static/front/img/gx.png",
+ "DX":"/static/front/img/dx.png",
+ "BS":"/static/front/img/bs.png",
+ "DK":"/static/front/img/dk.png"
+}
 # Create your views here.
 class StageService(JsonResultService):
     def postlist(self,skip,limit,pid,currentUser):
@@ -43,6 +49,7 @@ class StageService(JsonResultService):
                 dataTmp["habitName"]=post.feedBack.habit.name
                 # 构造post字典
                 self._makeComments(post,dataTmp,currentUser)
+                dataTmp["feel"]=xq[post.feel]
                 data.append(dataTmp)
             content["total"]=count
             content["data"]=data
@@ -181,7 +188,7 @@ class StageService(JsonResultService):
                     # 表示当前是已经点赞
                     postDic["isPrased"]=1
                     # 加好友
-                    
+
                     if postCreator.id!=profile.id:
                         # 检查是否已经成为朋友，如果已经成为朋友，那么无需再去创建
                         rawsql="select id,count(id) as ct from org_friend where ( fromp_id=%s and top_id=%s ) or ( fromp_id=%s and top_id=%s )"
