@@ -26,7 +26,7 @@
                               <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:item.headingImgUrl}"/>
                            </div>
                            <div class="col-xs-6 text-left" style="padding:0px;margin-left:60px;margin-top:-40px">
-                             <span>{? item.nickname ?}</span><br/>
+                             <span>{? item.nickname ?}</span><img ms-attr="{src:item.feel}" style="width:16px;height:16px"/><br/>
                              <span style="font-size:10px">坚持*<span class="active">{? item.habitName ?}</span>*</span>
                            </div>
                        </div>
@@ -42,7 +42,6 @@
                 </div>
                 <div class="row">
                         <div class="col-xs-12 text-left"  style="margin-top:10px">
-                            <div>心情：<img ms-attr="{src:item.feel}"/></div>
                             <button style="border:none;background:rgba(255,255,255,0.1);"  ms-click="@listenFeedClick" ms-attr="{class:(item.audioUrls?'active':''),audiourls:item.audioUrls}"><i class="fa fa-volume-up fa-2x"></i><span class="badge">{? @item.audioUrls?@item.audioUrls.split(',').length:0 ?}</span></button>
                             <div ms-html="item.content?item.content:'这家伙啥都没留下...'"></div>
                        </div>
