@@ -140,6 +140,7 @@ class StageService(JsonResultService):
             eng=MapRoleToEng[profile.role]
             hostRedirect="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
             queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect}))
+            logger.error(queryStr)
             body["queryStr"]=queryStr
 
             # body["queryStr"]="http://mily365.com?role="+"h"
