@@ -237,8 +237,8 @@
             var audioUrls=$yml.page.$vmPage.$audioUrls.join(",");
             var feel=$yml.page.$vmPage.$feel
             var paramsObj={};
-            if(content.length>300){
-              content=content.substr(0,300)+"..."
+            if(content.length>500){
+              content=content.substr(0,500)+"..."
             }
             paramsObj.postid=postid;
             if(content==null || content==""){
