@@ -17,17 +17,16 @@
       <div class="container">
         <div class="btn-group btn-group-justified">
           <div class="btn-group sound" role="group" ms-for="(i,item) in @mainMenu">
-             <button type="button" class="btn btn-default center-block" style="border:none;background-color:transparent">
+             <button type="button" class="btn btn-default center-block" style="border:none;background-color:transparent;">
                <a ms-if="item.title!='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                  <span ms-attr="{class:@item.icon}"></span>
                  <div>{? item.title ?}</div>
                </a>
-               <a ms-if="item.title=='打卡'" class="forNav" ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
+               <a ms-if="item.title=='打卡'" class="forNav"  ms-attr="{'href':'#!'+ item.url,id:item.isDefault?'mainDefault':null}"   ms-click="@focus">
                    <button class="button button-royal button-circle button-giant  button-borderless" style="position:fixed;bottom:20px;background-color:#D4A753;color:#999">
                      <span ms-attr="{class:@item.icon}"></span>
                    </button>
-                   <br/>
-                   <div style="position:fixed;bottom:10px;color:#999;margin-left:20px;margin-bottom:0px">{? item.title ?}</div>
+                   <div style="position:fixed;bottom:5px;color:#999;margin-left:20px;">{? item.title ?}</div>
                </a>
              </button>
           </div>
