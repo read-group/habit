@@ -22,7 +22,7 @@ xq={
  "GX":"/static/front/img/gx.png",
  "DX":"/static/front/img/dx.png",
  "BS":"/static/front/img/bs.png",
- "DK":"/static/front/img/dk.png"
+ "DK":"/static/front/img/kq.png"
 }
 # Create your views here.
 class StageService(JsonResultService):
