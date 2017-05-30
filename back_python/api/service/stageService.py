@@ -141,7 +141,7 @@ class StageService(JsonResultService):
             hostRedirect="http://mily365.com?role="+eng
             state="/main/stage/"+str(postCreator.id)
             queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect})).replace("{state}",urllib.parse.urlencode({'state':state}))
-            logger.error(queryStr)
+            # logger.error(queryStr)
             body["queryStr"]=queryStr
 
             # body["queryStr"]="http://mily365.com?role="+"h"
