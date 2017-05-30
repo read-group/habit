@@ -150,7 +150,7 @@ class MainView(TemplateView):
             # if request.user.profile.role!=rolecode:
             #     logout(request)
             #     return HttpResponseRedirect("/")
-
+            logger.error(request.get_full_path())
             logger.error("logined=================================")
             logger.debug(request.user.username)
         # 去微信认证
