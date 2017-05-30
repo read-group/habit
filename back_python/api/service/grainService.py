@@ -65,6 +65,7 @@ class GrainService(JsonResultService):
                 else:
                     dataTmp["bodyval"]=int(bodyval)
                 data.append(dataTmp)
+            content["role"]=pf.role
             content["data"]=data
         except Exception as e:
             logger.error(e)
@@ -119,7 +120,7 @@ class GrainService(JsonResultService):
         finally:
             return jsonResult
 
-    def addmember(self,familyOrg,childinfo):
+    def addmember(self,familyOrg,childinfo,phost):
         jsonResult=self.initJsonResult()
         logger.error("addmember ")
         content={}
@@ -133,7 +134,7 @@ class GrainService(JsonResultService):
                 try:
                     #创建另一个Profile
                     profile=Profile(nickname=childinfo["nickname"],role=MapEngToRole["child"],
-                    imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"])
+                    imgUrl=childinfo["headingImgUrl"],user=userC,org=familyOrg,childpwd=childinfo["password"],openid=phost.openid)
                     profile.save()
 
                     #创建三个个人账户（米仓、现金、押金）

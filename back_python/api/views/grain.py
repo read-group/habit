@@ -43,7 +43,7 @@ class GrainFamilyAddMemberView(View):
         jsResult=None
         try:
             logger.error(req.user.profile.org.id)
-            jsResult= grainService.addmember(req.user.profile.org,childinfo)
+            jsResult= grainService.addmember(req.user.profile.org,childinfo,req.user.profile)
         except:
             info=sys.exc_info()
             logging.error(info)

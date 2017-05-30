@@ -10,7 +10,7 @@
             <h4 id="title" style="color:#D4A753">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
-          <a href="#!/main/grain/addchild">
+          <a href="#!/main/grain/addchild" ms-if="@role!='4'">
             <i class="fa fa-user-plus fa-2x active" aria-hidden="true"></i>
           </a>
         </div>
@@ -99,6 +99,7 @@
       return {
         $id:"grain",
         familys:[],
+        role:3,
         backClick:function(){
           //$yml.page.$router.pop();
         },
@@ -135,6 +136,7 @@
       $yml.ajax('/api/grain/family',null,
       　  function(res){
             $yml.page.$vmPage.familys.clear()
+            $yml.page.$vmPage.role=res.content.role;
             res.content.data.forEach(function(r){
               $yml.page.$vmPage.familys.push(r)
             });
