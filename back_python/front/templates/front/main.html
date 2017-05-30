@@ -225,6 +225,7 @@
                   autoScroll:true //滚动
               })
               //当前页面初次加载时
+              alert(location.href)
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)&")
               //alert(location.href)
