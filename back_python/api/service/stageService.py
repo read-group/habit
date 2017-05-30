@@ -109,6 +109,7 @@ class StageService(JsonResultService):
 
     def notifyTmpl(self,profile,postCreator,desc):
         try:
+            import urllib
             import urllib.request
             import json
             from django.conf import settings
@@ -137,7 +138,10 @@ class StageService(JsonResultService):
             # 当前角色
             # 获取当前登录人员的角色
             eng=MapRoleToEng[profile.role]
-            body["queryStr"]="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
+            hostRedirect="http://mily365.com?role="+eng+"&pathfrom=/main/stage/"+str(postCreator.id)
+            queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect}))
+            body["queryStr"]=queryStr
+
             # body["queryStr"]="http://mily365.com?role="+"h"
             jdata = json.dumps(body)
             headers={'Content-Type':'application/json'}
