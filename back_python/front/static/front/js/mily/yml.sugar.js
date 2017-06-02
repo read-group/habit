@@ -244,7 +244,7 @@
 							//$this.scrollTop(1);
 						});
 
-					},1500);
+					},500);
 				}
 			// 	if(scrollTop==0){
 			// 		setTimeout(function(){
