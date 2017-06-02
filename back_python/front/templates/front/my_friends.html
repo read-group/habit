@@ -15,26 +15,22 @@
       </div>
     </nav>
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <ul class="list-group">
-          <li  ms-for="(i,item) in @familys"   class="list-group-item">
-            <div class="media" style="margin-top:5px">
-              <a  href="#" class="media-left">
-                  <img class="img-circle" style="width:40px;height:40px" ms-attr="{src:@item.imgUrl}"/>
-              </a>
-              <div class="media-body">
-                  <h5 class="media-heading" style="margin-top:1px">
-                  {? @item.nickname ?}
-                  </h5>
-                  <br/>
-                  <p>米仓：{? @item.milyAccount ?}粒
-                  <p>
-                    <a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
-                      <span class="active">    <i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
-                  </a>
+        <div class="well" style="background-color:#F6F4F2" ms-for="(i,item) in @familys" >
+            <a ms-attr="{href:'#!/main/stage/'+@item.id}">
+              <div class="row">
+                 <div class="col-xs-4">
+                   <img class="img-circle" style="width:48px;height:48px" ms-attr="{src:@item.imgUrl}" alt="..."/>
+                 </div>
+                 <div class="col-xs-4">
+                     <span>{? @item.nickname ?}</span>
+                 </div>
+                 <div class="col-xs-4">
+                   {? item.milyAccount ?}粒
+                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </a>
+        </div>
+    
     </div>
   </div>
   <script>
