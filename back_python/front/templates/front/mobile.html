@@ -4,6 +4,7 @@
 <link href="{% static "front/css/carousel.css" %}" rel="stylesheet">
 {% endblock %}
 {% block adv %}
+    <div class="s_box">
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel" ms-controller="myCarousel">
@@ -42,10 +43,14 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="note">
-              <h5>选择角色</h5>
+              <!--<h5>选择角色</h5>
               <p><a href="{{ host }}" class="button button-circle button-glow button-border button-rounded button-caution btn-2x">家长</a></p>
-              <p><a href="/main?role=child" class="button button-circle button-glow button-border button-rounded button-caution btn-2x">孩子</a></p>
+              <p><a href="/main?role=child" class="button button-circle button-glow button-border button-rounded button-caution btn-2x">孩子</a></p>-->
+              <h5>选择角色</h5>
+              <p class="s_parent"><a href="{{ host }}" class="">家长</a></p>
+              <p class="s_child"><a href="/main?role=child" class="">孩子</a></p>
     </div>
+  </div>
   {% endblock %}
   {% block extrajs %}
   <script>
