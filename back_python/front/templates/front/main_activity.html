@@ -1,4 +1,4 @@
-<div class="container page" id="activity" data-page-root="activity"  ms-controller="activity">　
+<div class="container page" id="activity" data-page-root="activity"  ms-controller="activity" style="background:(../../static/front/img/active_bg.jpg) no-repeat;background-size:100%;">　
     <nav class="navbar navbar-default  navbar-fixed-top">
       <div class="container-fluid" style="padding-left:10px;padding:right:1px">
         <div class="navbar-header">
@@ -18,7 +18,7 @@
         </div> -->
       </div>
     </nav>
-    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll;background:(/static/front/img/active_bg.jpg) no-repeat;background-size:100%;">
+    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll;">
         <!-- <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item"> -->
             <div class="panel panel-default"   ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}">
