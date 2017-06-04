@@ -1,5 +1,5 @@
 
-body{
+*{
 margin: 0px 0px;
 padding: 0px 0px;
 }
@@ -14,8 +14,8 @@ padding: 0px 0px;
 }
 /*主应用页面容器*/
 .container.mainPage{
-  margin:0px 0px;
-  padding: 0px 0px;
+  margin:0px;
+  padding: 0px;
 
 }
 /*主应用页面的替换页面容器*/
@@ -34,7 +34,7 @@ padding: 0px 0px;
 .page{
   margin: 0px;
   padding: 0px;
-  width: 100%
+  width: 100%;
 }
 .childContent{
   margin: 0px;
