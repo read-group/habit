@@ -20,8 +20,8 @@
           <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange;margin-right:5px;"></i>米粒Top10</a></li>
           <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
-      <div id="mily" ms-if="@isMily==true">
-         <div class="well" ms-for="(i,item) in @profiles" style="padding-bottom:50px;">
+      <div id="mily" ms-if="@isMily==true" style="padding-bottom:50px;">
+         <div class="well" ms-for="(i,item) in @profiles">
              <a ms-attr="{href:'#!/main/stage/'+@item.id}">
                <div class="row" style="margin:10px;margin-bottom:0;padding:10px;background:#f1ebe6;border-radius:5px;">
                   <div class="col-xs-1" style="vertical-align: middle;">
