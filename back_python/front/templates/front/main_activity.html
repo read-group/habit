@@ -22,7 +22,7 @@
         <!-- <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item"> -->
             <div class="panel panel-default"   ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}">
-              <table class="table">
+              <table class="table" style="margin:10px;border:1px solid #c0a054;border-radius:5px;background:#e3c975;padding:10px 5px;">
                 <tr>
                   <td>
                     <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
@@ -33,7 +33,7 @@
                     <H4 style="font-weight:bold;color:#446117;"><!-- <img src="/static/front/img/active_img.png" style="width:30px;"/> -->{? @item.name ?}</H4>
                     <div style="margin-top:33px">
                       <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
-                         <button class="btn btn-success btn-1x"><i class="fa fa-file-text-o"  aria-hidden="true" style="margin-right:5px;"></i>查看详情，速去报名</button>
+                         <button class="btn btn-success btn-1x" style="background:#466f25;"><i class="fa fa-file-text-o"  aria-hidden="true" style="margin-right:5px;"></i>查看详情，速去报名</button>
                          <!--<button  class="btn btn-success btn-1x" style="width:89px;height:40px;border:0 none;background:url(../../static/front/img/active_button_03.png) no-repeat;background-size:100%;"></button>-->
                       </a>
                     </div>
