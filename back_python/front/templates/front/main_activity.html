@@ -18,20 +18,20 @@
         </div> -->
       </div>
     </nav>
-    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll;">
+    <div id="childContent"  class="container-fluid childContent" style="width:100%;height:100%;background:url(../../static/front/img/active_bg.jpg) no-repeat;background-size:100% 100%;">
         <!-- <ul class="list-group">
           <li  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}"  class="list-group-item"> -->
-            <div class="panel panel-default" style="margin:10px;border:1px solid #c0a054;border-radius:5px;background:#e3c975;padding:10px 5px;"  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}">
+            <div class="panel panel-default" style="margin:10px;border:1px solid #c0a054;border-radius:5px;background:#e3c975;padding:10px 5px;box-shadow:0 -2px 2px #cea360;"  ms-for="(i,item) in @activitys" ms-attr="{'data-url':'/main/activity/detail/'+@item.id}">
               <table class="table">
                 <tr>
                   <td>
                     <a   ms-attr="{href:'#!/main/activity/detail/'+@item.id}">
-                        <img class="media-object thumbnail" style="width:112px;height:112px" ms-attr="{src:@item.img}" alt="...">
+                        <img class="media-object thumbnail" style="width:112px;height:112pxmargin-top:30px;" ms-attr="{src:@item.img}" alt="...">
                     </a>
                   </td>
                   <td class="text-left" >
                     <H4 style="font-weight:bold;color:#446117;"><!-- <img src="/static/front/img/active_img.png" style="width:30px;"/> -->{? @item.name ?}</H4>
-                    <p style="color:#995010;"><img class="img-circle" style="width:16px;height:16px;margin-right:5px;" ms-attr="{src:@item.schoollogo}" alt="..."/>活动主办方:{? @item.school ?}</p>
+                    <p style="color:#995010;"><img class="img-circle" style="width:16px;height:16px;margin-right:5px;" ms-attr="{src:@item.schoollogo}" alt="..."/>主办方:{? @item.school ?}</p>
                     <p style="color:#995010;"><i class="fa fa-th-large" aria-hidden="true" style="color:#995010;margin-right:5px;"></i>活动类别:{? @item.cat ?}</p>
                     <p style="color:#995010;"><i class="fa fa-key" aria-hidden="true" style="color:#995010;margin-right:5px;"></i>关键词:{? @item.desc ?}</p>
                     <div style="margin-top:33px">
