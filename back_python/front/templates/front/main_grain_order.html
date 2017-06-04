@@ -7,7 +7,7 @@
             </a> -->
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" style="color:#D4A753">排行</h4>
+              <h4 id="title" style="color:#D4A753;font-weight:bold;">米粒排行</h4>
           </div>
           <div class="col-xs-4 text-right">
 
@@ -17,21 +17,25 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
       <ul class="nav nav-tabs">
           <!-- <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li> -->
-          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange"></i>米粒Top10</a></li>
+          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange;margin-right:5px;"></i>米粒Top10</a></li>
           <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
-      <div id="mily" ms-if="@isMily==true">
+      <div id="mily" ms-if="@isMily==true" style="margin:10px;">
          <div class="well" style="background-color:#F6F4F2" ms-for="(i,item) in @profiles" >
              <a ms-attr="{href:'#!/main/stage/'+@item.id}">
-               <div class="row">
-                  <div class="col-xs-4">
+               <div class="row" style="padding:10px;background:#f1ebe6;border-radius:5px;">
+                  <div class="col-xs-1">
+                    <b style="color:#aa3e28;font-size:16px;">1</b>
+                  </div>
+                  <div class="col-xs-3">
                     <img class="img-circle" style="width:48px;height:48px" ms-attr="{src:@item.imgUrl}" alt="..."/>
                   </div>
                   <div class="col-xs-4">
-                      <span>{? @item.nickname ?}</span>
+                      <span>{? @item.nickname ?}</span><br>
+                      <span>{? item.mily ?}粒</span>
                   </div>
                   <div class="col-xs-4">
-                    {? item.mily ?}粒
+                    
                   </div>
                </div>
              </a>
