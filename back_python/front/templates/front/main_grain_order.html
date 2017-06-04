@@ -21,8 +21,8 @@
           <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
       <div id="mily" ms-if="@isMily==true" style="padding-bottom:50px;">
-         <div class="well" ms-for="(i,item) in @profiles" style="padding:0;margin:0;">
-             <a ms-attr="{href:'#!/main/stage/'+@item.id}" style="margin:10px;">
+         <div class="well" ms-for="(i,item) in @profiles" style="padding:0;margin:10px;border-radius:0;box-shadow:0;border:0 none;">
+             <a ms-attr="{href:'#!/main/stage/'+@item.id}" style="">
                <div class="row" style="padding:10px;background:#f1ebe6;border-radius:5px;">
                   <div class="col-xs-1" style="vertical-align: middle;">
                     <b style="color:#aa3e28;font-size:18px;">1</b>
