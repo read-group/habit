@@ -5,9 +5,12 @@
             <!-- <a  href="#!/main/activity">
               <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
             </a> -->
+            <a href="#" onClick="javascript :history.back(-1);">
+              <img src="/static/front/img/back.png" style="width:16px;"/>
+            </a>
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" style="color:#D4A753;font-weight:bold;">米粒排行</h4>
+              <h4 id="title" style="color:#995010;font-weight:bold;">米粒排行</h4>
           </div>
           <div class="col-xs-4 text-right">
 
@@ -17,11 +20,11 @@
     <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll;-webkit-overflow-scrolling:touch;">
       <ul class="nav nav-tabs">
           <!-- <li role="presentation" ms-attr="{remark:'b',class:(@isBody?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-thumbs-up fa-1x" style="color:red"></i>体力排行榜</a></li> -->
-          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:orange;margin-right:5px;"></i>米粒Top10</a></li>
+          <li role="presentation" ms-attr="{remark:'f',class:(@isMily?'active':'')}"  ms-click="@loadContent"><a href="#"><i class="fa fa-sun-o" style="color:#995010;margin-right:5px;"></i>米粒Top10</a></li>
           <!-- <li role="presentation" ms-attr="{remark:'d',class:(@isDevote?'active':'')}" ms-click="@loadContent"><a href="#"><i class="fa fa-heart fa-1x active" ></i>捐米公益榜</a></li> -->
       </ul>
       <div id="mily" ms-if="@isMily==true" style="padding-bottom:50px;">
-         <div class="well" ms-for="(i,item) in @profiles" style="width:80%;padding:0;margin:10px auto;border-radius:0;box-shadow:0;border:0 none;">
+         <div class="well" ms-for="(i,item) in @profiles" style="width:84%;padding:0;margin:10px auto;border-radius:0;box-shadow:0;border:0 none;">
              <a ms-attr="{href:'#!/main/stage/'+@item.id}" style="">
                <div class="row" style="padding:10px;background:#f1ebe6;border-radius:5px;">
                   <div class="col-xs-1" style="margin-top:10px;">
