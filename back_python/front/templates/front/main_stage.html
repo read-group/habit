@@ -48,7 +48,7 @@
                        <div class="col-xs-12 text-center">
                            <div>
                              <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:item.imgUrl}"/>
-                             <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:item.imgUrl}"/>
+                             <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:item.imgUrl}" ms-click="@videoPlay" />
                           </div>
                        </div>
                        <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:5px">
@@ -124,6 +124,20 @@
             </div>
           </div>
       </div>
+      <div class="modal fade" id="videoId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <video id="myvideo" class="video-js vjs-default-skin" width="50%" height="170px"
+                       controls preload="none" poster='http://video-js.zencoder.com/oceans-clip.jpg'
+                       data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+                     <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+                     <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
+                   </video>
+              　</div>
+            </div>
+          </div>
+      </div>
       <div class="modal fade" id="praseMoneyDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -181,6 +195,9 @@
            navClick:function(){
              console.log("...........habit.........");
              $yml.page.$router.$vm.navClick.call(this);
+           },
+           videoPlay:function(){
+             $("#videoId").modal('show');
            },
            listenFeedClick:function(el){
              var target=el.currentTarget;
@@ -532,6 +549,16 @@
          //设置文本编辑器
          $yml.dlgCenter("txtPubDlg");
          $yml.editor("commentTxtEditor","bottom");
+
+         var player = null;
+         $('#videoId').on('hidden', function () {
+            // do something…
+            player.dispose()
+         })
+         $('#videoId').on('shown', function () {
+            // do something…
+            player=videojs("myvideo")
+         })
        }
      });
   </script>
