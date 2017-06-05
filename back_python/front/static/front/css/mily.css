@@ -101,9 +101,7 @@ padding: 0px 0px;
   color:#00BB00!important;
 }
 .video-js .vjs-control-bar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-none;
   display: none;
 }
 .warncolor{
