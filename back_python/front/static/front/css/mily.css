@@ -145,14 +145,9 @@ text-decoration:none;
     border: none
 }
 /*style*/
-
-
-
-
-
-
-
-
-
-
-
+.video-js .vjs-control-bar { 
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: none;
+}
