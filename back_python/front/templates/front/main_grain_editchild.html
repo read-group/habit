@@ -3,14 +3,14 @@
       <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
           <a  href="#!/main/grain" id="backAfterSave2">
-            <img src="/static/front/img/back.png" style="width:16px;height:16px"/>
+            <img src="/static/front/img/back.png" style="width:16px;"/>
           </a>
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" style="color:#D4A753">修改信息</h4>
+            <h4 id="title" style="color:#995010;font-weight;bold;">修改信息</h4>
         </div>
         <div class="col-xs-4 text-right">
-             <button  ms-click="@saveClick" class="btn btn-success  btn-sm">保存</button>
+             <button  ms-click="@saveClick" class="btn btn-success  btn-sm" style="background:#466f25;">保存</button>
         </div>
       </div>
     </nav>
@@ -18,8 +18,8 @@
       <div class="well">
         <form>
            <div class="form-group text-center" ms-click="@btnPhoto">
-             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:80px;height:80px"/>
-             <span  id="takePhoto"　    class="active"><i class="fa fa-camera-retro fa-1x"></i><i  class="fa fa-refresh"></i></span>
+             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:80px;height:80px;margin-right:5px;"/>
+             <span  id="takePhoto" class="active" style="color:#466f25;"><i class="fa fa-camera-retro fa-1x" style="margin-right:5px;"></i><i  class="fa fa-refresh"></i></span>
            </div>
             <div class="form-group">
               <label for="exampleInputEmail1" style="color:#D4A753">昵称</label>
