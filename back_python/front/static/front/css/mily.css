@@ -146,7 +146,7 @@ text-decoration:none;
 }
 /*style*/
 .sha_note h5{font-size:20px;color:#fff;}
-.sha_note p{width:100%;height:30px;line-height:30px;background:#995010;border-radius: 5px;}
+.sha_note p{width:200px;margin:0 auto;height:30px;line-height:30px;background:#995010;border-radius: 5px;}
 .sha_note p a{display:block;width:100%;height:100%;color:#fff;font-weight:bold;font-size:18px;}
 
 
