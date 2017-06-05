@@ -3,11 +3,11 @@
     <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
           <a  href="#!/main/grain">
-            <img src="/static/front/img/back.png" style="width:16px;height:16px"/>
+            <img src="/static/front/img/back.png" style="width:16px;"/>
           </a>
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" class="topNavButton">打卡</h4>
+            <h4 id="title" class="topNavButton" style="color:#995010;font-weight:bold;">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
           <!-- <a href="#!/main/grain/addchild">
@@ -18,30 +18,30 @@
   </nav>
   <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
       <ul class="list-group">
-        <li  ms-for="(i,item) in @habits"   class="list-group-item">
+        <li  ms-for="(i,item) in @habits"   class="list-group-item" style="margin:10px;background:#f3e6cd;border-radius:5px;">
           <div class="media" style="margin-top:5px">
             <a  href="#" class="media-left">
-                <i ms-attr="{class:@item.icon}"   aria-hidden="true"></i>
+                <i ms-attr="{class:@item.icon}"   aria-hidden="true" style="color:#995010;"></i>
             </a>
             <div class="media-body">
-                <h5 class="media-heading" style="margin-top:2px">
+                <h5 class="media-heading" style="margin-top:2px;color:#995010;font-weight:bold;font-size:16px;">
                   {? @item.name ?}
                 </h5>
                 <br/>
-                <p><i class="fa fa-calendar-minus-o" aria-hidden="true"></i>你已坚持：{? @item.accumDays ?}天
-                <p><i class="fa fa-asterisk" aria-hidden="true"></i>今日得米：{? @item.freeMily ?}粒
-                <p><i class="fa fa-asterisk" aria-hidden="true"></i>累积得米：{? @item.accumMily ?}粒
+                <p><i class="fa fa-calendar-minus-o" aria-hidden="true" style="color:#995010;margin-right:5px;"></i>你已坚持：{? @item.accumDays ?}天
+                <p><i class="fa fa-asterisk" aria-hidden="true" style="color:#995010;margin-right:5px;"></i>今日得米：{? @item.freeMily ?}粒
+                <p><i class="fa fa-asterisk" aria-hidden="true" style="color:#995010;margin-right:5px;"></i>累积得米：{? @item.accumMily ?}粒
             </div>
             <div class="media-right">
                 <span ms-if="@item.isFeedBack=='0'" class="button-wrap">
-                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/',postid:@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}">
-                      <span  style="color:red">
+                    <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/',postid:@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'0',class:'button button-glow button-circle button-action button-jumbo'}" style="background:#995010;">
+                      <span  style="color:#fff;font-weight:bold;">
                          <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
                       </span>
                    </button>
                </span>
                <span ms-if="@item.isFeedBack=='1'" class="button-wrap">
-                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/',postid:@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}">
+                   <button ms-click="@gonote" ms-attr="{noteurl:'#!/main/grain/feednote/',postid:@item.postid,habitid:@item.id,pid:@currentUserId,hid:@item.hid,isFeed:'1',class:'button button-glow button-circle button-action button-jumbo'}" style="background:#995010;">
                      <span>
                        <i    class="fa fa-check fa-fw"></i>
                      </span>

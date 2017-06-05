@@ -3,11 +3,11 @@
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
             <a ms-if="@refererUrl.length>0"  ms-attr="{href:'#!'+@refererUrl}">
-              <img src="/static/front/img/back.png" style="width:16px;height:16px"/>
+              <img src="/static/front/img/back.png" style="width:16px;"/>
             </a>
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" style="color:#D4A753">舞台</h4>
+              <h4 id="title" style="color:#995010;font-weight:bold;">舞台</h4>
           </div>
           <div class="col-xs-4 text-right">
             <!-- <a href="#!/main/grain/addchild">
@@ -52,9 +52,9 @@
                           </div>
                        </div>
                        <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:5px">
-                         <span ms-attr="{class:(@item.praseInfos.length?'red':'active')}">
-                           <i  class="fa fa-heart"></i>
-                           <img  style="width:30px;height:30px" ms-for="(i,m) in @item.praseInfos" ms-attr="{src:@m.imgUrl,class:'img-circle'}"></img>
+                         <span ms-attr="{class:(@item.praseInfos.length?'#995010':'active')}">
+                           <i  class="fa fa-heart" style="color:#995010;margin-right:5px;"></i>
+                           <img  style="width:30px;height:30px;margin-right:5px;" ms-for="(i,m) in @item.praseInfos" ms-attr="{src:@m.imgUrl,class:'img-circle'}"></img>
                          </span>
                        </div>
                       <div class="col-xs-12 text-left" style="margin-top:5px;margin-bottom:15px">
@@ -73,14 +73,14 @@
                       <hr/>
                       <div class="col-xs-12 text-center">
                           <div class="row" style="margin-top:5px">
-                             <div  class="col-xs-3">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);"   ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></button>
+                             <div  class="col-xs-4">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);"   ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x" style="color:#466f25;"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></button>
                              </div>
-                             <div  class="col-xs-6">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x"></i><span class="badge">{? item.accumContents ?}</span></button>
+                             <div  class="col-xs-4">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x" style="color:#466f25;"></i><span class="badge">{? item.accumContents ?}</span></button>
                              </div>
-                             <div  class="col-xs-3"  style="margin-top:2px">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x"></i><span class="badge">{? item.accumAudios ?}</span></button>
+                             <div  class="col-xs-4"  style="margin-top:2px">
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x" style="color:#466f25;"></i><span class="badge">{? item.accumAudios ?}</span></button>
                              </div>
                           </div>
                      </div>

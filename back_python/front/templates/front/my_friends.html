@@ -3,19 +3,19 @@
       <div  class="row navButton">
           <div  class="col-xs-4 text-left icon">
             <a ms-if="@refererUrl.length>0"  ms-attr="{href:'#!'+@refererUrl}">
-              <i class="glyphicon glyphicon-arrow-left fa-lg active"></i>
+              <img src="/static/front/img/back.png" style="width:16px;"/>
             </a>
           </div>
           <div class="col-xs-4 text-center">
-              <h4 id="title" class="topNavButton">朋友们</h4>
+              <h4 id="title" class="topNavButton" style="color:#995010;font-weight:bold;">朋友们</h4>
           </div>
           <div class="col-xs-4 text-right">
 
           </div>
       </div>
     </nav>
-    <div id="childContent"  class="container-fluid childContent" style="height:600px;overflow-y:scroll">
-        <div class="well" style="background-color:#F6F4F2" ms-for="(i,item) in @familys" >
+    <div id="childContent"  class="container-fluid childContent" style="min-height:600px;overflow-y:scroll">
+        <div class="well" style="background:#f3e6ce;margin:10px;margin-bottom:0px;border-radius:5px;" ms-for="(i,item) in @familys" >
             <a ms-attr="{href:'#!/main/stage/'+@item.id}">
               <div class="row">
                  <div class="col-xs-4">

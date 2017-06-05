@@ -7,11 +7,11 @@
           </a> -->
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" style="color:#D4A753">打卡</h4>
+            <h4 id="title" style="color:#995010;font-weight:bold;">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
           <a href="#!/main/grain/addchild" ms-if="@role!='4'">
-            <i class="fa fa-user-plus fa-2x active" aria-hidden="true"></i>
+            <i class="fa fa-user-plus fa-2x active" aria-hidden="true" style="font-size:22px;color:#6a532e;margin-top:4px;"></i>
           </a>
         </div>
     </div>
@@ -21,26 +21,26 @@
           <li  ms-for="(i,item) in @familys"   class="list-group-item"> -->
             <div class="panel panel-default" ms-for="(i,item) in @familys" >
               <table class="table">
-                <tr style="background-color:#F6F4F2">
+                <tr style="background-color:#F6F4F2;">
                   <td>
                     <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">
-                      <img class="img-circle" style="width:32px;height:32px" ms-attr="{src:@item.imgUrl}" alt="..."/>
-                      {? @item.nickname ?}<i  class="fa fa-edit fa-1x active"></i>
+                      <img class="img-circle" style="width:32px;height:32px;margin-right:5px;" ms-attr="{src:@item.imgUrl}" alt="..."/>
+                      {? @item.nickname ?}<i  class="fa fa-edit fa-1x " style="margin-left:5px;color:#466f25;"></i>
                     </a>
                   </td>
                   <td class="text-right" >
                     <a ms-if="@item.canedit==1"    ms-attr="{href:'#!/main/grain/feedback/'+@item.id+'/'+@item.role}">
-                       <button class="btn btn-success btn-1x"><span class="glyphicon glyphicon-time"></span>每日打卡</button>
+                       <button class="btn btn-success btn-1x" style="background:#466f25;"><span class="glyphicon glyphicon-time" style="margin-right:5px;"></span>每日打卡</button>
                    </a>
                   </td>
                 </tr>
-                <tr><td><i class="fa fa-sun-o" style="color:orange" aria-hidden="true"></i>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
-                <tr><td><i class="fa fa-cubes" style="color:orange" aria-hidden="true"></i>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
-                <tr><td><i class="fa fa-line-chart" style="color:orange" aria-hidden="true"></i>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
-                <tr><td><i class="fa fa-calendar" style="color:orange" aria-hidden="true"></i>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
-                  <span class="active"><i class="fa fa-female fa-2x" aria-hidden="true"></i></span>
+                <tr><td><i class="fa fa-sun-o" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
+                <tr><td><i class="fa fa-cubes" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
+                <tr><td><i class="fa fa-line-chart" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
+                <tr><td><i class="fa fa-calendar" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
+                  <span class="active"><i class="fa fa-female fa-2x" aria-hidden="true" style="color:#466f25;"></i></span>
                 </a></td></tr>
-                <tr><td><i class="fa  fa-info-circle" style="color:orange"></i>提示:</td><td style="font-size:10px;padding-top:8px;width:210px"><span>点上方<i  class="fa fa-edit fa-1x active"></i>可以给孩子换头像和加入部落，查看孩子用于其它设备登录的昵称和密码</span></td></tr>
+                <tr><td><i class="fa  fa-info-circle" style="color:#995010;margin-right:5px;"></i>提示:</td><td style="font-size:10px;padding-top:8px;width:210px"><span>点上方<i  class="fa fa-edit fa-1x" style="color:#466f25;"></i>可以给孩子换头像和加入部落，查看孩子用于其它设备登录的昵称和密码</span></td></tr>
               </table>
             </div>
           <!-- </li>

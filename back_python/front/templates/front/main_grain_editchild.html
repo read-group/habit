@@ -3,14 +3,14 @@
       <div  class="row navButton">
         <div  class="col-xs-4 text-left icon">
           <a  href="#!/main/grain" id="backAfterSave2">
-            <img src="/static/front/img/back.png" style="width:16px;height:16px"/>
+            <img src="/static/front/img/back.png" style="width:16px;"/>
           </a>
         </div>
         <div class="col-xs-4 text-center">
-            <h4 id="title" style="color:#D4A753">修改信息</h4>
+            <h4 id="title" style="color:#995010;font-weight:bold;">修改信息</h4>
         </div>
         <div class="col-xs-4 text-right">
-             <button  ms-click="@saveClick" class="btn btn-success  btn-sm">保存</button>
+             <button  ms-click="@saveClick" class="btn btn-success  btn-sm" style="background:#466f25;">保存</button>
         </div>
       </div>
     </nav>
@@ -18,23 +18,23 @@
       <div class="well">
         <form>
            <div class="form-group text-center" ms-click="@btnPhoto">
-             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:80px;height:80px"/>
-             <span  id="takePhoto"　    class="active"><i class="fa fa-camera-retro fa-1x"></i><i  class="fa fa-refresh"></i></span>
+             <img ms-attr="{src:@headUrl}"  class="img-circle" style="width:80px;height:80px;margin-right:5px;"/><br>
+             <span  id="takePhoto" class="active" style="color:#466f25;display:block;width:100%;font-size:20px;text-align:center;"><i class="fa fa-camera-retro fa-1x" style="margin-right:5px;"></i><i  class="fa fa-refresh"></i></span>
            </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" style="color:#D4A753">昵称</label>
+              <label for="exampleInputEmail1" style="color:#995010">昵称</label>
               <input type="text" ms-duplex="nickname" class="form-control" id="nickname" placeholder="请输入成员昵称">
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" style="color:#D4A753">密码</label>
+              <label for="exampleInputEmail1" style="color:#995010">密码</label>
               <input type="text" ms-duplex="password" class="form-control" id="password" placeholder="请输入密码">
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" style="color:#D4A753">部落编码(数字以逗号分割，可以加入多个部落)</label>
+              <label for="exampleInputEmail1" style="color:#995010">部落编码(数字以逗号分割，可以加入多个部落)</label>
               <input type="text" ms-duplex="classid" class="form-control" id="classid">
             </div>
             <div class="form-group">
-              <label style="color:#D4A753"><i class="fa fa-info-circle" style="color:orange"></i>提示:孩子可以利用呢称和密码在其他设备登录</label>
+              <label style="color:#995010"><i class="fa fa-info-circle" style="color:orange"></i>提示:孩子可以利用呢称和密码在其他设备登录</label>
             </div>
         </form>
       </div>
