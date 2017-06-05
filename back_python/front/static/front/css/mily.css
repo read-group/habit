@@ -98,7 +98,7 @@ padding: 0px 0px;
   padding-left: 7px;
 }
 .active{
-  color:#00BB00!important;
+  color:red;
 }
 .video-js .vjs-control-bar {
   display: -webkit-none;
