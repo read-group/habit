@@ -6,9 +6,9 @@
 {% block adv %}
    <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" ms-controller="myCarousel">
+    <!--sha <div id="myCarousel" class="carousel slide" data-ride="carousel" ms-controller="myCarousel">
       <!-- Indicators -->
-     <ol class="carousel-indicators">
+     <!--sha <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -21,7 +21,7 @@
               <h1>{? @head.name ?}</h1>
               <p>{? @head.desc ?}</p>
               <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
-            </div>
+           <!--sha </div>
           </div>
         </div>
       </div>
@@ -40,14 +40,17 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="note">
+    <div style="width:100%;height:750px;background:#512805 url(/static/front/img/index_bg.jpg) no-repeat;">
+      
+    
+        <div class="note">
               <h5>选择角色</h5>
               <p><a href="{{ host }}" class="button button-circle button-glow button-border button-rounded button-caution btn-2x">家长</a></p>
               <p><a href="/main?role=child" class="button button-circle button-glow button-border button-rounded button-caution btn-2x">孩子</a></p>
               <!--<h5>选择角色</h5>
               <p class="s_parent"><a href="{{ host }}" class="">家长</a></p>
               <p class="s_child"><a href="/main?role=child" class="">孩子</a></p>-->
+        </div>
     </div>
     <!--sha add-->
   {% endblock %}
