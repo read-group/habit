@@ -556,7 +556,11 @@
          })
          $('#videoId').on('shown', function () {
             // do something…
-            player=videojs("myvideo")
+            player=videojs("myvideo",{
+              flash:{
+                swf: 'http://mily365.com/static/front/js/video/video-js.swf'
+              }
+            });
          })
        }
      });
