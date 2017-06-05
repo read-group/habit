@@ -74,13 +74,13 @@
                       <div class="col-xs-12 text-center">
                           <div class="row" style="margin-top:5px">
                              <div  class="col-xs-4">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);"   ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'#995010':'active')}"><i class="fa fa-thumbs-up fa-2x" style="color:#466f25;"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></button>
+                                  <button style="border:none;background:rgba(255,255,255,0.1);"   ms-click="@praseClick"      ms-attr="{postid:item.id,class:(@item.isPrased?'red':'active')}"><i class="fa fa-thumbs-up fa-2x" style="color:#466f25;"></i><span ms-attr="{class:'badge'}">{? item.accumPrases ?}</span></button>
                              </div>
                              <div  class="col-xs-4">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x"></i><span class="badge">{? item.accumContents ?}</span></button>
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@txtCommentClick"  ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-commenting fa-2x" style="color:#466f25;"></i><span class="badge">{? item.accumContents ?}</span></button>
                              </div>
                              <div  class="col-xs-4"  style="margin-top:2px">
-                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x"></i><span class="badge">{? item.accumAudios ?}</span></button>
+                                  <button style="border:none;background:rgba(255,255,255,0.1);" ms-click="@startRecord" ms-attr="{postid:item.id,class:'active'}"><i class="fa fa-microphone fa-2x" style="color:#466f25;"></i><span class="badge">{? item.accumAudios ?}</span></button>
                              </div>
                           </div>
                      </div>
