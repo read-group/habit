@@ -145,8 +145,8 @@ text-decoration:none;
     border: none
 }
 /*style*/
-.sha_bg{width:100%;height:100%;background:url(/static/img/index_button.png) no-repeat;background-size:100%;}
-
+.sha_note p{width:100%;height:30px;line-height:30px;background:#995010;border-radius: 5px;}
+.sha_note p a{display:block;width:100%;height:100%;color:#fff;font-weight:bold;font-size:18px;}
 
 
 
