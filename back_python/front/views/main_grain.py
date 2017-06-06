@@ -8,6 +8,14 @@ import json
 
 class GrainView(TemplateView):
     template_name="front/main_grain.html"
+    def get_context_data(self, **kwargs):
+        ctx=super(GrainView,self).get_context_data(**kwargs)
+        # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
+        path=self.request.path
+        hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+"&pathfrom="+path
+        encode=urllib.parse.urlencode({'redirect_uri':hostRedirect})
+        ctx["grainUrl"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",encode)
+        return ctx
     def get(self,request,*args,**kwargs):
         return super(GrainView,self).get(request,*args,**kwargs)
 

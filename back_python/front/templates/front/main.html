@@ -97,7 +97,7 @@
                   $("span",el.currentTarget).addClass("active")
                   $("div",el.currentTarget).addClass("active")
                 },
-                wxinit:function(ts,urlSign){
+                wxinit:function(ts,urlSign,titlestr,descstr){
                   //var urlstr=document.location.href;
                   var index=urlSign.indexOf("#");
                   var urlstr=urlSign.substring(0,index)
@@ -132,11 +132,11 @@
                               });
                               if(ts){
                                 wx.onMenuShareAppMessage({
-                                     title: '和我家孩子一起来挑战米粒习惯吧！', // 分享标题
+                                     title: titlestr, // 分享标题
                                    //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
-                                     desc: '孩子们需要朋友的陪伴与关注....', // 分享描述
+                                     desc: descstr, // 分享描述
                                      link:ts, // 分享链接
-                                     imgUrl: 'http://mily365.com/media/upload/mily.png', // 分享图标
+                                     imgUrl: 'http://mily365.com/static/front/img/logo_02.png', // 分享图标
                                      type: '', // 分享类型,music、video或link，不填默认为link
                                      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                      success: function (r) {

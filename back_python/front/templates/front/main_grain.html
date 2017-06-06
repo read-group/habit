@@ -10,9 +10,9 @@
             <h4 id="title" style="color:#995010;font-weight:bold;">打卡</h4>
         </div>
         <div class="col-xs-4 text-right">
-          <a href="#!/main/grain/addchild" ms-if="@role!='4'">
+          <!-- <a href="#!/main/grain/addchild" ms-if="@role!='4'">
             <i class="fa fa-user-plus fa-2x active" aria-hidden="true" style="font-size:22px;color:#6a532e;margin-top:4px;"></i>
-          </a>
+          </a> -->
         </div>
     </div>
   </nav>
@@ -112,18 +112,18 @@
     },
     pageReady:function(){
       var self=this;
-      self.$vmMain.wxinit("#",document.location.href)
+      self.$vmMain.wxinit("{{grainUrl|safe}}",document.location.href,"家长分享控制","孩子可以点击这个消息进行打卡。")
       console.log(" grain pageReady");
       //$yml.dlgCenter("grainHelp");
-      $yml.dlgCenter("grainHelpAddChild");
-
-      if(!avalon.router.localStorage.getItem("grainHelpAddChild")){
-        $("#grainHelpAddChild").modal("show");
-        $("#grainHelpAddChildHelpKnow").click(function(){
-          $("#grainHelpAddChild").modal("hide");
-          avalon.router.localStorage.setItem("grainHelpAddChild","1");
-        });
-      }
+      // $yml.dlgCenter("grainHelpAddChild");
+      //
+      // if(!avalon.router.localStorage.getItem("grainHelpAddChild")){
+      //   $("#grainHelpAddChild").modal("show");
+      //   $("#grainHelpAddChildHelpKnow").click(function(){
+      //     $("#grainHelpAddChild").modal("hide");
+      //     avalon.router.localStorage.setItem("grainHelpAddChild","1");
+      //   });
+      // }
       // if(avalon.router.localStorage.getItem("grainHelp")=="1"){
       //   setTimeout(function(){
       //     $("#grainHelp").modal("show");
