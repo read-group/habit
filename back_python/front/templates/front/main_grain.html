@@ -112,7 +112,7 @@
     },
     pageReady:function(){
       var self=this;
-      alert(grainUrl)
+      alert("{{grainUrl|safe}}")
       self.$vmMain.wxinit("{{grainUrl|safe}}",document.location.href,"家长分享控制","孩子可以点击这个消息进行打卡。")
       console.log(" grain pageReady");
       //$yml.dlgCenter("grainHelp");
