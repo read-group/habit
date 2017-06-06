@@ -5,7 +5,7 @@ import json
 # Create your views here.
 # def index(request):
 #     return render(request,"front/index.html");
-
+import urllib
 class GrainView(TemplateView):
     template_name="front/main_grain.html"
     def get_context_data(self, **kwargs):
