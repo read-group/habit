@@ -14,7 +14,7 @@ class GrainView(TemplateView):
         path=self.request.path
         hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+"&pathfrom="+path
         encode=urllib.parse.urlencode({'redirect_uri':hostRedirect})
-        ctx["grainUrl"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",encode)
+        ctx["grainUrl"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",encode).replace("{state}","")
         return ctx
     def get(self,request,*args,**kwargs):
         return super(GrainView,self).get(request,*args,**kwargs)
