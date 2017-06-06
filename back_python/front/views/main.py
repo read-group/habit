@@ -107,7 +107,8 @@ class MainView(TemplateView):
                         accountCash.save()
 
                         # 默认创建一个默认孩子的用户
-                        nkname=decodeUserInfoJson["nickname"]+"@子"
+                        # nkname=decodeUserInfoJson["nickname"]+"@子"
+                        nkname="修改昵称"
                         userC=User.objects.create(username=decodeUserInfoJson["openid"]+"@")
                         # 查询班级
                         classGroupF=None
