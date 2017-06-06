@@ -130,14 +130,11 @@
                                                   "menuItem:originPage","menuItem:readMode",
                                                   "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
                               });
-                              alert(titlestr)
-                              alert(descstr)
-                              alert(ts)
                               if(ts){
                                 wx.onMenuShareAppMessage({
-                                     title: titlestr, // 分享标题
+                                     title: "分享控制", // 分享标题
                                    //  desc: $.localStorage.get("nickName")+'授权给您监护他/她的孩子进行习惯反馈。', // 分享描述
-                                     desc: descstr, // 分享描述
+                                     desc: "分享控制...", // 分享描述
                                      link:ts, // 分享链接
                                      imgUrl: 'http://mily365.com/static/front/img/logo_02.png', // 分享图标
                                      type: '', // 分享类型,music、video或link，不填默认为link
