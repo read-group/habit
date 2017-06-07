@@ -228,7 +228,7 @@
               //当前页面初次加载时
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)&")
-              alert(match)
+              alert(match[1])
               if(match && match[1]){
                 var go=match[1];
                 $av.router.navigate(hash || go, 0)//默认打开
