@@ -118,12 +118,10 @@
                                         ,'downloadVoice','hideMenuItems'];
                                         //'chooseWXPay'
                      wx.ready(function(){
-                              // var redirect_uri='http://ll.yimilan.com/home?noticeKey='+$.localStorage.get("opid")+"&shareKey=1";
-                              // var redirect_uri='http://ll.yimilan.com/home/main.html?'+"from=time&shareKey=1";
-                              // var encodeurl=encodeURIComponent(redirect_uri);
-                              // var scope="snsapi_userinfo";
-                              // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
-                              // var url="http://www.163.com";
+                              var redirect_uri='http://mily365.com/main?role=host&pathfrom=/main/stage/-1';
+                              var encodeurl=encodeURIComponent(redirect_uri);
+                              var scope="snsapi_userinfo";
+                              var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
 
                               wx.hideMenuItems({
                                                   menuList:['menuItem:share:qq',
@@ -135,7 +133,7 @@
                                 wx.onMenuShareAppMessage({
                                      title:titlestr, // 分享标题
                                      desc:descstr, // 分享描述
-                                     link:ts, // 分享链接
+                                     link:url, // 分享链接
                                      imgUrl: 'http://mily365.com/static/front/img/logo_02.png',// 分享图标
                                      type: '', // 分享类型,music、video或link，不填默认为link
                                      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
