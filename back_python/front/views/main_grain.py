@@ -13,7 +13,7 @@ class GrainView(TemplateView):
         # ctx["refererUrl"]=self.request.META['HTTP_REFERER']
         path=self.request.path
         pid=self.request.user.profile.id
-        hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+"&pathfrom=/main/stage/"+str(pid)
+        hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+"&pathfrom=/main/grain/"
         ctx["grainUrl"]=hostRedirect
         return ctx
     def get(self,request,*args,**kwargs):
