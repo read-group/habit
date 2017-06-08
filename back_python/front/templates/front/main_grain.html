@@ -21,7 +21,6 @@
           <li  ms-for="(i,item) in @familys"   class="list-group-item"> -->
             <div class="panel panel-default" ms-for="(i,item) in @familys" >
               <table class="table">
-
                 <tr style="background-color:#F6F4F2;">
                   <td>
                     <a ms-attr="{href:'#!/main/grain/editchild/'+@item.id}">
@@ -35,14 +34,13 @@
                    </a>
                   </td>
                 </tr>
-                    <tr><td><i class="fa  fa-info-circle" style="color:#995010;margin-right:5px;"></i>提示:</td><td style="font-size:10px;padding-top:8px;width:210px"><span>点上方<i  class="fa fa-edit fa-1x" style="color:#466f25;"></i>可以给孩子换头像改昵称以及加入班级;点右上角'三个点'发送给朋友，实现利用朋友设备打卡</span></td></tr>
                 <tr><td><i class="fa fa-sun-o" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>身份:</td><td>{? (item.role=='4'?'孩子':'家主') ?}</td></tr>
                 <tr><td><i class="fa fa-cubes" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>米仓:</td><td>{? @item.milyAccount ?}粒</td></tr>
                 <tr><td><i class="fa fa-line-chart" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>体力值:</td><td>{? @item.bodyval ?}点</td></tr>
                 <tr><td><i class="fa fa-calendar" style="color:#995010;margin-right:5px;" aria-hidden="true"></i>时光:</td><td><a ms-attr="{href:'#!/main/stage/'+@item.id,class:'active'}">
                   <span class="active"><i class="fa fa-female fa-2x" aria-hidden="true" style="color:#466f25;"></i></span>
                 </a></td></tr>
-
+                <tr><td><i class="fa  fa-info-circle" style="color:#995010;margin-right:5px;"></i>提示:</td><td style="font-size:10px;padding-top:8px;width:210px"><span>点上方<i  class="fa fa-edit fa-1x" style="color:#466f25;"></i>可以给孩子换头像改昵称以及加入班级;点右上角'三个点'发送给朋友，实现利用朋友设备打卡</span></td></tr>
               </table>
             </div>
           <!-- </li>
