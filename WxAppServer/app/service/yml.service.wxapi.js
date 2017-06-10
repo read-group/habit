@@ -28,10 +28,12 @@ yml.service.wxapi=services.service.base.New({
 		var that = this;
 		weixinKey.accessKey.getAccessKey(function(err,rtn){
 			 var surl=that.sendMsgUrlPattern+rtn;
+			 console.log("call in.........")
 			 var txtObj ={
 						 "touser":touser,
 						 "template_id":tid,
-						 "url":"http://mily365.com?role=host&pathfrom=/main/stage/283",
+						 //"url":"http://mily365.com?role=host&pathfrom=/main/stage/283",
+						 "url":"http://www.baidu.com",
 						 "topcolor":"#FF0000",
 						 "data":data
 			 }
