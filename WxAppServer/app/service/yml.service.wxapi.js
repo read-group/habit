@@ -28,7 +28,7 @@ yml.service.wxapi=services.service.base.New({
 		var that = this;
 		weixinKey.accessKey.getAccessKey(function(err,rtn){
 			 var surl=that.sendMsgUrlPattern+rtn;
-			 var link="http://www.mily365.com?role=host&from=/main/stage/283";
+			 var link="http://mily365.com?role=host&from=/main/stage/283";
 			 //var encodeurl=encodeURIComponent("role=host&pathfrom=/main/stage/283");
 			 //var url=link+encodeurl
 			 console.log(link)
