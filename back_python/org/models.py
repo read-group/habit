@@ -22,7 +22,7 @@ MapEngToRole={
 MapRoleToEng={
 "1":"host",
 "2":"teacher",
-"3":"host-teac",
+"3":"host",
 "4":"child"
 }
 #家庭
