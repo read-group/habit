@@ -138,11 +138,12 @@ class StageService(JsonResultService):
             # 当前角色
             # 获取当前登录人员的角色
             eng=MapRoleToEng[profile.role]
-            hostRedirect="http://mily365.com?role="+eng
             state="/main/stage/"+str(postCreator.id)
-            queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect})).replace("{state}",urllib.parse.urlencode({'state':state}))
+            hostRedirect="http://mily365.com?role="+eng+"&pathfrom="+state
+
+            # queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect})).replace("{state}",urllib.parse.urlencode({'state':state}))
             # logger.error(queryStr)
-            body["queryStr"]=queryStr
+            body["queryStr"]=hostRedirect
 
             # body["queryStr"]="http://mily365.com?role="+"h"
             jdata = json.dumps(body)
