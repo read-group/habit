@@ -31,7 +31,7 @@ yml.service.wxapi=services.service.base.New({
 			 var txtObj ={
 						 "touser":touser,
 						 "template_id":tid,
-						 "url":"http://mily365.com?"+queryStr,
+						 "url":"http://mily365.com?role=host&pathfrom=/main/stage/283",
 						 "topcolor":"#FF0000",
 						 "data":data
 			 }
