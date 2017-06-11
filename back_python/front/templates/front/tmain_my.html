@@ -38,6 +38,13 @@
         <button class="list-group-item">
             <div>人不知而不愠，不亦君子乎</div>
         </button>
+        <button ms-click="@exit"  class="list-group-item">
+          <div class="row">
+             <div class="col-xs-6 text-left">
+                  <i class="fa fa-close" style="color:#995010;margin-right:5px;"></i>&nbsp;退出</a>
+             </div>
+          </div>
+        </button>
       </div>
     </div>
   </div>
@@ -58,6 +65,9 @@
         },
         cleanUp:function(){
           console.log("clean up...")
+        },
+        exit:function(){
+           location.href="/main/exit"
         }
       };
     },
