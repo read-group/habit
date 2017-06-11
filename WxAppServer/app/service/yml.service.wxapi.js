@@ -28,15 +28,14 @@ yml.service.wxapi=services.service.base.New({
 		var that = this;
 		weixinKey.accessKey.getAccessKey(function(err,rtn){
 			 var surl=that.sendMsgUrlPattern+rtn;
-			 var link="http://mily365.com/main?role=host&from=/main/stage/283";
+			 //var link="http://mily365.com/main?role=host&from=/main/stage/283";
 			 //var encodeurl=encodeURIComponent("role=host&pathfrom=/main/stage/283");
 			 //var url=link+encodeurl
 			 console.log(link)
 			 var txtObj ={
 						 "touser":touser,
 						 "template_id":tid,
-						 "url":link,
-						 //"url":"http://www.baidu.com",
+						 "url":queryStr,
 						 "topcolor":"#FF0000",
 						 "data":data
 			 }
