@@ -128,7 +128,7 @@ class StageService(JsonResultService):
                 "color":"#173177"
                 },
                 "remark": {
-                "value":"点击按路径'米粒习惯/我的/时光足迹'查看朋友点评",
+                "value":"点击我，去查看朋友点评吧",
                 "color":"#173177"
                 }
             };
@@ -141,11 +141,7 @@ class StageService(JsonResultService):
             state="/main/stage/"+str(postCreator.id)
             hostRedirect="http://mily365.com/main?role="+eng+"&pathfrom="+state
 
-            # queryStr=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",urllib.parse.urlencode({'redirect_uri':hostRedirect})).replace("{state}",urllib.parse.urlencode({'state':state}))
-            # logger.error(queryStr)
             body["queryStr"]=hostRedirect
-
-            # body["queryStr"]="http://mily365.com?role="+"h"
             jdata = json.dumps(body)
             headers={'Content-Type':'application/json'}
             request2=urllib.request.Request("http://wx.mily365.com/wx/api/sendMsg", jdata.encode('utf-8'),headers)
