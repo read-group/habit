@@ -31,7 +31,7 @@ yml.service.wxapi=services.service.base.New({
 			 //var link="http://mily365.com/main?role=host&from=/main/stage/283";
 			 //var encodeurl=encodeURIComponent("role=host&pathfrom=/main/stage/283");
 			 //var url=link+encodeurl
-			 console.log(link)
+			 console.log(queryStr)
 			 var txtObj ={
 						 "touser":touser,
 						 "template_id":tid,
