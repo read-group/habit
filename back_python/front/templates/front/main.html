@@ -227,7 +227,7 @@
 
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)&")
-              alert(match[1])
+              alert(match)
               if(match && match[1]){
                 var go=match[1];
                 $av.router.navigate(hash || go, 0)//默认打开
