@@ -19,7 +19,7 @@ import datetime
 import random
 logger = logging.getLogger("django")
 # http://mily365.com/media/upload/幻灯片3.PNG
-randPic=['http://mily365.com/static/front/img/loop1.jpg','http://mily365.com/static/front/img/loop2.jpg','http://mily365.com/static/front/img/loop3.jpg','http://mily365.com/static/front/img/loop4.jpg']
+randPic=['http://mily365.com/static/front/img/loop1.jpg','http://mily365.com/static/front/img/loop2.jpg','http://mily365.com/static/front/img/loo3.jpg','http://mily365.com/static/front/img/loop4.jpg']
 # Create your views here.
 class FeedbackService(JsonResultService):
     def orghabits(self,org,role,schema,pid):
