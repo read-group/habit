@@ -74,9 +74,12 @@ class ActivityService(JsonResultService):
             dataTmp["catName"]=act.get_cat_display()
             cats=[]
             for item in act.activityitem_set.all():
-                habitCat=self.toJSON(item.cat,["id","name","forParent"])
+                habitCat=self.toJSON(item.cat,["id","name","forParent","question"])
                 #设置习惯类别的级别初值
                 habitCat["level"]="M"
+                if habitCat['question']=='f':
+                    habitCat['question']=habitCat["name"]
+
                 #在查询出当前活动时，应该把当前活动的习惯类别所涉及的习惯加载到缓存，缓存key是：cat:id:habit:level,值是习惯
                 for habit in item.cat.habit_set.all():
                     habitLevelKey=settings.CACHE_FORMAT_STR['cat_habit_level'] % (item.cat.id, habit.level)

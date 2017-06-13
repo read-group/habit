@@ -52,6 +52,7 @@ HABIT_ICON_CHOICES = (
 #     "plantKnow":"fa fa-tree","starKnow":"fa fa-cogs","childDance":"fa fa-child"
 class HabitCatalog(EntityBase):
     forParent=models.BooleanField(default=False,verbose_name="是否父母专用")
+    question=models.CharField(default='f',max_length=256,verbose_name="了解问题")
     def __str__(self):
         return self.name;
     class Meta:

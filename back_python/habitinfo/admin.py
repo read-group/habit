@@ -6,7 +6,7 @@ class HabitInline(admin.TabularInline):
     model = Habit
     extra = 0
 class HabitCatalogAdmin(admin.ModelAdmin):
-    list_display=('code','name','forParent')
+    list_display=('code','name','forParent','question')
     inlines = [HabitInline]
 
 class HabitAdmin(admin.ModelAdmin):
