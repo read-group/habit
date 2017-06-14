@@ -22,6 +22,7 @@ from .views import TMyView
 from .views import StLoginView
 from .views import MyExitView
 from .views import MyFriendsView
+from .views import ShareFeedView
 urlpatterns = [
     url(r'^$', HomeMobileView.as_view(),),
     url(r'^MP_verify_HAONGKquSEXIsxKN.txt$', HomeWxAuthView.as_view(),),
@@ -42,5 +43,6 @@ urlpatterns = [
     url(r'^tmain/classmember/.*$', TMainClassMemberView.as_view(),name="tmain.classmember"),
     url(r'^tmain/addclass/$', TMainAddClassView.as_view(),name="tmain.addclass"),
     url(r'^tmain/my$', TMyView.as_view(),name="tmain.my"),
+    url(r'^share/([0-9]+)/([0-9]+)/([0-9]+)$', ShareFeedView.as_view(),name="share"),
 
 ]

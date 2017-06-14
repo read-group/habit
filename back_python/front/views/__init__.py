@@ -7,3 +7,4 @@ from .main_my  import MyView,MyExitView,MyFriendsView
 from .tmain_class  import TMainClassMemberView,TMainAddClassView
 from .tmain_my import TMyView
 from .stlogin import StLoginView
+from .share import ShareFeedView
