@@ -13,6 +13,14 @@
                   <span>{? @myinfo.nickName ?}</span>
              </div>
              <div class="col-xs-12 text-center">
+                 <span>{? @myinfo.habitname ?}</span>
+             </div>
+             <div class="col-xs-12 text-center">
+                 <div>坚持了第{? @myinfo.accumDays ?}天</div>
+                 <div>今日获得米粒{? @myinfo.freeMily ?}粒</div>
+                 <div>累积获得米粒{? @myinfo.accumMily ?}粒</div>
+             </div>
+             <div class="col-xs-12 text-center">
                  <div>
                    <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:'/static/front/img/adv1.png'}" />
                 </div>
