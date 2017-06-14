@@ -231,8 +231,8 @@
           var hid=avalon.router.localStorage.getItem("hid");
           var name=avalon.router.localStorage.getItem("name");
 
-          var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
-          self.$vmMain.wxinit(url,document.location.href,"荣耀分享","点击查看"+name+"的打卡分享")
+          // var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
+          // self.$vmMain.wxinit(url,document.location.href,"荣耀分享","点击查看"+name+"的打卡分享")
           $("#shareNKnow").click(function(){
             $("#shareN").modal("hide")
             avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
