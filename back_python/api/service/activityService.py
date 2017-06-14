@@ -41,7 +41,7 @@ class ActivityService(JsonResultService):
         data=[]
         try:
             topQuery=(tag=='t')
-            queryCache=Activity.objects.filter(isTop__exact=topQuery).filter(status__exact=1).order_by("createdTime");
+            queryCache=Activity.objects.filter(isTop__exact=topQuery).filter(status__exact=1).order_by("-createdTime");
             count=queryCache.count();
 
             acts= queryCache[skip:limit]
