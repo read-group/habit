@@ -47,7 +47,7 @@ class FeedbackService(JsonResultService):
                         habittmp["isForParent"]=habitstrArray[2]
                         habittmp["icon"]=habitstrArray[3]
                         habittmp["hid"]=orgacthistory.id
-
+                        habittmp["aid"]=activity.id
                         # 检查缓存是否已经反馈过uid:habitid:date
                         nowstr=datetime.datetime.now().strftime("%Y-%m-%d")
                         userid_habitid_date_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_date_key'] % (activity.id,int(pid),int(habittmp["id"]),nowstr)

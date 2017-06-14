@@ -248,9 +248,11 @@
             paramsObj.imageUrl=imageUrl;
             paramsObj.audioUrls=audioUrls;
             paramsObj.feel=feel;
+
             $yml.ajax('/api/grain/feedback/publish',{"param":paramsObj},function(rtnData){
               if(rtnData.status==0){
                  avalon.router.navigate($yml.page.$vmPage.refererUrl,1)
+                 avalon.router.localStorage.setItem("pub",1);//发布成功后，设置发布状态为1，便于在打卡习惯列表页面弹出对话框提示
               }else{
                 alert("发布出错");
               }
