@@ -9,7 +9,7 @@
   <div class="content" id="content">
       <div class="row">
              <div class="col-xs-12 text-left"  style="margin-top:10px">
-
+                  <img ms-attr="{src:@myinfo.headingImgUrl}"  class="img-circle" style="width:80px;height:80px"/><br>
              </div>
              <div class="col-xs-12 text-center">
                  <div>
@@ -41,10 +41,8 @@
               params.actid={{ actid }}
               params.pid={{ pid }}
               params.habitid={{ hid }}
-              alert(JSON.stringify(params))
               $yml.ajax('/api/share/feedback',params,
               　  function(res){
-                    alert(JSON.stringify(res))
                     vm.myinfo=res.content;
 
                   }
