@@ -222,8 +222,14 @@
       });
       //弹出分享提示
       if(avalon.router.localStorage.getItem("pub")==1){
-          $("#shareN").modal("show");
+          //$("#shareN").modal("show");
           //调用分享接口构造url
+          var actid=avalon.router.localStorage.getItem("actid");
+          var pid=avalon.router.localStorage.getItem("pid");
+          var hid=avalon.router.localStorage.getItem("hid");
+
+          //var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
+          //self.$vmMain.wxinit("{{grainUrl|safe}}",document.location.href,"家长分享控制","孩子可以点击这个消息进行打卡。")
           $("#shareNKnow").click(function(){
             $("#shareN").modal("hide")
             avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
