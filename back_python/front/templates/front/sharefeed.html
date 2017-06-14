@@ -32,6 +32,7 @@
               //console.log(typeof(avalon))
               var vm=$av.define({
                 $id:"share",
+                myinfo:{}
               });
               $av.scan(document.getElementById("share"),[vm])
               var params={}
@@ -39,12 +40,12 @@
               params.pid={{ pid }}
               params.hid={{ hid }}
               alert(JSON.stringify(params))
-              // $yml.ajax('/api/share/feedback',null,
-              // 　  function(res){
-              //       $yml.page.$vmPage.myinfo=res.content.myinfo;
-              //
-              //     }
-              // );
+              $yml.ajax('/api/share/feedback',params,
+              　  function(res){
+                    vm.myinfo=res.content;
+                    alert(JSON.stringify(res.content))
+                  }
+              );
             })
          })(jQuery,avalon)
 </script>
