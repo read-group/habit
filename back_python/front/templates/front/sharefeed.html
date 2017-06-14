@@ -44,8 +44,9 @@
               alert(JSON.stringify(params))
               $yml.ajax('/api/share/feedback',params,
               　  function(res){
+                    alert(JSON.stringify(res))
                     vm.myinfo=res.content;
-                    alert(JSON.stringify(res.content))
+
                   }
               );
             })
