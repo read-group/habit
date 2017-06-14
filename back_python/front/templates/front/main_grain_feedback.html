@@ -131,6 +131,7 @@
         cleanUp:function(toCleanVm){
           this.habits.clear();
           this.currentUserId=null;
+          avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
         },
 
         gonote:function(ev){
