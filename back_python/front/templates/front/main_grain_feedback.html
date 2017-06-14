@@ -226,24 +226,24 @@
 
       //弹出分享提示
       if(avalon.router.localStorage.getItem("pub")==1){
+          //调用分享接口构造url
+          var actid=avalon.router.localStorage.getItem("actid");
+          var pid=avalon.router.localStorage.getItem("pid");
+          var hid=avalon.router.localStorage.getItem("hid");
+          var name=avalon.router.localStorage.getItem("name");
           setTimeout(function(){
             $("#shareN").modal("show");
             $("#shareNKnow").click(function(){
               $("#shareN").modal("hide")
               avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
+              var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
+              self.$vmMain.wxinit(url,document.location.href,"荣耀分享","点击查看"+name+"的打卡分享")
             })
           },100)
-          //调用分享接口构造url
-          var actid=avalon.router.localStorage.getItem("actid");
-          var pid=avalon.router.localStorage.getItem("pid");
-          var hid=avalon.router.localStorage.getItem("hid");
-          //var name=avalon.router.localStorage.getItem("name");
 
 
-          //var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
-          // alert("ddd")
-          // //self.$vmMain.wxinit(url,document.location.href,"荣耀分享","点击查看"+name+"的打卡分享")
-          // alert("eee")
+
+
 
       }
     }
