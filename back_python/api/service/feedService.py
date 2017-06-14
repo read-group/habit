@@ -368,8 +368,8 @@ class FeedbackService(JsonResultService):
         content={}
         logger.error("getShareFeedInfo")
         try:
-            habit=Habit.objects.get(id=int(hid))
-            profile=Profile.objects.get(id=int(pid))
+            habit=Habit.objects.get(pk=int(hid))
+            profile=Profile.objects.get(pk=int(pid))
             userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (int(aid),int(pid),int(hid),)
             lastFeed=cache.get(userid_habitid_key)
             content["nickName"]=profile.nickname
@@ -378,7 +378,8 @@ class FeedbackService(JsonResultService):
             content["accumDays"]=lastFeed.accumDays
             content["freeMily"]=lastFeed.freeMily
             content["accumMily"]=lastFeed.accumMily
-        except:
+        except Exception as e:
+            logger.error(e)
             jsonResult.rtnDic["status"]=-1
         else:
             jsonResult.rtnDic["content"]=content
