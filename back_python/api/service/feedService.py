@@ -363,4 +363,26 @@ class FeedbackService(JsonResultService):
         finally:
             return jsonResult
 
+    def getShareFeedInfo(self,aid,pid,hid):
+        jsonResult=self.initJsonResult()
+        content={}
+        logger.error("getShareFeedInfo")
+        try:
+            habit=Habit.objects.get(id=int(hid))
+            profile=Profile.objects.get(id=int(pid))
+            userid_habitid_key=settings.CACHE_FORMAT_STR['actid_userid_habitid_key'] % (int(aid),int(pid),int(hid),)
+            lastFeed=cache.get(userid_habitid_key)
+            content["nickName"]=profile.nickname
+            content["headingImgUrl"]=profile.imgUrl
+            content["habitname"]=habit.name
+            content["accumDays"]=lastFeed.accumDays
+            content["freeMily"]=lastFeed.freeMily
+            content["accumMily"]=lastFeed.accumMily
+        except:
+            jsonResult.rtnDic["status"]=-1
+        else:
+            jsonResult.rtnDic["content"]=content
+        finally:
+            return jsonResult
+
 feedbackService=FeedbackService()

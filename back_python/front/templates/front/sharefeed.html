@@ -34,6 +34,17 @@
                 $id:"share",
               });
               $av.scan(document.getElementById("share"),[vm])
+              var params={}
+              params.aid={{ actid }}
+              params.pid={{ pid }}
+              params.hid={{ hid }}
+              alert(JSON.stringify(params))
+              // $yml.ajax('/api/share/feedback',null,
+              // 　  function(res){
+              //       $yml.page.$vmPage.myinfo=res.content.myinfo;
+              //
+              //     }
+              // );
             })
          })(jQuery,avalon)
 </script>

@@ -27,6 +27,7 @@ from api.views import StageListView
 from api.views import StagePraseView
 from api.views import TxtNoteView,StageAudioView
 from api.views import WxWelcomeView,LoopHeadView
+from api.views import ShareMyView
 urlpatterns = [
      url(r'^wxwelcome/$',WxWelcomeView.as_view()),
      url(r'^welcome/loopHead$',LoopHeadView.as_view()),
@@ -51,5 +52,6 @@ urlpatterns = [
      url(r'^teacher/classmember$',TeacherClassMemberView.as_view()),
      url(r'^teacher/addclass$',TeacherAddClassView.as_view()),
      url(r'^home/my$',HomeMyView.as_view()),
+     url(r'^share/feedback$',ShareMyView.as_view()),
      url(r'^teacher/my$',TeacherMyView.as_view()),
 ]
