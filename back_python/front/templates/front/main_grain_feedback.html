@@ -226,6 +226,7 @@
           //调用分享接口构造url
           $("#shareNKnow").click(function(){
             $("#shareN").modal("hide")
+            avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
           })
 
       }
