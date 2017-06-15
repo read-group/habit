@@ -95,18 +95,36 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-smile-o" style="color:orange"></i>小小提示</h4>
-                  </div>
-                  <div class="text-center" style="width:100%;height:120px;margin-top:15px">
-                      <div class="text-center">
-                        <span>
-                          点右上方的"三个点"，让朋友分享您的荣耀！</span>
-                      </div>
-                      <div style="margin-top:15px;">
-                        <button href="#" class="button button-pill  button-action" id="shareNKnow">我知道了</button>
-                      </div>
-                  </div>
+                <a id="shareN" class="close" style="display:block;width:30px;height:30px;position:absolute;top:10px;right:10px;z-index:99999;opacity:1;"><img src="/static/front/img/close_hov.png" width="30"/></a>
+                <div class="content" id="content" style="">
+                    <div class="row" style="">
+                           <img src="/static/front/img/active_bg.png" width="300" style="display:block;margin:10px auto 30px;"/>
+                           <div style="position:absolute;top:70px;">
+                               <div class="col-xs-12 text-center">
+                                    <img ms-attr="{src:@myinfo.headingImgUrl}"  class="img-circle" style="width:40px;height:40px"/><br/>
+                                    <span style="font-size:16px;font-weight:bold;color:#995010;">{? @myinfo.nickName ?}</span>
+                               </div>
+                               <div class="col-xs-12 text-center">
+                                   <span style="color:#466f25;padding-right:10px;">{? @myinfo.habitname ?}</span><span style="color:#466f25;">坚持了第{? @myinfo.accumDays ?}天</span>
+                               </div>
+                               <div class="col-xs-12 text-center">
+                                   <span style="color:#995010;padding-right:10px;">今日获得米粒{? @myinfo.freeMily ?}粒</span><span style="color:#995010;">累积获得米粒{? @myinfo.accumMily ?}粒</span>
+                               </div>
+                           </div>
+                          <div class="col-xs-12 text-center" style="position:absolute;top:190px;left:0;">
+                              <div>
+                                  <img class="img-thumbnail" style="width:60%;height:150px;" ms-attr="{src:'/static/front/img/adv1.png'}" />
+                              </div>
+                           </div>
+                           <!-- <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px">
+                               <div>
+                                 <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:'/static/front/img/codeimg.jpg'}"/>
+                              </div>
+                           </div> -->
+                    </div>
+                    <div style="text-align:center;">
+                        <a href="javascript:;" style="display:inline-block;width:182px;height:43px;background:url(/static/front/img/active_button.png) no-repeat;background-size:182px 43px;"></a>
+                    </div>
               </div>
             </div>
       </div>
@@ -124,6 +142,7 @@
         $id:"feedback",
         currentUserId:null,
         $currentPostid:-1,
+        myinfo:{},
         habits:[],
         backClick:function(){
           //$yml.page.$router.pop();
@@ -232,7 +251,16 @@
           var hid=avalon.router.localStorage.getItem("hid");
           // var name=avalon.router.localStorage.getItem("name");
           setTimeout(function(){
-            $("#shareN").modal("show");
+            var params={}
+            params.actid=actid
+            params.pid=pid
+            params.habitid=hid
+            $yml.ajax('/api/share/feedback',params,
+            　  function(res){
+                  $yml.page.$vmPage.myinfo=res.content;
+                  $("#shareN").modal("show");
+                }
+            );
             $("#shareNKnow").click(function(){
               $("#shareN").modal("hide")
               avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
