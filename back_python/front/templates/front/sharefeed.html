@@ -9,17 +9,16 @@
   <div class="content" id="content" style="background:rgba(0,0,0,.85);position:relative;z-index:9999;">
       <div class="row" style="">
              <img src="/static/front/img/active_bg.png" width="300" style="display:block;margin:10px auto 30px;"/>
-             <div style="position:absolute;top:20px;">
+             <div style="position:absolute;top:50px;">
                  <div class="col-xs-12 text-center">
                       <img ms-attr="{src:@myinfo.headingImgUrl}"  class="img-circle" style="width:40px;height:40px"/><br/>
-                      <span>{? @myinfo.nickName ?}</span>
+                      <span style="font-size:12px;font-weight;color:#995010;">{? @myinfo.nickName ?}</span>
                  </div>
                  <div class="col-xs-12 text-center">
-                     <span>{? @myinfo.habitname ?}</span>
+                     <span style="color:#466f25;">{? @myinfo.habitname ?}</span>&nbsp;<span style="color:#466f25;">坚持了第{? @myinfo.accumDays ?}天</span>
                  </div>
                  <div class="col-xs-12 text-center">
-                     <span>坚持了第{? @myinfo.accumDays ?}天</span><br>
-                     <span>今日获得米粒{? @myinfo.freeMily ?}粒</span>&nbsp;<span>累积获得米粒{? @myinfo.accumMily ?}粒</span>
+                     <span style="color:#995010;">今日获得米粒{? @myinfo.freeMily ?}粒</span>&nbsp;<span style="color:#995010;">累积获得米粒{? @myinfo.accumMily ?}粒</span>
                  </div>
              </div>
              <!-- <div class="col-xs-12 text-center">
