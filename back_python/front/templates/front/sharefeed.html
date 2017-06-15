@@ -4,9 +4,9 @@
 {% endblock %}
 <!-- 内容区-->
 {% block content %}
-<div class="container mainPage" style="width:100%;height:780px;"  id="share"  ms-controller="share">
+<div class="container mainPage" style="width:100%;height:780px;background:rgba(0,0,0,.85);position:relative;z-index:9999;"  id="share"  ms-controller="share">
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
-  <div class="content" id="content" style="background:rgba(0,0,0,.85);position:relative;z-index:9999;">
+  <div class="content" id="content" style="">
       <div class="row" style="">
              <img src="/static/front/img/active_bg.png" width="300" style="display:block;margin:10px auto 30px;"/>
              <div style="position:absolute;top:70px;">
@@ -31,6 +31,9 @@
                    <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:'/static/front/img/codeimg.jpg'}"/>
                 </div>
              </div> -->
+      </div>
+      <div style="text-align:center;">
+          <a href="javascript:;" style="display:inline-block;width:182px;height:43px;background:url(/static/front/img/active_button.png) no-repeat;background-size:182px 43px;"></a>
       </div>
       <a class="close" style="display:block;width:30px;height:30px;position:absolute;top:10px;right:10px;background:url(/static/front/img/close_hov.png) no-repeat;background-size:30px;z-index:99999;"></a>
   </div>
