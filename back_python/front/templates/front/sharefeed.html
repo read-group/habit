@@ -4,7 +4,7 @@
 {% endblock %}
 <!-- 内容区-->
 {% block content %}
-<div class="container mainPage" style="width:100%;height:780px;background:rgba(0,0,0,.85);position:relative;z-index:9999;"  id="share"  ms-controller="share">
+<div class="container mainPage" style="width:100%;height:780px;background:#000;filter:alpha(Opacity=85);-moz-opacity:0.85;opacity: 0.85 position:relative;z-index:9999;"  id="share"  ms-controller="share">
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
   <div class="content" id="content" style="">
       <div class="row" style="">
@@ -21,12 +21,12 @@
                      <span style="color:#995010;padding-right:10px;">今日获得米粒{? @myinfo.freeMily ?}粒</span><span style="color:#995010;">累积获得米粒{? @myinfo.accumMily ?}粒</span>
                  </div>
              </div>
-             <!-- <div class="col-xs-12 text-center">
+             <div class="col-xs-12 text-center">
                  <div>
                    <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:'/static/front/img/adv1.png'}" />
                 </div>
              </div>
-             <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px">
+             <!-- <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px">
                  <div>
                    <img class="img-thumbnail" style="width:50%;height:170px" ms-attr="{src:'/static/front/img/codeimg.jpg'}"/>
                 </div>
