@@ -4,10 +4,11 @@
 {% endblock %}
 <!-- 内容区-->
 {% block content %}
-<div class="container mainPage" style="width:100%"  id="share"  ms-controller="share">
+<div class="container mainPage" style="width:100%;height:780px;"  id="share"  ms-controller="share">
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
   <div class="content" id="content" style="background:rgba(0,0,0,.85);position:relative;z-index:9999;">
-      <div class="row" style="width:100%;margin:0px auto;background:url(/static/front/img/active_bg.png) no-repeat;background-size:100%;">
+      <div class="row" style="">
+             <img src="/static/front/img/active_bg.png" width="80%"/>
              <div class="col-xs-12 text-center"  style="margin-top:10px">
                   <img ms-attr="{src:@myinfo.headingImgUrl}"  class="img-circle" style="width:40px;height:40px"/><br/>
                   <span>{? @myinfo.nickName ?}</span>
