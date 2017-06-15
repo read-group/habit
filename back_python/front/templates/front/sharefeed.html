@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container mainPage" style="width:100%"  id="share"  ms-controller="share">
   <!-- <div class="content" id="content" ms-html="@htmlcontent"> -->
-  <div class="content" id="content" style="background:rgba(0,0,0,.85);">
+  <div class="content" id="content" style="background:rgba(0,0,0,.85);position:relative;">
       <div class="row">
              <div class="col-xs-12 text-center"  style="margin-top:10px">
                   <img ms-attr="{src:@myinfo.headingImgUrl}"  class="img-circle" style="width:80px;height:80px"/><br/>
@@ -31,6 +31,7 @@
                 </div>
              </div>
       </div>
+      <a class="close" style="positionz;absolute;top:30px;right:30px;background:rul(/static/front/img/close_hov.png) no-repeat;background-size:30px;"></a>
   </div>
 </div>
 {% endblock %}
