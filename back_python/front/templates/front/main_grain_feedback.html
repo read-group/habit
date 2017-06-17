@@ -260,7 +260,6 @@
             $yml.ajax('/api/share/feedback',params,
             　  function(res){
                   var nickName=res.content["nickName"];
-                  alert(nickName)
                   $yml.page.$vmPage.myinfo=res.content;
                   $("#shareN").modal("show");
                   var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
