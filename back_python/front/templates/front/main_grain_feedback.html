@@ -262,7 +262,7 @@
                   $yml.page.$vmPage.myinfo=res.content;
                   $("#shareN").modal("show");
                   var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
-                  self.$vmMain.wxinit(url,document.location.href,"{? @myinfo.nickName ?}的荣耀分享","点击查看打卡分享")
+                  self.$vmMain.wxinit(url,document.location.href,{? @myinfo.nickName ?}"的荣耀分享","点击查看打卡分享")
                 }
             );
             $("#shareNKnow").click(function(){
