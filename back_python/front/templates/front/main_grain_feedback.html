@@ -260,15 +260,16 @@
             $yml.ajax('/api/share/feedback',params,
             　  function(res){
                   $yml.page.$vmPage.myinfo=res.content;
+                  var nickName=res.content["nickName"];
                   $("#shareN").modal("show");
                   var url="http://mily365.com/share/"+actid+"/"+pid+"/"+hid
-                  self.$vmMain.wxinit(url,document.location.href,"荣耀分享","点击查看打卡分享")
+                  self.$vmMain.wxinit(url,document.location.href,nickName+"的荣耀分享","点击查看打卡分享")
                 }
             );
             $("#shareNKnow").click(function(){
               $("#shareN").modal("hide")
               avalon.router.localStorage.setItem("pub",0);//打卡设置发布为假
-              
+
             })
           },100)
 
