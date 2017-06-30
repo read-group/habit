@@ -35,7 +35,7 @@ class FeedbackService(JsonResultService):
                 else:
                     fstr="p1"
                 # to do performance
-                orgacthistorys=OrgActivityHistory.objects.filter(org__id__exact=org.id).filter(habits__contains=fstr).order_by("createdTime");
+                orgacthistorys=OrgActivityHistory.objects.filter(org__id__exact=org.id).filter(activity__status__exact=1).filter(habits__contains=fstr).order_by("createdTime");
                 for orgacthistory in orgacthistorys:
                     habitsArrayStr=orgacthistory.habits.split(",")
                     activity=orgacthistory.activity
