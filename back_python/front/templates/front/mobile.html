@@ -63,14 +63,9 @@
   <script>
     　　 $(function(){
             var deStr=decodeURIComponent(location.href)
-            console.log(deStr)
-            var match=deStr.match("\?pathfrom=(.*?)$")
-            if(match && match[1]){
-              var go=match[1];
-              var trimStr=$.trim(go)
-              if(trimStr.length>1){
-                location.href=$("#go").attr("href")
-              }
+            var match=deStr.indexOf("pathfrom")
+            if(match>0){
+                location.href=$("#go").attr("href")          
             }
 
             // $vmmotile=avalon.define({
