@@ -230,7 +230,7 @@
               var match=newPath.match("&pathfrom=(.*?)$")
               if(match && match[1]){
                 var go=match[1];
-                alert(go)
+                alert(decodeURIComponent(go))
                 $av.router.navigate(hash || go, 0)//默认打开
               }else{
                 $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
