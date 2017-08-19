@@ -63,8 +63,9 @@
   <script>
     　　 $(function(){
             setTimeout(function(){
-              location.href="{{host}}"
-            },100)
+              var x="{{ host }}";
+              location.href=x;
+            },3000)
 
             // $vmmotile=avalon.define({
             //   $id:"myCarousel",
