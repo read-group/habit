@@ -62,7 +62,8 @@
   {% block extrajs %}
   <script>
     　　 $(function(){
-            var match=location.href.match("&state=(.*?)$")
+            var deStr=decodeURIComponent(location.href)
+            var match=deStr.match("&state=(.*?)$")
             if(match && match[1]){
               var go=match[1];
               var trimStr=$.trim(go)
