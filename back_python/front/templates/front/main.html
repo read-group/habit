@@ -224,7 +224,7 @@
                   autoScroll:true //滚动
               })
               //当前页面初次加载时
-              console.log(location.href)
+              alert(location.href)
               var hash = location.hash.replace(/#!?/, '')
               var match=location.href.match("&pathfrom=(.*?)$")
               if(match && match[1]){
