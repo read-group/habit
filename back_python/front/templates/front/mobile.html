@@ -62,7 +62,15 @@
   {% block extrajs %}
   <script>
     　　 $(function(){
-            location.href=$("#go").attr("href")
+            var match=location.href.match("&state=(.*?)$")
+            if(match && match[1]){
+              var go=match[1];
+              var trimStr=$.trim(go)
+              if(trimStr.length>1){
+                location.href=$("#go").attr("href")
+              }
+            }
+
             // $vmmotile=avalon.define({
             //   $id:"myCarousel",
             //   heads:[]
