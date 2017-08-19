@@ -226,6 +226,7 @@
               //当前页面初次加载时
               alert(location.href)
               var hash = location.hash.replace(/#!?/, '')
+              var newPath=location.href.replace("state", 'pathfrom')
               var match=location.href.match("&pathfrom=(.*?)$")
               if(match && match[1]){
                 var go=match[1];
