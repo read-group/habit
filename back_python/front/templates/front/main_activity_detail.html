@@ -204,7 +204,7 @@
     pageReady:function(paramObj){
       var self=this;
       console.log("{{detailUrl|safe}}");
-      self.$vmMain.wxinit("{{detailUrl|safe}}")
+      //self.$vmMain.wxinit("{{detailUrl|safe}}")
       $yml.ajax('/api/activity/detail',paramObj,
       　  function(res){
       　　　 self.$vmMain.$history.pop();
