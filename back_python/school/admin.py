@@ -13,7 +13,7 @@ class SchoolAdmin(admin.ModelAdmin):
 
 
 class ClassGroupAdmin(admin.ModelAdmin):
-    list_display=('id','code','name',"creator.userName")
+    list_display=('id','code','name',"creator.username")
 
 admin.site.register(School,SchoolAdmin)
 admin.site.register(ClassGroup,ClassGroupAdmin)
