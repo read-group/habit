@@ -224,12 +224,13 @@
                   autoScroll:true //滚动
               })
               //当前页面初次加载时
-              alert(location.href)
+
               var hash = location.hash.replace(/#!?/, '')
               var newPath=location.href.replace("state", 'pathfrom')
               var match=newPath.match("&pathfrom=(.*?)$")
               if(match && match[1]){
                 var go=match[1];
+                alert(go)
                 $av.router.navigate(hash || go, 0)//默认打开
               }else{
                 $av.router.navigate(hash || '/main/activity/t', 0)//默认打开
