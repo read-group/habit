@@ -21,7 +21,8 @@ class ActivityDetailView(TemplateView):
         path=self.request.path
         hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")+"&pathfrom="+path
         encode=urllib.parse.urlencode({'redirect_uri':hostRedirect})
-        ctx["detailUrl"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",encode)
+        # ctx["detailUrl"]=settings.WX['WX_AUTH_URL_CODE'].replace("{redirect_uri}",encode)
+        ctx["detailUrl"]="http://mily365.com?pathfrom="+path
         return ctx
     def get(self,request,*args,**kwargs):
         return super(ActivityDetailView,self).get(request,*args,**kwargs)
