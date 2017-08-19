@@ -62,7 +62,10 @@
   {% block extrajs %}
   <script>
     　　 $(function(){
-          //  location.href="{{host}}"
+            setTimeout(function(){
+              location.href="{{host}}"
+            },100)
+
             // $vmmotile=avalon.define({
             //   $id:"myCarousel",
             //   heads:[]
