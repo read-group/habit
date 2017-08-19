@@ -123,12 +123,12 @@
                               // var scope="snsapi_userinfo";
                               // var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+config.appId+"&redirect_uri="+encodeurl+"&response_type=code&scope="+scope+"#wechat_redirect";
 
-                              wx.hideMenuItems({
-                                                  menuList:['menuItem:share:qq',
-                                                  "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
-                                                  "menuItem:originPage","menuItem:readMode",
-                                                  "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                              });
+                              // wx.hideMenuItems({
+                              //                     menuList:['menuItem:share:qq',
+                              //                     "menuItem:favorite","menuItem:share:QZone","menuItem:copyUrl",
+                              //                     "menuItem:originPage","menuItem:readMode",
+                              //                     "menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:exposeArticle"]// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                              // });
                               if(ts){
                                 wx.onMenuShareAppMessage({
                                      title:titlestr, // 分享标题
