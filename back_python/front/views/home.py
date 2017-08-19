@@ -25,7 +25,7 @@ class HomeMobileView(TemplateView):
         hostRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","host")
         state=""
         if  "pathfrom" in self.request.GET:
-            state=hostRedirect+"&pathfrom="+self.request.GET["pathfrom"]
+            state="state="+self.request.GET["pathfrom"]
         teacherRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","teacher")
         childRedirect=settings.WX['WX_APP_REDIRECT'].replace("{role}","child")
 
