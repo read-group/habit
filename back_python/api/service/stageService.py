@@ -36,6 +36,9 @@ class StageService(JsonResultService):
                 queryCache=Post.objects.select_related('feedBack').order_by("-createdTime");
             elif int(pid)==-2:
                 queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__org__id=currentUser.org.id).order_by("-createdTime");
+            elseif int(pid)<-2:
+                acid=int(pid)+1000000
+                queryCache=Post.objects.select_related('feedBack').filter(feedBack__orgActivityHistory__activity__id=acid).order_by("-createdTime");
             else:
                 queryCache=Post.objects.select_related('feedBack').filter(feedBack__profile__id=int(pid)).order_by("-createdTime");
             count=queryCache.count();
